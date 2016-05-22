@@ -255,7 +255,7 @@ var main = function(corr, label_col, label_row){
           })
           .on('click', function(d, i){
               d3.selectAll(".col.tick").classed("tick-selected", false);
-              d3.select(".tick-" + i).classed("tick-selected", true);
+              d3.select(".col.tick-" + i).classed("tick-selected", true);
               reorder_matrix(i, 'col');
           });
 
@@ -267,13 +267,23 @@ var main = function(corr, label_col, label_row){
 
   tick_row.enter()
       .append('text')
-          .attr('class','tick')
+          .attr('class', function(d, i) {
+              return "row tick tick-" + i;
+          })
           .style('text-anchor', 'end')
           .attr('font-size', scale(0.6))
           .text(function(d){ return d; })
-          .on('mouseover', function(d, i){tick_mouseover(d, i, row[i], label_col);})
-          .on('mouseout', function(d){mouseout(d);})
-          .on('click', function(d, i){reorder_matrix(i, 'row');});
+          .on('mouseover', function(d, i){
+              tick_mouseover(d, i, row[i], label_col);
+          })
+          .on('mouseout', function(d){
+              mouseout(d);
+          })
+          .on('click', function(d, i){
+              d3.selectAll(".row.tick").classed("tick-selected", false);
+              d3.select(".row.tick-" + i).classed("tick-selected", true);
+              reorder_matrix(i, 'row');
+          });
 
   var pixel_mouseover = function(d){
     tooltip.style("opacity", 0.8)
