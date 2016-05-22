@@ -1,43 +1,61 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Correlation Explorer in D3.js</title>
-  
-  <script type='text/javascript' src='http://d3js.org/d3.v3.min.js'></script>
-  <script type='text/javascript' src="correxplorer.js"></script>
-  <link rel="stylesheet" type="text/css" href="correxplorer.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Correlation Explorer in D3.js</title>
+
+    <link rel="stylesheet" type="text/css" href="correxplorer.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/materialize-css/bin/materialize.css">
+
+    <script type='text/javascript' src='node_modules/d3/d3.js'></script>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/bin/materialize.js"></script>
+
+    <script type='text/javascript' src="correxplorer.js"></script>
 </head>
 
 <body>
-  <p>Examples: mutual_info.csv, size.csv, pcs_size.csv, diseases.csv, country_disease.csv (or load your own file - just use the full path, e.g. of a file shared via Dropbox).</p>
-  <p>Click on a label to sort according to it. <a href="https://github.com/CompassInc/correlation-explorer">Source on GitHub.</a></p>
-  <p>
-    <input type="text" value="examples/pcs_size.csv" id="file_path">
-    Transpose?
-    <input type="checkbox" id="transpose">
-    <button id="file_load">Load CSV!</button>
-    <button id="js_comparison">or generate JS comparison table?</button>
-  
-    Sort by:
-    <select id="sort_func">
-      <option value="abs_value">by Absolute Value</option>
-      <option value="value" selected="selected">by Value</option>
-      <option value="similarity">by Similarity</option>
-      <option value="alphabetic">Alphabetic</option>
-      <option value="original">Original</option>
-    </select>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#sort_func').material_select();
+    });
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col s4">
+            <div class="input-field">
+                <input placeholder="Zoom" id="zoom" type="text" class="validate">
+                <label for="zoom">Zoom</label>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="input-field">
+                <select id="sort_func">
+                    <option value="abs_value">by Absolute Value</option>
+                    <option value="value" selected="selected">by Value</option>
+                    <option value="similarity">by Similarity</option>
+                    <option value="alphabetic">Alphabetic</option>
+                    <option value="original">Original</option>
+                </select>
+                <label for="sort_func">Sortierung</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="input-field">
     Keep symmetry?
     <input type='checkbox' id="keep_symmetry" checked="true">
     Zoom?
-    <input type='text' id="zoom" value="1.">
-  </p>
-  <div class="tooltip" style="opacity: 0.01"></div>
+</div>
 
-  <!-- <p>Built with <a href="http://d3js.org/">d3.js</a>.</p> -->
-  
+<div class="tooltip" style="opacity: 0.01"></div>
+
+<!-- <p>Built with <a href="http://d3js.org/">d3.js</a>.</p> -->
+
 </body>
 
 

@@ -1,0 +1,22 @@
+{
+  "name": "iteragraph",
+  "version": "0.0.1",
+  "description": "An interactive way to explore 2d arrays (especially for correlations and coincidences).",
+  "main": "index.html",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@iteragit.iteratec.de:owd/iteraGraph.git"
+  },
+  "author": "owd",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^3.5.17",
+    "materialize-css": "^0.97.6"
+  }
+}

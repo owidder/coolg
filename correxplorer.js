@@ -81,8 +81,8 @@ window.onload=function(){
     main(js_comp.rows, js_comp.labels, js_comp.labels);
   });
 
-  var load_all = function(){
-    d3.csv(d3.select("input#file_path")[0][0].value, function(data){
+  var load_all = function(filename, transpose){
+    d3.csv(filename, function(data){
       // I de-dictionatize d3 stuff
       // as of now assumes both columns and row labels
       var label_col_full = Object.keys(data[0]);
@@ -99,7 +99,7 @@ window.onload=function(){
       }
       d3.select("svg").remove();
 
-      if ( !d3.select("input#transpose")[0][0].checked){
+      if (transpose){
         main(rows, label_col_full.slice(1), label_row);
       } else {
         main(d3.transpose(rows), label_row, label_col_full.slice(1));
@@ -107,7 +107,7 @@ window.onload=function(){
     });
   };
   
-  load_all();  // not to start with nothing
+  load_all("examples/geburtsjahr-bewertung.csv", false);  // not to start with nothing
 
 };
 
