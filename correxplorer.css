@@ -24,8 +24,10 @@ div.tooltip
 
 .tick {
 	fill: black;
+	opacity: 0.4;
 }
 
 .tick-selected {
 	fill: green;
+	opacity: 1;
 }
