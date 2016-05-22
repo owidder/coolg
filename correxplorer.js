@@ -129,7 +129,7 @@ var main = function(corr, label_col, label_row){
   d3.select("input#keep_symmetry")
     .each(function(){ this.checked = JSON.stringify(label_col) === JSON.stringify(label_row); });
 
-  var keep_symmetry = d3.select("input#keep_symmetry")[0][0].checked;
+  var keep_symmetry = true;
   d3.select("input#keep_symmetry").on("change", function() {
       if (corr.length !== corr[0].length) {
         this.checked = false;
@@ -139,7 +139,7 @@ var main = function(corr, label_col, label_row){
       if(keep_symmetry){ reorder_matrix(last_k, last_what); }
   });
 
-  var sort_process = d3.select("select#sort_func")[0][0].value;
+  var sort_process = "value";
   d3.select("select#sort_func").on("change", function() {
       sort_process = this.value;
       reorder_matrix(last_k, last_what);
