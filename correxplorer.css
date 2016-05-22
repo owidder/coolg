@@ -21,3 +21,11 @@ div.tooltip
 	border-radius: 4px;
 	pointer-events: none;
 }
+
+.tick {
+	fill: black;
+}
+
+.tick-selected {
+	fill: green;
+}

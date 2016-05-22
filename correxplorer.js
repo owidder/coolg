@@ -129,7 +129,7 @@ var main = function(corr, label_col, label_row){
   d3.select("input#keep_symmetry")
     .each(function(){ this.checked = JSON.stringify(label_col) === JSON.stringify(label_row); });
 
-  var keep_symmetry = true;
+  var keep_symmetry = false;
   d3.select("input#keep_symmetry").on("change", function() {
       if (corr.length !== corr[0].length) {
         this.checked = false;
@@ -238,14 +238,26 @@ var main = function(corr, label_col, label_row){
 
   tick_col.enter()
       .append('text')
-          .attr('class','tick')
+          .attr('class', function(d, i) {
+              return "col tick tick-" + i;
+          })
           .style('text-anchor', 'start')
           .attr('transform', function(d, i){return 'rotate(270 ' + scale(order_col[i] + 0.7) + ',0)';})
-          .attr('font-size', scale(0.8))
-          .text(function(d){ return d; })
-          .on('mouseover', function(d, i){tick_mouseover(d, i, col[i], label_row);})
-          .on('mouseout', function(d){mouseout(d);})
-          .on('click', function(d, i){reorder_matrix(i, 'col');});
+          .attr('font-size', scale(0.6))
+          .text(function(d){
+              return d;
+          })
+          .on('mouseover', function(d, i){
+              tick_mouseover(d, i, col[i], label_row);
+          })
+          .on('mouseout', function(d){
+              mouseout(d);
+          })
+          .on('click', function(d, i){
+              d3.selectAll(".col.tick").classed("tick-selected", false);
+              d3.select(".tick-" + i).classed("tick-selected", true);
+              reorder_matrix(i, 'col');
+          });
 
   tick_row = svg.append('g')
       .attr('class','ticks')
@@ -257,7 +269,7 @@ var main = function(corr, label_col, label_row){
       .append('text')
           .attr('class','tick')
           .style('text-anchor', 'end')
-          .attr('font-size', scale(0.8))
+          .attr('font-size', scale(0.6))
           .text(function(d){ return d; })
           .on('mouseover', function(d, i){tick_mouseover(d, i, row[i], label_col);})
           .on('mouseout', function(d){mouseout(d);})
@@ -267,7 +279,7 @@ var main = function(corr, label_col, label_row){
     tooltip.style("opacity", 0.8)
       .style("left", (d3.event.pageX + 15) + "px")
       .style("top", (d3.event.pageY + 8) + "px")
-      .html(d.i + ": " + label_row[d.i] + "<br>" + d.j + ": " + label_col[d.j] + "<br>" + "Value: " + (d.val > 0 ? "+" : "&nbsp;") + d.val.toFixed(3));
+      .html("Anteil: " + Math.round(d.val * 100) + "%");
   };
 
   var mouseout = function(d){
@@ -281,12 +293,12 @@ var main = function(corr, label_col, label_row){
     indices.sort(function(a, b){ return Math.abs(vec[b]) - Math.abs(vec[a]); });
     res_list = [];
     for(var j = 0; j < Math.min(vec.length, 10); j++) {
-      res_list.push((vec[indices[j]] > 0 ? "+" : "&nbsp;") + vec[indices[j]].toFixed(3) + "&nbsp;&nbsp;&nbsp;" + label[indices[j]]);
+      res_list.push(label[indices[j]] + ": " + Math.round(vec[indices[j]]*100) + "% &nbsp;&nbsp;&nbsp;");
     }
     tooltip.style("opacity", 0.8)
       .style("left", (d3.event.pageX + 15) + "px")
       .style("top", (d3.event.pageY + 8) + "px")
-      .html("" + i + ": " + d + "<br><br>" + res_list.join("<br>"));
+      .html("" + res_list.join("<br>"));
   };
 
 
