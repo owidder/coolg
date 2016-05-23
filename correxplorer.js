@@ -83,6 +83,20 @@ window.onload = function () {
         main(js_comp.rows, js_comp.labels, js_comp.labels);
     });
 
+    d3.select("#gebjahr").on("click", function () {
+        $("#zoomrange").val(400);
+        load_all("examples/geburtsjahr-bewertung.csv", false);
+    });
+
+    d3.select("#angseit").on("click", function () {
+        $("#zoomrange").val(0);
+        load_all("examples/angestellt_seit-bewertung.csv", false);
+    });
+    d3.select("#berufseit").on("click", function () {
+        $("#zoomrange").val(400);
+        load_all("examples/berufserfahrung_seit-bewertung.csv", false);
+    });
+
     var load_all = function (filename, transpose) {
         d3.csv(filename, function (data) {
             // I de-dictionatize d3 stuff
