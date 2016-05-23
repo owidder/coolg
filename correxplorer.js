@@ -269,6 +269,15 @@ var main = function (corr, label_col, label_row) {
             mouseout(d);
         });
 
+    var pixeltext = matrix.selectAll('text.pixel').data(corr_data);
+
+    pixeltext.enter()
+        .append("text")
+        .attr("class", "pixel")
+        .text(function (d) {
+            return Math.round(parseFloat(d.val) * 100);
+        });
+
     tick_col = svg.append('g')
         .attr('class', 'ticks')
         .attr('transform', 'translate(' + (label_space + 10) + ',' + (label_space) + ')')
@@ -332,7 +341,7 @@ var main = function (corr, label_col, label_row) {
         tooltip.style("opacity", 0.8)
             .style("left", (d3.event.pageX + 15) + "px")
             .style("top", (d3.event.pageY + 8) + "px")
-            .html("Anteil: " + Math.round(d.val * 100) + "%");
+            .html("Anteil: " + Math.round(d.val * 1000)/10 + "%");
     };
 
     var mouseout = function (d) {
@@ -381,6 +390,16 @@ var main = function (corr, label_col, label_row) {
             .attr('x', function (d) {
                 return scale(order_col[d.j]);
             });
+
+        pixeltext.transition()
+            .duration(transition_time)
+            .attr("y", function (d) {
+                return (order_row[d.i] * scale(1)) + scale(0.5);
+            })
+            .attr("x", function (d) {
+                return (order_col[d.j] * scale(1)) + scale(0.4);
+            });
+
     };
 
     refresh_order();

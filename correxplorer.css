@@ -22,6 +22,10 @@ div.tooltip
 	pointer-events: none;
 }
 
+text.pixel {
+	font-size: 0.5em;
+}
+
 .tick {
 	fill: black;
 	opacity: 0.4;
