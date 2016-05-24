@@ -232,6 +232,16 @@ var main = function (corr, label_col, label_row) {
                 return scale(order_col[d.j]);
             });
 
+        pixeltext.transition()
+            .duration(transition_time)
+            .attr("y", function (d) {
+                return (order_row[d.i] * scale(1)) + scale(0.5);
+            })
+            .attr("x", function (d) {
+                return (order_col[d.j] * scale(1)) + scale(0.4);
+            })
+            .attr("style", "font-size: " + scale(0.015) + "em;");
+
         // the below does not work, as
         // refresh_order();
         // tick_col.transition().duration(transition_time)
@@ -398,7 +408,8 @@ var main = function (corr, label_col, label_row) {
             })
             .attr("x", function (d) {
                 return (order_col[d.j] * scale(1)) + scale(0.4);
-            });
+            })
+            .attr("style", "font-size: " + scale(0.015) + "em;");
 
     };
 
