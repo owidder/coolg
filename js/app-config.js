@@ -7,6 +7,10 @@ angular.module(com_geekAndPoke_coolg.moduleName)
                 templateUrl: 'js/views/stockView/stockView.html',
                 controller: com_geekAndPoke_coolg.STOCK_CONTROLLER
             })
+            .when('/skillTest', {
+                templateUrl: 'js/views/skillView/skillTest.html',
+                controller: com_geekAndPoke_coolg.SKILL_CONTROLLER_TEST
+            })
             .otherwise({redirectTo: '/stock'});
     }])
     .run(function(dateUtil, funcs, dimensions, mathUtil) {
@@ -22,4 +26,7 @@ angular.module(com_geekAndPoke_coolg.moduleName)
         bottle.factory('mathUtil', function() {
             return mathUtil;
         });
+        bottle.factory("$datalib", function () {
+            return dl;
+        })
     });
