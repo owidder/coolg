@@ -1,0 +1,173 @@
+<section>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/Materialize/bin/materialize.css"
+          media="screen,projection"/>
+
+    <style>
+        #canvas {
+            width: 600px;
+            height: 400px;
+        }
+
+        .axis path, .axis line {
+            fill: none;
+            stroke: grey;
+            shape-rendering: crispEdges;
+            stroke-width: 2px
+        }
+
+        .axis.wcm-label {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .quadrant_border {
+            stroke: grey;
+            fill: none;
+            shape-rendering: crispEdges;
+            stroke-width: 2px
+        }
+
+        .circle-hover {
+            stroke-width: 4;
+            stroke: grey;
+            cursor: pointer;
+        }
+
+        .circle-selected {
+            fill: darkblue;
+        }
+
+        .wcm-label {
+            font-size: 12px;
+            font-weight: bold
+        }
+
+        .wcm-label-hover {
+            fill: blue;
+            cursor: pointer;
+        }
+
+        .wcm-label-selected {
+            fill: darkblue;
+        }
+
+        .thumbnails {
+            margin-top: 10px;
+        }
+
+        .well {
+            padding: 0px;
+        }
+
+        .sidebar-inner {
+            padding: 20px;
+        }
+
+        img {
+            vertical-align: baseline;
+        }
+
+        .divider {
+            stroke: grey;
+            fill: none;
+            shape-rendering: crispEdges;
+            stroke-width: 2px
+        }
+
+        .quad-label {
+            font-size: 20px;
+            font-weight: bold;
+            fill: black;
+            opacity: 0.3;
+        }
+
+        .not-ranked {
+            fill: red;
+        }
+
+        .Framework {
+            fill: cyan;
+        }
+
+        .Refactoring {
+            fill: green;
+        }
+
+        .Build-Deploy {
+            fill: orange;
+        }
+
+        .Betrieb {
+            fill: red;
+        }
+
+        .Security {
+            fill: yellow;
+        }
+
+        .Datenmodell {
+            fill: magenta;
+        }
+
+        .circle {
+            opacity: 0.8;
+        }
+
+        .title {
+            font-size: x-large;
+            font-weight: bolder;
+        }
+
+        .legendText {
+            font-size: 0.7em;
+        }
+
+        circle.legend {
+            fill: black;
+            opacity: 0.4;
+        }
+
+        circle.hideOn {
+            fill: lightgrey;
+        }
+
+        .category {
+            opacity: 0.5;
+        }
+
+    </style>
+
+    <div class="row">
+        <div class="col s12">
+            <span class="title">Skills</span>
+            <span ng-hide="hideButtons" class="switch" ng-repeat="type in allTypes">
+                <span class="switch">
+                    <label  class="{{type.id}}" style="color: {{getColorForEnumValue('type', type.id)}}" >
+                        {{type.text}}
+                        <input class="{{type.id}}" type="checkbox" ng-model="typeSwitchModel[type.id]" ng-click="switchMeasureType(type.id)">
+                        <span class="lever"></span>
+                    </label>
+                </span>
+            </span>
+        </div>
+        <div class="col s8">
+            <div id="canvas">
+            </div>
+        </div>
+        <div class="col s4">
+            <a href="#/extra/measureList">Liste</a>
+            <table class="striped">
+                <tbody>
+                    <tr ng-repeat="a in attributesShowInList">
+                        <td><b>{{a.text}}</b></td>
+                        <td ng-show="!a.isHyperLink">{{a.value}}</td>
+                        <td ng-show="a.isHyperLink"><a target="_blank" href="{{a.value}}">{{a.value}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>

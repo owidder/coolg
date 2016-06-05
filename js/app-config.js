@@ -13,7 +13,10 @@ angular.module(com_geekAndPoke_coolg.moduleName)
             })
             .otherwise({redirectTo: '/stock'});
     }])
-    .run(function(dateUtil, funcs, dimensions, mathUtil) {
+    .run(function(dateUtil, funcs, dimensions, mathUtil, colorUtil) {
+        bottle.factory("colorUtil", function () {
+            return colorUtil;
+        });
         bottle.factory('dateUtil', function() {
             return dateUtil;
         });
@@ -28,5 +31,11 @@ angular.module(com_geekAndPoke_coolg.moduleName)
         });
         bottle.factory("$datalib", function () {
             return dl;
+        });
+        bottle.factory("$tinycolor", function () {
+            return tinycolor;
+        });
+        bottle.factory("$d3", function () {
+            return d3;
         })
     });

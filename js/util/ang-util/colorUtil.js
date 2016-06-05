@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module(com_geekAndPoke_coolg.moduleName).factory("colorUtil", function(mathUtil) {
+    var d3 = bottle.container.$d3;
+
+    var intToTwentyColors = d3.scale.category20();
 
     /**
      * Thanks to http://www.javascripter.net/faq/rgb2cmyk.htm
@@ -168,6 +171,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory("colorUtil", function(m
         rgbStringToRgbValues: rgbStringToRgbValues,
         getSaturationFromRgbString: getSaturationFromRgbString,
         getLightFromRgbString: getLightFromRgbString,
-        getOptimalTextColorFromRgbString: getOptimalTextColorFromRgbString
+        getOptimalTextColorFromRgbString: getOptimalTextColorFromRgbString,
+        intToTwentyColors: intToTwentyColors
     }
 });

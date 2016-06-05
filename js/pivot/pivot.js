@@ -5,7 +5,13 @@ bottle.factory("pivot", function (container) {
     var $datalib = bottle.container.$datalib;
 
     function Pivot(path) {
-        var data = datalib.csv(path);
+        $datalib.tsv(path, undefined, function (err, data) {
+            var aggregation = $datalib.groupby('Skill')
+                .summarize([
+                    {name: 'Bewertung', ops: ['valid', 'mean'], as: ['c', 'm']}
+                ]).execute(data);
+            console.log(aggregation);
+        });
     }
 
     return {
