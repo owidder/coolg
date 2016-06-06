@@ -27,6 +27,13 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             });
         }
 
+        // creating the main svg
+        var svg = d3.select("#canvas")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("class", "svg");
+
         function drawField(maxX, maxY) {
             // global variables
             var width = (dimensions.screenDimensions.width - 50) * (8/12);
@@ -35,7 +42,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
             // x scale
             var xScale = d3.scale.linear()
-                .domain([0, 100])
+                .domain([0, maxX])
                 .range([0, width - margin.left - margin.right]);
 
             var xAxis = d3.svg.axis()
@@ -45,20 +52,13 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
             // y scale
             var yScale = d3.scale.linear()
-                .domain([0, 100])
+                .domain([0, maxY])
                 .range([height - margin.bottom, 0])
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
                 .ticks(0)
                 .orient("left");
-
-            // creating the main svg
-            var svg = d3.select("#canvas")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("class", "svg");
 
             // axis and axis description
             svg.append("g")
