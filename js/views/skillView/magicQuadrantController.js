@@ -91,11 +91,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .transition()
                 .call(yAxis);
 
-            var quadrant_group;
             (function createGrid() {
-                quadrant_group = svg.append("g")
-                    .attr("transform", "translate(" + margin.left + ",0)");
-
                 var quadrant_border = quadrant_group.append("rect")
                     .attr("x", 0)
                     .attr("y", 0)
