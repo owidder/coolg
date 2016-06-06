@@ -154,8 +154,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(83))
-                    .attr("y", yScale(50))
+                    .attr("x", xScale(maxX/6 * 5))
+                    .attr("y", yScale(maxY/2))
                     .attr("text-anchor", "middle")
                     .text("Auf keinen Fall")
                     .attr("class", "quad-label");
