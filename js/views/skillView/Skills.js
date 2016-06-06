@@ -19,19 +19,25 @@ bottle.factory("Skills", function(container) {
         }
 
         function extractCategories(data) {
-            me.categories = dl.unique(data, funcs.createAccessorFunction("Skill-Unterkategorie"));
-            me.categories.sort();
+            var categories = dl.unique(data, funcs.createAccessorFunction("Skill-Unterkategorie"));
+            categories.sort();
+
+            return categories;
         }
 
         var promise = new SimplePromise();
 
         me.ready = promise.promise;
+        me.categories = extractCategories();
+        me.categoryToColor = categoryToColor;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             extractCategories(data);
             var aggregation = dl.groupby('Skill')
                 .summarize([
-                    {name: 'Bewertung', ops: ['valid', 'mean'], as: ['c', 'm']}
+                    {name: 'Bewertung', ops: ['valid', 'mean'], as: ['Anzahl Bewertungen', 'Mittlere Bewertung']},
+                    {name: 'Mitarbeiter', ops: ['valid'], as: ['Anzahl Mitarbeiter']},
+                    {name: 'Projekte', ops: ['valid'], as: ['Anzahl Projekte']}
                 ]).execute(data);
             console.log(aggregation);
         });

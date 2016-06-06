@@ -141,11 +141,11 @@
     <div class="row">
         <div class="col s12">
             <span class="title">Skills</span>
-            <span ng-hide="hideButtons" class="switch" ng-repeat="type in allTypes">
+            <span ng-hide="hideButtons" class="switch" ng-repeat="category in allCategories">
                 <span class="switch">
-                    <label  class="{{type.id}}" style="color: {{getColorForEnumValue('type', type.id)}}" >
-                        {{type.text}}
-                        <input class="{{type.id}}" type="checkbox" ng-model="typeSwitchModel[type.id]" ng-click="switchMeasureType(type.id)">
+                    <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
+                        {{category}}
+                        <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
                         <span class="lever"></span>
                     </label>
                 </span>
@@ -156,13 +156,11 @@
             </div>
         </div>
         <div class="col s4">
-            <a href="#/extra/measureList">Liste</a>
+            &nbsp;
             <table class="striped">
                 <tbody>
-                    <tr ng-repeat="a in attributesShowInList">
+                    <tr ng-repeat="a in attributes">
                         <td><b>{{a.text}}</b></td>
-                        <td ng-show="!a.isHyperLink">{{a.value}}</td>
-                        <td ng-show="a.isHyperLink"><a target="_blank" href="{{a.value}}">{{a.value}}</a></td>
                     </tr>
                 </tbody>
             </table>

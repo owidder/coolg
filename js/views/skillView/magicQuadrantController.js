@@ -36,13 +36,14 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             });
         }
 
-        function setCurrentAttributes(measure) {
+        function getAttributesForSkill(skill) {
+            return [];
+        }
+
+        function setCurrentAttributes(skill) {
             $timeout(function() {
-                currentAttributes = measureMetadata.getAttributesForMeasure(measure);
+                currentAttributes = getAttributesForSkill(skill);
                 $scope.attributes = currentAttributes;
-                $scope.attributesShowInList = $scope.attributes.filter(function(e) {
-                    return e.showInList;
-                });
             });
         }
 
@@ -302,12 +303,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .attr("class", "divider");
         })();
 
-        function yScaleForMeasure(measure) {
-            return measure.benefit;
-        }
-
-        function isRanked(measure) {
-            return (yScaleForMeasure(measure) > 0);
+        function yScaleForSkill(skill) {
+            return skill.benefit;
         }
 
         function radiusFromRiskText(risk) {
@@ -337,25 +334,11 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
          * Filter
          * *************/
 
-        function filterMeasureOnRisk(riskId) {
-            return ($routeParams[createRiskParam(riskId)] != "y");
-        }
-
-        function filterUnrankedMeasure(measure) {
-            return !AppContext.measureData.isHideUnranked() || isRanked(measure);
-        }
-
-        function filterMeasures(measures) {
-            return measures.filter(function(m) {
-                return filterUnrankedMeasure(m) && filterMeasureOnRisk(m.risk);
-            });
-        }
-
         function isCategoryHidden(category) {
             return ($routeParams["h_" + category] == "y");
         }
 
-        function switchCategorie(category) {
+        function switchCategory(category) {
             if(isCategoryHidden(category)) {
                 $location.search("h_" + category, "n");
             }
@@ -366,10 +349,10 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
         /**
          * draw the matrix and circles
-         * @param type
+         * @param category
          */
-        function drawMeasures(type) {
-            if(AppContext.measureData.isMeasureTypeHidden(type)) {
+        function drawMeasures(category) {
+            if(isCategoryHidden(category)) {
                 return;
             }
             function mouseHandlingOnIcon(selection) {
@@ -394,20 +377,19 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     });
             }
 
-            var measures = measureData.getMeasures(type);
-            var gMeasure = quadrant_group.selectAll("g.measure-" + type)
-                .data(filterMeasures(measures))
+            var gSkill = quadrant_group.selectAll("g.measure-" + category)
+                .data(skills.categories)
                 .enter()
                 .append("g")
-                .attr("class", "measure-" + type);
+                .attr("class", "measure-" + category);
 
-            gMeasure
+            gSkill
                 .transition()
                 .attr("transform", function (d) {
-                    return "translate(" + xScale(d.effort) + "," + yScale(yScaleForMeasure(d)) + ")";
+                    return "translate(" + xScale(d.effort) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
-            var gMeasureA = gMeasure.append("svg:a")
+            var gMeasureA = gSkill.append("svg:a")
                 .attr("xlink:href", function(d) {
                     return d.url;
                 })
@@ -432,38 +414,32 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             gMeasureA.append("text")
                 .attr("opacity", 1)
                 .attr("class", function (d) {
-                    return "wcm-label item id" + d.id + " " + (isRanked(d) ? "ranked" : "not-ranked");
+                    return "wcm-label item cat-" + d;
                 })
                 .attr("y", 0)
                 .attr("x", 0)
                 .text(function (d) {
-                    return d.name;
+                    return d;
                 })
                 .on("click", function (d) {
                     d3.select(".circle-hover").classed("circle-hover", false);
-                    d3.select("circle.id" + d.id).classed("circle-hover", true);
+                    d3.select("circle.cat-" + d).classed("circle-hover", true);
                     setCurrentAttributes(d);
                 });
         }
 
-        $q.all([measureData.initialized, measureMetadata.initialized]).then(function() {
-            $scope.switchMeasureType = switchCategorie;
+        skills.ready.then(function() {
+            $scope.switchCategory = switchCategory;
 
-            $scope.getColorForEnumValue = measureMetadata.getColorForEnumValue;
+            $scope.getColorForCategory = skills.categoryToColor;
 
             // Hide buttons
             $scope.hideButtons = $routeParams.hb;
 
-            $scope.allCategories = measureMetadata.getAllEnumValues(measureConstants.C.MEASURE_TYPE_NAME);
-            $scope.typeSwitchModel = {};
-            $scope.allTypes.forEach(function(type) {
-                $scope.typeSwitchModel[type.id] = !AppContext.measureData.isMeasureTypeHidden(type.id);
-            });
-
-            $scope.MEASURE_TYPES = measureConstants.MEASURE_TYPES;
-            $scope.measureTypes = {};
-            measureConstants.MEASURE_TYPES.forEach(function(measureType) {
-                $scope.measureTypes[measureType] = !AppContext.measureData.isMeasureTypeHidden(measureType);
+            $scope.allCategories = skills.categories;
+            $scope.categorySwitchModel = {};
+            $scope.allCategories.forEach(function(category) {
+                $scope.categorySwitchModel[category] = !isCategoryHidden(category);
             });
 
             if(getMode() == MODE_RS) {
