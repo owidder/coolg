@@ -92,10 +92,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
              * Legend
              *************************/
 
-            function createRiskParam(risk) {
-                return "h_" + risk;
-            }
-
             var quadrant_group;
             (function createGrid() {
                 quadrant_group = svg.append("g")
