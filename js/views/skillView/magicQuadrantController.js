@@ -195,9 +195,9 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
                 quadrant_group.append("line")
                     .attr("x1", 0)
-                    .attr("y1", yScale(66))
-                    .attr("x2", xScale(100))
-                    .attr("y2", yScale(66))
+                    .attr("y1", yScale(maxY/3 * 2))
+                    .attr("x2", xScale(maxX))
+                    .attr("y2", yScale(maxY/3 * 2))
                     .attr("class", "divider");
 
                 quadrant_group.append("line")
