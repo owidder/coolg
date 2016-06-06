@@ -179,8 +179,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .attr("opacity", "0.3");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(1))
-                    .attr("y", yScale(97))
+                    .attr("x", xScale(maxX * 0.01))
+                    .attr("y", yScale(maxY * 0.97))
                     .attr("text-anchor", "left")
                     .attr("class", "quad-label")
                     .text("Muss-Anforderung");
