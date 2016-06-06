@@ -35,12 +35,10 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("class", "svg");
 
         function drawField(maxX, maxY) {
-            // global variables
             var width = (dimensions.screenDimensions.width - 50) * (8/12);
             var height = dimensions.screenDimensions.height - 70;
             var margin = {"left": 100, "bottom": 25, "right": 5};
 
-            // x scale
             var xScale = d3.scale.linear()
                 .domain([0, maxX])
                 .range([0, width - margin.left - margin.right]);
@@ -50,7 +48,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .ticks(0)
                 .orient("bottom");
 
-            // y scale
             var yScale = d3.scale.linear()
                 .domain([0, maxY])
                 .range([height - margin.bottom, 0])
