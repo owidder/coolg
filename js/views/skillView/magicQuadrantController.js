@@ -75,9 +75,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .transition()
                 .call(xAxis);
 
-            svg.append("g")
-                .attr("class", "axis")
-                .attr("transform", "translate(" + (margin.left - 10) + ", 10)")
+            svg.select("yaxis")
                 .call(yAxis);
 
             var yLabelX = margin.left - 15;
