@@ -30,6 +30,7 @@ bottle.factory("Skills", function(container) {
         me.ready = promise.promise;
         me.categories = extractCategories();
         me.categoryToColor = categoryToColor;
+        me.skills = undefined;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             extractCategories(data);
@@ -39,6 +40,7 @@ bottle.factory("Skills", function(container) {
                     {name: 'Mitarbeiter', ops: ['valid'], as: ['Anzahl Mitarbeiter']},
                     {name: 'Projekte', ops: ['valid'], as: ['Anzahl Projekte']}
                 ]).execute(data);
+            me.skills = aggregation;
             console.log(aggregation);
         });
     }
