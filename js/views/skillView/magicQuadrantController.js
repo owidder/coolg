@@ -51,6 +51,15 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("class", "axis wcm-label")
             .text("Anzahl Mitarbeiter");
 
+        var yLabelX = margin.left - 15;
+        var yLabelY = height - 75;
+        var yLabel = svg.append("text")
+            .attr("x", yLabelX)
+            .attr("y", yLabelY)
+            .attr("class", "axis wcm-label")
+            .text("Mittlere Bewertung")
+            .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
+
         function drawField(maxX, maxY) {
 
             var xScale = d3.scale.linear()
@@ -78,15 +87,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             svg.select("yaxis")
                 .transition()
                 .call(yAxis);
-
-            var yLabelX = margin.left - 15;
-            var yLabelY = height - 75;
-            var yLabel = svg.append("text")
-                .attr("x", yLabelX)
-                .attr("y", yLabelY)
-                .attr("class", "axis wcm-label")
-                .text("Nutzen")
-                .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
             /*************************
              * Legend
