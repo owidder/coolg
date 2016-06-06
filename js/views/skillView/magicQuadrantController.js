@@ -17,19 +17,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
         var skills = new Skills();
 
-        function getMode() {
-            switch($routeParams.m) {
-                case "se":
-                    return MODE_SE_ONLY;
-
-                case "rs":
-                    return MODE_RS;
-
-                default:
-                    return MODE_ALL;
-            }
-        }
-
         function clearCurrentAttributes() {
             $timeout(function() {
                 currentAttributes = [];
