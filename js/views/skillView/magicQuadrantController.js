@@ -64,7 +64,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
             var yScale = d3.scale.linear()
                 .domain([0, maxY])
-                .range([height - margin.bottom, 0])
+                .range([height - margin.bottom, 0]);
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
