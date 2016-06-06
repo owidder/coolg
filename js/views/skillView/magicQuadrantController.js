@@ -351,7 +351,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
          * draw the matrix and circles
          * @param category
          */
-        function drawMeasures(category) {
+        function drawSkills(category) {
             if(isCategoryHidden(category)) {
                 return;
             }
@@ -443,14 +443,14 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             });
 
             if(getMode() == MODE_RS) {
-                drawMeasures(measureConstants.C.MEASURE_TYPE_RS);
+                drawSkills(measureConstants.C.MEASURE_TYPE_RS);
             }
             else {
-                drawMeasures(measureConstants.C.MEASURE_TYPE_TECHNICAL);
+                drawSkills(measureConstants.C.MEASURE_TYPE_TECHNICAL);
                 if(getMode() != MODE_SE_ONLY) {
-                    drawMeasures(measureConstants.C.MEASURE_TYPE_BUSINESS);
-                    drawMeasures(measureConstants.C.MEASURE_TYPE_SECURITY);
-                    drawMeasures(measureConstants.C.MEASURE_TYPE_RUN);
+                    drawSkills(measureConstants.C.MEASURE_TYPE_BUSINESS);
+                    drawSkills(measureConstants.C.MEASURE_TYPE_SECURITY);
+                    drawSkills(measureConstants.C.MEASURE_TYPE_RUN);
                 }
             }
 
