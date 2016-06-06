@@ -96,19 +96,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 return "h_" + risk;
             }
 
-            function clickOnRisk(risk) {
-                if(filterMeasureOnRisk(risk)) {
-                    $timeout(function() {
-                        $location.search(createRiskParam(risk), "y");
-                    })
-                }
-                else {
-                    $timeout(function() {
-                        $location.search(createRiskParam(risk), "n");
-                    })
-                }
-            }
-
             var quadrant_group;
             (function createGrid() {
                 quadrant_group = svg.append("g")
