@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module(com_geekAndPoke_coolg.moduleName).factory("colorUtil", function(mathUtil) {
-    var d3 = bottle.container.$d3;
-
     var intToTwentyColors = d3.scale.category20();
 
     /**

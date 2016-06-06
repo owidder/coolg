@@ -47,261 +47,263 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             });
         }
 
-        // global variables
-        var width = (dimensions.screenDimensions.width - 50) * (8/12);
-        var height = dimensions.screenDimensions.height - 70;
-        var margin = {"left": 100, "bottom": 25, "right": 5};
+        function drawField(maxX, maxY) {
+            // global variables
+            var width = (dimensions.screenDimensions.width - 50) * (8/12);
+            var height = dimensions.screenDimensions.height - 70;
+            var margin = {"left": 100, "bottom": 25, "right": 5};
 
-        // x scale
-        var xScale = d3.scale.linear()
-            .domain([0, 100])
-            .range([0, width - margin.left - margin.right]);
+            // x scale
+            var xScale = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, width - margin.left - margin.right]);
 
-        var xAxis = d3.svg.axis()
-            .scale(xScale)
-            .ticks(0)
-            .orient("bottom");
+            var xAxis = d3.svg.axis()
+                .scale(xScale)
+                .ticks(0)
+                .orient("bottom");
 
-        // y scale
-        var yScale = d3.scale.linear()
-            .domain([0, 100])
-            .range([height - margin.bottom, 0])
+            // y scale
+            var yScale = d3.scale.linear()
+                .domain([0, 100])
+                .range([height - margin.bottom, 0])
 
-        var yAxis = d3.svg.axis()
-            .scale(yScale)
-            .ticks(0)
-            .orient("left");
+            var yAxis = d3.svg.axis()
+                .scale(yScale)
+                .ticks(0)
+                .orient("left");
 
-        // creating the main svg
-        var svg = d3.select("#canvas")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .attr("class", "svg");
+            // creating the main svg
+            var svg = d3.select("#canvas")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "svg");
 
-        // axis and axis description
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + (margin.left - 10) + "," + (height - 15) + ")")
-            .call(xAxis);
+            // axis and axis description
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(" + (margin.left - 10) + "," + (height - 15) + ")")
+                .call(xAxis);
 
-        var xLabel = svg.append("text")
-            .attr("x", 100)
-            .attr("y", height - 2)
-            .attr("class", "axis wcm-label")
-            .text("Aufwand");
+            var xLabel = svg.append("text")
+                .attr("x", 100)
+                .attr("y", height - 2)
+                .attr("class", "axis wcm-label")
+                .text("Aufwand");
 
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + (margin.left - 10) + ", 10)")
-            .call(yAxis);
+            svg.append("g")
+                .attr("class", "axis")
+                .attr("transform", "translate(" + (margin.left - 10) + ", 10)")
+                .call(yAxis);
 
-        var yLabelX = margin.left - 15;
-        var yLabelY = height - 75;
-        var yLabel = svg.append("text")
-            .attr("x", yLabelX)
-            .attr("y", yLabelY)
-            .attr("class", "axis wcm-label")
-            .text("Nutzen")
-            .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
+            var yLabelX = margin.left - 15;
+            var yLabelY = height - 75;
+            var yLabel = svg.append("text")
+                .attr("x", yLabelX)
+                .attr("y", yLabelY)
+                .attr("class", "axis wcm-label")
+                .text("Nutzen")
+                .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-        /*************************
-         * Legend
-         *************************/
+            /*************************
+             * Legend
+             *************************/
 
-        function createRiskParam(risk) {
-            return "h_" + risk;
-        }
-
-        function clickOnRisk(risk) {
-            if(filterMeasureOnRisk(risk)) {
-                $timeout(function() {
-                    $location.search(createRiskParam(risk), "y");
-                })
+            function createRiskParam(risk) {
+                return "h_" + risk;
             }
-            else {
-                $timeout(function() {
-                    $location.search(createRiskParam(risk), "n");
-                })
+
+            function clickOnRisk(risk) {
+                if(filterMeasureOnRisk(risk)) {
+                    $timeout(function() {
+                        $location.search(createRiskParam(risk), "y");
+                    })
+                }
+                else {
+                    $timeout(function() {
+                        $location.search(createRiskParam(risk), "n");
+                    })
+                }
             }
+
+            // Risk
+            (function createLegendRisk() {
+                var LEGEND_RISK_MARGIN = 20;
+
+                var legendRisk = svg.append("g")
+                    .attr("transform", "translate(0, " + yScale(95) + ")");
+
+
+                legendRisk.append("text")
+                    .text("Risiko");
+
+                var y = LEGEND_RISK_MARGIN;
+                var legendRiskG = legendRisk.selectAll(".legend-risk-g")
+                    .data(measureConstants.RISKS.slice().reverse())
+                    .enter()
+                    .append("g")
+                    .attr("class", ".legend-risk-g")
+                    .attr("transform", function(d) {
+                        var oldY = y;
+                        var radius = radiusFromRiskText(d);
+                        y += (radius * 2 + LEGEND_RISK_MARGIN);
+                        return "translate(" + radius + ", " + oldY + ")";
+                    });
+
+                legendRiskG.append("circle")
+                    .attr("class", function(d) {
+                        return "legend " + (filterMeasureOnRisk(d) ? "hideOff" : "hideOn");
+                    })
+                    .attr("cx", 0)
+                    .attr("cy", 0)
+                    .attr("r", function(d) {
+                        return radiusFromRiskText(d);
+                    })
+                    .on("click", function(d) {
+                        clickOnRisk(d);
+                    });
+
+                legendRiskG.append("text")
+                    .attr("class", "legendText")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .text(function(d) {
+                        return d;
+                    })
+                    .on("click", function(d) {
+                        clickOnRisk(d.id);
+                    });
+            })();
+
+            var quadrant_group;
+            (function createGrid() {
+                quadrant_group = svg.append("g")
+                    .attr("transform", "translate(" + margin.left + ",0)");
+
+                var quadrant_border = quadrant_group.append("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", width - margin.left - margin.right)
+                    .attr("height", height - margin.bottom)
+                    .attr("rx", 20)
+                    .attr("ry", 20)
+                    .attr("class", "quadrant_border");
+
+                // Small effort
+                quadrant_group.append("text")
+                    .attr("x", xScale(16))
+                    .attr("y", yScale(16))
+                    .attr("text-anchor", "middle")
+                    .text("Kann man mitnehmen")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(16))
+                    .attr("y", yScale(50))
+                    .attr("text-anchor", "middle")
+                    .text("Sollte man mitnehmen")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(16))
+                    .attr("y", yScale(83))
+                    .attr("text-anchor", "middle")
+                    .text("Muss man mitnehmen")
+                    .attr("class", "quad-label");
+
+                // Middle effort
+                quadrant_group.append("text")
+                    .attr("x", xScale(50))
+                    .attr("y", yScale(16))
+                    .attr("text-anchor", "middle")
+                    .text("Eher nicht")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(50))
+                    .attr("y", yScale(50))
+                    .attr("text-anchor", "middle")
+                    .text("Vielleicht")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(50))
+                    .attr("y", yScale(83))
+                    .attr("text-anchor", "middle")
+                    .text("Wahrscheinlich")
+                    .attr("class", "quad-label");
+
+                // Big effort
+                quadrant_group.append("text")
+                    .attr("x", xScale(83))
+                    .attr("y", yScale(16))
+                    .attr("text-anchor", "middle")
+                    .text("Auf gar keinen Fall")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(83))
+                    .attr("y", yScale(50))
+                    .attr("text-anchor", "middle")
+                    .text("Auf keinen Fall")
+                    .attr("class", "quad-label");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(83))
+                    .attr("y", yScale(83))
+                    .attr("text-anchor", "middle")
+                    .text("Kann man überlegen")
+                    .attr("class", "quad-label");
+
+                // Must
+                quadrant_group.append("rect")
+                    .attr("x", 0)
+                    .attr("y", yScale(100))
+                    .attr("width", xScale(100))
+                    .attr("height", yScale(95))
+                    .attr("rx", 20)
+                    .attr("ry", 20)
+                    .attr("fill", "grey")
+                    .attr("opacity", "0.3");
+
+                quadrant_group.append("text")
+                    .attr("x", xScale(1))
+                    .attr("y", yScale(97))
+                    .attr("text-anchor", "left")
+                    .attr("class", "quad-label")
+                    .text("Muss-Anforderung");
+
+                // creating the dividers
+                quadrant_group.append("line")
+                    .attr("x1", 0)
+                    .attr("y1", yScale(33))
+                    .attr("x2", xScale(100))
+                    .attr("y2", yScale(33))
+                    .attr("class", "divider");
+
+                quadrant_group.append("line")
+                    .attr("x1", 0)
+                    .attr("y1", yScale(66))
+                    .attr("x2", xScale(100))
+                    .attr("y2", yScale(66))
+                    .attr("class", "divider");
+
+                quadrant_group.append("line")
+                    .attr("x1", xScale(33))
+                    .attr("y1", 0)
+                    .attr("x2", xScale(33))
+                    .attr("y2", yScale(0))
+                    .attr("class", "divider");
+
+                quadrant_group.append("line")
+                    .attr("x1", xScale(66))
+                    .attr("y1", 0)
+                    .attr("x2", xScale(66))
+                    .attr("y2", yScale(0))
+                    .attr("class", "divider");
+            })();
         }
-
-        // Risk
-        (function createLegendRisk() {
-            var LEGEND_RISK_MARGIN = 20;
-
-            var legendRisk = svg.append("g")
-                .attr("transform", "translate(0, " + yScale(95) + ")");
-
-
-            legendRisk.append("text")
-                .text("Risiko");
-
-            var y = LEGEND_RISK_MARGIN;
-            var legendRiskG = legendRisk.selectAll(".legend-risk-g")
-                .data(measureConstants.RISKS.slice().reverse())
-                .enter()
-                .append("g")
-                .attr("class", ".legend-risk-g")
-                .attr("transform", function(d) {
-                    var oldY = y;
-                    var radius = radiusFromRiskText(d);
-                    y += (radius * 2 + LEGEND_RISK_MARGIN);
-                    return "translate(" + radius + ", " + oldY + ")";
-                });
-
-            legendRiskG.append("circle")
-                .attr("class", function(d) {
-                    return "legend " + (filterMeasureOnRisk(d) ? "hideOff" : "hideOn");
-                })
-                .attr("cx", 0)
-                .attr("cy", 0)
-                .attr("r", function(d) {
-                    return radiusFromRiskText(d);
-                })
-                .on("click", function(d) {
-                    clickOnRisk(d);
-                });
-
-            legendRiskG.append("text")
-                .attr("class", "legendText")
-                .attr("x", 0)
-                .attr("y", 0)
-                .text(function(d) {
-                    return d;
-                })
-                .on("click", function(d) {
-                    clickOnRisk(d.id);
-                });
-        })();
-
-        var quadrant_group;
-        (function createGrid() {
-            quadrant_group = svg.append("g")
-                .attr("transform", "translate(" + margin.left + ",0)");
-
-            var quadrant_border = quadrant_group.append("rect")
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("width", width - margin.left - margin.right)
-                .attr("height", height - margin.bottom)
-                .attr("rx", 20)
-                .attr("ry", 20)
-                .attr("class", "quadrant_border");
-
-            // Small effort
-            quadrant_group.append("text")
-                .attr("x", xScale(16))
-                .attr("y", yScale(16))
-                .attr("text-anchor", "middle")
-                .text("Kann man mitnehmen")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(16))
-                .attr("y", yScale(50))
-                .attr("text-anchor", "middle")
-                .text("Sollte man mitnehmen")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(16))
-                .attr("y", yScale(83))
-                .attr("text-anchor", "middle")
-                .text("Muss man mitnehmen")
-                .attr("class", "quad-label");
-
-            // Middle effort
-            quadrant_group.append("text")
-                .attr("x", xScale(50))
-                .attr("y", yScale(16))
-                .attr("text-anchor", "middle")
-                .text("Eher nicht")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(50))
-                .attr("y", yScale(50))
-                .attr("text-anchor", "middle")
-                .text("Vielleicht")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(50))
-                .attr("y", yScale(83))
-                .attr("text-anchor", "middle")
-                .text("Wahrscheinlich")
-                .attr("class", "quad-label");
-
-            // Big effort
-            quadrant_group.append("text")
-                .attr("x", xScale(83))
-                .attr("y", yScale(16))
-                .attr("text-anchor", "middle")
-                .text("Auf gar keinen Fall")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(83))
-                .attr("y", yScale(50))
-                .attr("text-anchor", "middle")
-                .text("Auf keinen Fall")
-                .attr("class", "quad-label");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(83))
-                .attr("y", yScale(83))
-                .attr("text-anchor", "middle")
-                .text("Kann man überlegen")
-                .attr("class", "quad-label");
-
-            // Must
-            quadrant_group.append("rect")
-                .attr("x", 0)
-                .attr("y", yScale(100))
-                .attr("width", xScale(100))
-                .attr("height", yScale(95))
-                .attr("rx", 20)
-                .attr("ry", 20)
-                .attr("fill", "grey")
-                .attr("opacity", "0.3");
-
-            quadrant_group.append("text")
-                .attr("x", xScale(1))
-                .attr("y", yScale(97))
-                .attr("text-anchor", "left")
-                .attr("class", "quad-label")
-                .text("Muss-Anforderung");
-
-            // creating the dividers
-            quadrant_group.append("line")
-                .attr("x1", 0)
-                .attr("y1", yScale(33))
-                .attr("x2", xScale(100))
-                .attr("y2", yScale(33))
-                .attr("class", "divider");
-
-            quadrant_group.append("line")
-                .attr("x1", 0)
-                .attr("y1", yScale(66))
-                .attr("x2", xScale(100))
-                .attr("y2", yScale(66))
-                .attr("class", "divider");
-
-            quadrant_group.append("line")
-                .attr("x1", xScale(33))
-                .attr("y1", 0)
-                .attr("x2", xScale(33))
-                .attr("y2", yScale(0))
-                .attr("class", "divider");
-
-            quadrant_group.append("line")
-                .attr("x1", xScale(66))
-                .attr("y1", 0)
-                .attr("x2", xScale(66))
-                .attr("y2", yScale(0))
-                .attr("class", "divider");
-        })();
 
         function yScaleForSkill(skill) {
             return skill.benefit;
@@ -351,10 +353,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills(category) {
-            if(isCategoryHidden(category)) {
-                return;
-            }
+        function drawSkills() {
             function mouseHandlingOnIcon(selection) {
                 selection
                     .on("click", function (d) {
@@ -377,16 +376,16 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     });
             }
 
-            var gSkill = quadrant_group.selectAll("g.measure-" + category)
-                .data(skills.categories)
+            var gSkill = quadrant_group.selectAll("g.skill")
+                .data(skills.values)
                 .enter()
                 .append("g")
-                .attr("class", "measure-" + category);
+                .attr("class", "skill");
 
             gSkill
                 .transition()
                 .attr("transform", function (d) {
-                    return "translate(" + xScale(d.effort) + "," + yScale(yScaleForSkill(d)) + ")";
+                    return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
             var gMeasureA = gSkill.append("svg:a")

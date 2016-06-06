@@ -28,19 +28,19 @@ bottle.factory("Skills", function(container) {
         var promise = new SimplePromise();
 
         me.ready = promise.promise;
-        me.categories = extractCategories();
+        me.categories = undefined;
         me.categoryToColor = categoryToColor;
-        me.skills = undefined;
+        me.values = undefined;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
-            extractCategories(data);
+            me.categories = extractCategories(data);
             var aggregation = dl.groupby('Skill')
                 .summarize([
-                    {name: 'Bewertung', ops: ['valid', 'mean'], as: ['Anzahl Bewertungen', 'Mittlere Bewertung']},
-                    {name: 'Mitarbeiter', ops: ['valid'], as: ['Anzahl Mitarbeiter']},
-                    {name: 'Projekte', ops: ['valid'], as: ['Anzahl Projekte']}
+                    {name: 'Bewertung', ops: ['mean'], as: ['Mittlere Bewertung']},
+                    {name: 'Anzahl Mitarbeiter', ops: ['sum'], as: ['Anzahl Mitarbeiter']},
+                    {name: 'Skill Dauer', ops: ['mean'], as: ['Mitllere Skill Dauer']}
                 ]).execute(data);
-            me.skills = aggregation;
+            me.values = aggregation;
             promise.resolve();
         });
     }
