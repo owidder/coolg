@@ -41,7 +41,7 @@ bottle.factory("Skills", function(container) {
                     {name: 'Projekte', ops: ['valid'], as: ['Anzahl Projekte']}
                 ]).execute(data);
             me.skills = aggregation;
-            console.log(aggregation);
+            promise.resolve();
         });
     }
 
