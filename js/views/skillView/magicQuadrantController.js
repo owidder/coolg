@@ -34,6 +34,9 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("height", height)
             .attr("class", "svg");
 
+        svg.append("g")
+            .attr("class", "axis xaxis")
+
         function drawField(maxX, maxY) {
             var width = (dimensions.screenDimensions.width - 50) * (8/12);
             var height = dimensions.screenDimensions.height - 70;
@@ -57,8 +60,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .ticks(0)
                 .orient("left");
 
-            svg.append("g")
-                .attr("class", "axis")
+            svg.select(".xaxis")
                 .attr("transform", "translate(" + (margin.left - 10) + "," + (height - 15) + ")")
                 .call(xAxis);
 
