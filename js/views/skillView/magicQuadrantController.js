@@ -6,13 +6,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
     function ($scope, $routeParams, $location, $timeout, $q, measureConstants, dimensions, AppContext) {
         var Skills = bottle.container.Skills;
 
-        var MODE_SE_ONLY = "MODE_SE_ONLY";
-        var MODE_RS = "MODE_RS"; /* deprecates: Run + Security */
-        var MODE_ALL = "MODE_ALL";
-
-        var measureData = AppContext.measureData;
-        var measureMetadata = AppContext.measureMetadata;
-
         var currentAttributes = [];
 
         var skills = new Skills();
