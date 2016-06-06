@@ -161,8 +161,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(83))
-                    .attr("y", yScale(83))
+                    .attr("x", xScale(maxX/6 * 5))
+                    .attr("y", yScale(maxY/6 * 5))
                     .attr("text-anchor", "middle")
                     .text("Kann man überlegen")
                     .attr("class", "quad-label");
@@ -170,9 +170,9 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 // Must
                 quadrant_group.append("rect")
                     .attr("x", 0)
-                    .attr("y", yScale(100))
-                    .attr("width", xScale(100))
-                    .attr("height", yScale(95))
+                    .attr("y", yScale(maxY))
+                    .attr("width", xScale(maxX))
+                    .attr("height", yScale(maxY * 0.95))
                     .attr("rx", 20)
                     .attr("ry", 20)
                     .attr("fill", "grey")
