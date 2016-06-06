@@ -117,8 +117,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(16))
-                    .attr("y", yScale(83))
+                    .attr("x", xScale(maxX/6))
+                    .attr("y", yScale(maxY/6 * 5))
                     .attr("text-anchor", "middle")
                     .text("Muss man mitnehmen")
                     .attr("class", "quad-label");
