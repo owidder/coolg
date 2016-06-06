@@ -57,7 +57,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .ticks(0)
                 .orient("left");
 
-            // axis and axis description
             svg.append("g")
                 .attr("class", "axis")
                 .attr("transform", "translate(" + (margin.left - 10) + "," + (height - 15) + ")")
