@@ -147,8 +147,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
                 // Big effort
                 quadrant_group.append("text")
-                    .attr("x", xScale(83))
-                    .attr("y", yScale(16))
+                    .attr("x", xScale(maxX/6 * 5))
+                    .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
                     .text("Auf gar keinen Fall")
                     .attr("class", "quad-label");
