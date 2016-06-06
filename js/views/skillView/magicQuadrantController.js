@@ -41,6 +41,10 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("class", "axis xaxis")
             .attr("transform", "translate(" + (margin.left - 10) + "," + (height - 15) + ")");
 
+        svg.append("g")
+            .attr("class", "axis yaxis")
+            .attr("transform", "translate(" + (margin.left - 10) + ", 10)");
+
         function drawField(maxX, maxY) {
 
             var xScale = d3.scale.linear()
