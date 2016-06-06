@@ -103,15 +103,15 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             (function createGrid() {
                 // Small effort
                 quadrant_group.append("text")
-                    .attr("x", xScale(16))
-                    .attr("y", yScale(16))
+                    .attr("x", xScale(maxX/6))
+                    .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
                     .text("Kann man mitnehmen")
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(16))
-                    .attr("y", yScale(50))
+                    .attr("x", xScale(maxX/6))
+                    .attr("y", yScale(maxY/2))
                     .attr("text-anchor", "middle")
                     .text("Sollte man mitnehmen")
                     .attr("class", "quad-label");
