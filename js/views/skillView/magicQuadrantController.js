@@ -60,6 +60,9 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .text("Durchschnittliche Bewertung")
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
+        var quadrant_group = svg.append("g")
+            .attr("transform", "translate(" + margin.left + ",0)");
+
         function drawField(maxX, maxY) {
 
             var xScale = d3.scale.linear()
