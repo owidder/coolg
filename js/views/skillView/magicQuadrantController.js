@@ -125,8 +125,8 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
                 // Middle effort
                 quadrant_group.append("text")
-                    .attr("x", xScale(50))
-                    .attr("y", yScale(16))
+                    .attr("x", xScale(maxX/2))
+                    .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
                     .text("Eher nicht")
                     .attr("class", "quad-label");
