@@ -66,6 +66,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .orient("left");
 
             svg.select(".xaxis")
+                .transition()
                 .call(xAxis);
 
             var xLabel = svg.append("text")
