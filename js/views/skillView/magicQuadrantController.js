@@ -45,6 +45,12 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("class", "axis yaxis")
             .attr("transform", "translate(" + (margin.left - 10) + ", 10)");
 
+        var xLabel = svg.append("text")
+            .attr("x", 100)
+            .attr("y", height - 2)
+            .attr("class", "axis wcm-label")
+            .text("Anzahl Mitarbeiter");
+
         function drawField(maxX, maxY) {
 
             var xScale = d3.scale.linear()
@@ -68,12 +74,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             svg.select(".xaxis")
                 .transition()
                 .call(xAxis);
-
-            var xLabel = svg.append("text")
-                .attr("x", 100)
-                .attr("y", height - 2)
-                .attr("class", "axis wcm-label")
-                .text("Aufwand");
 
             svg.append("g")
                 .attr("class", "axis")
