@@ -76,6 +76,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .call(xAxis);
 
             svg.select("yaxis")
+                .transition()
                 .call(yAxis);
 
             var yLabelX = margin.left - 15;
