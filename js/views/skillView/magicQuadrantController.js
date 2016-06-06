@@ -109,55 +109,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 }
             }
 
-            // Risk
-            (function createLegendRisk() {
-                var LEGEND_RISK_MARGIN = 20;
-
-                var legendRisk = svg.append("g")
-                    .attr("transform", "translate(0, " + yScale(95) + ")");
-
-
-                legendRisk.append("text")
-                    .text("Risiko");
-
-                var y = LEGEND_RISK_MARGIN;
-                var legendRiskG = legendRisk.selectAll(".legend-risk-g")
-                    .data(measureConstants.RISKS.slice().reverse())
-                    .enter()
-                    .append("g")
-                    .attr("class", ".legend-risk-g")
-                    .attr("transform", function(d) {
-                        var oldY = y;
-                        var radius = radiusFromRiskText(d);
-                        y += (radius * 2 + LEGEND_RISK_MARGIN);
-                        return "translate(" + radius + ", " + oldY + ")";
-                    });
-
-                legendRiskG.append("circle")
-                    .attr("class", function(d) {
-                        return "legend " + (filterMeasureOnRisk(d) ? "hideOff" : "hideOn");
-                    })
-                    .attr("cx", 0)
-                    .attr("cy", 0)
-                    .attr("r", function(d) {
-                        return radiusFromRiskText(d);
-                    })
-                    .on("click", function(d) {
-                        clickOnRisk(d);
-                    });
-
-                legendRiskG.append("text")
-                    .attr("class", "legendText")
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .text(function(d) {
-                        return d;
-                    })
-                    .on("click", function(d) {
-                        clickOnRisk(d.id);
-                    });
-            })();
-
             var quadrant_group;
             (function createGrid() {
                 quadrant_group = svg.append("g")
