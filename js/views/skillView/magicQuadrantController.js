@@ -57,7 +57,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             .attr("x", yLabelX)
             .attr("y", yLabelY)
             .attr("class", "axis wcm-label")
-            .text("Mittlere Bewertung")
+            .text("Durchschnittliche Bewertung")
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
         function drawField(maxX, maxY) {
