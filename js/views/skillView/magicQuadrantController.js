@@ -88,10 +88,6 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .transition()
                 .call(yAxis);
 
-            /*************************
-             * Legend
-             *************************/
-
             var quadrant_group;
             (function createGrid() {
                 quadrant_group = svg.append("g")
