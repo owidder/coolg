@@ -41,7 +41,7 @@ bottle.factory("Skills", function(container) {
                     value = true;
                 }
                 if(!funcs.isEmpty(standorte)) {
-                    value = funcs.isArray(standorte, skill.Standort);
+                    value = funcs.isArray(standorte, skill["Standort"]);
                 }
             }
 
