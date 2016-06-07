@@ -34,7 +34,7 @@ bottle.factory("Skills", function(container) {
 
         var rawData;
         
-        function () {
+        function recalc(standorte, categories) {
             
         }
 
