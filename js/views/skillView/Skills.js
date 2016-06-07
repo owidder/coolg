@@ -38,7 +38,7 @@ bottle.factory("Skills", function(container) {
                 .summarize([
                     {name: 'Bewertung', ops: ['mean'], as: ['Mittlere Bewertung']},
                     {name: 'Anzahl Mitarbeiter', ops: ['sum'], as: ['Anzahl Mitarbeiter']},
-                    {name: 'Skill Dauer', ops: ['mean'], as: ['Mitllere Skill Dauer']}
+                    {name: 'Skill Dauer', ops: ['mean'], as: ['Mitllere Skilldauer']}
                 ]).execute(data);
             me.values = aggregation;
             promise.resolve();
