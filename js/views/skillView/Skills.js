@@ -53,6 +53,8 @@ bottle.factory("Skills", function(container) {
             return aggregation;
         }
 
+        me.recalcSkills = recalcSkills;
+
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
             me.categories = extractCategories(data);
