@@ -34,7 +34,7 @@ bottle.factory("Skills", function(container) {
 
         var rawData;
         
-        function recalc(locations, categories) {
+        function recalcSkills(locations, categories) {
             function filter(skill) {
                 var valLocation = funcs.isEmpty(locations) ? true : funcs.isInArray(locations, skill["Standort"]);
                 var valCategory = funcs.isEmpty(categories) ? true : funcs.isInArray(categories, skill["Skill-Unterkategorie"]);
@@ -43,16 +43,17 @@ bottle.factory("Skills", function(container) {
             }
 
             var filteredData = rawData.filter(filter);
-        }
-
-        dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
-            me.categories = extractCategories(data);
             var aggregation = dl.groupby('Skill')
                 .summarize([
                     {name: 'Bewertung', ops: ['mean'], as: ['Mittlere Bewertung']},
                     {name: 'Anzahl Mitarbeiter', ops: ['sum'], as: ['Anzahl Mitarbeiter']},
                     {name: 'Skill Dauer', ops: ['mean'], as: ['Mitllere Skilldauer']}
-                ]).execute(data);
+                ]).execute(filteredData);
+
+        }
+
+        dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
+            me.categories = extractCategories(data);
             me.values = aggregation;
             promise.resolve();
         });
