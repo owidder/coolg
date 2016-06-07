@@ -35,7 +35,11 @@ bottle.factory("Skills", function(container) {
         var rawData;
         
         function recalc(standorte, categories) {
-            
+            function filter() {
+                
+            }
+
+            var filteredData = rawData.filter();
         }
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
