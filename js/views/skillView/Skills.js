@@ -42,7 +42,7 @@ bottle.factory("Skills", function(container) {
                 return valLocation && valCategory;
             }
 
-            var filteredData = rawData.filter();
+            var filteredData = rawData.filter(filter);
         }
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
