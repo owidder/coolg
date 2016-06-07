@@ -33,6 +33,10 @@ bottle.factory("Skills", function(container) {
         me.values = undefined;
 
         var rawData;
+        
+        function () {
+            
+        }
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             me.categories = extractCategories(data);
