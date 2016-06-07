@@ -35,12 +35,14 @@ bottle.factory("Skills", function(container) {
         var rawData;
         
         function recalc(standorte, categories) {
-            function filter(el) {
+            function filter(skill) {
                 var value = false;
                 if(funcs.isEmpty(standorte) && funcs.isEmpty(categories)) {
                     value = true;
                 }
-                
+                if(!funcs.isEmpty(standorte)) {
+                    value = (standorte.indexOf(skill.standort) > -1);
+                }
             }
 
             var filteredData = rawData.filter();
