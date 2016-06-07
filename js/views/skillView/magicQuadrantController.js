@@ -1,8 +1,8 @@
 'use strict';
 
-com_eosItServices_Dep.MAGIC_QUADRANT_CONTROLLER = 'MagicQuadrantController';
+com_geekAndPoke_coolg.SKILL_CONTROLLER = "skillController";
 
-angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_Dep.MAGIC_QUADRANT_CONTROLLER,
+angular.module(com_eosItServices_Dep.moduleName).controller(com_geekAndPoke_coolg.SKILL_CONTROLLER,
     function ($scope, $routeParams, $location, $timeout, $q, measureConstants, dimensions, AppContext) {
         var Skills = bottle.container.Skills;
 
