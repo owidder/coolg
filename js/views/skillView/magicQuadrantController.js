@@ -101,34 +101,27 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                 .call(yAxis);
 
             (function createGrid() {
-                // Small effort
+                /* Wenige */
                 quadrant_group.append("text")
                     .attr("x", xScale(maxX/6))
                     .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
-                    .text("Kann man mitnehmen")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6))
-                    .attr("y", yScale(maxY/2))
-                    .attr("text-anchor", "middle")
-                    .text("Sollte man mitnehmen")
+                    .text("Weißer Fleck")
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
                     .attr("x", xScale(maxX/6))
                     .attr("y", yScale(maxY/6 * 5))
                     .attr("text-anchor", "middle")
-                    .text("Muss man mitnehmen")
+                    .text("Wenige Cracks")
                     .attr("class", "quad-label");
 
-                // Middle effort
+                /* Viel */
                 quadrant_group.append("text")
                     .attr("x", xScale(maxX/2))
                     .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
-                    .text("Eher nicht")
+                    .text("Viel Einäugige")
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
