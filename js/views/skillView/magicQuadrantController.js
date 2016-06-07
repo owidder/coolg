@@ -131,50 +131,18 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .text("Kompetenzdichte")
                     .attr("class", "quad-label");
 
-                // Must
-                quadrant_group.append("rect")
-                    .attr("x", 0)
-                    .attr("y", yScale(maxY))
-                    .attr("width", xScale(maxX))
-                    .attr("height", yScale(maxY * 0.95))
-                    .attr("rx", 20)
-                    .attr("ry", 20)
-                    .attr("fill", "grey")
-                    .attr("opacity", "0.3");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX * 0.01))
-                    .attr("y", yScale(maxY * 0.97))
-                    .attr("text-anchor", "left")
-                    .attr("class", "quad-label")
-                    .text("Muss-Anforderung");
-
                 // creating the dividers
                 quadrant_group.append("line")
                     .attr("x1", 0)
-                    .attr("y1", yScale(maxY/3))
+                    .attr("y1", yScale(maxY/2))
                     .attr("x2", xScale(maxX))
-                    .attr("y2", yScale(maxY/3))
+                    .attr("y2", yScale(maxY/2))
                     .attr("class", "divider");
 
                 quadrant_group.append("line")
-                    .attr("x1", 0)
-                    .attr("y1", yScale(maxY/3 * 2))
-                    .attr("x2", xScale(maxX))
-                    .attr("y2", yScale(maxY/3 * 2))
-                    .attr("class", "divider");
-
-                quadrant_group.append("line")
-                    .attr("x1", xScale(maxX/3))
+                    .attr("x1", xScale(maxX/2))
                     .attr("y1", 0)
-                    .attr("x2", xScale(maxX/3))
-                    .attr("y2", yScale(0))
-                    .attr("class", "divider");
-
-                quadrant_group.append("line")
-                    .attr("x1", xScale(maxX/3 * 2))
-                    .attr("y1", 0)
-                    .attr("x2", xScale(maxX/3 * 2))
+                    .attr("x2", xScale(maxX/2))
                     .attr("y2", yScale(0))
                     .attr("class", "divider");
             })();
