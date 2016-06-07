@@ -36,7 +36,6 @@ bottle.factory("Skills", function(container) {
         
         function recalc(locations, categories) {
             function filter(skill) {
-                var value = false;
                 var valLocation = funcs.isEmpty(locations) ? true : funcs.isInArray(locations, skill["Standort"]);
                 var valCategory = funcs.isEmpty(categories) ? true : funcs.isInArray(categories, skill["Skill-Unterkategorie"]);
 
