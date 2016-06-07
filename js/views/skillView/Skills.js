@@ -37,15 +37,10 @@ bottle.factory("Skills", function(container) {
         function recalc(locations, categories) {
             function filter(skill) {
                 var value = false;
-                if(funcs.isEmpty(locations) && funcs.isEmpty(categories)) {
-                    value = true;
-                }
-                if(!funcs.isEmpty(locations)) {
-                    value = funcs.isArray(locations, skill["Standort"]);
-                }
-                if(!funcs.isEmpty(categories)) {
-                    value = funcs.isInArray(categories, skill["Skill-Unterkategorie"]);
-                }
+                var valLocation = funcs.isEmpty(locations) ? true : funcs.isInArray(locations, skill["Standort"]);
+                var valCategory = funcs.isEmpty(categories) ? true : funcs.isInArray(categories, skill["Skill-Unterkategorie"]);
+
+                return valLocation && valCategory;
             }
 
             var filteredData = rawData.filter();
