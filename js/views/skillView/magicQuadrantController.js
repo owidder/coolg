@@ -252,6 +252,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_geekAndPoke_cool
         }
 
         skills.ready.then(function() {
+            skills.recalcSkills();
             $scope.switchCategory = switchCategory;
 
             $scope.getColorForCategory = skills.categoryToColor;
