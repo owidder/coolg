@@ -35,7 +35,11 @@ bottle.factory("Skills", function(container) {
         var rawData;
         
         function recalc(standorte, categories) {
-            function filter() {
+            function filter(el) {
+                var value = false;
+                if(funcs.isEmpty(standorte) && funcs.isEmpty(categories)) {
+                    value = true;
+                }
                 
             }
 
