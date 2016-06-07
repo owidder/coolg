@@ -149,7 +149,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
         }
 
         function yScaleForSkill(skill) {
-            return skill.benefit;
+            return skill["Mittlere Bewertung"];
         }
 
         function radiusFromRiskText(risk) {
