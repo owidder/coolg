@@ -11,6 +11,10 @@ angular.module(com_geekAndPoke_coolg.moduleName)
                 templateUrl: 'js/views/skillView/skillTest.html',
                 controller: com_geekAndPoke_coolg.SKILL_CONTROLLER_TEST
             })
+            .when('/skill', {
+                templateUrl: 'js/views/skillView/skill.html',
+                controller: com_geekAndPoke_coolg.SKILL_CONTROLLER
+            })
             .otherwise({redirectTo: '/stock'});
     }])
     .run(function(dateUtil, funcs, dimensions, mathUtil, colorUtil) {
