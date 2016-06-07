@@ -50,11 +50,11 @@ bottle.factory("Skills", function(container) {
                     {name: 'Skill Dauer', ops: ['mean'], as: ['Mitllere Skilldauer']}
                 ]).execute(filteredData);
 
+            return aggregation;
         }
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             me.categories = extractCategories(data);
-            me.values = aggregation;
             promise.resolve();
         });
     }
