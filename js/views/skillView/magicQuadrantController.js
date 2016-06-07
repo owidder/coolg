@@ -152,27 +152,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             return skill["Mittlere Bewertung"];
         }
 
-        function radiusForSkill(risk) {
-            var radius = 10;
-
-            switch (risk) {
-                case measureConstants.C.RISK_LOW:
-                    radius = 30;
-                    break;
-
-                case measureConstants.C.RISK_MIDDLE:
-                    radius = 20;
-                    break;
-
-                case measureConstants.C.RISK_HIGH:
-                    radius = 10;
-                    break;
-
-                default:
-                    radius = 20;
-            }
-
-            return radius;
+        function radiusForSkill(skill) {
         }
 
         /* **************
