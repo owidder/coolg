@@ -153,6 +153,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
         }
 
         function radiusForSkill(skill) {
+            return skill["Mittlere Skill Dauer"];
         }
 
         /* **************
