@@ -32,6 +32,8 @@ bottle.factory("Skills", function(container) {
         me.categoryToColor = categoryToColor;
         me.values = undefined;
 
+        var rawData;
+
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             me.categories = extractCategories(data);
             var aggregation = dl.groupby('Skill')
