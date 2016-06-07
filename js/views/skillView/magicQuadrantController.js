@@ -113,51 +113,22 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
                     .attr("x", xScale(maxX/6))
                     .attr("y", yScale(maxY/6 * 5))
                     .attr("text-anchor", "middle")
-                    .text("Wenige Cracks")
+                    .text("Einzelne Experten")
                     .attr("class", "quad-label");
 
-                /* Viel */
+                // Viel
                 quadrant_group.append("text")
-                    .attr("x", xScale(maxX/2))
+                    .attr("x", xScale(maxX/6 * 5))
                     .attr("y", yScale(maxY/6))
                     .attr("text-anchor", "middle")
                     .text("Viel Einäugige")
                     .attr("class", "quad-label");
 
                 quadrant_group.append("text")
-                    .attr("x", xScale(maxX/2))
-                    .attr("y", yScale(maxY/2))
-                    .attr("text-anchor", "middle")
-                    .text("Vielleicht")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/2))
-                    .attr("y", yScale(maxY/6 * 5))
-                    .attr("text-anchor", "middle")
-                    .text("Wahrscheinlich")
-                    .attr("class", "quad-label");
-
-                // Big effort
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6 * 5))
-                    .attr("y", yScale(maxY/6))
-                    .attr("text-anchor", "middle")
-                    .text("Auf gar keinen Fall")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6 * 5))
-                    .attr("y", yScale(maxY/2))
-                    .attr("text-anchor", "middle")
-                    .text("Auf keinen Fall")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
                     .attr("x", xScale(maxX/6 * 5))
                     .attr("y", yScale(maxY/6 * 5))
                     .attr("text-anchor", "middle")
-                    .text("Kann man überlegen")
+                    .text("Kompetenzdichte")
                     .attr("class", "quad-label");
 
                 // Must
