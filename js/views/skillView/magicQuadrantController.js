@@ -152,7 +152,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
             return skill["Mittlere Bewertung"];
         }
 
-        function radiusFromRiskText(risk) {
+        function radiusForSkill(risk) {
             var radius = 10;
 
             switch (risk) {
@@ -239,7 +239,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_eosItServices_De
 
             gMeasureA.append("circle")
                 .attr("r", function(d) {
-                    return radiusFromRiskText(d.risk);
+                    return radiusForSkill(d.risk);
                 })
                 .attr("fill", function(d) {
                     var color = measureMetadata.getColorForEnumValue(measureConstants.C.MEASURE_TYPE_NAME, d.type);
