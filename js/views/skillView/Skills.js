@@ -41,7 +41,7 @@ bottle.factory("Skills", function(container) {
                     value = true;
                 }
                 if(!funcs.isEmpty(standorte)) {
-                    value = (standorte.indexOf(skill.standort) > -1);
+                    value = funcs.isArray(standorte, skill.Standort);
                 }
             }
 
