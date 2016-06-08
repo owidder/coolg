@@ -204,6 +204,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var data = skills.recalcSkills(locations, categories);
 
+            var xMax = dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
+            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+
             var gSkill = quadrant_group.selectAll("g.skill")
                 .data(data)
                 .enter()
