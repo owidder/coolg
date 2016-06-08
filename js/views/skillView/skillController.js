@@ -190,19 +190,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     });
             }
 
-            function iconClass(selection) {
-                selection
-                    .attr("class", function (d) {
-                        switch(getMode()) {
-                            case MODE_SE_ONLY:
-                                return "circle category item " + d.category + " id" + d.id;
-
-                            default:
-                                return "circle " + d.type + " id" + d.id;
-                        }
-                    });
-            }
-
             var data = skills.recalcSkills(locations, categories);
 
             var xMax = dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
