@@ -230,7 +230,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             gMeasureA.append("circle")
                 .attr("r", function(d) {
-                    return radiusForSkill(d.risk);
+                    return radiusForSkill(d);
                 })
                 .attr("fill", function(d) {
                     var color = skills.categoryToColor(d["Skill-Unterkategorie"]);
