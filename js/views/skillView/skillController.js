@@ -223,7 +223,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var color = skills.categoryToColor(d["Skill-Unterkategorie"]);
                     return color;
                 })
-                .call(iconClass)
+                .attr("class", "circle")
                 .call(mouseHandlingOnIcon);
 
             gMeasureA.append("title")
