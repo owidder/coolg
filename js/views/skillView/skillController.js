@@ -2,8 +2,8 @@
 
 com_geekAndPoke_coolg.SKILL_CONTROLLER = "skillController";
 
-angular.module(com_eosItServices_Dep.moduleName).controller(com_geekAndPoke_coolg.SKILL_CONTROLLER,
-    function ($scope, $routeParams, $location, $timeout, $q, measureConstants, dimensions, AppContext) {
+angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.SKILL_CONTROLLER,
+    function ($scope, $routeParams, $location, $timeout, $q, dimensions) {
         var Skills = bottle.container.Skills;
 
         var currentAttributes = [];
@@ -223,7 +223,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_geekAndPoke_cool
                     return radiusForSkill(d.risk);
                 })
                 .attr("fill", function(d) {
-                    var color = measureMetadata.getColorForEnumValue(measureConstants.C.MEASURE_TYPE_NAME, d.type);
+                    var color = skills.categoryToColor(d["Skill-Unterkategorie"]);
                     return color;
                 })
                 .call(iconClass)
@@ -266,17 +266,7 @@ angular.module(com_eosItServices_Dep.moduleName).controller(com_geekAndPoke_cool
                 $scope.categorySwitchModel[category] = !isCategoryHidden(category);
             });
 
-            if(getMode() == MODE_RS) {
-                drawSkills(measureConstants.C.MEASURE_TYPE_RS);
-            }
-            else {
-                drawSkills(measureConstants.C.MEASURE_TYPE_TECHNICAL);
-                if(getMode() != MODE_SE_ONLY) {
-                    drawSkills(measureConstants.C.MEASURE_TYPE_BUSINESS);
-                    drawSkills(measureConstants.C.MEASURE_TYPE_SECURITY);
-                    drawSkills(measureConstants.C.MEASURE_TYPE_RUN);
-                }
-            }
+            drawSkills();
 
             clearCurrentAttributes();
         });
