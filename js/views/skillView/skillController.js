@@ -156,7 +156,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function radiusForSkill(skill) {
-            return skill["Mittlere Skilldauer"];
+            return skill["Mittlere Skilldauer"] * 10;
         }
 
         /* **************
