@@ -177,7 +177,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills() {
+        function drawSkills(locations, categories) {
             function mouseHandlingOnIcon(selection) {
                 selection
                     .on("click", function (d) {
@@ -200,8 +200,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     });
             }
 
+            var data = skills.recalcSkills(locations, categories);
+
             var gSkill = quadrant_group.selectAll("g.skill")
-                .data(skills.values)
+                .data(data)
                 .enter()
                 .append("g")
                 .attr("class", "skill");
