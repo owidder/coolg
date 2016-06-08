@@ -6,6 +6,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     function ($scope, $routeParams, $location, $timeout, $q, dimensions) {
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
+        var funcs = bottle.container.funcs;
 
         var currentAttributes = [];
 
