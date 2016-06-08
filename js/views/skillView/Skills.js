@@ -30,7 +30,6 @@ bottle.factory("Skills", function(container) {
         me.ready = promise.promise;
         me.categories = undefined;
         me.categoryToColor = categoryToColor;
-        me.values = undefined;
 
         var rawData;
         
