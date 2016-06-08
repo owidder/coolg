@@ -72,9 +72,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("ry", 20)
             .attr("class", "quadrant_border");
 
+        var xScale, yScale;
+
         function drawField(maxX, maxY) {
 
-            var xScale = d3.scale.linear()
+            xScale = d3.scale.linear()
                 .domain([0, maxX])
                 .range([0, width - margin.left - margin.right]);
 
@@ -83,7 +85,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .ticks(0)
                 .orient("bottom");
 
-            var yScale = d3.scale.linear()
+            yScale = d3.scale.linear()
                 .domain([0, maxY])
                 .range([height - margin.bottom, 0]);
 
