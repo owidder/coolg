@@ -240,7 +240,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y", 0)
                 .attr("x", 0)
                 .text(function (d) {
-                    return d;
+                    return d["Skill"];
                 })
                 .on("click", function (d) {
                     d3.select(".circle-hover").classed("circle-hover", false);
