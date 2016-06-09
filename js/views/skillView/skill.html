@@ -142,11 +142,17 @@
     </div>
     <div class="row">
         <div class="col s2">
-            <div class="row">
-                <div class="col s12" ng-repeat="category in allCategories">
+            <div class="row" ng-repeat="category in allCategories">
+                <div class="col s6">
                     <span class="switch">
                         <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
                             {{category}}
+                        </label>
+                    </span>
+                </div>
+                <div class="col s6">
+                    <span class="switch">
+                        <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
                             <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
                             <span class="lever"></span>
                         </label>
