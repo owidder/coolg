@@ -78,8 +78,8 @@ bottle.factory("Skills", function(container) {
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
-            me.categories = extractCategories(data);
-            me.locations = extractLocations(data);
+            me.categories = extractCategories();
+            me.locations = extractLocations();
             fillSkillToCategoryMap();
             promise.resolve();
         });
