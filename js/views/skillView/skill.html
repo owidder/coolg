@@ -147,18 +147,10 @@
     <div class="row">
         <div class="col s2">
             <div class="row" ng-repeat="category in allCategories">
-                <div class="col s6">
+                <div class="col s12">
                     <span class="switch">
                         <input name="group{{makeSafeForCSS(category)}}" type="radio" id="{{makeSafeForCSS(category)}}" />
                         <label for="{{makeSafeForCSS(category)}}">{{category}}</label>
-                    </span>
-                </div>
-                <div class="col s6">
-                    &nbsp;
-                    <span class="switch">
-                        <label  class="{{category}} switchText" style="color: {{getColorForCategory(category)}}" >
-                            {{category}}
-                        </label>
                     </span>
                 </div>
             </div>
