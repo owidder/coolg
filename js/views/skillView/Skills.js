@@ -18,15 +18,15 @@ bottle.factory("Skills", function(container) {
             return colorUtil.intToTwentyColors(number);
         }
 
-        function extractCategories(data) {
-            var categories = dl.unique(data, funcs.createAccessorFunction("Skill-Unterkategorie"));
+        function extractCategories() {
+            var categories = dl.unique(rawData, funcs.createAccessorFunction("Skill-Unterkategorie"));
             categories.sort();
 
             return categories;
         }
 
-        function extractLocations(data) {
-            var locations = dl.unique(data, funcs.createAccessorFunction("Standort"));
+        function extractLocations() {
+            var locations = dl.unique(rawData, funcs.createAccessorFunction("Standort"));
             locations.sort();
 
             return locations;
