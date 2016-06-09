@@ -342,6 +342,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         createAccessorFunction: createAccessorFunction,
         createComparator: createComparator,
         combineArrays: combineArrays,
-        createArrayOfNthElements: createArrayOfNthElements
+        createArrayOfNthElements: createArrayOfNthElements,
+        makeSafeForCSS: makeSafeForCSS
     };
 });
