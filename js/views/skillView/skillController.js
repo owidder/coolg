@@ -83,7 +83,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var xAxis = d3.svg.axis()
                 .scale(xScale)
-                .ticks(0)
+                .ticks(10)
                 .orient("bottom");
 
             yScale = d3.scale.linear()
