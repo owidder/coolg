@@ -233,7 +233,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             gMeasureA.append("text")
-                .attr("opacity", 0.1)
+                .attr("opacity", 1)
                 .attr("class", function (d) {
                     return "wcm-label item cat-" + d;
                 })
