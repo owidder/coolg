@@ -243,7 +243,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var categories = [];
         var locations = [];
 
-        $scope.makeSafeForCSS = makeSafeForCSS;
+        $scope.makeSafeForCSS = funcs.makeSafeForCSS;
 
         skills.ready.then(function() {
             Array.prototype.push.apply(categories, skills.categories);
