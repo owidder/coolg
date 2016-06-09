@@ -27,6 +27,9 @@ bottle.factory("Skills", function(container) {
 
         function extractLocations(data) {
             var locations = dl.unique(data, funcs.createAccessorFunction("Standort"));
+            locations.sort();
+
+            return locations;
         }
 
         var promise = new SimplePromise();
