@@ -164,8 +164,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         
         function showCategory(category) {
             var index = categories.indexOf(category);
-            if(index > -1) {
-                categories.splice(index, 1);
+            if(categories.indexOf(category) < 0) {
+                categories.push(category);
                 drawSkills();
             }
         }
