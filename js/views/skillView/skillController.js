@@ -28,8 +28,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
         }
 
-        var width = (dimensions.screenDimensions.width - 50) * 10;
-        var height = (dimensions.screenDimensions.height - 70) * 10;
+        var width = (dimensions.screenDimensions.width - 50);
+        var height = (dimensions.screenDimensions.height - 70);
         var margin = {"left": 100, "bottom": 25, "right": 5};
 
         var svg = d3.select("#canvas")
