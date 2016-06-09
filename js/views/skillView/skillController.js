@@ -192,8 +192,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var data = skills.recalcSkills(locations, categories);
 
-            var xMax = dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter")) * 1.3;
-            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung")) * 1.3;
+            var xMax = dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
+            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
 
             drawField(xMax, yMax);
 
