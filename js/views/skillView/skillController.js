@@ -69,8 +69,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("y", 0)
             .attr("width", width - margin.left - margin.right)
             .attr("height", height - margin.bottom)
-            .attr("rx", 20)
-            .attr("ry", 20)
+            .attr("rx", margin.right)
+            .attr("ry", margin.bottom)
             .attr("class", "quadrant_border");
 
         var xScale, yScale;
