@@ -18,15 +18,15 @@ bottle.factory("Skills", function(container) {
             return colorUtil.intToTwentyColors(number);
         }
 
-        function extractCategories() {
-            var categories = dl.unique(rawData, funcs.createAccessorFunction("Skill-Unterkategorie"));
+        function extractCategories(data) {
+            var categories = dl.unique(data, funcs.createAccessorFunction("Skill-Unterkategorie"));
             categories.sort();
 
             return categories;
         }
 
-        function extractLocations() {
-            var locations = dl.unique(rawData, funcs.createAccessorFunction("Standort"));
+        function extractLocations(data) {
+            var locations = dl.unique(data, funcs.createAccessorFunction("Standort"));
             locations.sort();
 
             return locations;
@@ -78,8 +78,8 @@ bottle.factory("Skills", function(container) {
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
-            me.categories = extractCategories();
-            me.locations = extractLocations();
+            me.categories = extractCategories(data);
+            me.locations = extractLocations(data);
             fillSkillToCategoryMap();
             promise.resolve();
         });
