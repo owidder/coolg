@@ -243,6 +243,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var categories = [];
         var locations = [];
 
+        $scope.makeSafeForCSS = makeSafeForCSS;
+
         skills.ready.then(function() {
             Array.prototype.push.apply(categories, skills.categories);
             Array.prototype.push.apply(locations, skills.locations);
@@ -258,8 +260,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             $scope.allCategories.forEach(function(category) {
                 $scope.categorySwitchModel[category] = !isCategoryHidden(category);
             });
-
-            $scope.makeSafeForCSS = makeSafeForCSS;
 
             drawSkills();
 
