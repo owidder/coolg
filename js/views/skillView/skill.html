@@ -138,28 +138,21 @@
     <div class="row">
         <div class="col s12">
             <span class="title">Skills</span>
-            <span ng-hide="hideButtons" class="switch" ng-repeat="category in allCategories">
-                <span class="switch">
-                    <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
-                        {{category}}
-                        <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
-                        <span class="lever"></span>
-                    </label>
-                </span>
-            </span>
         </div>
     </div>
     <div class="row">
         <div class="col s2">
-            <span ng-hide="hideButtons" class="switch" ng-repeat="category in allCategories">
-                <span class="switch">
-                    <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
-                        {{category}}
-                        <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
-                        <span class="lever"></span>
-                    </label>
-                </span>
-            </span>
+            <div class="row">
+                <div class="col s12" ng-repeat="category in allCategories">
+                    <span class="switch">
+                        <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
+                            {{category}}
+                            <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
+                            <span class="lever"></span>
+                        </label>
+                    </span>
+                </div>
+            </div>
         </div>
         <div class="col s10">
             <div id="canvas">
