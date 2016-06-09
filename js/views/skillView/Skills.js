@@ -66,6 +66,7 @@ bottle.factory("Skills", function(container) {
         }
 
         me.recalcSkills = recalcSkills;
+        me.skillToCategory = skillToCategory;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
