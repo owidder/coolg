@@ -219,7 +219,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("r", function(d) {
                     return radiusForSkill(d);
                 })
-                .attr("opacity", "0.5")
+                .attr("opacity", "0.3")
                 .attr("fill", function(d) {
                     var color = skills.categoryToColor(d["Skill-Unterkategorie"]);
                     return color;
