@@ -71,6 +71,7 @@ bottle.factory("Skills", function(container) {
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
             me.categories = extractCategories(data);
+            fillSkillToCategory();
             promise.resolve();
         });
     }
