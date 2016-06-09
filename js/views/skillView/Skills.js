@@ -55,7 +55,7 @@ bottle.factory("Skills", function(container) {
             return aggregation;
         }
 
-        function fillSkillToCategory() {
+        function fillSkillToCategoryMap() {
             rawData.forEach(function(skill) {
                 skillToCategoryMap[skill["Skill"]] = skill["Skill-Unterkategorie"];
             });
@@ -71,7 +71,7 @@ bottle.factory("Skills", function(container) {
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
             me.categories = extractCategories(data);
-            fillSkillToCategory();
+            fillSkillToCategoryMap();
             promise.resolve();
         });
     }
