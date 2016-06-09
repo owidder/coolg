@@ -13,7 +13,8 @@ angular.module(com_geekAndPoke_coolg.moduleName)
             })
             .when('/skill', {
                 templateUrl: 'js/views/skillView/skill.html',
-                controller: com_geekAndPoke_coolg.SKILL_CONTROLLER
+                controller: com_geekAndPoke_coolg.SKILL_CONTROLLER,
+                reloadOnSearch: false
             })
             .otherwise({redirectTo: '/stock'});
     }])
