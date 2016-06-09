@@ -28,7 +28,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
         }
 
-        var width = (dimensions.screenDimensions.width - 50) * (8/12);
+        var width = (dimensions.screenDimensions.width - 50);
         var height = dimensions.screenDimensions.height - 70;
         var margin = {"left": 100, "bottom": 25, "right": 5};
 
