@@ -228,7 +228,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             gMeasureA.append("title")
                 .text(function(d) {
-                    return d.description;
+                    return d["Skill"];
                 });
 
             gMeasureA.append("text")
