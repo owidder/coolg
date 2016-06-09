@@ -171,7 +171,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills(locations, categories) {
+        function drawSkills() {
             function mouseHandlingOnIcon(selection) {
                 selection
                     .on("click", function (d) {
