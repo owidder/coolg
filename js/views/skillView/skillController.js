@@ -64,15 +64,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var quadrant_group = svg.append("g")
             .attr("transform", "translate(" + margin.left + ",0)");
 
-        var quadrant_border = quadrant_group.append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", width - margin.left - margin.right)
-            .attr("height", height - margin.bottom)
-            .attr("rx", 20)
-            .attr("ry", 20)
-            .attr("class", "quadrant_border");
-
         var xScale, yScale;
 
         function drawField(maxX, maxY) {
