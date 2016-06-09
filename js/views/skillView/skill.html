@@ -146,15 +146,15 @@
                 <div class="col s6">
                     <span class="switch">
                         <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
-                            {{category}}
+                            <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
+                            <span class="lever"></span>
                         </label>
                     </span>
                 </div>
                 <div class="col s6">
                     <span class="switch">
                         <label  class="{{category}}" style="color: {{getColorForCategory(category)}}" >
-                            <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
-                            <span class="lever"></span>
+                            {{category}}
                         </label>
                     </span>
                 </div>
