@@ -88,7 +88,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             yScale = d3.scale.linear()
                 .domain([0, maxY])
-                .range([height - margin.bottom - 10, 0]);
+                .range([height - margin.bottom - 10 - 6, 0]);
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
