@@ -244,7 +244,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var locations = [];
 
         skills.ready.then(function() {
-            Array.prototype.push.apply()
+            Array.prototype.push.apply(categories, skills.categories);
             $scope.switchCategory = switchCategory;
 
             $scope.getColorForCategory = skills.categoryToColor;
