@@ -304,6 +304,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         return destination;
     }
 
+    // from: 
     function makeSafeForCSS(name) {
         return name.toLowerCase().replace(/[^a-z0-9]/g, function(s) {
             var c = s.charCodeAt(0);
