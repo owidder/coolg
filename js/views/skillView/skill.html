@@ -149,12 +149,8 @@
             <div class="row" ng-repeat="category in allCategories">
                 <div class="col s6">
                     <span class="switch">
-                        <label  class="{{makeSafeForCSS(category)}}" style="color: {{getColorForCategory(category)}}" >
-                            <input name="group1" type="radio" id="test1" />
-                            <label for="test1">Red</label>
-                            <input class="{{category}}" type="checkbox" ng-model="categorySwitchModel[category]" ng-click="switchCategory(category)">
-                            <span class="lever"></span>
-                        </label>
+                        <input name="group{{makeSafeForCSS(category)}}" type="radio" id="{{makeSafeForCSS(category)}}" />
+                        <label for="{{makeSafeForCSS(category)}}">{{category}}</label>
                     </span>
                 </div>
                 <div class="col s6">
