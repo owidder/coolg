@@ -32,6 +32,8 @@ bottle.factory("Skills", function(container) {
         me.categoryToColor = categoryToColor;
 
         var rawData;
+
+        var skillToCategoryMap = {};
         
         function recalcSkills(locations, categories) {
             function filter(skill) {
@@ -51,6 +53,16 @@ bottle.factory("Skills", function(container) {
                 ]).execute(filteredData);
 
             return aggregation;
+        }
+
+        function fillSkillToCategory() {
+            rawData.forEach(function(skill) {
+                skillToCategoryMap[skill["Skill"]] = skill["Skill-Unterkategorie"];
+            });
+        }
+
+        function skillToCategory(skill) {
+            return skillToCategoryMap[skill];
         }
 
         me.recalcSkills = recalcSkills;
