@@ -92,7 +92,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
-                .ticks(0)
+                .ticks(10)
                 .orient("left");
 
             svg.select(".xaxis")
