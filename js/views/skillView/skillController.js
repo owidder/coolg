@@ -116,12 +116,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y2", yScale(maxY/2))
                 .attr("class", "divider");
 
-            quadrant_group.append("line")
+            horizontalLine.transition()
                 .attr("x1", xScale(maxX/2))
                 .attr("y1", 0)
                 .attr("x2", xScale(maxX/2))
-                .attr("y2", yScale(0))
-                .attr("class", "divider");
+                .attr("y2", yScale(0));
         }
 
         function yScaleForSkill(skill) {
