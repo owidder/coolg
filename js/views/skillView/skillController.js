@@ -92,12 +92,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y", yScale(maxY/6 * 5));
 
             // Viel
-            quadrant_group.append("text")
+            textLowerRight.transition()
                 .attr("x", xScale(maxX/6 * 5))
-                .attr("y", yScale(maxY/6))
-                .attr("text-anchor", "middle")
-                .text("Viel Einäugige")
-                .attr("class", "quad-label");
+                .attr("y", yScale(maxY/6));
 
             quadrant_group.append("text")
                 .attr("x", xScale(maxX/6 * 5))
