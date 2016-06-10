@@ -66,6 +66,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var xScale, yScale;
 
+        var textLowerRight = quadrant_group.append("text")
+            .attr("text-anchor", "middle")
+            .text("Weißer Fleck")
+            .attr("class", "quad-label");
+
         function createGrid(maxX, maxY) {
             /* Wenige */
             quadrant_group.append("text")
