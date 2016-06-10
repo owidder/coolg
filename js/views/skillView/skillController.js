@@ -184,12 +184,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
-        function xMax() {
+        function xMax(data) {
             return dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
         }
 
-        function yMax() {
-            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+        function yMax(data) {
+            return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
         }
 
         /**
@@ -207,8 +207,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
 
             var data = skills.recalcSkills(locations, categories);
-            
-            drawField(xMax, yMax);
+
+            drawField(xMax(data), yMax(data));
 
             var gSkillData = quadrant_group.selectAll("g.skill")
                 .data(data, function (d) {
