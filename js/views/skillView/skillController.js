@@ -196,7 +196,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills() {
+        function drawSkills(data) {
             function mouseHandlingOnIcon(selection) {
                 selection
                     .on("click", function (d) {
@@ -205,8 +205,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         setCurrentAttributes(d);
                     });
             }
-
-            var data = skills.recalcSkills(locations, categories);
 
             drawField(xMax(data), yMax(data));
 
@@ -288,7 +286,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 $scope.categorySwitchModel[category] = !isCategoryHidden(category);
             });
 
-            drawSkills();
+            var data = skills.recalcSkills(locations, categories);
+
+            drawField(xMax(data), yMax(data));
+            drawSkills(data);
 
             clearCurrentAttributes();
         });
