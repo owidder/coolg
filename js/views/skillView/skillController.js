@@ -206,7 +206,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             drawField(xMax, yMax);
 
             var gSkillData = quadrant_group.selectAll("g.skill")
-                .data(data);
+                .data(data, function (d) {
+                    return d["Skill"];
+                });
 
             var gSkill = gSkillData.enter()
                 .append("g")
