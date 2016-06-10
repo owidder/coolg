@@ -66,6 +66,53 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var xScale, yScale;
 
+        (function createGrid() {
+            /* Wenige */
+            quadrant_group.append("text")
+                .attr("x", xScale(maxX/6))
+                .attr("y", yScale(maxY/6))
+                .attr("text-anchor", "middle")
+                .text("Weißer Fleck")
+                .attr("class", "quad-label");
+
+            quadrant_group.append("text")
+                .attr("x", xScale(maxX/6))
+                .attr("y", yScale(maxY/6 * 5))
+                .attr("text-anchor", "middle")
+                .text("Einzelne Experten")
+                .attr("class", "quad-label");
+
+            // Viel
+            quadrant_group.append("text")
+                .attr("x", xScale(maxX/6 * 5))
+                .attr("y", yScale(maxY/6))
+                .attr("text-anchor", "middle")
+                .text("Viel Einäugige")
+                .attr("class", "quad-label");
+
+            quadrant_group.append("text")
+                .attr("x", xScale(maxX/6 * 5))
+                .attr("y", yScale(maxY/6 * 5))
+                .attr("text-anchor", "middle")
+                .text("Kompetenzdichte")
+                .attr("class", "quad-label");
+
+            // creating the dividers
+            quadrant_group.append("line")
+                .attr("x1", 0)
+                .attr("y1", yScale(maxY/2))
+                .attr("x2", xScale(maxX))
+                .attr("y2", yScale(maxY/2))
+                .attr("class", "divider");
+
+            quadrant_group.append("line")
+                .attr("x1", xScale(maxX/2))
+                .attr("y1", 0)
+                .attr("x2", xScale(maxX/2))
+                .attr("y2", yScale(0))
+                .attr("class", "divider");
+        })();
+
         function drawField(maxX, maxY) {
 
             xScale = d3.scale.linear()
@@ -93,53 +140,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             svg.select(".yaxis")
                 .transition()
                 .call(yAxis);
-
-            (function createGrid() {
-                /* Wenige */
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6))
-                    .attr("y", yScale(maxY/6))
-                    .attr("text-anchor", "middle")
-                    .text("Weißer Fleck")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6))
-                    .attr("y", yScale(maxY/6 * 5))
-                    .attr("text-anchor", "middle")
-                    .text("Einzelne Experten")
-                    .attr("class", "quad-label");
-
-                // Viel
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6 * 5))
-                    .attr("y", yScale(maxY/6))
-                    .attr("text-anchor", "middle")
-                    .text("Viel Einäugige")
-                    .attr("class", "quad-label");
-
-                quadrant_group.append("text")
-                    .attr("x", xScale(maxX/6 * 5))
-                    .attr("y", yScale(maxY/6 * 5))
-                    .attr("text-anchor", "middle")
-                    .text("Kompetenzdichte")
-                    .attr("class", "quad-label");
-
-                // creating the dividers
-                quadrant_group.append("line")
-                    .attr("x1", 0)
-                    .attr("y1", yScale(maxY/2))
-                    .attr("x2", xScale(maxX))
-                    .attr("y2", yScale(maxY/2))
-                    .attr("class", "divider");
-
-                quadrant_group.append("line")
-                    .attr("x1", xScale(maxX/2))
-                    .attr("y1", 0)
-                    .attr("x2", xScale(maxX/2))
-                    .attr("y2", yScale(0))
-                    .attr("class", "divider");
-            })();
         }
 
         function yScaleForSkill(skill) {
