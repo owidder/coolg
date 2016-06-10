@@ -184,6 +184,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function xMax() {
+            return dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
+        }
+
+        function yMax() {
+            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+        }
+
         /**
          * draw the matrix and circles
          * @param category
@@ -199,10 +207,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
 
             var data = skills.recalcSkills(locations, categories);
-
-            var xMax = dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
-            var yMax = dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
-
+            
             drawField(xMax, yMax);
 
             var gSkillData = quadrant_group.selectAll("g.skill")
