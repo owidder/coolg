@@ -78,17 +78,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function updateGrid(maxX, maxY) {
             /* Wenige */
-            textLowerLeft
-                .transition()
+            textLowerLeft.transition()
                 .attr("x", xScale(maxX/6))
                 .attr("y", yScale(maxY/6));
 
-            quadrant_group.append("text")
+            textUpperLeft.transition()
                 .attr("x", xScale(maxX/6))
-                .attr("y", yScale(maxY/6 * 5))
-                .attr("text-anchor", "middle")
-                .text("Einzelne Experten")
-                .attr("class", "quad-label");
+                .attr("y", yScale(maxY/6 * 5));
 
             // Viel
             quadrant_group.append("text")
