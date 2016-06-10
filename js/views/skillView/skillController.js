@@ -79,7 +79,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var textLowerRight = quadrant_group.append("text")
             .attr("text-anchor", "middle")
             .text("Viel Einäugige")
-            .attr("class", "quad-label");
+            .attr("class", "quad-label lower-right");
+
+        var textUpperRight = quadrant_group.append("text")
+            .attr("text-anchor", "middle")
+            .text("Kompetenzdichte")
+            .attr("class", "quad-label upper-right");
 
         function updateGrid(maxX, maxY) {
             /* Wenige */
@@ -96,12 +101,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x", xScale(maxX/6 * 5))
                 .attr("y", yScale(maxY/6));
 
-            quadrant_group.append("text")
+            textUpperRight.transition()
                 .attr("x", xScale(maxX/6 * 5))
-                .attr("y", yScale(maxY/6 * 5))
-                .attr("text-anchor", "middle")
-                .text("Kompetenzdichte")
-                .attr("class", "quad-label");
+                .attr("y", yScale(maxY/6 * 5));
 
             // creating the dividers
             quadrant_group.append("line")
