@@ -66,7 +66,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var xScale, yScale;
 
-        (function createGrid() {
+        function createGrid(maxX, maxY) {
             /* Wenige */
             quadrant_group.append("text")
                 .attr("x", xScale(maxX/6))
@@ -111,7 +111,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x2", xScale(maxX/2))
                 .attr("y2", yScale(0))
                 .attr("class", "divider");
-        })();
+        };
 
         function yScaleForSkill(skill) {
             return skill["Mittlere Bewertung"];
