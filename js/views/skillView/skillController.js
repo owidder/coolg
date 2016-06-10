@@ -69,16 +69,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var textLowerRight = quadrant_group.append("text")
             .attr("text-anchor", "middle")
             .text("Weißer Fleck")
-            .attr("class", "quad-label");
+            .attr("class", "quad-label lower-right");
 
-        function createGrid(maxX, maxY) {
+        function updateGrid(maxX, maxY) {
             /* Wenige */
-            quadrant_group.append("text")
+            quadrant_group.select("text.lower-right")
+                .transition()
                 .attr("x", xScale(maxX/6))
-                .attr("y", yScale(maxY/6))
-                .attr("text-anchor", "middle")
-                .text("Weißer Fleck")
-                .attr("class", "quad-label");
+                .attr("y", yScale(maxY/6));
 
             quadrant_group.append("text")
                 .attr("x", xScale(maxX/6))
