@@ -113,6 +113,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "divider");
         })();
 
+        function yScaleForSkill(skill) {
+            return skill["Mittlere Bewertung"];
+        }
+
+        function radiusForSkill(skill) {
+            return skill["Mittlere Skilldauer"] * 5;
+        }
+
         function drawField(maxX, maxY) {
 
             xScale = d3.scale.linear()
@@ -140,14 +148,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             svg.select(".yaxis")
                 .transition()
                 .call(yAxis);
-        }
-
-        function yScaleForSkill(skill) {
-            return skill["Mittlere Bewertung"];
-        }
-
-        function radiusForSkill(skill) {
-            return skill["Mittlere Skilldauer"] * 5;
         }
 
         /* **************
