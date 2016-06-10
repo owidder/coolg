@@ -76,6 +76,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Einzelne Experten")
             .attr("class", "quad-label upper-left");
 
+        var textLowerRight = quadrant_group.append("text")
+            .attr("text-anchor", "middle")
+            .text("Viel Einäugige")
+            .attr("class", "quad-label");
+
         function updateGrid(maxX, maxY) {
             /* Wenige */
             textLowerLeft.transition()
