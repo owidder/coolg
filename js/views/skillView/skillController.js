@@ -48,7 +48,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         root.append("g")
             .attr("class", "axis yaxis")
-            .attr("transform", "translate(0, 0)");
+            .attr("transform", "translate(0, 50)");
 
         var xLabel = root.append("text")
             .attr("x", 0)
