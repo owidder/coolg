@@ -62,35 +62,35 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Durchschnittliche Bewertung")
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-        var quadrant_group = svg.append("g")
+        var field = svg.append("g")
             .attr("transform", "translate(" + margin.left + ",0)");
 
         var xScale, yScale;
 
-        var textLowerLeft = quadrant_group.append("text")
+        var textLowerLeft = field.append("text")
             .attr("text-anchor", "middle")
             .text("Weißer Fleck")
             .attr("class", "quad-label lower-left");
 
-        var textUpperLeft = quadrant_group.append("text")
+        var textUpperLeft = field.append("text")
             .attr("text-anchor", "middle")
             .text("Einzelne Experten")
             .attr("class", "quad-label upper-left");
 
-        var textLowerRight = quadrant_group.append("text")
+        var textLowerRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Viel Einäugige")
             .attr("class", "quad-label lower-right");
 
-        var textUpperRight = quadrant_group.append("text")
+        var textUpperRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Kompetenzdichte")
             .attr("class", "quad-label upper-right");
 
-        var horizontalLine = quadrant_group.append("line")
+        var horizontalLine = field.append("line")
             .attr("class", "divider horizontal");
 
-        var verticalLine = quadrant_group.append("line")
+        var verticalLine = field.append("line")
             .attr("class", "divider vertical");
 
         function updateGrid(maxX, maxY) {
@@ -226,7 +226,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), yMax(data));
 
-            var gSkillData = quadrant_group.selectAll("g.skill")
+            var gSkillData = field.selectAll("g.skill")
                 .data(data, function (d) {
                     return d["Skill"];
                 });
@@ -235,7 +235,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .append("g")
                 .attr("class", "skill");
 
-            quadrant_group.selectAll("g.skill")
+            field.selectAll("g.skill")
                 .transition()
                 .attr("transform", function (d) {
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
@@ -270,7 +270,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     setCurrentAttributes(d);
                 });
 
-            quadrant_group.selectAll("circle.skill")
+            field.selectAll("circle.skill")
                 .attr("r", function(d) {
                     return radiusForSkill(d);
                 });
