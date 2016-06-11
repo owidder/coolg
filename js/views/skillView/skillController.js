@@ -132,8 +132,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function drawField(maxX, maxY) {
 
-            updateGrid(maxX, maxY);
-
             xScale = d3.scale.linear()
                 .domain([0, maxX])
                 .range([0, width - margin.left - margin.right]);
@@ -159,6 +157,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             svg.select(".yaxis")
                 .transition()
                 .call(yAxis);
+
+            updateGrid(maxX, maxY);
         }
 
         /* **************
