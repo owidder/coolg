@@ -87,7 +87,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "quad-label upper-right");
 
         var verticalLine = quadrant_group.append("line")
-            .attr("class", "divider horizontal");
+            .attr("class", "divider vertical");
 
         function updateGrid(maxX, maxY) {
             /* Wenige */
