@@ -151,9 +151,7 @@
                     <input name="category" type="radio" id="cat-all" ng-model="categorySwitchModel['*']" ng-click="showCategory('*')"/>
                     <label for="cat-all">Alle</label>
                 </div>
-            </div>
-            <div class="row" ng-repeat="category in allCategories">
-                <div class="col s12">
+                <div class="col s12" ng-repeat="category in allCategories">
                     <span class="switch">
                         <input name="category" type="radio" id="cat-{{makeSafeForCSS(category)}}" ng-click="showCategory(category)"/>
                         <label for="cat-{{makeSafeForCSS(category)}}">{{category}}</label>
