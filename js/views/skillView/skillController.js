@@ -241,7 +241,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
-            gSkillEnter.append("circle")
+            var gSkillEnterG = gSkillEnter.append("g")
+                .attr("class", "skill");
+
+            gSkillEnterG.append("circle")
                 .attr("class", "skill")
                 .attr("opacity", "0.1")
                 .attr("fill", function(d) {
@@ -259,12 +262,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return radiusForSkill(d);
                 });
 
-            gMeasureA.append("title")
-                .text(function(d) {
-                    return d["Skill"];
-                });
-
-            gMeasureA.append("text")
+            quadrant_group.selectAll("g.skill")
+                .append("text")
                 .attr("opacity", 1)
                 .attr("class", function (d) {
                     return "wcm-label item cat-" + d;
