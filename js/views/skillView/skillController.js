@@ -175,11 +175,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         
         function showCategory(category) {
-            if(categories.indexOf(category) < 0) {
-                categories.length = 0;
-                categories.push(category);
-                drawSkills();
-            }
+            categories.length = 0;
+            categories.push(category);
+            drawSkills();
+        }
+
+        function showLocation(location) {
+            locations.length = 0;
+            locations.push(location);
+            drawSkills();
         }
 
         function isCategoryHidden(category) {
