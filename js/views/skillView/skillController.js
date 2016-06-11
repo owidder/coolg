@@ -86,7 +86,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Kompetenzdichte")
             .attr("class", "quad-label upper-right");
 
-        var horizontalLine = quadrant_group.append("line")
+        var verticalLine = quadrant_group.append("line")
             .attr("class", "divider horizontal");
 
         function updateGrid(maxX, maxY) {
@@ -116,7 +116,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y2", yScale(maxY/2))
                 .attr("class", "divider");
 
-            horizontalLine.transition()
+            verticalLine.transition()
                 .attr("x1", xScale(maxX/2))
                 .attr("y1", 0)
                 .attr("x2", xScale(maxX/2))
