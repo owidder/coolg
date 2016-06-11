@@ -245,7 +245,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             gSkillEnterG.append("circle")
                 .attr("class", "skill")
-                .attr("opacity", "0.1")
+                .attr("opacity", "0.5")
                 .attr("fill", function(d) {
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
