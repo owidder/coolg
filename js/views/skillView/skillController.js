@@ -87,7 +87,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "quad-label upper-right");
 
         var horizontalLine = quadrant_group.append("line")
-            .attr("class", "divider vertical");
+            .attr("class", "divider horizontal");
 
         var verticalLine = quadrant_group.append("line")
             .attr("class", "divider vertical");
