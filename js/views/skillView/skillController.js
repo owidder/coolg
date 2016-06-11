@@ -72,6 +72,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var xScalePercent = d3.scale.linear()
             .domain([0, 100])
             .range([0, width]);
+        var yScalePercent = d3.scale.linear()
+            .domain([0, 100])
+            .range([height, 0]);
 
         var textLowerLeft = field.append("text")
             .attr("text-anchor", "middle")
