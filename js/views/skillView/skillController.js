@@ -65,7 +65,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Durchschnittliche Bewertung")
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-        var field = svg.append("g")
+        var field = root.append("g")
             .attr("transform", "translate(50, 50)");
 
         var xScale, yScale;
