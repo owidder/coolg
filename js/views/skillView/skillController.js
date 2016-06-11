@@ -56,8 +56,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "axis wcm-label")
             .text("Anzahl Mitarbeiter");
 
-        var yLabelX = -30;
-        var yLabelY = height - 75;
+        var yLabelX = -40;
+        var yLabelY = height - 50;
         var yLabel = root.append("text")
             .attr("x", yLabelX)
             .attr("y", yLabelY)
