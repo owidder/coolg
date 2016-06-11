@@ -235,19 +235,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .append("g")
                 .attr("class", "skill");
 
-            var gSkillAll = quadrant_group.selectAll("g.skill");
-
-            gSkillAll
+            quadrant_group.selectAll("g.skill")
                 .transition()
                 .attr("transform", function (d) {
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
-            var gSkillAEnter = gSkillEnter.append("svg:a")
-                .attr("xlink:href", function(d) {
-                    return d.url;
-                })
-                .attr("target", "_blank");
+            gSkillEnter.append("circle")
+                .attr("class", "skill")
+                .attr("opacity", "0.1")
+                .call(mouseHandlingOnIcon);
+
+            quadrant_group.selectAll("circle.skill")
 
             gMeasureA.append("circle")
                 .attr("r", function(d) {
