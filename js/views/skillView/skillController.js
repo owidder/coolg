@@ -79,22 +79,30 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var textLowerLeft = field.append("text")
             .attr("text-anchor", "middle")
             .text("Weißer Fleck")
-            .attr("class", "quad-label lower-left");
+            .attr("class", "quad-label lower-left")
+            .attr("x", xScalePercent(100/6))
+            .attr("y", yScalePercent(100/6));
 
         var textUpperLeft = field.append("text")
             .attr("text-anchor", "middle")
             .text("Einzelne Experten")
-            .attr("class", "quad-label upper-left");
+            .attr("class", "quad-label upper-left")
+            .attr("x", xScalePercent(100/6))
+            .attr("y", yScalePercent(100/6 * 5));
 
         var textLowerRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Viel Einäugige")
-            .attr("class", "quad-label lower-right");
+            .attr("class", "quad-label lower-right")
+            .attr("x", xScalePercent(100/6 * 5))
+            .attr("y", yScalePercent(100/6));
 
         var textUpperRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Kompetenzdichte")
-            .attr("class", "quad-label upper-right");
+            .attr("class", "quad-label upper-right")
+            .attr("x", xScalePercent(100/6 * 5))
+            .attr("y", yScalePercent(100/6 * 5));
 
         var horizontalLine = field.append("line")
             .attr("class", "divider horizontal");
