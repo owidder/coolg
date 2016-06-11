@@ -10,7 +10,7 @@ bottle.factory("$categories", function(container) {
                 shortened = "?"
                 break;
 
-            
+            case "Sonstiges "
         }
     }
 });
