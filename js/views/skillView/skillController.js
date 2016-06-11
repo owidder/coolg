@@ -295,6 +295,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             $scope.allCategories = skills.categories;
 
+            $scope.shorten = $categories.shorten;
+
             drawSkills();
 
             clearCurrentAttributes();
