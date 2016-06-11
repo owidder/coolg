@@ -57,7 +57,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Anzahl Mitarbeiter");
 
         var yLabelX = -40;
-        var yLabelY = height - 50;
+        var yLabelY = height - 10;
         var yLabel = root.append("text")
             .attr("x", yLabelX)
             .attr("y", yLabelY)
