@@ -257,17 +257,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Skill"];
                 });
 
-            quadrant_group.selectAll("circle.skill")
-                .attr("r", function(d) {
-                    return radiusForSkill(d);
-                });
-
-            quadrant_group.selectAll("g.skill")
-                .append("text")
+            gSkillEnterG.append("text")
                 .attr("opacity", 1)
-                .attr("class", function (d) {
-                    return "wcm-label item cat-" + d;
-                })
+                .attr("class", "wcm-label item")
                 .attr("y", 0)
                 .attr("x", 0)
                 .text(function (d) {
@@ -278,6 +270,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     d3.select("circle.cat-" + d).classed("circle-hover", true);
                     setCurrentAttributes(d);
                 });
+
+            quadrant_group.selectAll("circle.skill")
+                .attr("r", function(d) {
+                    return radiusForSkill(d);
+                });
+
 
             gSkillData.exit().remove();
         }
