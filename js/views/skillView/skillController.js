@@ -58,7 +58,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var yLabelX = -15;
         var yLabelY = height + 20;
-        var yLabel = svg.append("text")
+        var yLabel = root.append("text")
             .attr("x", yLabelX)
             .attr("y", yLabelY)
             .attr("class", "axis wcm-label")
