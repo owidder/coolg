@@ -86,6 +86,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .text("Kompetenzdichte")
             .attr("class", "quad-label upper-right");
 
+        var horizontalLine = quadrant_group.append("line")
+            .attr("class", "divider vertical");
+
         var verticalLine = quadrant_group.append("line")
             .attr("class", "divider vertical");
 
