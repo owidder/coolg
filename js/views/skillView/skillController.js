@@ -186,7 +186,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchCategory(category) {
-            showCategory(category);
+            if(isCategoryHidden(category)) {
+                $location.search("h_" + category, "n");
+                showCategory(category);
+            }
+            else {
+                $location.search("h_" + category, "y");
+                hideCategory(category);
+            }
         }
 
         function xMax(data) {
