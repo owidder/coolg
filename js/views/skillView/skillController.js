@@ -231,9 +231,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Skill"];
                 });
 
-            var gSkill = gSkillData.enter()
+            var gSkillEnter = gSkillData.enter()
                 .append("g")
                 .attr("class", "skill");
+
+            var gSkillAll = quadrant_group.selectAll("g.skill");
 
             gSkill
                 .transition()
