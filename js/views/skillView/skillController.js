@@ -66,7 +66,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
         var field = svg.append("g")
-            .attr("transform", "translate(" + margin.left + ",0)");
 
         var xScale, yScale;
 
