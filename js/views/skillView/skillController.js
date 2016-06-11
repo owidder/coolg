@@ -284,7 +284,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             gSkillEnterG.append("text")
-                .attr("opacity", 1)
+                .attr("opacity", 0.5)
                 .attr("class", "wcm-label item")
                 .attr("y", 0)
                 .attr("x", 0)
