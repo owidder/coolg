@@ -6,6 +6,10 @@ bottle.factory("$categories", function(container) {
         var shortened = category;
 
         switch (category) {
+            case "Ohne Zuordnung":
+                shortened = "?"
+                break;
+
             
         }
     }
