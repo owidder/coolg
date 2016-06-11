@@ -241,8 +241,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
-            var gSkillEnterG = gSkillEnter.append("g")
-                .attr("class", "skill");
+            var gSkillEnterG = gSkillEnter.append("g");
 
             gSkillEnterG.append("circle")
                 .attr("class", "skill")
