@@ -35,8 +35,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var svg = d3.select("#canvas")
             .append("svg")
-            .attr("width", width + 200)
-            .attr("height", height + 200)
+            .attr("width", width + 300)
+            .attr("height", height + 300)
             .attr("class", "svg");
 
         var root = svg.append("g")
@@ -52,7 +52,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var xLabel = root.append("text")
             .attr("x", 0)
-            .attr("y", height + 35)
+            .attr("y", height + 60)
             .attr("class", "axis wcm-label")
             .text("Anzahl Mitarbeiter");
 
