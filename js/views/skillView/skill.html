@@ -151,7 +151,7 @@
                     <input name="location" type="radio" id="loc-all" ng-click="showLocation('*')"/>
                     <label for="loc-all">Alle</label>
                 </div>
-                <div class="col s12" ng-repeat="locations in allLocations">
+                <div class="col s12" ng-repeat="location in allLocations">
                     <span class="switch">
                         <input name="location" type="radio" id="loc-{{makeSafeForCSS(location)}}" ng-click="showLocation(location)"/>
                         <label for="loc-{{makeSafeForCSS(location)}}">{{location}}</label>
