@@ -105,31 +105,31 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function updateGrid() {
             textLowerLeft.transition()
                 .attr("x", xScalePercent(100/6))
-                .attr("y", yScale(100/6));
+                .attr("y", yScalePercent(100/6));
 
             textUpperLeft.transition()
-                .attr("x", xScale(100/6))
-                .attr("y", yScale(100/6 * 5));
+                .attr("x", xScalePercent(100/6))
+                .attr("y", yScalePercent(100/6 * 5));
 
             textLowerRight.transition()
-                .attr("x", xScale(100/6 * 5))
-                .attr("y", yScale(100/6));
+                .attr("x", xScalePercent(100/6 * 5))
+                .attr("y", yScalePercent(100/6));
 
             textUpperRight.transition()
-                .attr("x", xScale(100/6 * 5))
-                .attr("y", yScale(100/6 * 5));
+                .attr("x", xScalePercent(100/6 * 5))
+                .attr("y", yScalePercent(100/6 * 5));
 
             horizontalLine.transition()
                 .attr("x1", 0)
-                .attr("y1", yScale(100/2 + 0.5))
-                .attr("x2", xScale(100))
-                .attr("y2", yScale(100/2 + 0.5));
+                .attr("y1", yScalePercent(100/2 + 0.5))
+                .attr("x2", xScalePercent(100))
+                .attr("y2", yScalePercent(100/2 + 0.5));
 
             verticalLine.transition()
-                .attr("x1", xScale(100/2 + 0.5))
+                .attr("x1", xScalePercent(100/2 + 0.5))
                 .attr("y1", 0)
-                .attr("x2", xScale(100/2 + 0.5))
-                .attr("y2", yScale(0));
+                .attr("x2", xScalePercent(100/2 + 0.5))
+                .attr("y2", yScalePercent(0));
         }
 
         function yScaleForSkill(skill) {
