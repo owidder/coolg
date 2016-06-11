@@ -296,9 +296,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             $scope.allCategories = skills.categories;
             $scope.categorySwitchModel = {'*': true};
-            $scope.allCategories.forEach(function(category) {
-                $scope.categorySwitchModel[category] = !isCategoryHidden(category);
-            });
 
             drawSkills();
 
