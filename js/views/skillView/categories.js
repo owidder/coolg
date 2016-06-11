@@ -3,11 +3,11 @@
 bottle.factory("$categories", function(container) {
 
     function shorten(category) {
-        var shortened = category;
+        var shortened;
 
         switch (category) {
             case "Ohne Zuordnung":
-                shortened = "?"
+                shortened = "?";
                 break;
 
             case "Sonstiges (Methodik)":
@@ -17,6 +17,15 @@ bottle.factory("$categories", function(container) {
             case "Sonstiges (Technologie)":
                 shortened = "Technologie";
                 break;
+
+            default:
+                shortened = category;
         }
+
+        return shortened;
+    }
+
+    return {
+        shorten: shorten
     }
 });
