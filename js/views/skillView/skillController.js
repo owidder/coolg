@@ -44,7 +44,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         root.append("g")
             .attr("class", "axis xaxis")
-            .attr("transform", "translate(50," + (height+50) + ")");
+            .attr("transform", "translate(50," + (height+70) + ")");
 
         root.append("g")
             .attr("class", "axis yaxis")
