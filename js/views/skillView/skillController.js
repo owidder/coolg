@@ -35,12 +35,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var svg = d3.select("#canvas")
             .append("svg")
-            .attr("width", width)
-            .attr("height", height)
+            .attr("width", width + 50)
+            .attr("height", height + 50)
             .attr("class", "svg");
 
         var root = svg.append("g")
-            .attr("transform", "translate(0, 0)");
+            .attr("transform", "translate(50, 50)");
 
         root.append("g")
             .attr("class", "axis xaxis")
