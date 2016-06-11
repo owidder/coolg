@@ -248,7 +248,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
                 })
-                .call(mouseHandlingOnIcon);
+                .call(mouseHandlingOnIcon)
+                .append("title")
+                .text(function(d) {
+                    return d["Skill"];
+                });
 
             quadrant_group.selectAll("circle.skill")
                 .attr("r", function(d) {
