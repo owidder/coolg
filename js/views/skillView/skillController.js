@@ -46,17 +46,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "axis xaxis")
             .attr("transform", "translate(0," + height + ")");
 
-        svg.append("g")
+        root.append("g")
             .attr("class", "axis yaxis")
             .attr("transform", "translate(0, 0)");
 
-        var xLabel = svg.append("text")
+        var xLabel = root.append("text")
             .attr("x", 0)
             .attr("y", height + 10)
             .attr("class", "axis wcm-label")
             .text("Anzahl Mitarbeiter");
 
-        var yLabelX = margin.left - 15;
+        var yLabelX = -15;
         var yLabelY = height - 75;
         var yLabel = svg.append("text")
             .attr("x", yLabelX)
