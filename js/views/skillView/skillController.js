@@ -102,33 +102,33 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var verticalLine = field.append("line")
             .attr("class", "divider vertical");
 
-        function updateGrid(maxX, maxY) {
+        function updateGrid() {
             textLowerLeft.transition()
-                .attr("x", xScale(maxX/6))
-                .attr("y", yScale(maxY/6));
+                .attr("x", xScalePercent(100/6))
+                .attr("y", yScale(100/6));
 
             textUpperLeft.transition()
-                .attr("x", xScale(maxX/6))
-                .attr("y", yScale(maxY/6 * 5));
+                .attr("x", xScale(100/6))
+                .attr("y", yScale(100/6 * 5));
 
             textLowerRight.transition()
-                .attr("x", xScale(maxX/6 * 5))
-                .attr("y", yScale(maxY/6));
+                .attr("x", xScale(100/6 * 5))
+                .attr("y", yScale(100/6));
 
             textUpperRight.transition()
-                .attr("x", xScale(maxX/6 * 5))
-                .attr("y", yScale(maxY/6 * 5));
+                .attr("x", xScale(100/6 * 5))
+                .attr("y", yScale(100/6 * 5));
 
             horizontalLine.transition()
                 .attr("x1", 0)
-                .attr("y1", yScale(maxY/2 + 0.5))
-                .attr("x2", xScale(maxX))
-                .attr("y2", yScale(maxY/2 + 0.5));
+                .attr("y1", yScale(100/2 + 0.5))
+                .attr("x2", xScale(100))
+                .attr("y2", yScale(100/2 + 0.5));
 
             verticalLine.transition()
-                .attr("x1", xScale(maxX/2 + 0.5))
+                .attr("x1", xScale(100/2 + 0.5))
                 .attr("y1", 0)
-                .attr("x2", xScale(maxX/2 + 0.5))
+                .attr("x2", xScale(100/2 + 0.5))
                 .attr("y2", yScale(0));
         }
 
