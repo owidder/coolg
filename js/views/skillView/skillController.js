@@ -244,21 +244,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             gSkillEnter.append("circle")
                 .attr("class", "skill")
                 .attr("opacity", "0.1")
-                .call(mouseHandlingOnIcon);
-
-            quadrant_group.selectAll("circle.skill")
-
-            gMeasureA.append("circle")
-                .attr("r", function(d) {
-                    return radiusForSkill(d);
-                })
-                .attr("opacity", "0.1")
                 .attr("fill", function(d) {
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
                 })
-                .attr("class", "circle")
                 .call(mouseHandlingOnIcon);
+
+            quadrant_group.selectAll("circle.skill")
+                .attr("r", function(d) {
+                    return radiusForSkill(d);
+                });
 
             gMeasureA.append("title")
                 .text(function(d) {
