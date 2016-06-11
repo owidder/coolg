@@ -35,8 +35,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var svg = d3.select("#canvas")
             .append("svg")
-            .attr("width", width + 100)
-            .attr("height", height + 100)
+            .attr("width", width + 200)
+            .attr("height", height + 200)
             .attr("class", "svg");
 
         var root = svg.append("g")
