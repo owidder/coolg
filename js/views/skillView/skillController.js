@@ -278,14 +278,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
         }
 
-        var categories = [];
-        var locations = [];
+        var categories = ['*'];
+        var locations = ['*'];
 
         $scope.makeSafeForCSS = funcs.makeSafeForCSS;
 
         skills.ready.then(function() {
-            Array.prototype.push.apply(categories, skills.categories);
-            Array.prototype.push.apply(locations, skills.locations);
             $scope.switchCategory = switchCategory;
             $scope.showCategory = showCategory;
 
