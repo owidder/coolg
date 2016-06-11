@@ -44,11 +44,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         root.append("g")
             .attr("class", "axis xaxis")
-            .attr("transform", "translate(0," + (height+50) + ")");
+            .attr("transform", "translate(0," + (height+25) + ")");
 
         root.append("g")
             .attr("class", "axis yaxis")
-            .attr("transform", "translate(0, 50)");
+            .attr("transform", "translate(-25, 50)");
 
         var xLabel = root.append("text")
             .attr("x", 0)
