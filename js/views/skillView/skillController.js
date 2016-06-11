@@ -257,7 +257,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var gSkillEnter = gSkillData.enter()
                 .append("g")
-                .attr("class", "skill");
+                .attr("class", "skill")
+                .attr("transform", function (d) {
+                    return "translate(" + xScalePercent(50) + "," + yScalePercent(50) + ")";
+                });
 
             field.selectAll("g.skill")
                 .transition()
