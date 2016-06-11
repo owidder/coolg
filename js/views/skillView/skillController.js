@@ -44,7 +44,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         root.append("g")
             .attr("class", "axis xaxis")
-            .attr("transform", "translate(10," + (height - 30) + ")");
+            .attr("transform", "translate(0," + height + ")");
 
         svg.append("g")
             .attr("class", "axis yaxis")
