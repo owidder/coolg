@@ -184,7 +184,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .transition()
                 .call(yAxis);
 
-            updateGrid(maxX, maxY);
         }
 
         /* **************
