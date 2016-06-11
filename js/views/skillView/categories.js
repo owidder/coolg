@@ -14,7 +14,9 @@ bottle.factory("$categories", function(container) {
                 shortened = "Methodik";
                 break;
 
-            case 
+            case "Sonstiges (Technologie)":
+                shortened = "Technologie";
+                break;
         }
     }
 });
