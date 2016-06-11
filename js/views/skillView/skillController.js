@@ -237,13 +237,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var gSkillAll = quadrant_group.selectAll("g.skill");
 
-            gSkill
+            gSkillAll
                 .transition()
                 .attr("transform", function (d) {
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
-            var gMeasureA = gSkill.append("svg:a")
+            var gSkillAEnter = gSkillEnter.append("svg:a")
                 .attr("xlink:href", function(d) {
                     return d.url;
                 })
