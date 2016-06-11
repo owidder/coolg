@@ -291,6 +291,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         skills.ready.then(function() {
             $scope.switchCategory = switchCategory;
             $scope.showCategory = showCategory;
+            $scope.showLocation = showLocation;
 
             $scope.getColorForCategory = skills.categoryToColor;
 
