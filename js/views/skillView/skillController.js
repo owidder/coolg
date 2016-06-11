@@ -48,7 +48,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         svg.append("g")
             .attr("class", "axis yaxis")
-            .attr("transform", "translate(10, 10)");
+            .attr("transform", "translate(0, 0)");
 
         var xLabel = svg.append("text")
             .attr("x", 100)
