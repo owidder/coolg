@@ -93,7 +93,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "divider vertical");
 
         function updateGrid(maxX, maxY) {
-            /* Wenige */
             textLowerLeft.transition()
                 .attr("x", xScale(maxX/6))
                 .attr("y", yScale(maxY/6));
@@ -102,7 +101,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x", xScale(maxX/6))
                 .attr("y", yScale(maxY/6 * 5));
 
-            // Viel
             textLowerRight.transition()
                 .attr("x", xScale(maxX/6 * 5))
                 .attr("y", yScale(maxY/6));
@@ -111,13 +109,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x", xScale(maxX/6 * 5))
                 .attr("y", yScale(maxY/6 * 5));
 
-            // creating the dividers
-            quadrant_group.append("line")
+            horizontalLine.transition()
                 .attr("x1", 0)
                 .attr("y1", yScale(maxY/2))
                 .attr("x2", xScale(maxX))
-                .attr("y2", yScale(maxY/2))
-                .attr("class", "divider");
+                .attr("y2", yScale(maxY/2));
 
             verticalLine.transition()
                 .attr("x1", xScale(maxX/2))
