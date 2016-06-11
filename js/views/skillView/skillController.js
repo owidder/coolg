@@ -115,14 +115,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             horizontalLine.transition()
                 .attr("x1", 0)
-                .attr("y1", yScale(maxY/2 + 1))
+                .attr("y1", yScale(maxY/2 + 0.5))
                 .attr("x2", xScale(maxX))
-                .attr("y2", yScale(maxY/2 + 1));
+                .attr("y2", yScale(maxY/2 + 0.5));
 
             verticalLine.transition()
-                .attr("x1", xScale(maxX/2 + 1))
+                .attr("x1", xScale(maxX/2 + 0.5))
                 .attr("y1", 0)
-                .attr("x2", xScale(maxX/2 + 1))
+                .attr("x2", xScale(maxX/2 + 0.5))
                 .attr("y2", yScale(0));
         }
 
