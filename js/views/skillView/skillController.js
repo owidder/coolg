@@ -39,16 +39,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("height", height)
             .attr("class", "svg");
 
-        var all = svg.append("g")
+        var root = svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        all.append("g")
+        root.append("g")
             .attr("class", "axis xaxis")
-            .attr("transform", "translate(" + (margin.left + 10) + "," + (height - 30) + ")");
+            .attr("transform", "translate(10," + (height - 30) + ")");
 
         svg.append("g")
             .attr("class", "axis yaxis")
-            .attr("transform", "translate(" + (margin.left - 10) + "," + 10 + ")");
+            .attr("transform", "translate(10, 10)");
 
         var xLabel = svg.append("text")
             .attr("x", 100)
