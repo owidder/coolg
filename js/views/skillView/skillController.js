@@ -31,7 +31,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var width = (dimensions.screenDimensions.width - 50) * 10/12;
         var height = (dimensions.screenDimensions.height - 70);
-        var margin = {"left": 100, "bottom": 25, "right": 5};
+        var margin = {"left": 100, "bottom": 25, "right": 5, "top": 0};
 
         var svg = d3.select("#canvas")
             .append("svg")
@@ -40,7 +40,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "svg");
 
         var all = svg.append("g")
-            .attr("transform", "translate(" + margin.left + "," + height + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         all.append("g")
             .attr("class", "axis xaxis")
