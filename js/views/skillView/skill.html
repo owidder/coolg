@@ -154,7 +154,7 @@
                 <div class="col s12" ng-repeat="category in allCategories">
                     <span class="switch">
                         <input name="category" type="radio" id="cat-{{makeSafeForCSS(category)}}" ng-click="showCategory(category)"/>
-                        <label for="cat-{{makeSafeForCSS(category)}}">{{category}}</label>
+                        <label for="cat-{{makeSafeForCSS(category)}}">{{shorten(category)}}</label>
                     </span>
                 </div>
             </div>
