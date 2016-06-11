@@ -248,7 +248,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
 
             var data = skills.recalcSkills(locations, categories);
-            drawField(250, 4);
+            drawField(xMax(data), 4);
 
             var gSkillData = field.selectAll("g.skill")
                 .data(data, function (d) {
