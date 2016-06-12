@@ -27,9 +27,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function createIntersectSkillList(elementList) {
             var skillList = [];
+            var skillName;
+            var skillStr;
+            var count, meanAssess, meanDuration;
             elementList.forEach(function(svgElement) {
-                if(svgElement.tagName == "circle" && !funcs.isEmpty(svgElement.getAttribute("_skill"))) {
-                    
+                if(svgElement.tagName == "circle") {
+                    skillName = svgElement.getAttribute("_skill");
+                    if(!funcs.isEmpty(skillName)) {
+                        count = 
+                        skillStr = skillName + ": "
+                    }
+                    skillList.push()
                 }
             });
         }
