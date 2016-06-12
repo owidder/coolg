@@ -38,7 +38,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         count = svgElement.getAttribute("_count");
                         meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
                         meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
-                        skillStr = skillName + ": " +
+                        skillStr = skillName + ": " + count + " / " + meanAssess + " / " + meanDuration;
                     }
                     skillList.push()
                 }
