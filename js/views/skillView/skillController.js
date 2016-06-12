@@ -71,7 +71,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         legend.append("rect")
             .attr("fill", "grey")
             .attr("width", 100)
-            .attr("heigtht", 100)
+            .attr("height", 100)
             .attr("stroke", "black")
             .attr("opacity", 0.5);
 
