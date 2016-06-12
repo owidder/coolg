@@ -65,7 +65,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             updateLegend(skillStrList);
 
             legend
-                .attr("transform", "translate(" + x + "," + y + ")");
+                .attr("transform", "translate(" + (x+10) + "," + (y+10) + ")");
         }
 
         function switchLegend() {
