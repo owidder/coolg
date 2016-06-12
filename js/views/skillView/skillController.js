@@ -46,7 +46,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function appendLegend() {
             legend = svg.append("g")
-                .attr("class", "legend");
+                .attr("class", "legend off");
 
             legend.append("rect")
                 .attr("fill", "grey")
