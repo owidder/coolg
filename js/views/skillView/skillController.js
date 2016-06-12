@@ -22,13 +22,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return [];
         }
 
-        function setCurrentAttributes(skill) {
-            $timeout(function() {
-                currentAttributes = getAttributesForSkill(skill);
-                $scope.attributes = currentAttributes;
-            });
-        }
-
         var width = (dimensions.screenDimensions.width - 50) * 10/12;
         var height = (dimensions.screenDimensions.height - 70);
         var margin = {"left": 100, "bottom": 25, "right": 5, "top": 0};
@@ -40,7 +33,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "svg");
 
         var root = svg.append("g")
-            .attr("transform", "translate(100, 20)");
+            .attr("transform", "translate(100, 20)")
+            .on("click", function (d) {
+                console.log("click");
+            });
 
         root.append("g")
             .attr("class", "axis xaxis")
@@ -99,7 +95,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var textUpperRight = field.append("text")
             .attr("text-anchor", "middle")
-            .text("Kompetenzdichte")
+            .text("Hohe xKompetenzdichte")
             .attr("class", "quad-label upper-right")
             .attr("x", xScalePercent(100/6 * 5))
             .attr("y", yScalePercent(100/6 * 5));
@@ -238,15 +234,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * @param category
          */
         function drawSkills() {
-            function mouseHandlingOnIcon(selection) {
-                selection
-                    .on("click", function (d) {
-                        d3.select(".circle-hover").classed("circle-hover", false);
-                        d3.select(this).classed("circle-hover", true);
-                        setCurrentAttributes(d);
-                    });
-            }
-
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
@@ -277,7 +264,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
                 })
-                .call(mouseHandlingOnIcon)
                 .append("title")
                 .text(function(d) {
                     return d["Skill"];
@@ -290,11 +276,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x", 0)
                 .text(function (d) {
                     return d["Skill"];
-                })
-                .on("click", function (d) {
-                    d3.select(".circle-hover").classed("circle-hover", false);
-                    d3.select("circle.cat-" + d).classed("circle-hover", true);
-                    setCurrentAttributes(d);
                 });
 
             field.selectAll("circle.skill")
