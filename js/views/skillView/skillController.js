@@ -328,6 +328,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
                 })
+                .attr("skill", function (d) {
+                    return d["Skill"];
+                })
                 .append("title")
                 .text(function(d) {
                     return d["Skill"];
