@@ -95,7 +95,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var textUpperRight = field.append("text")
             .attr("text-anchor", "middle")
-            .text("Hohe xKompetenzdichte")
+            .text("Hohe Kompetenzdichte")
             .attr("class", "quad-label upper-right")
             .attr("x", xScalePercent(100/6 * 5))
             .attr("y", yScalePercent(100/6 * 5));
