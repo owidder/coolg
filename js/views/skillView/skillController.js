@@ -33,7 +33,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             rect.width = 10;
             rect.height = 10;
             var elementList = svgElement.getIntersectionList(rect, null);
-            if(elementList.length > 0) {
+            if(elementList.length > 10) {
                 console.log(elementList.length);
             }
             legend
