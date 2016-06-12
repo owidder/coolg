@@ -55,12 +55,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("stroke", "white")
                 .attr("opacity", 0.8);
 
-            legend.append("text")
+            var text = legend.append("text")
+                .attr("fill", "white")
+
+                text
                 .append("span")
                 .attr("x", 0)
                 .attr("dy", "1em")
-                .attr("fill", "white")
-                .text("Legende");
+                .text("Legende 1");
         }
 
         var svg = d3.select("#canvas")
