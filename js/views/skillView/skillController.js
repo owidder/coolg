@@ -56,6 +56,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("opacity", 0.8);
 
             legend.append("text")
+                .append("span")
                 .attr("x", 10)
                 .attr("y", 12)
                 .attr("fill", "white")
