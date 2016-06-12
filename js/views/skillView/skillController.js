@@ -30,7 +30,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var rect = svgElement.createSVGRect();
             rect.x = x-5;
             rect.y = y-5;
-            
+            rect.width = 10;
+            rect.height = 10;
             var elementList = svgElement.getIntersectionList()
             legend
                 .attr("transform", "translate(" + x + "," + y + ")");
