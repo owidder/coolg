@@ -361,7 +361,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Skill"];
                 });
 
-            field.selectAll("g.skill").selectAll("circle");
+            field.selectAll("g.skill").select("circle");
 
             var gSkillEnter = gSkillData.enter()
                 .append("g")
