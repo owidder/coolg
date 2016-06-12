@@ -69,13 +69,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function switchLegend() {
             if(svg.select("g.legend.on").size() > 0) {
-                legend.classed("on", false);
-                legend.classed("off", true);
+                hideLegend();
             }
             else {
-                legend.classed("off", false);
-                legend.classed("on", true);
+                showLegend();
             }
+        }
+
+        function hideLegend() {
+            legend.classed("on", false);
+            legend.classed("off", true);
+        }
+
+        function showLegend() {
+            legend.classed("off", false);
+            legend.classed("on", true);
         }
 
         var legend, legendText, legendRect;
