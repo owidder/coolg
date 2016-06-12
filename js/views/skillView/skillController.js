@@ -98,7 +98,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "legend off");
 
             legendRect = legend.append("rect")
-                .attr("fill", "grey")
+                .attr("fill", "#ff00ff")
                 .attr("width", 100)
                 .attr("height", 100)
                 .attr("stroke", "white")
