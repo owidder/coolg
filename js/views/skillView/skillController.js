@@ -384,18 +384,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("fill", function(d) {
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
-                })
-                .attr("_skill", function (d) {
-                    return d["Skill"];
-                })
-                .attr("_count", function(d) {
-                    return d["Anzahl Mitarbeiter"];
-                })
-                .attr("_ma", function (d) {
-                    return d["Mittlere Bewertung"];
-                })
-                .attr("_md", function(d) {
-                    return d["Mittlere Skilldauer"];
                 });
 
             gSkillEnterG.append("text")
@@ -410,6 +398,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             field.selectAll("circle.skill")
                 .attr("r", function(d) {
                     return radiusForSkill(d);
+                })
+                .attr("_skill", function (d) {
+                    return d["Skill"];
+                })
+                .attr("_count", function(d) {
+                    return d["Anzahl Mitarbeiter"];
+                })
+                .attr("_ma", function (d) {
+                    return d["Mittlere Bewertung"];
+                })
+                .attr("_md", function(d) {
+                    return d["Mittlere Skilldauer"];
                 });
 
             gSkillData.exit().remove();
