@@ -112,7 +112,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("height", (skillStrList.length + 1) + "em");
 
             var legendData = legendText.selectAll(".textline")
-                .data(skillStrList)
+                .data(skillStrList);
 
             legendData.enter()
                 .append("tspan")
@@ -126,6 +126,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             legendData.exit().remove();
+
+            if(skillStrList.length == 0) {
+                hideLegend();
+            }
+            else {
+                showLegend();
+            }
         }
 
         var svg = d3.select("#canvas")
