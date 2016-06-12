@@ -111,9 +111,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             legendRect.transition()
                 .attr("height", (skillStrList.length + 1) + "em");
 
-            legendText.selectAll(".textline")
+            var legendData = legendText.selectAll(".textline")
                 .data(skillStrList)
-                .enter()
+
+            legendData.enter()
                 .append("tspan")
                 .attr("class", "textline")
                 .attr("x", "0.1em")
