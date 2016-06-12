@@ -32,7 +32,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("height", height + 300)
             .attr("class", "svg")
             .on("click", function () {
-                console.log("click:" + d3.mouse(this));
+                var evt = d3.mouse(this);
+                console.log("click:" + evt);
             });
 
         var root = svg.append("g")
