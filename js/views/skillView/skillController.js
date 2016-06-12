@@ -105,18 +105,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendText = legend.append("text")
                 .attr("fill", "white");
-
-            text
-                .append("tspan")
-                .attr("x", "0.1em")
-                .attr("dy", "1em")
-                .text("Legende 1");
-
-            text
-                .append("tspan")
-                .attr("x", "0.1em")
-                .attr("dy", "1em")
-                .text("Legende 2");
         }
 
         function updateLegend(skillStrList) {
