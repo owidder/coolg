@@ -65,6 +65,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var field = root.append("g")
             .attr("transform", "translate(0, 0)");
 
+        var legend = svg.append("g")
+            .attr("class", "legend")
+            .attr("fill", "grey")
+            .attr
+
         var xScale, yScale;
         var xScalePercent = d3.scale.linear()
             .domain([0, 100])
