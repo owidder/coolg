@@ -99,6 +99,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendRect = legend.append("rect")
                 .attr("fill", "grey")
+                .attr("font-size", "0.8em")
                 .attr("width", 100)
                 .attr("height", 100)
                 .attr("stroke", "white")
