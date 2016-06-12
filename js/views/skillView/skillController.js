@@ -53,7 +53,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("width", 100)
                 .attr("height", 100)
                 .attr("stroke", "black")
-                .attr("opacity", 0.5);
+                .attr("opacity", 0.8);
 
             legend.append("text")
                 .attr("x", 10)
