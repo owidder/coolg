@@ -32,7 +32,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             rect.y = y-5;
             rect.width = 10;
             rect.height = 10;
-            var elementList = svgElement.getIntersectionList(rect);
+            var elementList = svgElement.getIntersectionList(rect, null);
             legend
                 .attr("transform", "translate(" + x + "," + y + ")");
         }
