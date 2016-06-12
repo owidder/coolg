@@ -328,13 +328,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
                     return color;
                 })
-                .attr("skill", function (d) {
+                .attr("_skill", function (d) {
                     return d["Skill"];
                 })
-                .attr("count", function(d) {
+                .attr("_count", function(d) {
                     return d["Anzahl Mitarbeiter"];
                 })
-                .attr("")
+                .attr("_ma", function (d) {
+                    return d["Mittlere Bewertung"];
+                })
+                .attr("_md", function(d) {
+                    
+                })
                 .append("title")
                 .text(function(d) {
                     return d["Skill"];
