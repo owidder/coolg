@@ -76,7 +76,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .append("svg")
             .attr("width", width + 300)
             .attr("height", height + 300)
-            .attr("class", "svg")
+            .attr("class", "svg canvas")
             .on("click", function () {
                 switchLegend();
             })
@@ -85,7 +85,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 moveLegend(evt[0], evt[1]);
             });
 
-        var svgElement =? 
+        var svgElement = document.querySelector("svg.canvas");
 
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
