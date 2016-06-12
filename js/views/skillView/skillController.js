@@ -58,6 +58,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             legend.append("text")
                 .attr("x", 10)
                 .attr("y", 10)
+                .attr("fill", "white")
                 .text("Legende");
         }
 
