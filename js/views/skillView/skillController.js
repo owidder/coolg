@@ -296,7 +296,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var gSkillEnter = gSkillData.enter()
                 .append("g")
                 .attr("class", function(d) {
-                    return "skill" + funcs.makeSafeForCSS(d["Skill"]);
+                    return "skill " + funcs.makeSafeForCSS(d["Skill"]);
                 })
                 .attr("transform", function (d) {
                     return "translate(" + xScalePercent(50) + "," + yScalePercent(50) + ")";
