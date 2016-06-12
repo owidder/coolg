@@ -111,7 +111,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var maxLength = funcs.getLongestString(skillStrList);
 
             legendRect.transition()
-                .attr("height", (skillStrList.length + 5)*20 + "em");
+                .attr("height", (skillStrList.length + 2) + "em")
                 .attr("width", (maxLength + 1)*(2/3) + "em");
 
             var legendData = legendText.selectAll(".textline")
