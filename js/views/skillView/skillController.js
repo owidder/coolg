@@ -34,7 +34,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function switchLegend() {
             var legendOn = svg.select("g.legend.on");
             if(funcs.isDefined(legendOn)) {
-                legendOn.c
+                legendOn.classed("on", false);
             }
         }
 
