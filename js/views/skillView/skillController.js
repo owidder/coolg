@@ -39,7 +39,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "svg")
             .on("mousemove", function () {
                 var evt = d3.mouse(this);
-                console.log("click:" + evt);
+                moveLegend(evt[0], evt[1]);
             });
 
         var root = svg.append("g")
