@@ -111,7 +111,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var maxLength = funcs.getLongestString(skillStrList);
 
             legendRect.transition()
-                .attr("height", (skillStrList.length + 2) + "em");
+                .attr("height", (skillStrList.length + 2)*10);
 
             legendRect.transition()
                 .attr("width", (maxLength + 1)*(2/3) + "em");
@@ -121,7 +121,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendData.enter()
                 .append("tspan")
-                .attr("font-size", "0.8em")
+                .attr("font-size", "10px")
                 .attr("class", "textline")
                 .attr("x", "0.3em")
                 .attr("dy", "1em");
