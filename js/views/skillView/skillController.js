@@ -26,6 +26,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var height = (dimensions.screenDimensions.height - 70);
         var margin = {"left": 100, "bottom": 25, "right": 5, "top": 0};
 
+        function moveLegend(x, y) {
+            legend
+                .transition()
+                .attr("transform", "translate(" + x + "," + y + ")");
+        }
+
         var svg = d3.select("#canvas")
             .append("svg")
             .attr("width", width + 300)
