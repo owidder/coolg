@@ -31,6 +31,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("transform", "translate(" + x + "," + y + ")");
         }
 
+        function switchLegend() {
+            var legendOn = svg.select("g.legend.on");
+            if(funcs.isDefined(legendOn)) {
+                legendOn.c
+            }
+        }
+
         var svg = d3.select("#canvas")
             .append("svg")
             .attr("width", width + 300)
