@@ -27,7 +27,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var margin = {"left": 100, "bottom": 25, "right": 5, "top": 0};
 
         function moveLegend(x, y) {
-            var rect = svgElement.cre
+            var rect = svgElement.createSVGRect();
             var elementList = svgElement.getIntersectionList()
             legend
                 .attr("transform", "translate(" + x + "," + y + ")");
