@@ -117,7 +117,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendData.enter()
                 .append("tspan")
-                .attr("font-size", "0.8em")
+                .attr("font-size", "0.7em")
                 .attr("class", "textline")
                 .attr("x", "0.1em")
                 .attr("dy", "1em");
