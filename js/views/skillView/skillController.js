@@ -124,6 +124,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .text(function (d) {
                     return d;
                 });
+
+            legendData.exit().remove();
         }
 
         var svg = d3.select("#canvas")
