@@ -334,6 +334,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("count", function(d) {
                     return d["Anzahl Mitarbeiter"];
                 })
+                .attr("")
                 .append("title")
                 .text(function(d) {
                     return d["Skill"];
