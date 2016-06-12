@@ -305,7 +305,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
     }
 
     function getLongestString(arrayOfStrings) {
-        
+        var max = 0;
+        arrayOfStrings.forEach(function(string) {
+            if(!isEmpty(string) && string.length > max) {
+                max = string.length;
+            }
+        });
+
+        return max;
     }
 
     // from: http://stackoverflow.com/questions/7627000/javascript-convert-string-to-safe-class-name-for-css
