@@ -28,7 +28,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function moveLegend(x, y) {
             legend
-                .transition()
                 .attr("transform", "translate(" + x + "," + y + ")");
         }
 
