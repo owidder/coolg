@@ -47,13 +47,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return skillList;
         }
 
-        function moveLegend(x, y) {
+        function getIntersectList(x, y) {
             var rect = svgElement.createSVGRect();
             rect.x = x-5;
             rect.y = y-5;
             rect.width = 10;
             rect.height = 10;
             var elementList = svgElement.getIntersectionList(rect, null);
+
+            return elementList;
+        }
+
+        function moveLegend(x, y) {
             if(elementList.length > 10) {
                 console.log(elementList.length);
             }
