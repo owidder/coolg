@@ -304,6 +304,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         return destination;
     }
 
+    function getLongestString(arrayOfStrings) {
+        
+    }
+
     // from: http://stackoverflow.com/questions/7627000/javascript-convert-string-to-safe-class-name-for-css
     function makeSafeForCSS(name) {
         return name.toLowerCase().replace(/[^a-z0-9]/g, function(s) {
