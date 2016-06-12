@@ -52,12 +52,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("fill", "grey")
                 .attr("width", 100)
                 .attr("height", 100)
-                .attr("stroke", "black")
+                .attr("stroke", "white")
                 .attr("opacity", 0.8);
 
             legend.append("text")
                 .attr("x", 10)
-                .attr("y", 10)
+                .attr("y", 12)
                 .attr("fill", "white")
                 .text("Legende");
         }
