@@ -60,13 +60,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             text
                 .append("tspan")
-                .attr("x", 0)
+                .attr("x", "0.1em")
                 .attr("dy", "1em")
                 .text("Legende 1");
 
             text
                 .append("tspan")
-                .attr("x", 0)
+                .attr("x", "0.1em")
                 .attr("dy", "1em")
                 .text("Legende 2");
         }
