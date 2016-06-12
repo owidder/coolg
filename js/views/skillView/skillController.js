@@ -108,7 +108,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function updateLegend(skillStrList) {
-
+            legendRect.transition()
+                .attr("height", (skillStrList.length + 1) + "em");
 
             legendText.selectAll(".textline")
                 .data(skillStrList)
