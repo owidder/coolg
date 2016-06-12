@@ -59,10 +59,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("fill", "white")
 
                 text
+                    .append("span")
+                    .attr("x", 0)
+                    .attr("dy", "1em")
+                    .text("Legende 1");
+
+            text
                 .append("span")
                 .attr("x", 0)
                 .attr("dy", "1em")
-                .text("Legende 1");
+                .text("Legende 2");
         }
 
         var svg = d3.select("#canvas")
