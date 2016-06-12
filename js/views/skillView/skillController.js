@@ -31,7 +31,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("width", width + 300)
             .attr("height", height + 300)
             .attr("class", "svg")
-            .on("click", function (d) {
+            .on("click", function (e) {
                 console.log("click");
             });
 
