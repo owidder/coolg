@@ -11,7 +11,7 @@ angular.module(com_geekAndPoke_coolg.moduleName)
                 templateUrl: 'js/views/skillView/skillTest.html',
                 controller: com_geekAndPoke_coolg.SKILL_CONTROLLER_TEST
             })
-            .when('/skill', {
+            .when('/s', {
                 templateUrl: 'js/views/skillView/skill.html',
                 controller: com_geekAndPoke_coolg.SKILL_CONTROLLER,
                 reloadOnSearch: false
