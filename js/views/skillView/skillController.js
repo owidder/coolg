@@ -43,6 +43,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     }
                 }
             });
+
+            return skillList;
         }
 
         function moveLegend(x, y) {
