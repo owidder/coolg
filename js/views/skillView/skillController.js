@@ -33,10 +33,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "svg");
 
         var root = svg.append("g")
-            .attr("transform", "translate(100, 20)")
-            .on("click", function (d) {
-                console.log("click");
-            });
+            .attr("transform", "translate(100, 20)");
 
         root.append("g")
             .attr("class", "axis xaxis")
@@ -62,7 +59,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
         var field = root.append("g")
-            .attr("transform", "translate(0, 0)");
+            .attr("transform", "translate(0, 0)")
+            .on("click", function (d) {
+                console.log("click");
+            });
 
         var xScale, yScale;
         var xScalePercent = d3.scale.linear()
