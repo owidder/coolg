@@ -36,8 +36,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     skillName = svgElement.getAttribute("_skill");
                     if(!funcs.isEmpty(skillName)) {
                         count = svgElement.getAttribute("_count");
-                        meanAssess = svgElement.getAttribute("_ma");
-                        meanDuration = svgElement.getAttribute("_md");
+                        meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
+                        meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
                         skillStr = skillName + ": " +
                     }
                     skillList.push()
