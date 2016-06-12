@@ -68,12 +68,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchLegend() {
-            if(svg.select("g.legend.on").size() > 0) {
+            if() {
                 hideLegend();
             }
             else {
                 showLegend();
             }
+        }
+
+        function isLegendShown() {
+            return svg.select("g.legend.on").size() > 0;
         }
 
         function hideLegend() {
