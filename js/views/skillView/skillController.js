@@ -125,7 +125,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "textline")
                 .attr("x", "0.3em")
                 .attr("y", function (d, i) {
-                    return i*10;
+                    return (i+1)*10;
                 });
 
             legendText.selectAll(".textline")
