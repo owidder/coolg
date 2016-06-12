@@ -36,6 +36,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 legend.classed("on", false);
                 legend.classed("off", true);
             }
+            else {
+                legend.classed("off", false);
+                legend.classed("on", true);
+            }
         }
 
         var svg = d3.select("#canvas")
