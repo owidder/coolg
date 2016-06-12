@@ -338,7 +338,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Mittlere Bewertung"];
                 })
                 .attr("_md", function(d) {
-                    
+                    return d[""];
                 })
                 .append("title")
                 .text(function(d) {
