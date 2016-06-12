@@ -340,9 +340,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_md", function(d) {
                     return d["Mittlere Skilldauer"];
                 })
-                .attr("_cat", function(d) {
-                    return d["Skill-Unterkategorie"];
-                })
                 .append("title")
                 .text(function(d) {
                     return d["Skill"];
