@@ -76,6 +76,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("opacity", 0.5);
 
         legend.append("text")
+            .attr("x", 10)
+            .attr("y", 10)
             .text("Legende");
 
         var xScale, yScale;
