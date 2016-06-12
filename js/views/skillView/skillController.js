@@ -70,7 +70,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         legend.append("rect")
             .attr("fill", "grey")
-            .attr
+            .attr("width", 100)
+            .attr("heigtht", 100)
+            .attr("stroke", "black")
+            .attr("opacity", 0.5);
+
+        legend.append("text")
+            .attr("text", "Legende");
 
         var xScale, yScale;
         var xScalePercent = d3.scale.linear()
