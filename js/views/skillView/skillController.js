@@ -78,13 +78,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
-        var legend, legendText;
+        var legend, legendText, legendRect;
 
         function appendLegend() {
             legend = svg.append("g")
                 .attr("class", "legend off");
 
-            legend.append("rect")
+            legendRect = legend.append("rect")
                 .attr("fill", "grey")
                 .attr("width", 100)
                 .attr("height", 100)
@@ -108,6 +108,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function updateLegend(skillStrList) {
+
+
             legendText.selectAll(".textline")
                 .data(skillStrList)
                 .enter()
@@ -119,7 +121,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             legendText.selectAll(".textline")
                 .text(function (d) {
                     return d;
-                })
+                });
         }
 
         var svg = d3.select("#canvas")
