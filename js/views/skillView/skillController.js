@@ -61,7 +61,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function moveLegend(x, y) {
             var elements = getIntersectList(x, y);
             var skillStrList = createIntersectSkillList(elements);
-            console.log(skillStrList);
             updateLegend(skillStrList);
 
             legend
