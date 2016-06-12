@@ -114,6 +114,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             legendRect.transition()
                 .attr("height", (skillStrList.length + 1) + "em");
 
+            legendRect.transition()
+                .attr("width", (maxLength + 1) + "em");
+
             var legendData = legendText.selectAll(".textline")
                 .data(skillStrList);
 
