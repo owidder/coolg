@@ -66,7 +66,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", "translate(0, 0)");
 
         var legend = svg.append("g")
-            .attr("class", "legend")
+            .attr("class", "legend");
+
+        legend.append("rect")
             .attr("fill", "grey")
             .attr
 
