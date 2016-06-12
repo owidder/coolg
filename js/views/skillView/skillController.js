@@ -31,7 +31,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var skillName;
             var skillStr;
             var count, meanAssess, meanDuration;
-            elementList.forEach(function(svgElement) {
+            var i, svgElement;
+            for(i = 0; i < elementList.length; i++) {
+                svgElement = elementList[i];
                 if(svgElement.tagName == "circle") {
                     skillName = svgElement.getAttribute("_skill");
                     if(!funcs.isEmpty(skillName)) {
@@ -42,8 +44,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         skillList.push(skillStr)
                     }
                 }
-            });
-
+            }
+            
             return skillList;
         }
 
