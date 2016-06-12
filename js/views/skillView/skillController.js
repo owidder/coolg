@@ -108,15 +108,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function updateLegend(skillStrList) {
-            var textData = legendText.selectAll(".textline")
-                .data(skillStrList);
-
-            textData.enter()
+            legendText.selectAll(".textline")
+                .data(skillStrList)
+                .enter()
                 .append("tspan")
+                .attr("class", "textline")
                 .attr("x", "0.1em")
                 .attr("dy", "1em");
 
-            
+            legendText.selectAll(".textline")
         }
 
         var svg = d3.select("#canvas")
