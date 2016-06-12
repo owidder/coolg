@@ -34,7 +34,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 if(svgElement.tagName == "circle") {
                     skillName = svgElement.getAttribute("_skill");
                     if(!funcs.isEmpty(skillName)) {
-                        count = 
+                        count = svgElement.getAttribute("_count");
+                        meanAssess = 
                         skillStr = skillName + ": "
                     }
                     skillList.push()
