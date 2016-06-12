@@ -124,7 +124,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("font-size", "10")
                 .attr("class", "textline")
                 .attr("x", "0.3em")
-                .attr("dy", "1em");
+                .attr("y", function (d, i) {
+                    return i*10;
+                });
 
             legendText.selectAll(".textline")
                 .text(function (d) {
