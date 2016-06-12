@@ -58,11 +58,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var text = legend.append("text")
                 .attr("fill", "white")
 
-                text
-                    .append("span")
-                    .attr("x", 0)
-                    .attr("dy", "1em")
-                    .text("Legende 1");
+            text
+                .append("span")
+                .attr("x", 0)
+                .attr("dy", "1em")
+                .text("Legende 1");
 
             text
                 .append("span")
