@@ -117,6 +117,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("dy", "1em");
 
             legendText.selectAll(".textline")
+                .text(function (d) {
+                    return d;
+                })
         }
 
         var svg = d3.select("#canvas")
