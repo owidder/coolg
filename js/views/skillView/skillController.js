@@ -42,6 +42,25 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        var legend;
+
+        function appendLegend() {
+            legend = svg.append("g")
+                .attr("class", "legend");
+
+            legend.append("rect")
+                .attr("fill", "grey")
+                .attr("width", 100)
+                .attr("height", 100)
+                .attr("stroke", "black")
+                .attr("opacity", 0.5);
+
+            legend.append("text")
+                .attr("x", 10)
+                .attr("y", 10)
+                .text("Legende");
+        }
+
         var svg = d3.select("#canvas")
             .append("svg")
             .attr("width", width + 300)
@@ -80,21 +99,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var field = root.append("g")
             .attr("transform", "translate(0, 0)");
-
-        var legend = svg.append("g")
-            .attr("class", "legend");
-
-        legend.append("rect")
-            .attr("fill", "grey")
-            .attr("width", 100)
-            .attr("height", 100)
-            .attr("stroke", "black")
-            .attr("opacity", 0.5);
-
-        legend.append("text")
-            .attr("x", 10)
-            .attr("y", 10)
-            .text("Legende");
 
         var xScale, yScale;
         var xScalePercent = d3.scale.linear()
