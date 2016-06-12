@@ -7,6 +7,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
         var $categories = bottle.container.$categories;
+        var mathUtil = bottle.container.mathUtil;
 
         var currentAttributes = [];
 
@@ -35,8 +36,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     skillName = svgElement.getAttribute("_skill");
                     if(!funcs.isEmpty(skillName)) {
                         count = svgElement.getAttribute("_count");
-                        meanAssess = 
-                        skillStr = skillName + ": "
+                        meanAssess = svgElement.getAttribute("_ma");
+                        meanDuration = svgElement.getAttribute("_md");
+                        skillStr = skillName + ": " +
                     }
                     skillList.push()
                 }
