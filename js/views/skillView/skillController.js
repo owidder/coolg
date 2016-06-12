@@ -32,7 +32,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchLegend() {
-            if(funcs.isDefined(svg.select("g.legend.on"))) {
+            if(svg.select("g.legend.on").size() > 0) {
                 legend.classed("on", false);
                 legend.classed("off", true);
             }
