@@ -24,7 +24,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var width = (dimensions.screenDimensions.width - 50) * 10/12;
         var height = (dimensions.screenDimensions.height - 70);
-        var margin = {"left": 100, "bottom": 25, "right": 5, "top": 0};
+
+        function createIntersectSkillList(elementList) {
+            var skillList = [];
+            elementList.forEach(function(svgElement) {
+                
+            });
+        }
 
         function moveLegend(x, y) {
             var rect = svgElement.createSVGRect();
