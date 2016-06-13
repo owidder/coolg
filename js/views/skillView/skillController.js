@@ -355,7 +355,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function categoryFromSkill(d) {
-            return d["values_Skill-Unterkategorie"][0]
+            var cat = "?";
+            var categoryValues = d["values_Skill-Unterkategorie"];
+            if(!funcs.isEmpty(categoryValues)) {
+                cat = categoryValues[0]["Skill-Unterkategorie"];
+            }
+
+            return cat;
         }
 
         /**
