@@ -439,9 +439,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             gSkillData.exit().remove();
         }
 
-        function skillNameFilterChange() {
+        function skillNameFilterChanged() {
             drawSkills(input.skillNameFilter);
         }
+
+        $scope.skillNameFilterChanged = skillNameFilterChanged;
 
         var input = {};
 
