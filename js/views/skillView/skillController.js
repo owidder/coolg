@@ -441,6 +441,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var input = {};
 
+        $scope.input = input;
+
         var categories = ['*'];
         var locations = ['*'];
 
