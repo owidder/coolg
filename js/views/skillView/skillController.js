@@ -369,12 +369,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills(skillNameFilter) {
+        function drawSkills() {
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
             var filteredData = data.filter(function(d) {
-                return funcs.isEmpty(skillNameFilter) || d["Skill"].toLowerCase().indexOf(skillNameFilter) > -1;
+                return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
             var gSkillData = field.selectAll("g.skill")
@@ -441,7 +441,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function skillNameFilterChanged() {
-            drawSkills(input.skillNameFilter);
+            drawSkills();
         }
 
         $scope.skillNameFilterChanged = skillNameFilterChanged;
