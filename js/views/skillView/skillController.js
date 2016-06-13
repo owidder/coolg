@@ -378,7 +378,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
 
             var gSkillData = field.selectAll("g.skill")
-                .data(data, function (d) {
+                .data(filteredData, function (d) {
                     return d["Skill"];
                 });
 
