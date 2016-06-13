@@ -401,7 +401,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "skill")
                 .attr("opacity", "0.5")
                 .attr("fill", function(d) {
-                    var color = skills.categoryToColor(skills.skillToCategory(d["Skill"]));
+                    var color = skills.categoryToColor(categoryFromSkill(d));
                     return color;
                 });
 
