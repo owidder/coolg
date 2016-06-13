@@ -281,7 +281,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function drawField(maxX, maxY) {
 
             xScale = d3.scale.linear()
-                .domain([1, maxX])
+                .domain([0, maxX])
                 .range([0, width]);
 
             var xAxis = d3.svg.axis()
@@ -290,7 +290,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .orient("bottom");
 
             yScale = d3.scale.linear()
-                .domain([1, maxY])
+                .domain([0, maxY])
                 .range([height, 0]);
 
             var yAxis = d3.svg.axis()
