@@ -369,7 +369,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          * draw the matrix and circles
          * @param category
          */
-        function drawSkills() {
+        function drawSkills(skillNameFilter) {
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
