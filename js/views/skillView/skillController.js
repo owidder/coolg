@@ -381,10 +381,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             // propagate downwards
             field.selectAll("g.skill").select("circle");
 
+            skillNameFilter =
+
             var gSkillEnter = gSkillData.enter()
                 .append("g")
                 .filter(function(d) {
-                    return funcs.isEmpty(skillNameFilter) || d["Skill"].indexOf(skillNameFilter) > -1;
+                    return funcs.isEmpty(skillNameFilter) || d["Skill"]. indexOf(skillNameFilter) > -1;
                 })
                 .attr("class", function(d) {
                     return "skill " + funcs.makeSafeForCSS(d["Skill"]);
