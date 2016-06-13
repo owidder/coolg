@@ -69,12 +69,7 @@ bottle.factory("Skills", function(container) {
             });
         }
 
-        function skillToCategory(skill) {
-            return skillToCategoryMap[skill];
-        }
-
         me.recalcSkills = recalcSkills;
-        me.skillToCategory = skillToCategory;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
