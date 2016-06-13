@@ -439,6 +439,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             gSkillData.exit().remove();
         }
 
+        var input = {};
+
         var categories = ['*'];
         var locations = ['*'];
 
