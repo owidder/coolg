@@ -63,19 +63,12 @@ bottle.factory("Skills", function(container) {
             return aggregation;
         }
 
-        function fillSkillToCategoryMap() {
-            rawData.forEach(function(skill) {
-                skillToCategoryMap[skill["Skill"]] = skill["Skill-Unterkategorie"];
-            });
-        }
-
         me.recalcSkills = recalcSkills;
 
         dl.tsv("rsrc/skills.txt", undefined, function (err, data) {
             rawData = data;
             me.categories = extractCategories(data);
             me.locations = extractLocations(data);
-            fillSkillToCategoryMap();
             promise.resolve();
         });
     }
