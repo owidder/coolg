@@ -45,7 +45,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     }
                 }
             }
-            
+
             return skillList;
         }
 
@@ -352,6 +352,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function yMax(data) {
             return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+        }
+
+        function categoryFromSkill(d) {
+            return d[""]
         }
 
         /**
