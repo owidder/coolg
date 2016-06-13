@@ -355,7 +355,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function categoryFromSkill(d) {
-            return d[""]
+            return d["values_Skill-Unterkategorie"][0]
         }
 
         /**
