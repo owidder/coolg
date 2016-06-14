@@ -4,496 +4,500 @@ com_geekAndPoke_coolg.SKILL_CONTROLLER = "skillController";
 
 angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.SKILL_CONTROLLER,
     function ($scope, $routeParams, $location, $timeout, $q, dimensions, funcs) {
-        var Skills = bottle.container.Skills;
-        var dl = bottle.container.$datalib;
-        var $categories = bottle.container.$categories;
-        var mathUtil = bottle.container.mathUtil;
 
-        var currentAttributes = [];
+        $timeout(function () {
+            var Skills = bottle.container.Skills;
+            var dl = bottle.container.$datalib;
+            var $categories = bottle.container.$categories;
+            var mathUtil = bottle.container.mathUtil;
 
-        var skills = new Skills();
+            var currentAttributes = [];
 
-        function clearCurrentAttributes() {
-            $timeout(function() {
-                currentAttributes = [];
-            });
-        }
+            var skills = new Skills();
 
-        function getAttributesForSkill(skill) {
-            return [];
-        }
+            function clearCurrentAttributes() {
+                $timeout(function() {
+                    currentAttributes = [];
+                });
+            }
 
-        var width = (dimensions.screenDimensions.width - 50) * 10/12;
-        var height = (dimensions.screenDimensions.height - 70);
+            function getAttributesForSkill(skill) {
+                return [];
+            }
 
-        function createIntersectSkillList(elementList) {
-            var skillList = [];
-            var skillName;
-            var skillStr;
-            var count, meanAssess, meanDuration, category;
-            var i, svgElement;
-            for(i = 0; i < elementList.length; i++) {
-                svgElement = elementList[i];
-                if(svgElement.tagName == "circle") {
-                    skillName = svgElement.getAttribute("_skill");
-                    if(!funcs.isEmpty(skillName)) {
-                        count = svgElement.getAttribute("_count");
-                        meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
-                        meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
-                        category = svgElement.getAttribute("_cat");
-                        skillStr = skillName + " [" + category + "] - " + count + " / " + meanAssess + " / " + meanDuration;
-                        skillList.push(skillStr)
+            var width = (dimensions.screenDimensions.width - 50) * 10/12;
+            var height = (dimensions.screenDimensions.height - 70);
+
+            function createIntersectSkillList(elementList) {
+                var skillList = [];
+                var skillName;
+                var skillStr;
+                var count, meanAssess, meanDuration, category;
+                var i, svgElement;
+                for(i = 0; i < elementList.length; i++) {
+                    svgElement = elementList[i];
+                    if(svgElement.tagName == "circle") {
+                        skillName = svgElement.getAttribute("_skill");
+                        if(!funcs.isEmpty(skillName)) {
+                            count = svgElement.getAttribute("_count");
+                            meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
+                            meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
+                            category = svgElement.getAttribute("_cat");
+                            skillStr = skillName + " [" + category + "] - " + count + " / " + meanAssess + " / " + meanDuration;
+                            skillList.push(skillStr)
+                        }
                     }
                 }
+
+                return skillList;
             }
 
-            return skillList;
-        }
+            function getSvgBoundingRect() {
+                var boundingRect = {
+                    top: 0,
+                    left:0,
+                    bottom: 0,
+                    right: 0
+                };
+                var svgElement = document.querySelector("svg.canvas");
+                if(funcs.isDefined(svgElement)) {
+                    funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect);
+                }
 
-        function getSvgBoundingRect() {
-            var boundingRect = {
-                top: 0,
-                left:0,
-                bottom: 0,
-                right: 0
-            };
-            var svgElement = document.querySelector("svg.canvas");
-            if(funcs.isDefined(svgElement)) {
-                funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect);
+                return boundingRect;
             }
 
-            return boundingRect;
-        }
+            function getNearbySkillCircles(x, y) {
+                var svgBoundingRect = getSvgBoundingRect();
+                var xAdapted = x + svgBoundingRect.left;
+                var yAdapted = y + svgBoundingRect.top;
+                var circles = document.querySelectorAll("circle.skill");
+                var i, circle, boundingRect;
+                var nearbySkillCircles = [];
+                for(i = 0; i < circles.length; i++) {
+                    circle = circles[i];
+                    boundingRect = circle.getBoundingClientRect();
+                    if(xAdapted > boundingRect.left && xAdapted < boundingRect.right && yAdapted > boundingRect.top && yAdapted < boundingRect.bottom) {
+                        nearbySkillCircles.push(circle);
+                    }
+                }
 
-        function getNearbySkillCircles(x, y) {
-            var svgBoundingRect = getSvgBoundingRect();
-            var xAdapted = x + svgBoundingRect.left;
-            var yAdapted = y + svgBoundingRect.top;
-            var circles = document.querySelectorAll("circle.skill");
-            var i, circle, boundingRect;
-            var nearbySkillCircles = [];
-            for(i = 0; i < circles.length; i++) {
-                circle = circles[i];
-                boundingRect = circle.getBoundingClientRect();
-                if(xAdapted > boundingRect.left && xAdapted < boundingRect.right && yAdapted > boundingRect.top && yAdapted < boundingRect.bottom) {
-                    nearbySkillCircles.push(circle);
+                return nearbySkillCircles;
+            }
+
+            function mouseMoved(x, y) {
+                var nearbySkillCircles = getNearbySkillCircles(x, y);
+                var skillStrList = createIntersectSkillList(nearbySkillCircles);
+                updateLegend(skillStrList);
+
+                legend
+                    .attr("transform", "translate(" + (x+10) + "," + (y+10) + ")");
+            }
+
+            function switchLegend() {
+                if(isLegendShown()) {
+                    hideLegend();
+                }
+                else {
+                    showLegend();
                 }
             }
 
-            return nearbySkillCircles;
-        }
-
-        function mouseMoved(x, y) {
-            var nearbySkillCircles = getNearbySkillCircles(x, y);
-            var skillStrList = createIntersectSkillList(nearbySkillCircles);
-            updateLegend(skillStrList);
-
-            legend
-                .attr("transform", "translate(" + (x+10) + "," + (y+10) + ")");
-        }
-
-        function switchLegend() {
-            if(isLegendShown()) {
-                hideLegend();
+            function isLegendShown() {
+                return svg.select("g.legend.on").size() > 0;
             }
-            else {
-                showLegend();
+
+            function hideLegend() {
+                legend.classed("on", false);
+                legend.classed("off", true);
             }
-        }
 
-        function isLegendShown() {
-            return svg.select("g.legend.on").size() > 0;
-        }
+            function showLegend() {
+                legend.classed("off", false);
+                legend.classed("on", true);
+            }
 
-        function hideLegend() {
-            legend.classed("on", false);
-            legend.classed("off", true);
-        }
+            var legend, legendText, legendRect;
 
-        function showLegend() {
-            legend.classed("off", false);
-            legend.classed("on", true);
-        }
+            function appendLegend() {
+                legend = svg.append("g")
+                    .attr("class", "legend off");
 
-        var legend, legendText, legendRect;
+                legendRect = legend.append("rect")
+                    .attr("fill", "#ff00ff")
+                    .attr("width", 100)
+                    .attr("height", 100)
+                    .attr("stroke", "white")
+                    .attr("opacity", 0.8);
 
-        function appendLegend() {
-            legend = svg.append("g")
-                .attr("class", "legend off");
+                legendText = legend.append("text")
+                    .attr("fill", "white");
+            }
 
-            legendRect = legend.append("rect")
-                .attr("fill", "#ff00ff")
-                .attr("width", 100)
-                .attr("height", 100)
-                .attr("stroke", "white")
-                .attr("opacity", 0.8);
+            function updateLegend(skillStrList) {
+                var maxLength = funcs.getLongestString(skillStrList);
 
-            legendText = legend.append("text")
-                .attr("fill", "white");
-        }
+                legendRect.transition()
+                    .attr("height", (skillStrList.length + 2) + "em")
+                    .attr("width", (maxLength + 1)*(2/3) + "em");
 
-        function updateLegend(skillStrList) {
-            var maxLength = funcs.getLongestString(skillStrList);
+                var legendData = legendText.selectAll(".textline")
+                    .data(skillStrList);
 
-            legendRect.transition()
-                .attr("height", (skillStrList.length + 2) + "em")
-                .attr("width", (maxLength + 1)*(2/3) + "em");
+                legendData.enter()
+                    .append("tspan")
+                    .attr("font-size", "0.7em")
+                    .attr("class", "textline")
+                    .attr("x", "0.3em")
+                    .attr("y", function (d, i) {
+                        return (i+1)*10;
+                    });
 
-            var legendData = legendText.selectAll(".textline")
-                .data(skillStrList);
+                legendText.selectAll(".textline")
+                    .text(function (d) {
+                        return d;
+                    });
 
-            legendData.enter()
-                .append("tspan")
-                .attr("font-size", "0.7em")
-                .attr("class", "textline")
-                .attr("x", "0.3em")
-                .attr("y", function (d, i) {
-                    return (i+1)*10;
+                legendData.exit().remove();
+
+                if(skillStrList.length == 0) {
+                    hideLegend();
+                }
+                else {
+                    showLegend();
+                }
+            }
+
+            var svg = d3.select("#canvas")
+                .append("svg")
+                .attr("width", width + 300)
+                .attr("height", height + 300)
+                .attr("class", "svg canvas")
+                .on("click", function () {
+                    switchLegend();
+                })
+                .on("mousemove", function () {
+                    var evt = d3.mouse(this);
+                    mouseMoved(evt[0], evt[1]);
                 });
 
-            legendText.selectAll(".textline")
-                .text(function (d) {
-                    return d;
-                });
+            var svgElement = document.querySelector("svg.canvas");
 
-            legendData.exit().remove();
+            var root = svg.append("g")
+                .attr("transform", "translate(100, 20)");
 
-            if(skillStrList.length == 0) {
-                hideLegend();
-            }
-            else {
-                showLegend();
-            }
-        }
+            root.append("g")
+                .attr("class", "axis xaxis")
+                .attr("transform", "translate(0," + (height+25) + ")");
 
-        var svg = d3.select("#canvas")
-            .append("svg")
-            .attr("width", width + 300)
-            .attr("height", height + 300)
-            .attr("class", "svg canvas")
-            .on("click", function () {
-                switchLegend();
-            })
-            .on("mousemove", function () {
-                var evt = d3.mouse(this);
-                mouseMoved(evt[0], evt[1]);
-            });
+            root.append("g")
+                .attr("class", "axis yaxis")
+                .attr("transform", "translate(-25, 0)");
 
-        var svgElement = document.querySelector("svg.canvas");
+            var xLabel = root.append("text")
+                .attr("x", 0)
+                .attr("y", height + 60)
+                .attr("class", "axis wcm-label")
+                .text("Anzahl Mitarbeiter");
 
-        var root = svg.append("g")
-            .attr("transform", "translate(100, 20)");
+            var yLabelX = -60;
+            var yLabelY = height;
+            var yLabel = root.append("text")
+                .attr("x", yLabelX)
+                .attr("y", yLabelY)
+                .attr("class", "axis wcm-label")
+                .text("Durchschnittliche Bewertung")
+                .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-        root.append("g")
-            .attr("class", "axis xaxis")
-            .attr("transform", "translate(0," + (height+25) + ")");
+            var field = root.append("g")
+                .attr("transform", "translate(0, 0)");
 
-        root.append("g")
-            .attr("class", "axis yaxis")
-            .attr("transform", "translate(-25, 0)");
+            appendLegend();
 
-        var xLabel = root.append("text")
-            .attr("x", 0)
-            .attr("y", height + 60)
-            .attr("class", "axis wcm-label")
-            .text("Anzahl Mitarbeiter");
+            var xScale, yScale;
+            var xScalePercent = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, width]);
+            var yScalePercent = d3.scale.linear()
+                .domain([0, 100])
+                .range([height, 0]);
 
-        var yLabelX = -60;
-        var yLabelY = height;
-        var yLabel = root.append("text")
-            .attr("x", yLabelX)
-            .attr("y", yLabelY)
-            .attr("class", "axis wcm-label")
-            .text("Durchschnittliche Bewertung")
-            .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
-
-        var field = root.append("g")
-            .attr("transform", "translate(0, 0)");
-
-        appendLegend();
-
-        var xScale, yScale;
-        var xScalePercent = d3.scale.linear()
-            .domain([0, 100])
-            .range([0, width]);
-        var yScalePercent = d3.scale.linear()
-            .domain([0, 100])
-            .range([height, 0]);
-
-        var textLowerLeft = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Weißer Fleck")
-            .attr("class", "quad-label lower-left")
-            .attr("x", xScalePercent(100/6))
-            .attr("y", yScalePercent(100/6));
-
-        var textUpperLeft = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Einzelne Experten")
-            .attr("class", "quad-label upper-left")
-            .attr("x", xScalePercent(100/6))
-            .attr("y", yScalePercent(100/6 * 5));
-
-        var textLowerRight = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Viel Einäugige")
-            .attr("class", "quad-label lower-right")
-            .attr("x", xScalePercent(100/6 * 5))
-            .attr("y", yScalePercent(100/6));
-
-        var textUpperRight = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Hohe Kompetenzdichte")
-            .attr("class", "quad-label upper-right")
-            .attr("x", xScalePercent(100/6 * 5))
-            .attr("y", yScalePercent(100/6 * 5));
-
-        var horizontalLine = field.append("line")
-            .attr("class", "divider horizontal")
-            .attr("x1", 0)
-            .attr("y1", yScalePercent(100/2 + 0.5))
-            .attr("x2", xScalePercent(100))
-            .attr("y2", yScalePercent(100/2 + 0.5));
-
-        var verticalLine = field.append("line")
-            .attr("class", "divider vertical")
-            .attr("x1", xScalePercent(100/2 + 0.5))
-            .attr("y1", 0)
-            .attr("x2", xScalePercent(100/2 + 0.5))
-            .attr("y2", yScalePercent(0));
-
-        function updateGrid() {
-            textLowerLeft.transition()
+            var textLowerLeft = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Weißer Fleck")
+                .attr("class", "quad-label lower-left")
                 .attr("x", xScalePercent(100/6))
                 .attr("y", yScalePercent(100/6));
 
-            textUpperLeft.transition()
+            var textUpperLeft = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Einzelne Experten")
+                .attr("class", "quad-label upper-left")
                 .attr("x", xScalePercent(100/6))
                 .attr("y", yScalePercent(100/6 * 5));
 
-            textLowerRight.transition()
+            var textLowerRight = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Viel Einäugige")
+                .attr("class", "quad-label lower-right")
                 .attr("x", xScalePercent(100/6 * 5))
                 .attr("y", yScalePercent(100/6));
 
-            textUpperRight.transition()
+            var textUpperRight = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Hohe Kompetenzdichte")
+                .attr("class", "quad-label upper-right")
                 .attr("x", xScalePercent(100/6 * 5))
                 .attr("y", yScalePercent(100/6 * 5));
 
-            horizontalLine.transition()
+            var horizontalLine = field.append("line")
+                .attr("class", "divider horizontal")
                 .attr("x1", 0)
                 .attr("y1", yScalePercent(100/2 + 0.5))
                 .attr("x2", xScalePercent(100))
                 .attr("y2", yScalePercent(100/2 + 0.5));
 
-            verticalLine.transition()
+            var verticalLine = field.append("line")
+                .attr("class", "divider vertical")
                 .attr("x1", xScalePercent(100/2 + 0.5))
                 .attr("y1", 0)
                 .attr("x2", xScalePercent(100/2 + 0.5))
                 .attr("y2", yScalePercent(0));
-        }
 
-        function yScaleForSkill(skill) {
-            return skill["Mittlere Bewertung"];
-        }
+            function updateGrid() {
+                textLowerLeft.transition()
+                    .attr("x", xScalePercent(100/6))
+                    .attr("y", yScalePercent(100/6));
 
-        function radiusForSkill(skill) {
-            return skill["Mittlere Skilldauer"] * 5;
-        }
+                textUpperLeft.transition()
+                    .attr("x", xScalePercent(100/6))
+                    .attr("y", yScalePercent(100/6 * 5));
 
-        function drawField(maxX, maxY) {
+                textLowerRight.transition()
+                    .attr("x", xScalePercent(100/6 * 5))
+                    .attr("y", yScalePercent(100/6));
 
-            xScale = d3.scale.linear()
-                .domain([1, maxX])
-                .range([0, width]);
+                textUpperRight.transition()
+                    .attr("x", xScalePercent(100/6 * 5))
+                    .attr("y", yScalePercent(100/6 * 5));
 
-            var xAxis = d3.svg.axis()
-                .scale(xScale)
-                .ticks(10)
-                .orient("bottom");
+                horizontalLine.transition()
+                    .attr("x1", 0)
+                    .attr("y1", yScalePercent(100/2 + 0.5))
+                    .attr("x2", xScalePercent(100))
+                    .attr("y2", yScalePercent(100/2 + 0.5));
 
-            yScale = d3.scale.linear()
-                .domain([0, maxY])
-                .range([height, 0]);
+                verticalLine.transition()
+                    .attr("x1", xScalePercent(100/2 + 0.5))
+                    .attr("y1", 0)
+                    .attr("x2", xScalePercent(100/2 + 0.5))
+                    .attr("y2", yScalePercent(0));
+            }
 
-            var yAxis = d3.svg.axis()
-                .scale(yScale)
-                .ticks(10)
-                .orient("left");
+            function yScaleForSkill(skill) {
+                return skill["Mittlere Bewertung"];
+            }
 
-            svg.select(".xaxis")
-                .transition()
-                .call(xAxis);
+            function radiusForSkill(skill) {
+                return skill["Mittlere Skilldauer"] * 5;
+            }
 
-            svg.select(".yaxis")
-                .transition()
-                .call(yAxis);
+            function drawField(maxX, maxY) {
 
-        }
+                xScale = d3.scale.linear()
+                    .domain([1, maxX])
+                    .range([0, width]);
 
-        /* **************
-         * Filter
-         * *************/
+                var xAxis = d3.svg.axis()
+                    .scale(xScale)
+                    .ticks(10)
+                    .orient("bottom");
 
-        function hideCategory(category) {
-            var index = categories.indexOf(category);
-            if(index > -1) {
-                categories.splice(index, 1);
+                yScale = d3.scale.linear()
+                    .domain([0, maxY])
+                    .range([height, 0]);
+
+                var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .ticks(10)
+                    .orient("left");
+
+                svg.select(".xaxis")
+                    .transition()
+                    .call(xAxis);
+
+                svg.select(".yaxis")
+                    .transition()
+                    .call(yAxis);
+
+            }
+
+            /* **************
+             * Filter
+             * *************/
+
+            function hideCategory(category) {
+                var index = categories.indexOf(category);
+                if(index > -1) {
+                    categories.splice(index, 1);
+                    drawSkills();
+                }
+            }
+
+            function showCategory(category) {
+                categories.length = 0;
+                categories.push(category);
                 drawSkills();
             }
-        }
-        
-        function showCategory(category) {
-            categories.length = 0;
-            categories.push(category);
-            drawSkills();
-        }
 
-        function showLocation(location) {
-            locations.length = 0;
-            locations.push(location);
-            drawSkills();
-        }
-
-        function isCategoryHidden(category) {
-            return ($routeParams["h_" + category] == "y");
-        }
-
-        function switchCategory(category) {
-            if(isCategoryHidden(category)) {
-                $location.search("h_" + category, "n");
-                showCategory(category);
-            }
-            else {
-                $location.search("h_" + category, "y");
-                hideCategory(category);
-            }
-        }
-
-        function xMax(data) {
-            return dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
-        }
-
-        function yMax(data) {
-            return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
-        }
-
-        function categoryFromSkill(d) {
-            var cat = "?";
-            var categoryValues = d["values_Skill-Unterkategorie"];
-            if(!funcs.isEmpty(categoryValues)) {
-                cat = categoryValues[0]["Skill-Unterkategorie"];
+            function showLocation(location) {
+                locations.length = 0;
+                locations.push(location);
+                drawSkills();
             }
 
-            return cat;
-        }
+            function isCategoryHidden(category) {
+                return ($routeParams["h_" + category] == "y");
+            }
 
-        /**
-         * draw the matrix and circles
-         * @param category
-         */
-        function drawSkills() {
-            var data = skills.recalcSkills(locations, categories);
-            drawField(xMax(data), 4);
+            function switchCategory(category) {
+                if(isCategoryHidden(category)) {
+                    $location.search("h_" + category, "n");
+                    showCategory(category);
+                }
+                else {
+                    $location.search("h_" + category, "y");
+                    hideCategory(category);
+                }
+            }
 
-            var filteredData = data.filter(function(d) {
-                return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
+            function xMax(data) {
+                return dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
+            }
+
+            function yMax(data) {
+                return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+            }
+
+            function categoryFromSkill(d) {
+                var cat = "?";
+                var categoryValues = d["values_Skill-Unterkategorie"];
+                if(!funcs.isEmpty(categoryValues)) {
+                    cat = categoryValues[0]["Skill-Unterkategorie"];
+                }
+
+                return cat;
+            }
+
+            /**
+             * draw the matrix and circles
+             * @param category
+             */
+            function drawSkills() {
+                var data = skills.recalcSkills(locations, categories);
+                drawField(xMax(data), 4);
+
+                var filteredData = data.filter(function(d) {
+                    return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
+                });
+
+                var gSkillData = field.selectAll("g.skill")
+                    .data(filteredData, function (d) {
+                        return d["Skill"];
+                    });
+
+                // propagate downwards
+                field.selectAll("g.skill").select("circle");
+
+                var gSkillEnter = gSkillData.enter()
+                    .append("g")
+                    .attr("class", function(d) {
+                        return "skill " + funcs.makeSafeForCSS(d["Skill"]);
+                    })
+                    .attr("transform", function (d) {
+                        return "translate(" + xScalePercent(50) + "," + yScalePercent(50) + ")";
+                    });
+
+                field.selectAll("g.skill")
+                    .transition()
+                    .attr("transform", function (d) {
+                        return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
+                    });
+
+                var gSkillEnterG = gSkillEnter.append("g");
+
+                gSkillEnterG.append("circle")
+                    .attr("class", "skill")
+                    .attr("opacity", "0.5")
+                    .attr("fill", function(d) {
+                        var color = skills.categoryToColor(categoryFromSkill(d));
+                        return color;
+                    });
+
+                gSkillEnterG.append("text")
+                    .attr("opacity", 0.5)
+                    .attr("class", "wcm-label item")
+                    .attr("y", 0)
+                    .attr("x", 0)
+                    .text(function (d) {
+                        return d["Skill"];
+                    });
+
+                field.selectAll("circle.skill")
+                    .attr("r", function(d) {
+                        return radiusForSkill(d);
+                    })
+                    .attr("_skill", function (d) {
+                        return d["Skill"];
+                    })
+                    .attr("_count", function(d) {
+                        return d["Anzahl Mitarbeiter"];
+                    })
+                    .attr("_ma", function (d) {
+                        return d["Mittlere Bewertung"];
+                    })
+                    .attr("_md", function(d) {
+                        return d["Mittlere Skilldauer"];
+                    })
+                    .attr("_cat", categoryFromSkill);
+
+                gSkillData.exit().remove();
+            }
+
+            function skillNameFilterChanged() {
+                drawSkills();
+            }
+
+            $scope.skillNameFilterChanged = skillNameFilterChanged;
+
+            var input = {};
+
+            $scope.input = input;
+
+            var categories = ['*'];
+            var locations = ['*'];
+
+            $scope.makeSafeForCSS = funcs.makeSafeForCSS;
+
+            skills.ready.then(function() {
+                $scope.switchCategory = switchCategory;
+                $scope.showCategory = showCategory;
+                $scope.showLocation = showLocation;
+
+                $scope.getColorForCategory = skills.categoryToColor;
+
+                // Hide buttons
+                $scope.hideButtons = $routeParams.hb;
+
+                $scope.allCategories = skills.categories;
+                $scope.allLocations = skills.locations;
+
+                $scope.shorten = $categories.shorten;
+
+                drawSkills();
+
+                clearCurrentAttributes();
             });
-
-            var gSkillData = field.selectAll("g.skill")
-                .data(filteredData, function (d) {
-                    return d["Skill"];
-                });
-
-            // propagate downwards
-            field.selectAll("g.skill").select("circle");
-
-            var gSkillEnter = gSkillData.enter()
-                .append("g")
-                .attr("class", function(d) {
-                    return "skill " + funcs.makeSafeForCSS(d["Skill"]);
-                })
-                .attr("transform", function (d) {
-                    return "translate(" + xScalePercent(50) + "," + yScalePercent(50) + ")";
-                });
-
-            field.selectAll("g.skill")
-                .transition()
-                .attr("transform", function (d) {
-                    return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
-                });
-
-            var gSkillEnterG = gSkillEnter.append("g");
-
-            gSkillEnterG.append("circle")
-                .attr("class", "skill")
-                .attr("opacity", "0.5")
-                .attr("fill", function(d) {
-                    var color = skills.categoryToColor(categoryFromSkill(d));
-                    return color;
-                });
-
-            gSkillEnterG.append("text")
-                .attr("opacity", 0.5)
-                .attr("class", "wcm-label item")
-                .attr("y", 0)
-                .attr("x", 0)
-                .text(function (d) {
-                    return d["Skill"];
-                });
-
-            field.selectAll("circle.skill")
-                .attr("r", function(d) {
-                    return radiusForSkill(d);
-                })
-                .attr("_skill", function (d) {
-                    return d["Skill"];
-                })
-                .attr("_count", function(d) {
-                    return d["Anzahl Mitarbeiter"];
-                })
-                .attr("_ma", function (d) {
-                    return d["Mittlere Bewertung"];
-                })
-                .attr("_md", function(d) {
-                    return d["Mittlere Skilldauer"];
-                })
-                .attr("_cat", categoryFromSkill);
-
-            gSkillData.exit().remove();
-        }
-
-        function skillNameFilterChanged() {
-            drawSkills();
-        }
-
-        $scope.skillNameFilterChanged = skillNameFilterChanged;
-
-        var input = {};
-
-        $scope.input = input;
-
-        var categories = ['*'];
-        var locations = ['*'];
-
-        $scope.makeSafeForCSS = funcs.makeSafeForCSS;
-
-        skills.ready.then(function() {
-            $scope.switchCategory = switchCategory;
-            $scope.showCategory = showCategory;
-            $scope.showLocation = showLocation;
-
-            $scope.getColorForCategory = skills.categoryToColor;
-
-            // Hide buttons
-            $scope.hideButtons = $routeParams.hb;
-
-            $scope.allCategories = skills.categories;
-            $scope.allLocations = skills.locations;
-
-            $scope.shorten = $categories.shorten;
-
-            drawSkills();
-
-            clearCurrentAttributes();
         });
+        
     });
