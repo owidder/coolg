@@ -1,11 +1,6 @@
 'use strict';
 
 angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(funcs) {
-    var screenDimensions = {
-        width: $(window).width(),
-        height: $(window).height()
-    };
-
     function width(w) {
         var _width;
 
