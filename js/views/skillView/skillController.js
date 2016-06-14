@@ -62,7 +62,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getSvgBoundingRect() {
-            var boundingRect;
+            var boundingRect = {
+                top: 0,
+                left:0,
+                bottom: 0,
+                right: 0
+            }
             var svgElement = document.querySelector("svg.canvas");
             if(funcs.isDefined(svgElement)) {
                 boundingRect = svgElement.getBoundingClientRect();
