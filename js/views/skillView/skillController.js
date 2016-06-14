@@ -24,8 +24,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return [];
         }
 
-        var width = (dimensions.width(-50) * 10/12);
-        var height = (dimensions.screenDimensions.height - 70);
+        var width = dimensions.width(-50) * 10/12;
+        var height = dimensions.height(-70);
 
         function createIntersectSkillList(elementList) {
             var skillList = [];
