@@ -10,10 +10,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
         var _width;
 
         if(!funcs.isSet(w)) {
-            _width = screenDimensions.width;
+            _width = $(window).width();
         }
         else  {
-            _width = screenDimensions.width + parseInt(w);
+            _width = $(window).width() + parseInt(w);
         }
 
         return _width;
@@ -23,10 +23,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
         var _height;
 
         if(!funcs.isSet(h)) {
-            _height = screenDimensions.height;
+            _height = $(window).height();
         }
         else {
-            _height = screenDimensions.height + parseInt(h);
+            _height = $(window).height() + parseInt(h);
         }
 
         return _height;
