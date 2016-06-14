@@ -77,6 +77,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearbySkillCircles(x, y) {
+            var svgBoundingRect = getSvgBoundingRect();
             //var xAdapted =
             var circles = svg.selectAll("circle.skill");
             var i, circle, boundingRect;
