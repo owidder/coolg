@@ -87,7 +87,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 circle = circles[i];
                 boundingRect = circle.getBoundingClientRect();
                 if(xAdapted > boundingRect.left && xAdapted < boundingRect.right && yAdapted > boundingRect.top && yAdapted < boundingRect.bottom) {
-
+                    nearbySkillCircles.push(circle);
                 }
             }
         }
