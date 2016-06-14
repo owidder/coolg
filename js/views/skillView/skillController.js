@@ -61,7 +61,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return elementList;
         }
 
-        function moveLegend(x, y) {
+        function getNearbyCircles() {
+            
+        }
+
+        function mouseMoved(x, y) {
             var elements = getIntersectList(x, y);
             var skillStrList = createIntersectSkillList(elements);
             updateLegend(skillStrList);
@@ -154,7 +158,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             })
             .on("mousemove", function () {
                 var evt = d3.mouse(this);
-                moveLegend(evt[0], evt[1]);
+                mouseMoved(evt[0], evt[1]);
             });
 
         var svgElement = document.querySelector("svg.canvas");
