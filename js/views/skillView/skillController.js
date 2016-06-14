@@ -61,8 +61,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return elementList;
         }
 
-        function getNearbyCircles() {
-            
+        function getNearbySkillCircles() {
+            var circles = svg.selectAll("circle.skill");
+            var i, circle, rect;
+            for(i = 0; i < circles.length; i++) {
+                circle = circles[i];
+                rect = circle.getBoundingClientRect();
+            }
         }
 
         function mouseMoved(x, y) {
