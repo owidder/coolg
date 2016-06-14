@@ -35,6 +35,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
     return {
         screenDimensions: screenDimensions,
         width: width,
-        height: height
+        height: 500
     }
 });
