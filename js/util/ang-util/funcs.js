@@ -325,6 +325,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         });
     }
 
+    function copyAttributes(attributes, src, dest) {
+        attributes.forEach(function(name) {
+            dest[name] = src[name];
+        });
+    }
+
     return {
         hashCode: hashCode,
         if: _if,
@@ -355,6 +361,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         combineArrays: combineArrays,
         createArrayOfNthElements: createArrayOfNthElements,
         makeSafeForCSS: makeSafeForCSS,
-        getLongestString: getLongestString
+        getLongestString: getLongestString,
+        copyAttributes: copyAttributes
     };
 });
