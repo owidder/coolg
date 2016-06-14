@@ -70,7 +70,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             };
             var svgElement = document.querySelector("svg.canvas");
             if(funcs.isDefined(svgElement)) {
-                funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect) ;
+                funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect);
             }
 
             return boundingRect;
