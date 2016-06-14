@@ -50,17 +50,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return skillList;
         }
 
-        function getIntersectList(x, y) {
-            var rect = svgElement.createSVGRect();
-            rect.x = x-5;
-            rect.y = y-5;
-            rect.width = 10;
-            rect.height = 10;
-            var elementList = svgElement.getIntersectionList(rect, null);
-
-            return elementList;
-        }
-
         function getSvgBoundingRect() {
             var boundingRect = {
                 top: 0,
@@ -95,7 +84,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function mouseMoved(x, y) {
-            var elements = getIntersectList(x, y);
             var nearbySkillCircles = getNearbySkillCircles(x, y);
             var skillStrList = createIntersectSkillList(nearbySkillCircles);
             updateLegend(skillStrList);
