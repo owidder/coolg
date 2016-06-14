@@ -96,6 +96,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function mouseMoved(x, y) {
             var elements = getIntersectList(x, y);
+            var nearbySkillCircles = getNearbySkillCircles(x, y);
             var skillStrList = createIntersectSkillList(elements);
             updateLegend(skillStrList);
 
