@@ -3,7 +3,7 @@
 angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(funcs) {
     var screenDimensions = {
         width: $(window).width(),
-        height: 500
+        height: $(window).height()
     };
 
     function width(w) {
