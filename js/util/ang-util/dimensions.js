@@ -4,8 +4,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
     function width(w) {
         var _width = window.innerWidth;
 
-        var h = window.innerHeight;
-
         if(funcs.isSet(w)) {
             _width += parseInt(w);
         }
@@ -14,13 +12,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
     }
 
     function height(h) {
-        var _height;
+        var _height = window.innerHeight;
 
-        if(!funcs.isSet(h)) {
-            _height = $(window).height();
-        }
-        else {
-            _height = $(window).height() + parseInt(h);
+        if(funcs.isSet(h)) {
+            _height += parseInt(h);
         }
 
         return _height;
