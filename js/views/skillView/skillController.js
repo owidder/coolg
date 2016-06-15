@@ -76,7 +76,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             for(i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 boundingRect = circle.getBoundingClientRect();
-                if(xAdapted > boundingRect.left && xAdapted < boundingRect.right && yAdapted > boundingRect.top && yAdapted < boundingRect.bottom) {
+                if(xAdapted > boundingRect.left-10 && xAdapted < boundingRect.right+10 && yAdapted > boundingRect.top-10 && yAdapted < boundingRect.bottom+10) {
                     nearbySkillCircles.push(circle);
                 }
             }
