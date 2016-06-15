@@ -5,13 +5,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
         var _width = window.innerWidth;
 
         var h = window.innerHeight;
-        var w = ;
 
-        if(!funcs.isSet(w)) {
-            _width = $(window).width();
-        }
-        else  {
-            _width = $(window).width() + parseInt(w);
+        if(funcs.isSet(w)) {
+            _width += parseInt(w);
         }
 
         return _width;
