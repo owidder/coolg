@@ -2,10 +2,10 @@
 
 angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(funcs) {
     function width(w) {
-        var _width;
+        var _width = window.innerWidth;
 
         var h = window.innerHeight;
-        var w = window.innerWidth;
+        var w = ;
 
         if(!funcs.isSet(w)) {
             _width = $(window).width();
