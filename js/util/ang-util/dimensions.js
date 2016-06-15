@@ -4,6 +4,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('dimensions', function(
     function width(w) {
         var _width;
 
+        var h = window.innerHeight;
+        var w = window.innerWidth;
+
         if(!funcs.isSet(w)) {
             _width = $(window).width();
         }
