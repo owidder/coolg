@@ -389,7 +389,74 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function drawVoronoiSkill() {
+            var data = skills.recalcSkills(locations, categories);
+            drawField(xMax(data), 4);
 
+            var filteredData = data.filter(function(d) {
+                return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
+            });
+
+            var gSkillData = field.selectAll("g.skill")
+                .data(filteredData, function (d) {
+                    return d["Skill"];
+                });
+
+            // propagate downwards
+            field.selectAll("g.skill").select("circle");
+
+            var gSkillEnter = gSkillData.enter()
+                .append("g")
+                .attr("class", function(d) {
+                    return "skill " + funcs.makeSafeForCSS(d["Skill"]);
+                })
+                .attr("transform", function (d) {
+                    return "translate(" + xScalePercent(50) + "," + yScalePercent(50) + ")";
+                });
+
+            field.selectAll("g.skill")
+                .transition()
+                .attr("transform", function (d) {
+                    return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
+                });
+
+            var gSkillEnterG = gSkillEnter.append("g");
+
+            gSkillEnterG.append("circle")
+                .attr("class", "skill")
+                .attr("opacity", "0.5")
+                .attr("fill", function(d) {
+                    var color = skills.categoryToColor(categoryFromSkill(d));
+                    return color;
+                });
+
+            gSkillEnterG.append("text")
+                .attr("opacity", 0.5)
+                .attr("class", "wcm-label item")
+                .attr("y", 0)
+                .attr("x", 0)
+                .text(function (d) {
+                    return d["Skill"];
+                });
+
+            field.selectAll("circle.skill")
+                .attr("r", function(d) {
+                    return radiusForSkill(d);
+                })
+                .attr("_skill", function (d) {
+                    return d["Skill"];
+                })
+                .attr("_count", function(d) {
+                    return d["Anzahl Mitarbeiter"];
+                })
+                .attr("_ma", function (d) {
+                    return d["Mittlere Bewertung"];
+                })
+                .attr("_md", function(d) {
+                    return d["Mittlere Skilldauer"];
+                })
+                .attr("_cat", categoryFromSkill);
+
+            gSkillData.exit().remove();
         }
 
         /**
