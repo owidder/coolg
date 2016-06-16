@@ -390,14 +390,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function draw() {
             if(funcs.isDefined($routeParams.v)) {
-                drawVoronoiSkill()
+                drawVoronoiSkills()
             }
             else {
                 drawSkills();
             }
         }
 
-        function drawVoronoiSkill() {
+        function drawVoronoiSkills() {
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
