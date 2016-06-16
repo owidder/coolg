@@ -403,7 +403,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var voronoi = d3.geom.voronoi()
                 .clipExtent([[0, 0], [xScalePercent(100), yScalePercent(100)]]);
 
-            var path = field.selectAll("path")
+            var path = field.append("g").selectAll("path");
+
+            
 
             var gSkillData = field.selectAll("g.skill")
                 .data(filteredData, function (d) {
