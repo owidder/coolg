@@ -405,11 +405,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var path = field.append("g").selectAll("path");
 
-            var vertData = field.selectAll("circle")
+            var vertData = field.selectAll("circle.vskill")
                 .data(vertices);
 
             vertData
                 .enter().append("circle")
+                .attr("class", "vskill");
+
+            field.selectAll("circle.vskill")
                 .attr("transform", function(d) {
                     return "translate(" + d + ")";
                 })
