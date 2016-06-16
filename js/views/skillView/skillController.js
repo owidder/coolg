@@ -405,7 +405,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var path = field.append("g").selectAll("path");
 
-            
+            field.selectAll("circle")
+                .data(vertices.slice(1))
+                .enter().append("circle")
+                .attr("transform", function(d) { return "translate(" + d + ")"; })
+                .attr("r", 1.5);
+
 
             var gSkillData = field.selectAll("g.skill")
                 .data(filteredData, function (d) {
