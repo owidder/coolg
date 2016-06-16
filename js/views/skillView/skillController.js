@@ -410,7 +410,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             vertData
                 .enter().append("circle")
-                .attr("transform", function(d) { return "translate(" + d + ")"; })
+                .attr("transform", function(d) {
+                    return "translate(" + d + ")";
+                })
                 .attr("r", 1.5);
 
 
