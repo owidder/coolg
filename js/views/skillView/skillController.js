@@ -389,12 +389,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function drawVoronoiSkill() {
-            
+
         }
 
         /**
          * draw the matrix and circles
-         * @param category
          */
         function drawSkills() {
             var data = skills.recalcSkills(locations, categories);
