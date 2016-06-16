@@ -400,6 +400,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
             });
 
+            var voronoi = d3.geom.voronoi()
+                .clipExtent([[0, 0], [width, height]]);
+
             var gSkillData = field.selectAll("g.skill")
                 .data(filteredData, function (d) {
                     return d["Skill"];
