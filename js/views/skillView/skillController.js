@@ -414,6 +414,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("r", 1.5);
 
             field.selectAll("circle.vskill")
+                transition()
                 .attr("transform", function(d) {
                     return "translate(" + d + ")";
                 });
