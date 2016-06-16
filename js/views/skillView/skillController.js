@@ -396,6 +396,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
+            var vertices = filteredData.forEach(function(d) {
+                
+            });
+
             var gSkillData = field.selectAll("g.skill")
                 .data(filteredData, function (d) {
                     return d["Skill"];
