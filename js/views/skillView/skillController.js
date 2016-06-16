@@ -392,6 +392,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             if(funcs.isDefined($routeParams.v)) {
                 drawVoronoiSkill()
             }
+            else {
+                drawSkills();
+            }
         }
 
         function drawVoronoiSkill() {
