@@ -535,7 +535,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             $scope.shorten = $categories.shorten;
 
-            drawSkills();
+            draw();
 
             clearCurrentAttributes();
         });
