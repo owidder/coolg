@@ -339,20 +339,20 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var index = categories.indexOf(category);
             if(index > -1) {
                 categories.splice(index, 1);
-                drawSkills();
+                draw();
             }
         }
 
         function showCategory(category) {
             categories.length = 0;
             categories.push(category);
-            drawSkills();
+            draw();
         }
 
         function showLocation(location) {
             locations.length = 0;
             locations.push(location);
-            drawSkills();
+            draw();
         }
 
         function isCategoryHidden(category) {
@@ -506,7 +506,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function skillNameFilterChanged() {
-            drawSkills();
+            draw();
         }
 
         $scope.skillNameFilterChanged = skillNameFilterChanged;
