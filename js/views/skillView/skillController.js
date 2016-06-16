@@ -410,13 +410,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             vertData
                 .enter().append("circle")
-                .attr("class", "vskill");
+                .attr("class", "vskill")
+                .attr("r", 1.5);
 
             field.selectAll("circle.vskill")
                 .attr("transform", function(d) {
                     return "translate(" + d + ")";
-                })
-                .attr("r", 1.5);
+                });
 
 
             var gSkillData = field.selectAll("g.skill")
