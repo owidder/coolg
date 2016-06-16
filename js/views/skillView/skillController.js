@@ -388,6 +388,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return cat;
         }
 
+        function drawVoronoiSkill() {
+            
+        }
+
         /**
          * draw the matrix and circles
          * @param category
