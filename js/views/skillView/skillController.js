@@ -457,7 +457,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_md", function (d) {
                     return d.point.md;
                 })
-                .attr("_cat", d.point.category)
+                .attr("_cat", function(d) {
+                    return d.point.category;
+                })
                 .attr("stroke", "black")
                 .attr("opacity", "0.3")
                 .attr("fill", function (d) {
