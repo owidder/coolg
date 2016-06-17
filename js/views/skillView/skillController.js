@@ -492,7 +492,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x", xScalePercent(50))
                 .attr("y", yScalePercent(50))
                 .text(function(d) {
-                    return d.point.skill;
+                    return d.skill;
                 });
 
             field.selectAll("text.vskill")
