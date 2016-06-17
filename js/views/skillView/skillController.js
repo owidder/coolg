@@ -399,7 +399,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function drawVoronoiSkills() {
             function createLayers() {
-                var layers = ["paths", "circles"];
+                var layers = ["circles", "paths"];
                 field.selectAll("g.layer")
                     .data(layers)
                     .enter()
