@@ -424,6 +424,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 vert.category = categoryFromSkill(d);
                 vert.ma = d["Mittlere Skilldauer"];
                 vert.md = d["Mittlere Bewertung"];
+                vert.count = d["Anzahl Mitarbeiter"];
                 return vert;
             });
 
