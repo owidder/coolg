@@ -460,7 +460,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var vertData = field.select("g.circles").selectAll("circle.vskill")
                 .data(vertices, function(d) {
-                    return d.point.skill;
+                    return d.skill;
                 });
 
             vertData
@@ -483,7 +483,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var textData = field.select("g.texts").selectAll("text.vskill")
                 .data(vertices, function(d) {
-                    return d.point.skill;
+                    return d.skill;
                 });
 
             textData
