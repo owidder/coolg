@@ -457,7 +457,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             pathData.exit().remove();
 
-            pathData.order();
+            //pathData.order();
 
             vertData
                 .enter().append("circle")
