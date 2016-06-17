@@ -415,6 +415,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var vertData = field.selectAll("circle.vskill")
                 .data(vertices);
 
+            
+
             vertData
                 .enter().append("circle")
                 .attr("class", "vskill")
