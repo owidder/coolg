@@ -426,9 +426,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             field.selectAll("circle.vskill")
                 transition()
-                .attr("transform", function(d) {
-                    return "translate(" + d + ")";
-                });
+                    .attr("cx", xScale(50))
+                    .attr("cy", yScale(50))
 
             vertData.exit().remove();
         }
