@@ -445,6 +445,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             pathData.enter().append("path")
                 .attr("class", "skill")
                 .attr("stroke", "black")
+                .attr("opacity", "0.3")
                 .attr("fill", function (d) {
                     var color = skills.categoryToColor(d.point.category);
                     return color;
@@ -468,8 +469,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "vskill")
                 .attr("cx", xScalePercent(50))
                 .attr("cy", yScalePercent(50))
-                .attr("opacity", "0.5")
-                .attr("r", 1.5);
+                .attr("opacity", "0.6")
+                .attr("r", 1.5)
+                .attr("fill", function (d) {
+                    var color = skills.categoryToColor(d.point.category);
+                    return color;
+                });
 
             field.selectAll("circle.vskill")
                 .transition()
