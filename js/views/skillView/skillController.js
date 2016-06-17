@@ -451,13 +451,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.point.skill;
                 })
                 .attr("_count", function (d) {
-                    return d["Anzahl Mitarbeiter"];
+                    return d.point.count;
                 })
                 .attr("_ma", function (d) {
-                    return d["Mittlere Bewertung"];
+                    return d.point.ma;
                 })
                 .attr("_md", function (d) {
-                    return d["Mittlere Skilldauer"];
+                    return d.point.md;
                 })
                 .attr("_cat", d.point.category)
                 .attr("stroke", "black")
