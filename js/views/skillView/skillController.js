@@ -444,6 +444,19 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             pathData.enter().append("path")
                 .attr("class", "skill forlegend")
+                .attr("_skill", function (d) {
+                    return d.point.skill;
+                })
+                .attr("_count", function (d) {
+                    return d["Anzahl Mitarbeiter"];
+                })
+                .attr("_ma", function (d) {
+                    return d["Mittlere Bewertung"];
+                })
+                .attr("_md", function (d) {
+                    return d["Mittlere Skilldauer"];
+                })
+                .attr("_cat", d.point.category)
                 .attr("stroke", "black")
                 .attr("opacity", "0.3")
                 .attr("fill", function (d) {
