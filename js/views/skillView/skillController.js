@@ -497,14 +497,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             field.selectAll("text.vskill")
                 .transition()
-                .attr("cx", function (d) {
+                .attr("x", function (d) {
                     return d[0];
                 })
-                .attr("cy", function (d) {
+                .attr("y", function (d) {
                     return d[1];
                 });
 
-            vertData.exit().remove();
+            textData.exit().remove();
 
         }
 
