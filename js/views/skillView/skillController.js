@@ -419,24 +419,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return "M" + d.join("L") + "Z";
             }
 
-            vertData
-                .enter().append("circle")
-                .attr("class", "vskill")
-                .attr("cx", xScalePercent(50))
-                .attr("cy", yScalePercent(50))
-                .attr("r", 1.5);
-
-            field.selectAll("circle.vskill")
-                .transition()
-                .attr("cx", function (d) {
-                    return d[0];
-                })
-                .attr("cy", function (d) {
-                    return d[1];
-                });
-
-            vertData.exit().remove();
-
             var voronoiVertices = voronoi(vertices);
             var voronoiVerticesWithoutUndefines = voronoiVertices.filter(function(d) {
                 return funcs.isDefined(d);
@@ -458,8 +440,26 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             pathData.exit().remove();
 
-
             pathData.order();
+
+            vertData
+                .enter().append("circle")
+                .attr("class", "vskill")
+                .attr("cx", xScalePercent(50))
+                .attr("cy", yScalePercent(50))
+                .attr("r", 1.5);
+
+            field.selectAll("circle.vskill")
+                .transition()
+                .attr("cx", function (d) {
+                    return d[0];
+                })
+                .attr("cy", function (d) {
+                    return d[1];
+                });
+
+            vertData.exit().remove();
+
         }
 
         /**
