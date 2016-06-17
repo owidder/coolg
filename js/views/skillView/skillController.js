@@ -398,6 +398,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function drawVoronoiSkills() {
+            function createLayers() {
+                var layers = ["paths", "circles"];
+                field.selectAll("g.layer")
+                    .data(layers)
+                    .enter()
+                    .append("g")
+                    .attr("class", function(d) {
+                        return "layer " + d;
+                    });
+            }
+
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
