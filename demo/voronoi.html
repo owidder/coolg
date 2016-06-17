@@ -58,8 +58,9 @@
     redraw();
 
     function redraw() {
+        var voronoiVertices = voronoi(vertices);
         path = path
-                .data(voronoi(vertices), polygon);
+                .data(voronoiVertices, polygon);
 
         path.exit().remove();
 
