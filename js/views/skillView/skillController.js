@@ -492,8 +492,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "vskill")
                 .attr("x", xScalePercent(50))
                 .attr("y", yScalePercent(50))
-                .attr("opacity", "0.8")
-                .attr("font-size", "0.5em")
+                .attr("opacity", "0.5")
+                .attr("font-size", "0.7em")
                 .text(function(d) {
                     return d.skill;
                 });
