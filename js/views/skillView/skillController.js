@@ -439,9 +439,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
 
             var pathData = field.select("g.paths").append("g").selectAll("path.skill")
-                .data(voronoiVerticesWithoutUndefines, function(d) {
-                    return d.point.skill;
-                });
+                .data(voronoiVerticesWithoutUndefines, polygon);
 
             pathData.exit().remove();
 
