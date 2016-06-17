@@ -405,7 +405,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
-            var vertices = filteredData.forEach(function(d) {
+            var vertices = filteredData.map(function(d) {
                 return [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
             });
 
