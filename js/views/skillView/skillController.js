@@ -409,6 +409,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     });
             }
 
+            drawField(xMax(data), 4);
+
             var data = skills.recalcSkills(locations, categories);
 
             var filteredData = data.filter(function (d) {
@@ -436,8 +438,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var voronoiVerticesWithoutUndefines = voronoiVertices.filter(function(d) {
                 return funcs.isDefined(d);
             });
-
-            drawField(xMax(data), 4);
 
             createLayers();
 
