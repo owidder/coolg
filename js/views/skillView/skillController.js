@@ -35,16 +35,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var i, svgElement;
             for (i = 0; i < elementList.length; i++) {
                 svgElement = elementList[i];
-                if (svgElement.tagName == "circle") {
-                    skillName = svgElement.getAttribute("_skill");
-                    if (!funcs.isEmpty(skillName)) {
-                        count = svgElement.getAttribute("_count");
-                        meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
-                        meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
-                        category = svgElement.getAttribute("_cat");
-                        skillStr = skillName + " [" + category + "] - " + count + " / " + meanAssess + " / " + meanDuration;
-                        skillList.push(skillStr)
-                    }
+                skillName = svgElement.getAttribute("_skill");
+                if (!funcs.isEmpty(skillName)) {
+                    count = svgElement.getAttribute("_count");
+                    meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
+                    meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
+                    category = svgElement.getAttribute("_cat");
+                    skillStr = skillName + " [" + category + "] - " + count + " / " + meanAssess + " / " + meanDuration;
+                    skillList.push(skillStr)
                 }
             }
 
@@ -66,27 +64,27 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return boundingRect;
         }
 
-        function getNearbySkillCircles(x, y) {
+        function getNearbySkillForlegends(x, y) {
             var svgBoundingRect = getSvgBoundingRect();
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
-            var circles = document.querySelectorAll(".forlegend");
-            var i, circle, boundingRect;
-            var nearbySkillCircles = [];
-            for (i = 0; i < circles.length; i++) {
-                circle = circles[i];
-                boundingRect = circle.getBoundingClientRect();
+            var forlegends = document.querySelectorAll(".forlegend");
+            var i, forlegend, boundingRect;
+            var nearbySkillForlegends = [];
+            for (i = 0; i < forlegends.length; i++) {
+                forlegend = forlegends[i];
+                boundingRect = forlegend.getBoundingClientRect();
                 if (xAdapted > boundingRect.left - 10 && xAdapted < boundingRect.right + 10 && yAdapted > boundingRect.top - 10 && yAdapted < boundingRect.bottom + 10) {
-                    nearbySkillCircles.push(circle);
+                    nearbySkillForlegends.push(forlegend);
                 }
             }
 
-            return nearbySkillCircles;
+            return nearbySkillForlegends;
         }
 
         function mouseMoved(x, y) {
-            var nearbySkillCircles = getNearbySkillCircles(x, y);
-            var skillStrList = createIntersectSkillList(nearbySkillCircles);
+            var nearbySkillForlegends = getNearbySkillForlegends(x, y);
+            var skillStrList = createIntersectSkillList(nearbySkillForlegends);
             updateLegend(skillStrList);
 
             legend
