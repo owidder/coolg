@@ -70,7 +70,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var svgBoundingRect = getSvgBoundingRect();
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
-            var circles = document.querySelectorAll(".skill.forlegend");
+            var circles = document.querySelectorAll(".forlegend");
             var i, circle, boundingRect;
             var nearbySkillCircles = [];
             for (i = 0; i < circles.length; i++) {
