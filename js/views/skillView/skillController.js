@@ -443,7 +443,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             pathData.enter().append("path")
-                .attr("class", "skill")
+                .attr("class", "skill forlegend")
                 .attr("stroke", "black")
                 .attr("opacity", "0.3")
                 .attr("fill", function (d) {
