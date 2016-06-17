@@ -443,6 +443,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.point.skill;
                 });
 
+            pathData.exit().remove();
+
             pathData.enter().append("path")
                 .attr("class", "skill forlegend")
                 .attr("_skill", function (d) {
@@ -470,8 +472,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             field.selectAll("path.skill")
                 .transition()
                 .attr("d", polygon);
-
-            pathData.exit().remove();
 
             //pathData.order();
 
