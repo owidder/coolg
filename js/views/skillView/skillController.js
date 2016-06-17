@@ -412,7 +412,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var data = skills.recalcSkills(locations, categories);
 
             drawField(xMax(data), 4);
-
+            createLayers();
+            
             var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
@@ -438,8 +439,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var voronoiVerticesWithoutUndefines = voronoiVertices.filter(function(d) {
                 return funcs.isDefined(d);
             });
-
-            createLayers();
 
             var pathData = field.select("g.paths").append("g").selectAll("path.skill")
                 .data(voronoiVerticesWithoutUndefines, function(d) {
