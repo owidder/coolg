@@ -399,7 +399,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function drawVoronoiSkills() {
             function createLayers() {
-                var layers = ["circles", "paths"];
+                var layers = ["paths", "circles"];
                 field.selectAll("g.layer")
                     .data(layers)
                     .enter()
@@ -413,7 +413,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             drawField(xMax(data), 4);
             createLayers();
-            
+
             var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
