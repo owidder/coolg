@@ -447,6 +447,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             pathData.enter().append("path")
                 .attr("class", "skill")
+                .attr("stroke", "black")
                 .attr("fill", function (d) {
                     var color = skills.categoryToColor(d.point.category);
                     return color;
