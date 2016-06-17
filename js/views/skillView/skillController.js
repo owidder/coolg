@@ -415,7 +415,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var vertData = field.selectAll("circle.vskill")
                 .data(vertices);
 
-            function polygon(d) {
+            function polygon(d, i) {
                 return "M" + d.join("L") + "Z";
             }
 
