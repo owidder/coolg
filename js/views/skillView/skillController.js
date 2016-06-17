@@ -495,7 +495,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.point.skill;
                 });
 
-            field.selectAll("circle.vskill")
+            field.selectAll("text.vskill")
                 .transition()
                 .attr("cx", function (d) {
                     return d[0];
