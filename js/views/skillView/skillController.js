@@ -425,7 +425,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var voronoi = d3.geom.voronoi()
                 .clipExtent([[0, 0], [width, height]]);
 
-            var vertData = field.selectAll("circle.vskill")
+            var vertData = field.select("g.circles").selectAll("circle.vskill")
                 .data(vertices);
 
             function polygon(d, i) {
