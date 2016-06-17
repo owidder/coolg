@@ -448,7 +448,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             pathData.enter().append("path")
                 .attr("class", function(d, i) {
                     return "skill q" + (i % 9) + "-9";
-                })
+                });
+
+            field.selectAll("path.skill")
+                .transition()
                 .attr("d", polygon);
 
             pathData.exit().remove();
