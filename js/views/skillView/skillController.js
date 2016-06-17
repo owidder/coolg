@@ -15,7 +15,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var skills = new Skills();
 
         function clearCurrentAttributes() {
-            $timeout(function() {
+            $timeout(function () {
                 currentAttributes = [];
             });
         }
@@ -24,7 +24,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return [];
         }
 
-        var width = dimensions.width(-50) * 10/12;
+        var width = dimensions.width(-50) * 10 / 12;
         var height = dimensions.height(-70);
 
         function createIntersectSkillList(elementList) {
@@ -33,11 +33,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var skillStr;
             var count, meanAssess, meanDuration, category;
             var i, svgElement;
-            for(i = 0; i < elementList.length; i++) {
+            for (i = 0; i < elementList.length; i++) {
                 svgElement = elementList[i];
-                if(svgElement.tagName == "circle") {
+                if (svgElement.tagName == "circle") {
                     skillName = svgElement.getAttribute("_skill");
-                    if(!funcs.isEmpty(skillName)) {
+                    if (!funcs.isEmpty(skillName)) {
                         count = svgElement.getAttribute("_count");
                         meanAssess = mathUtil.round(svgElement.getAttribute("_ma"), 1);
                         meanDuration = mathUtil.round(svgElement.getAttribute("_md"), 1);
@@ -54,12 +54,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getSvgBoundingRect() {
             var boundingRect = {
                 top: 0,
-                left:0,
+                left: 0,
                 bottom: 0,
                 right: 0
             };
             var svgElement = document.querySelector("svg.canvas");
-            if(funcs.isDefined(svgElement)) {
+            if (funcs.isDefined(svgElement)) {
                 funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect);
             }
 
@@ -73,10 +73,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var circles = document.querySelectorAll("circle.skill");
             var i, circle, boundingRect;
             var nearbySkillCircles = [];
-            for(i = 0; i < circles.length; i++) {
+            for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 boundingRect = circle.getBoundingClientRect();
-                if(xAdapted > boundingRect.left-10 && xAdapted < boundingRect.right+10 && yAdapted > boundingRect.top-10 && yAdapted < boundingRect.bottom+10) {
+                if (xAdapted > boundingRect.left - 10 && xAdapted < boundingRect.right + 10 && yAdapted > boundingRect.top - 10 && yAdapted < boundingRect.bottom + 10) {
                     nearbySkillCircles.push(circle);
                 }
             }
@@ -90,11 +90,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             updateLegend(skillStrList);
 
             legend
-                .attr("transform", "translate(" + (x+10) + "," + (y+10) + ")");
+                .attr("transform", "translate(" + (x + 10) + "," + (y + 10) + ")");
         }
 
         function switchLegend() {
-            if(isLegendShown()) {
+            if (isLegendShown()) {
                 hideLegend();
             }
             else {
@@ -138,7 +138,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendRect.transition()
                 .attr("height", (skillStrList.length + 2) + "em")
-                .attr("width", (maxLength + 1)*(2/3) + "em");
+                .attr("width", (maxLength + 1) * (2 / 3) + "em");
 
             var legendData = legendText.selectAll(".textline")
                 .data(skillStrList);
@@ -149,7 +149,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "textline")
                 .attr("x", "0.3em")
                 .attr("y", function (d, i) {
-                    return (i+1)*10;
+                    return (i + 1) * 10;
                 });
 
             legendText.selectAll(".textline")
@@ -159,7 +159,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             legendData.exit().remove();
 
-            if(skillStrList.length == 0) {
+            if (skillStrList.length == 0) {
                 hideLegend();
             }
             else {
@@ -187,7 +187,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         root.append("g")
             .attr("class", "axis xaxis")
-            .attr("transform", "translate(0," + (height+25) + ")");
+            .attr("transform", "translate(0," + (height + 25) + ")");
 
         root.append("g")
             .attr("class", "axis yaxis")
@@ -225,71 +225,71 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("text-anchor", "middle")
             .text("Weißer Fleck")
             .attr("class", "quad-label lower-left")
-            .attr("x", xScalePercent(100/6))
-            .attr("y", yScalePercent(100/6));
+            .attr("x", xScalePercent(100 / 6))
+            .attr("y", yScalePercent(100 / 6));
 
         var textUpperLeft = field.append("text")
             .attr("text-anchor", "middle")
             .text("Einzelne Experten")
             .attr("class", "quad-label upper-left")
-            .attr("x", xScalePercent(100/6))
-            .attr("y", yScalePercent(100/6 * 5));
+            .attr("x", xScalePercent(100 / 6))
+            .attr("y", yScalePercent(100 / 6 * 5));
 
         var textLowerRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Viel Einäugige")
             .attr("class", "quad-label lower-right")
-            .attr("x", xScalePercent(100/6 * 5))
-            .attr("y", yScalePercent(100/6));
+            .attr("x", xScalePercent(100 / 6 * 5))
+            .attr("y", yScalePercent(100 / 6));
 
         var textUpperRight = field.append("text")
             .attr("text-anchor", "middle")
             .text("Hohe Kompetenzdichte")
             .attr("class", "quad-label upper-right")
-            .attr("x", xScalePercent(100/6 * 5))
-            .attr("y", yScalePercent(100/6 * 5));
+            .attr("x", xScalePercent(100 / 6 * 5))
+            .attr("y", yScalePercent(100 / 6 * 5));
 
         var horizontalLine = field.append("line")
             .attr("class", "divider horizontal")
             .attr("x1", 0)
-            .attr("y1", yScalePercent(100/2 + 0.5))
+            .attr("y1", yScalePercent(100 / 2 + 0.5))
             .attr("x2", xScalePercent(100))
-            .attr("y2", yScalePercent(100/2 + 0.5));
+            .attr("y2", yScalePercent(100 / 2 + 0.5));
 
         var verticalLine = field.append("line")
             .attr("class", "divider vertical")
-            .attr("x1", xScalePercent(100/2 + 0.5))
+            .attr("x1", xScalePercent(100 / 2 + 0.5))
             .attr("y1", 0)
-            .attr("x2", xScalePercent(100/2 + 0.5))
+            .attr("x2", xScalePercent(100 / 2 + 0.5))
             .attr("y2", yScalePercent(0));
 
         function updateGrid() {
             textLowerLeft.transition()
-                .attr("x", xScalePercent(100/6))
-                .attr("y", yScalePercent(100/6));
+                .attr("x", xScalePercent(100 / 6))
+                .attr("y", yScalePercent(100 / 6));
 
             textUpperLeft.transition()
-                .attr("x", xScalePercent(100/6))
-                .attr("y", yScalePercent(100/6 * 5));
+                .attr("x", xScalePercent(100 / 6))
+                .attr("y", yScalePercent(100 / 6 * 5));
 
             textLowerRight.transition()
-                .attr("x", xScalePercent(100/6 * 5))
-                .attr("y", yScalePercent(100/6));
+                .attr("x", xScalePercent(100 / 6 * 5))
+                .attr("y", yScalePercent(100 / 6));
 
             textUpperRight.transition()
-                .attr("x", xScalePercent(100/6 * 5))
-                .attr("y", yScalePercent(100/6 * 5));
+                .attr("x", xScalePercent(100 / 6 * 5))
+                .attr("y", yScalePercent(100 / 6 * 5));
 
             horizontalLine.transition()
                 .attr("x1", 0)
-                .attr("y1", yScalePercent(100/2 + 0.5))
+                .attr("y1", yScalePercent(100 / 2 + 0.5))
                 .attr("x2", xScalePercent(100))
-                .attr("y2", yScalePercent(100/2 + 0.5));
+                .attr("y2", yScalePercent(100 / 2 + 0.5));
 
             verticalLine.transition()
-                .attr("x1", xScalePercent(100/2 + 0.5))
+                .attr("x1", xScalePercent(100 / 2 + 0.5))
                 .attr("y1", 0)
-                .attr("x2", xScalePercent(100/2 + 0.5))
+                .attr("x2", xScalePercent(100 / 2 + 0.5))
                 .attr("y2", yScalePercent(0));
         }
 
@@ -337,7 +337,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function hideCategory(category) {
             var index = categories.indexOf(category);
-            if(index > -1) {
+            if (index > -1) {
                 categories.splice(index, 1);
                 draw();
             }
@@ -360,7 +360,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchCategory(category) {
-            if(isCategoryHidden(category)) {
+            if (isCategoryHidden(category)) {
                 $location.search("h_" + category, "n");
                 showCategory(category);
             }
@@ -381,7 +381,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function categoryFromSkill(d) {
             var cat = "?";
             var categoryValues = d["values_Skill-Unterkategorie"];
-            if(!funcs.isEmpty(categoryValues)) {
+            if (!funcs.isEmpty(categoryValues)) {
                 cat = categoryValues[0]["Skill-Unterkategorie"];
             }
 
@@ -389,7 +389,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function draw() {
-            if(funcs.isDefined($routeParams.v)) {
+            if (funcs.isDefined($routeParams.v)) {
                 drawVoronoiSkills()
             }
             else {
@@ -401,11 +401,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
-            var filteredData = data.filter(function(d) {
+            var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
-            var vertices = filteredData.map(function(d) {
+            var vertices = filteredData.map(function (d) {
                 return [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
             });
 
@@ -420,14 +420,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             vertData
                 .enter().append("circle")
                 .attr("class", "vskill")
-                .attr("cx", xScale(50))
-                .attr("cy", yScale(50))
+                .attr("cx", xScalePercent(50))
+                .attr("cy", yScalePercent(50))
                 .attr("r", 1.5);
 
             field.selectAll("circle.vskill")
-                transition()
-                    .attr("cx", xScale(50))
-                    .attr("cy", yScale(50))
+                .transition()
+                .attr("cx", function (d) {
+                    return d[0];
+                })
+                .attr("cy", function (d) {
+                    return d[1];
+                });
 
             vertData.exit().remove();
         }
@@ -439,7 +443,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var data = skills.recalcSkills(locations, categories);
             drawField(xMax(data), 4);
 
-            var filteredData = data.filter(function(d) {
+            var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
@@ -453,7 +457,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var gSkillEnter = gSkillData.enter()
                 .append("g")
-                .attr("class", function(d) {
+                .attr("class", function (d) {
                     return "skill " + funcs.makeSafeForCSS(d["Skill"]);
                 })
                 .attr("transform", function (d) {
@@ -471,7 +475,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             gSkillEnterG.append("circle")
                 .attr("class", "skill")
                 .attr("opacity", "0.5")
-                .attr("fill", function(d) {
+                .attr("fill", function (d) {
                     var color = skills.categoryToColor(categoryFromSkill(d));
                     return color;
                 });
@@ -486,19 +490,19 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             field.selectAll("circle.skill")
-                .attr("r", function(d) {
+                .attr("r", function (d) {
                     return radiusForSkill(d);
                 })
                 .attr("_skill", function (d) {
                     return d["Skill"];
                 })
-                .attr("_count", function(d) {
+                .attr("_count", function (d) {
                     return d["Anzahl Mitarbeiter"];
                 })
                 .attr("_ma", function (d) {
                     return d["Mittlere Bewertung"];
                 })
-                .attr("_md", function(d) {
+                .attr("_md", function (d) {
                     return d["Mittlere Skilldauer"];
                 })
                 .attr("_cat", categoryFromSkill);
@@ -521,7 +525,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         $scope.makeSafeForCSS = funcs.makeSafeForCSS;
 
-        skills.ready.then(function() {
+        skills.ready.then(function () {
             $scope.switchCategory = switchCategory;
             $scope.showCategory = showCategory;
             $scope.showLocation = showLocation;
