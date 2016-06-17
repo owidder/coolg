@@ -470,7 +470,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("cx", xScalePercent(50))
                 .attr("cy", yScalePercent(50))
                 .attr("opacity", "0.6")
-                .attr("r", 1.5)
+                .attr("r", 5)
                 .attr("fill", function (d) {
                     var color = skills.categoryToColor(d.category);
                     return color;
