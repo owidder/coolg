@@ -412,8 +412,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var voronoi = d3.geom.voronoi()
                 .clipExtent([[0, 0], [xScalePercent(100), yScalePercent(100)]]);
 
-            var path = field.append("g").selectAll("path");
-
             var vertData = field.selectAll("circle.vskill")
                 .data(vertices);
 
@@ -434,6 +432,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             vertData.exit().remove();
+
+            var pathData = field.append("g").selectAll("path")
+                .data(voronoi(vertices), polygon);
+
+            pathData.enter().append("path")
+                .attr("class", function(d, i) { return "q" + (i % 9) + "-9"; })
+                .attr("d", polygon);
+
+            pathData.exit().remove();
+
+
+            path.order();
         }
 
         /**
