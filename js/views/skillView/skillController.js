@@ -426,7 +426,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .enter().append("circle")
                 .attr("class", "vskill")
                 .attr("cx", xScalePercent(50))
-                .attr("cy", yScalePercent(50))
+                .attr("cy", yScalePercentRev(50))
                 .attr("r", 1.5);
 
             field.selectAll("circle.vskill")
