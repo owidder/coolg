@@ -418,6 +418,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var vertices = filteredData.map(function (d) {
                 var vert = [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
                 vert.skill = d["Skill"];
+                vert.category = d["Skill-Unterkategorie"];
                 return vert;
             });
 
@@ -440,7 +441,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             createLayers();
 
-            var pathData = field.append("g").selectAll("path.skill")
+            var pathData = field.select("g.paths").append("g").selectAll("path.skill")
                 .data(voronoiVerticesWithoutUndefines, function(d) {
                     return d.point.skill;
                 });
