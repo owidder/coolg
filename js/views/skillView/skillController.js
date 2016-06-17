@@ -399,7 +399,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             function createLayers() {
                 var layers = ["paths", "circles", "texts"];
                 field.selectAll("g.layer")
-                    .data(layers)
+                    .data(layers, function(d) {
+                        return d;
+                    })
                     .enter()
                     .append("g")
                     .attr("class", function(d) {
