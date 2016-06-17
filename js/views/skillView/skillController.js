@@ -410,7 +410,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
 
             var voronoi = d3.geom.voronoi()
-                .clipExtent([[0, 0], [xScalePercent(100), yScalePercentRev(100)]]);
+                .clipExtent([[0, 0], [width, height]]);
 
             var vertData = field.selectAll("circle.vskill")
                 .data(vertices);
