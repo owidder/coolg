@@ -399,7 +399,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function drawVoronoiSkills() {
             function createLayers() {
-                var layers = ["paths", "circles", "text"];
+                var layers = ["paths", "circles", "texts"];
                 field.selectAll("g.layer")
                     .data(layers)
                     .enter()
@@ -427,9 +427,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var voronoi = d3.geom.voronoi()
                 .clipExtent([[0, 0], [width, height]]);
-
-            var vertData = field.select("g.circles").selectAll("circle.vskill")
-                .data(vertices);
 
             function polygon(d, i) {
                 return "M" + d.join("L") + "Z";
@@ -461,12 +458,38 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             //pathData.order();
 
+            var vertData = field.select("g.circles").selectAll("circle.vskill")
+                .data(vertices);
+
             vertData
                 .enter().append("circle")
                 .attr("class", "vskill")
                 .attr("cx", xScalePercent(50))
                 .attr("cy", yScalePercent(50))
                 .attr("r", 1.5);
+
+            field.selectAll("circle.vskill")
+                .transition()
+                .attr("cx", function (d) {
+                    return d[0];
+                })
+                .attr("cy", function (d) {
+                    return d[1];
+                });
+
+            vertData.exit().remove();
+
+            var textData = field.select("g.texts").selectAll("text.vskill")
+                .data(vertices);
+
+            textData
+                .enter().append("text")
+                .attr("class", "vskill")
+                .attr("x", xScalePercent(50))
+                .attr("y", yScalePercent(50))
+                .text(function(d) {
+                    
+                });
 
             field.selectAll("circle.vskill")
                 .transition()
