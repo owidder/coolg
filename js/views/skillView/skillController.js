@@ -409,9 +409,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     });
             }
 
-            drawField(xMax(data), 4);
-
             var data = skills.recalcSkills(locations, categories);
+
+            drawField(xMax(data), 4);
 
             var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
