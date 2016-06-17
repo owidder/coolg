@@ -396,6 +396,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function drawVoronoiSkills() {
+            var gPaths, gCircles, gTexts;
             function createLayers() {
                 var layers = ["paths", "circles", "texts"];
                 field.selectAll("g.layer")
@@ -405,6 +406,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     .attr("class", function(d) {
                         return "layer " + d;
                     });
+
+                gPaths = field.select(".layer.paths");
+                gCircles = field.select(".layer.circles");
+                gTexts = field.select(".layer.texts");
             }
 
             var data = skills.recalcSkills(locations, categories);
