@@ -421,7 +421,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var vertices = filteredData.map(function (d) {
                 var vert = [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
                 vert.skill = d["Skill"];
-                vert.category = d["Skill-Unterkategorie"];
+                vert.category = categoryFromSkill(d);
                 return vert;
             });
 
