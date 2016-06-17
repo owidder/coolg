@@ -437,8 +437,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             vertData.exit().remove();
 
+            var voronoiVertices = voronoi(vertices);
+
             var pathData = field.append("g").selectAll("path")
-                .data(voronoi(vertices), polygon);
+                .data(voronoiVertices, polygon);
 
             pathData.enter().append("path")
                 .attr("class", function(d, i) {
