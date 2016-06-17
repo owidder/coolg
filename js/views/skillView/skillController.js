@@ -420,6 +420,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             vertData
                 .enter().append("circle")
                 .attr("class", "vskill")
+                .attr("cx", xScale(50))
+                .attr("cy", yScale(50))
                 .attr("r", 1.5);
 
             field.selectAll("circle.vskill")
