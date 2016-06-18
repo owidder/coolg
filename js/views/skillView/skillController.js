@@ -772,7 +772,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchMode() {
-            console.log(input.mode);
+            setMode(input.mode);
         }
 
         $scope.skillNameFilterChanged = skillNameFilterChanged;
