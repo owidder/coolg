@@ -654,7 +654,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function textIsShown() {
-            return svg.select("text.skill.on").size() > 0;
+            return svg.select("text.skill.off").size() == 0;
         }
 
         function hideText() {
