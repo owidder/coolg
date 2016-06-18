@@ -104,7 +104,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var radius = getLegendDetectorRadius();
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
-                var cx = circle.getAttribute("cx")
+                var cx = parseFloat(circle.getAttribute("cx"));
 
                 boundingRect = circle.getBoundingClientRect();
                 if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
