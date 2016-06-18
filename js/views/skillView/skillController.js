@@ -392,7 +392,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getMode() {
             switch($routeParams.mode) {
                 case "v":
-                    return
+                    return MODE_VORONOI;
+
+                default:
+                    return MODE_BUBBLES;
             }
         }
 
