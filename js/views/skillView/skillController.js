@@ -146,10 +146,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return [nearestCircle];
         }
 
-        function getNearestSkillCircles() {
-
-        }
-
         function mouseMoved(x, y) {
             console.log([x, y]);
             var nearbySkillForlegends = getSkillDetectionForLegendFunction()(x, y);
