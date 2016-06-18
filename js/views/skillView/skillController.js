@@ -665,6 +665,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .classed("on", true);
         }
 
+        function switchText() {
+            if(input.showText) {
+                showText();
+            }
+            else {
+                hideText();
+            }
+        }
+
         /**
          * draw the matrix and circles
          */
