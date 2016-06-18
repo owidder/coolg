@@ -99,7 +99,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getNearestSkillCircle(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var circles = document.querySelectorAll("circle.skill");
-            var i, circle, boundingRect;
+            var i, circle, boundingRect, nearestCircle;
             var nearbySkillForlegends = [];
             var radius = getLegendDetectorRadius();
             var minDistanceQuad = Number.MAX_VALUE;
@@ -112,6 +112,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var distanceQuad = distanceX*distanceX + distanceY*distanceY;
                 if(distanceQuad < minDistanceQuad) {
                     minDistanceQuad = distanceQuad;
+                    nearestCircle = circle;
                 }
 
                 boundingRect = circle.getBoundingClientRect();
