@@ -543,6 +543,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             vertData
                 .enter().append("circle")
                 .attr("class", "skill")
+                .attr("_skill", function (d) {
+                    return d.skill;
+                })
+                .attr("_count", function (d) {
+                    return d.count;
+                })
+                .attr("_ma", function (d) {
+                    return d.ma;
+                })
+                .attr("_md", function (d) {
+                    return d.md;
+                })
+                .attr("_cat", function(d) {
+                    return d.category;
+                })
                 .attr("cx", xScalePercent(50))
                 .attr("cy", yScalePercent(50))
                 .attr("opacity", "0.6")
