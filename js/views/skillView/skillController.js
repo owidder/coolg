@@ -79,9 +79,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearbySkillForlegends(x, y) {
-            var svgBoundingRect = getSvgBoundingRect();
-            var xAdapted = x + svgBoundingRect.left;
-            var yAdapted = y + svgBoundingRect.top;
+            var adapted = adaptPositionToSvg(x, y);
             var forlegends = document.querySelectorAll(".forlegend");
             var i, forlegend, boundingRect;
             var nearbySkillForlegends = [];
@@ -89,7 +87,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             for (i = 0; i < forlegends.length; i++) {
                 forlegend = forlegends[i];
                 boundingRect = forlegend.getBoundingClientRect();
-                if (xAdapted > boundingRect.left - radius && xAdapted < boundingRect.right + radius && yAdapted > boundingRect.top - radius && yAdapted < boundingRect.bottom + radius) {
+                if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
+                    adapted.y > boundingRect.top - radius && adapted.y < boundingRect.bottom + radius) {
                     nearbySkillForlegends.push(forlegend);
                 }
             }
