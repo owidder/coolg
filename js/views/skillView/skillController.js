@@ -67,12 +67,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return boundingRect;
         }
 
-        function adaptPositionToSvg() {
+        function adaptPositionToSvg(x, y) {
             var svgBoundingRect = getSvgBoundingRect();
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
 
-            return [xAdapted, yAdapted];
+            return {
+                x: xAdapted,
+                y: yAdapted
+            }
         }
 
         function getNearbySkillForlegends(x, y) {
