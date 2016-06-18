@@ -659,8 +659,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .classed("off", true);
         }
 
-        function () {
-
+        function showText() {
+            d3.selectAll("text.skill")
+                .classed("off", false)
+                .classed("on", true);
         }
 
         /**
