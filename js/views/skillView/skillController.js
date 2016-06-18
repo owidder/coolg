@@ -96,9 +96,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return nearbySkillForlegends;
         }
 
-        function getNearestSkillForLegend(x, y) {
+        function getNearestSkillCircle(x, y) {
             var adapted = adaptPositionToSvg(x, y);
-            var forlegends = document.querySelectorAll(".forlegend");
+            var forlegends = document.querySelectorAll("circle.skill");
             var i, forlegend, boundingRect;
             var nearbySkillForlegends = [];
             var radius = getLegendDetectorRadius();
