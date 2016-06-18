@@ -253,6 +253,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
         var field = root.append("g")
+            .attr("class", "field")
             .attr("transform", "translate(0, 0)");
 
         appendLegend();
