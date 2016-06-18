@@ -532,14 +532,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             //pathData.order();
 
-            var vertData = field.select("g.circles").selectAll("circle.vskill")
+            var vertData = field.select("g.circles").selectAll("circle.skill")
                 .data(vertices, function(d) {
                     return d.skill;
                 });
 
             vertData
                 .enter().append("circle")
-                .attr("class", "vskill")
+                .attr("class", "skill")
                 .attr("cx", xScalePercent(50))
                 .attr("cy", yScalePercent(50))
                 .attr("opacity", "0.6")
@@ -549,7 +549,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return color;
                 });
 
-            field.selectAll("circle.vskill")
+            field.selectAll("circle.skill")
                 .transition()
                 .attr("cx", function (d) {
                     return d[0];
@@ -560,14 +560,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             vertData.exit().remove();
 
-            var textData = field.select("g.texts").selectAll("text.vskill")
+            var textData = field.select("g.texts").selectAll("text.skill")
                 .data(vertices, function(d) {
                     return d.skill;
                 });
 
             textData
                 .enter().append("text")
-                .attr("class", "vskill")
+                .attr("class", "skill")
                 .attr("x", xScalePercent(50))
                 .attr("y", yScalePercent(50))
                 .attr("opacity", "0.5")
@@ -576,7 +576,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.skill;
                 });
 
-            field.selectAll("text.vskill")
+            field.selectAll("text.skill")
                 .transition()
                 .attr("x", function (d) {
                     return d[0];
