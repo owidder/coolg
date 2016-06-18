@@ -653,7 +653,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         }
 
-        function testIsShown() {
+        function textIsShown() {
             return svg.select("text.skill.on").size() > 0;
         }
 
@@ -670,7 +670,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchText() {
-            if(input.showText) {
+            if(textIsShown()) {
                 showText();
             }
             else {
