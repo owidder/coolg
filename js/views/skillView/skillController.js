@@ -442,7 +442,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return funcs.isDefined(d);
             });
 
-            var pathData = field.select("g.paths").append("g").selectAll("path.skill")
+            var pathData = field.select("g.paths").selectAll("path.skill")
                 .data(voronoiVerticesWithoutUndefines, polygon);
 
             pathData.exit().remove();
