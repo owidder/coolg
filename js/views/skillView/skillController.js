@@ -121,6 +121,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function distanceQuadToElement(x, y, element) {
+            var center = getCenterOfElement(circle);
+            var distanceX = adapted.x - center.x;
+            var distanceY = adapted.y - center.y;
+            var distanceQuad = distanceX*distanceX + distanceY*distanceY;
+
+            return distanceQuad;
+        }
+
         function getNearestSkillCircle(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var circles = document.querySelectorAll("circle.skill");
