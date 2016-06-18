@@ -179,10 +179,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12" ng-repeat="location in allLocations">
+                    <div class="col s12">
                         <span class="switch">
                             <input name="mode" type="radio" id="mode-bubbles" ng-click="showBubbles()"/>
                             <label for="mode-bubbles">Bubbles</label>
+                        </span>
+                    </div>
+                    <div class="col s12">
+                        <span class="switch">
+                            <input name="mode" type="radio" id="mode-voronoi" ng-click="showBubbles()"/>
+                            <label for="mode-voronoi">Voronoi</label>
                         </span>
                     </div>
                 </div>
