@@ -52,7 +52,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return skillList;
         }
 
-        function getSvgBoundingRect() {
+        function getSvgBoundingRectOfElement(selector) {
             var boundingRect = {
                 top: 0,
                 left: 0,
@@ -68,7 +68,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function adaptPositionToSvg(x, y) {
-            var svgBoundingRect = getSvgBoundingRect();
+            var svgBoundingRect = getSvgBoundingRectOfElement();
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
 
