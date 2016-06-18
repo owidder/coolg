@@ -139,7 +139,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var distanceQuad = distanceQuadToElement(adapted.x, adapted.y, circles[i]);
                 if(distanceQuad < minDistanceQuad) {
                     minDistanceQuad = distanceQuad;
-                    nearestCircle = circle;
+                    nearestCircle = circles[i];
                 }
             }
 
