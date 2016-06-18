@@ -78,6 +78,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function getSkillDetectionForLegendFunction() {
+            switch (getMode()) {
+                case MODE_VORONOI:
+                    return getNearestSkillCircle;
+
+                case MODE_BUBBLES:
+                    return getNearbySkillForlegends;
+            }
+        }
+
         function getNearbySkillForlegends(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var forlegends = document.querySelectorAll(".forlegend");
