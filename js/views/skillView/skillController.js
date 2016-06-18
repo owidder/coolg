@@ -5,6 +5,9 @@ com_geekAndPoke_coolg.SKILL_CONTROLLER = "skillController";
 angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.SKILL_CONTROLLER,
     function ($scope, $routeParams, $location, $timeout, $q, dimensions, funcs) {
 
+        var MODE_VORONOI = "voronoi";
+        var MODE_BUBBLES = "bubbles";
+
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
         var $categories = bottle.container.$categories;
@@ -384,6 +387,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
 
             return cat;
+        }
+
+        function getMode() {
+            switch($routeParams.mode) {
+                case "v":
+                    return
+            }
         }
 
         function draw() {
