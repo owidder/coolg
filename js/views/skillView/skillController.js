@@ -67,8 +67,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return boundingRect;
         }
 
-        function adaptPositionToSvg(x, y) {
-            var svgBoundingRect = getSvgBoundingRectOfElement("svg.canvas");
+        function adaptPositionToElement(x, y, selector) {
+            var svgBoundingRect = getSvgBoundingRectOfElement(selector);
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
 
@@ -89,7 +89,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearbySkillForlegends(x, y) {
-            var adapted = adaptPositionToSvg(x, y);
+            var adapted = adaptPositionToElement(x, y, "svg.canvas");
             var forlegends = document.querySelectorAll(".forlegend");
             var i, forlegend, boundingRect;
             var nearbySkillForlegends = [];
@@ -107,7 +107,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearestSkillCircle(x, y) {
-            var adapted = adaptPositionToSvg(x, y);
+            var adapted = adaptPositionToElement(x, y);
             var circles = document.querySelectorAll("circle.skill");
             var i, circle, nearestCircle;
             var minDistanceQuad = Number.MAX_VALUE;
