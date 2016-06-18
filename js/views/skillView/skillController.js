@@ -102,7 +102,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var i, circle, boundingRect;
             var nearbySkillForlegends = [];
             var radius = getLegendDetectorRadius();
-            var minDistance = Number.MAX_VALUE;
+            var minDistanceQuad = Number.MAX_VALUE;
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 var cx = parseFloat(circle.getAttribute("cx"));
@@ -110,6 +110,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var distanceX = x - cx;
                 var distanceY = y - cy;
                 var distanceQuad = distanceX*distanceX + distanceY*distanceY;
+                if(distanceQuad < minDistanceQuad) {
+                    minDistanceQuad = distanceQuad;
+                }
 
                 boundingRect = circle.getBoundingClientRect();
                 if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
