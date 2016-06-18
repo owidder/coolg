@@ -552,15 +552,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_skill", function (d) {
                     return d.point.skill;
                 })
-                .attr("_count", function (d) {
-                    return d.point.count;
-                })
-                .attr("_ma", function (d) {
-                    return d.point.ma;
-                })
-                .attr("_md", function (d) {
-                    return d.point.md;
-                })
                 .attr("_cat", function(d) {
                     return d.point.category;
                 })
@@ -572,6 +563,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             field.selectAll("path.skill")
+                .attr("_count", function (d) {
+                    return d.point.count;
+                })
+                .attr("_ma", function (d) {
+                    return d.point.ma;
+                })
+                .attr("_md", function (d) {
+                    return d.point.md;
+                })
                 .transition()
                 .attr("d", polygon);
 
@@ -588,15 +588,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_skill", function (d) {
                     return d.skill;
                 })
-                .attr("_count", function (d) {
-                    return d.count;
-                })
-                .attr("_ma", function (d) {
-                    return d.ma;
-                })
-                .attr("_md", function (d) {
-                    return d.md;
-                })
                 .attr("_cat", function(d) {
                     return d.category;
                 })
@@ -610,6 +601,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             field.selectAll("circle.skill")
+                .attr("_count", function (d) {
+                    return d.count;
+                })
+                .attr("_ma", function (d) {
+                    return d.ma;
+                })
+                .attr("_md", function (d) {
+                    return d.md;
+                })
                 .transition()
                 .attr("cx", function (d) {
                     return d[0];
