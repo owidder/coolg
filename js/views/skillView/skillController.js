@@ -655,7 +655,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function hideText() {
             d3.selectAll("text.skill")
-                .classed("hide", true);
+                .classed("on", false)
+                .classed("off", true);
+        }
+
+        function () {
+
         }
 
         /**
