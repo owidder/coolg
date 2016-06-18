@@ -116,23 +116,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var cy = boundingRect.top + (boundingRect.bottom - boundingRect.top)/2;
 
             return {
-                cx: cx,
-                cy: cy
+                x: cx,
+                y: cy
             }
         }
 
         function getNearestSkillCircle(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var circles = document.querySelectorAll("circle.skill");
-            var i, circle, nearestCircle, boundingRect;
+            var i, circle, nearestCircle, center;
             var minDistanceQuad = Number.MAX_VALUE;
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
-                boundingRect = circle.getBoundingClientRect();
-                var cx = boundingRect.left + (boundingRect.right - boundingRect.left)/2;
-                var cy = boundingRect.top + (boundingRect.bottom - boundingRect.top)/2;
-                var distanceX = adapted.x - cx;
-                var distanceY = adapted.y - cy;
+                center = getCenterOfElement(circle);
+                var distanceX = adapted.x - center.x;
+                var distanceY = adapted.y - center.y;
                 var distanceQuad = distanceX*distanceX + distanceY*distanceY;
                 if(distanceQuad < minDistanceQuad) {
                     minDistanceQuad = distanceQuad;
