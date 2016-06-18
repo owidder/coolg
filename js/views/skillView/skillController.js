@@ -251,7 +251,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .on("mousemove", function () {
                 var evt = d3.mouse(this);
                 mouseMoved(evt[0], evt[1]);
-            });
+            })
+            .on("mouseout", hideLegend);
 
         var svgElement = document.querySelector("svg.canvas");
 
