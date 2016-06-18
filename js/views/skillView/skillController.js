@@ -114,15 +114,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     minDistanceQuad = distanceQuad;
                     nearestCircle = circle;
                 }
-
-                boundingRect = circle.getBoundingClientRect();
-                if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
-                    adapted.y > boundingRect.top - radius && adapted.y < boundingRect.bottom + radius) {
-                    nearbySkillForlegends.push(circle);
-                }
             }
 
-            return nearbySkillForlegends;
+            return nearestCircle;
         }
 
         function mouseMoved(x, y) {
