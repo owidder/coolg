@@ -671,10 +671,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function switchText() {
             if(textIsShown()) {
-                showText();
+                hideText();
             }
             else {
-                hideText();
+                showText();
             }
         }
 
