@@ -178,6 +178,14 @@
                         </label>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col s12" ng-repeat="location in allLocations">
+                        <span class="switch">
+                            <input name="mode" type="radio" id="mode-bubbles" ng-click="showBubbles()"/>
+                            <label for="mode-bubbles">Bubbles</label>
+                        </span>
+                    </div>
+                </div>
                 <div class="col s12">
                     <input name="location" type="radio" id="loc-all" ng-click="showLocation('*')" checked="checked"/>
                     <label for="loc-all">Alle</label>
