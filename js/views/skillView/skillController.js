@@ -98,7 +98,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function getSkillOnPositionForLegends(x, y) {
             var adapted = adaptPositionToSvg(x, y);
-            
+            var 
 
         }
 
