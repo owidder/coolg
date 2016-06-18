@@ -132,7 +132,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 }
             }
 
-            nearestAndNearbyCircles.push(nearestCircle);
+            if(nearestAndNearbyCircles.indexOf(nearestCircle) < 0) {
+                nearestAndNearbyCircles.push(nearestCircle);
+            }
             return nearestAndNearbyCircles;
         }
 
