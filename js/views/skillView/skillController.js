@@ -96,10 +96,22 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return nearbySkillForlegends;
         }
 
-        function getSkillOnPositionForLegends(x, y) {
+        function getNearestSkillForLegend(x, y) {
             var adapted = adaptPositionToSvg(x, y);
-            var forlegends = document.elem
+            var forlegends = document.querySelectorAll(".forlegend");
+            var i, forlegend, boundingRect;
+            var nearbySkillForlegends = [];
+            var radius = getLegendDetectorRadius();
+            for (i = 0; i < forlegends.length; i++) {
+                forlegend = forlegends[i];
+                boundingRect = forlegend.getBoundingClientRect();
+                if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
+                    adapted.y > boundingRect.top - radius && adapted.y < boundingRect.bottom + radius) {
+                    nearbySkillForlegends.push(forlegend);
+                }
+            }
 
+            return nearbySkillForlegends;
         }
 
         function mouseMoved(x, y) {
