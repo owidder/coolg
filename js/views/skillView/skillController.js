@@ -105,6 +105,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 var cx = parseFloat(circle.getAttribute("cx"));
+                var cy = parseFloat(circle.getAttribute("cy"));
 
                 boundingRect = circle.getBoundingClientRect();
                 if (adapted.x > boundingRect.left - radius && adapted.x < boundingRect.right + radius &&
