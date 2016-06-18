@@ -458,7 +458,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 case MODE_VORONOI:
                     return 0;
 
-                default:
+                case MODE_BUBBLES:
                     return 10;
             }
         }
