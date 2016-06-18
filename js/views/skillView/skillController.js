@@ -102,6 +102,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var i, circle, boundingRect;
             var nearbySkillForlegends = [];
             var radius = getLegendDetectorRadius();
+            var minDistance = 
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 var cx = parseFloat(circle.getAttribute("cx"));
