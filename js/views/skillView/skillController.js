@@ -400,11 +400,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function draw() {
-            if (funcs.isDefined($routeParams.v)) {
-                drawVoronoiSkills()
-            }
-            else {
-                drawSkills();
+            switch(getMode()) {
+                case MODE_VORONOI:
+                    drawVoronoiSkills();
+                    break;
+
+                case MODE_BUBBLES:
+                    drawSkills();
+                    break;
+
+                default:
+                    drawSkills();
+                    break;
             }
         }
 
