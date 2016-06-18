@@ -115,8 +115,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 circle = circles[i];
                 var cx = parseFloat(circle.getAttribute("cx"));
                 var cy = parseFloat(circle.getAttribute("cy"));
-                var distanceX = x - cx;
-                var distanceY = y - cy;
+                var distanceX = adapted.x - cx;
+                var distanceY = adapted.y - cy;
                 var distanceQuad = distanceX*distanceX + distanceY*distanceY;
                 if(distanceQuad < minDistanceQuad) {
                     minDistanceQuad = distanceQuad;
