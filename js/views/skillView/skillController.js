@@ -85,7 +85,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getSkillDetectionForLegendFunction() {
             switch (getMode()) {
                 case MODE_VORONOI:
-                    return getNearestSkillCircle;
+                    return getNearestSkillCircles;
 
                 case MODE_BUBBLES:
                     return getNearbySkillForlegends;
@@ -130,12 +130,25 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return distanceQuad;
         }
 
-        function getNearestSkillCircle(x, y) {
+        function getNearestSkillCircles(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var circles = document.querySelectorAll("circle.skill");
-            var i, nearestCircle;
+            var i, nearestCircle, nearestCircles = [], centerOfCircle, centerOfNearestCircle;
             var minDistanceQuad = Number.MAX_VALUE;
+
+            // find nearest circle
             for (i = 0; i < circles.length; i++) {
+                var distanceQuad = distanceQuadToElement(adapted.x, adapted.y, circles[i]);
+                if(distanceQuad < minDistanceQuad) {
+                    minDistanceQuad = distanceQuad;
+                    nearestCircle = circles[i];
+                }
+            }
+
+            centerOfNearestCircle = getCenterOfElement(nearestCircle);
+            // find circles near to nearest circles
+            for (i = 0; i < circles.length; i++) {
+                centerOfCircle = getCenterOfElement(circles[i]);
                 var distanceQuad = distanceQuadToElement(adapted.x, adapted.y, circles[i]);
                 if(distanceQuad < minDistanceQuad) {
                     minDistanceQuad = distanceQuad;
