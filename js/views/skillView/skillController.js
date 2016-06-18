@@ -67,6 +67,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return boundingRect;
         }
 
+        function adaptPositionToSvg() {
+            var svgBoundingRect = getSvgBoundingRect();
+            var xAdapted = x + svgBoundingRect.left;
+            var yAdapted = y + svgBoundingRect.top;
+
+            return [xAdapted, yAdapted];
+        }
+
         function getNearbySkillForlegends(x, y) {
             var svgBoundingRect = getSvgBoundingRect();
             var xAdapted = x + svgBoundingRect.left;
@@ -84,6 +92,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
 
             return nearbySkillForlegends;
+        }
+
+        function getSkillOnPositionForLegends(x, y) {
+
         }
 
         function mouseMoved(x, y) {
