@@ -107,7 +107,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearestSkillCircle(x, y) {
-            var adapted = adaptPositionToElement(x, y);
+            var adapted = adaptPositionToElement(x, y, "g.field");
             var circles = document.querySelectorAll("circle.skill");
             var i, circle, nearestCircle;
             var minDistanceQuad = Number.MAX_VALUE;
