@@ -476,7 +476,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function setMode(mode) {
             switch(mode) {
                 case MODE_VORONOI:
-                    $location
+                    $location.search("mode", "v");
+                    break;
+
+                case MODE_BUBBLES:
+                    $location.search("mode", "b");
+                    break;
             }
         }
 
