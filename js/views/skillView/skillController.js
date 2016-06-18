@@ -123,8 +123,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function distanceQuadToElement(x, y, element) {
             var center = getCenterOfElement(element);
-            var distanceX = adapted.x - center.x;
-            var distanceY = adapted.y - center.y;
+            var distanceX = x - center.x;
+            var distanceY = y - center.y;
             var distanceQuad = distanceX*distanceX + distanceY*distanceY;
 
             return distanceQuad;
