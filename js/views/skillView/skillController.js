@@ -653,6 +653,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         }
 
+        function testIsShown() {
+            return svg.select("text.skill.on").size() > 0;
+        }
+
         function hideText() {
             d3.selectAll("text.skill")
                 .classed("on", false)
