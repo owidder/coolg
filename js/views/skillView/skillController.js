@@ -766,7 +766,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         $scope.skillNameFilterChanged = skillNameFilterChanged;
 
         var input = {
-            textIsShown: true
+            textIsShown: true,
+            mode: getMode()
         };
 
         $scope.input = input;
