@@ -114,7 +114,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 }
             }
 
-            return nearestCircle;
+            return [nearestCircle];
         }
 
         function mouseMoved(x, y) {
