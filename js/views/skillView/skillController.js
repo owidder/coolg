@@ -110,6 +110,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return nearbySkillForlegends;
         }
 
+        function getCenterOfElement(element) {
+            var boundingRect = element.getBoundingClientRect();
+            var cx = boundingRect.left + (boundingRect.right - boundingRect.left)/2;
+            var cy = boundingRect.top + (boundingRect.bottom - boundingRect.top)/2;
+
+            return {
+                cx: cx,
+                cy: cy
+            }
+        }
+
         function getNearestSkillCircle(x, y) {
             var adapted = adaptPositionToSvg(x, y);
             var circles = document.querySelectorAll("circle.skill");
@@ -129,7 +140,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 }
             }
 
-            return nearestCircle;
+            return [nearestCircle];
+        }
+
+        function getNearestSkillCircles() {
+
         }
 
         function mouseMoved(x, y) {
