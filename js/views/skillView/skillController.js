@@ -30,7 +30,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var width = dimensions.width(-50) * 10 / 12;
         var height = dimensions.height(-70);
 
-        function createIntersectSkillList(elementList) {
+        function createLegendSkillList(elementList) {
             var skillList = [];
             var skillName;
             var skillStr;
@@ -119,7 +119,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function mouseMoved(x, y) {
             var nearbySkillForlegends = getNearbySkillForlegends(x, y);
-            var skillStrList = createIntersectSkillList(nearbySkillForlegends);
+            var skillStrList = createLegendSkillList(nearbySkillForlegends);
             updateLegend(skillStrList);
 
             legend
