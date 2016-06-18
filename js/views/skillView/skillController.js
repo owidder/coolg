@@ -74,10 +74,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var forlegends = document.querySelectorAll(".forlegend");
             var i, forlegend, boundingRect;
             var nearbySkillForlegends = [];
+            var radius = getLegendDetectorRadius();
             for (i = 0; i < forlegends.length; i++) {
                 forlegend = forlegends[i];
                 boundingRect = forlegend.getBoundingClientRect();
-                if (xAdapted > boundingRect.left - 10 && xAdapted < boundingRect.right + 10 && yAdapted > boundingRect.top - 10 && yAdapted < boundingRect.bottom + 10) {
+                if (xAdapted > boundingRect.left - radius && xAdapted < boundingRect.right + radius && yAdapted > boundingRect.top - radius && yAdapted < boundingRect.bottom + radius) {
                     nearbySkillForlegends.push(forlegend);
                 }
             }
