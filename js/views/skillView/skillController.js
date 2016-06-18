@@ -631,7 +631,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             textData
                 .enter().append("text")
-                .attr("class", "skill")
+                .attr("class", function () {
+                    return "skill " + textIsShown() ? "on" : "off";
+                })
                 .attr("x", xScalePercent(50))
                 .attr("y", yScalePercent(50))
                 .attr("opacity", "0.5")
