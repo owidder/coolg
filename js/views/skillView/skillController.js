@@ -128,7 +128,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function mouseMoved(x, y) {
-            var nearbySkillForlegends = getNearbySkillForlegends(x, y);
+            var nearbySkillForlegends = getSkillDetectionForLegendFunction()(x, y);
             var skillStrList = createLegendSkillList(nearbySkillForlegends);
             updateLegend(skillStrList);
 
