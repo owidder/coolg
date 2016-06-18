@@ -547,6 +547,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             pathData.exit().remove();
 
+            // propagate downwards
+            field.select("g.paths").selectAll("path.skill")
+                .select("path.skill");
+
             pathData.enter().append("path")
                 .attr("class", "skill forlegend")
                 .attr("_skill", function (d) {
