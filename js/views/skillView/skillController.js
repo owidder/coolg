@@ -150,8 +150,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 centerOfCircle = getCenterOfElement(circles[i]);
                 var distanceQuad = distanceQuadToElement(centerOfCircle.x, centerOfCircle.y, nearestCircle);
                 if(distanceQuad < 1) {
-                    minDistanceQuad = distanceQuad;
-                    nearestCircle = circles[i];
+                    nearestCircles.push(circles[i]);
                 }
             }
 
