@@ -59,16 +59,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 bottom: 0,
                 right: 0
             };
-            var svgElement = document.querySelector("svg.canvas");
-            if (funcs.isDefined(svgElement)) {
-                funcs.copyAttributes(["top", "left", "right", "bottom"], svgElement.getBoundingClientRect(), boundingRect);
+            var element = document.querySelector(selector);
+            if (funcs.isDefined(element)) {
+                funcs.copyAttributes(["top", "left", "right", "bottom"], element.getBoundingClientRect(), boundingRect);
             }
 
             return boundingRect;
         }
 
         function adaptPositionToSvg(x, y) {
-            var svgBoundingRect = getSvgBoundingRectOfElement();
+            var svgBoundingRect = getSvgBoundingRectOfElement("svg.canvas");
             var xAdapted = x + svgBoundingRect.left;
             var yAdapted = y + svgBoundingRect.top;
 
