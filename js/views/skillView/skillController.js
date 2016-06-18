@@ -78,6 +78,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function adaptPositionToSvg(x, y) {
+            return adaptPositionToElement(x, y, "svg.canvas")
+        }
+
         function getSkillDetectionForLegendFunction() {
             switch (getMode()) {
                 case MODE_VORONOI:
@@ -89,7 +93,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getNearbySkillForlegends(x, y) {
-            var adapted = adaptPositionToElement(x, y, "svg.canvas");
+            var adapted = adaptPositionToSvg(x, y);
             var forlegends = document.querySelectorAll(".forlegend");
             var i, forlegend, boundingRect;
             var nearbySkillForlegends = [];
@@ -114,7 +118,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             for (i = 0; i < circles.length; i++) {
                 circle = circles[i];
                 boundingRect = circle.getBoundingClientRect();
-                var cx = parseFloat(circle.getAttribute("cx"));
+                var cx = boundingRect.left + (boundingRect.right - boundingRect.left)/2;
                 var cy = parseFloat(circle.getAttribute("cy"));
                 var distanceX = adapted.x - cx;
                 var distanceY = adapted.y - cy;
