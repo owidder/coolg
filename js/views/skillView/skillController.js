@@ -447,7 +447,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     drawVoronoiSkills();
                     break;
 
-                default:
+                case MODE_BUBBLES:
                     drawSkills();
                     break;
             }
