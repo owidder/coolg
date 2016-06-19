@@ -667,10 +667,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         }
 
-        function showText() {
-            return $scope.input.showText;
-        }
-
         function hideText() {
             d3.selectAll("text.skill")
                 .classed("on", false)
@@ -684,11 +680,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchText() {
-            if(showText()) {
-                hideText();
+            if($scope.input.showText) {
+                showText();
             }
             else {
-                showText();
+                hideText();
             }
         }
 
