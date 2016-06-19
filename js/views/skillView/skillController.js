@@ -744,7 +744,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             gSkillEnterG.append("text")
                 .attr("opacity", 0.5)
                 .attr("class", function () {
-                    return "skill " + (shouldShowText() ? "on" : "off");
+                    return "item skill " + (shouldShowText() ? "on" : "off");
                 })
                 .attr("y", 0)
                 .attr("x", 0)
