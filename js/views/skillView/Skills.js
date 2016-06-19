@@ -57,7 +57,9 @@ bottle.factory("Skills", function(container) {
                     {
                         name: 'Anzahl Experten',
                         get: function(row) {
-                            if()
+                            if(row['Bewertung'] > 2) {
+                                return row['']
+                            }
                         }},
                     {name: 'Skill Dauer', ops: ['mean'], as: ['Mittlere Skilldauer']},
                     {name: 'Skill-Unterkategorie', ops: ['values']}
