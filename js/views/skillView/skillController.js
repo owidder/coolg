@@ -692,6 +692,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function resetField() {
+            field.selectAll("g").remove();
+        }
+
         /**
          * draw the matrix and circles
          */
