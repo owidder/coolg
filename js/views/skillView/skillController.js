@@ -668,6 +668,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function textIsShown() {
+            console.log($scope.input);
             return svg.select("text.skill.off").size() == 0;
         }
 
