@@ -644,7 +644,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             textData
                 .enter().append("text")
                 .attr("class", function () {
-                    return "skill " + (textIsShown() ? "on" : "off");
+                    return "skill " + (showText() ? "on" : "off");
                 })
                 .attr("x", xScalePercent(50))
                 .attr("y", yScalePercent(50))
@@ -667,8 +667,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         }
 
-        function textIsShown() {
-            return $scope.input.textIsShown;
+        function showText() {
+            return $scope.input.showText;
         }
 
         function hideText() {
@@ -684,7 +684,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function switchText() {
-            if(textIsShown()) {
+            if(showText()) {
                 hideText();
             }
             else {
