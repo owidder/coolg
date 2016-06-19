@@ -23,7 +23,9 @@ d3.json("readme.json", function(json) {
     cell.append("svg:rect")
         .attr("width", function(d) { return d.dx; })
         .attr("height", function(d) { return d.dy; })
-        .style("fill", function(d) { return d.children ? color(d.data.name) : null; });
+        .style("fill", function(d) {
+            return d.children ? color(d.data.name) : null;
+        });
 
     cell.append("svg:text")
         .attr("x", function(d) { return d.dx / 2; })
