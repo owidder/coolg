@@ -453,16 +453,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
         }
 
-        function categoryFromSkill(d) {
-            var cat = "?";
-            var categoryValues = d["values_Skill-Unterkategorie"];
-            if (!funcs.isEmpty(categoryValues)) {
-                cat = categoryValues[0]["Skill-Unterkategorie"];
-            }
-
-            return cat;
-        }
-
         function getMode() {
             switch($routeParams.mode) {
                 case "v":
