@@ -66,7 +66,7 @@ bottle.factory("Skills", function(container) {
                 count: skill["Anzahl Mitarbeiter"],
                 expertCount: skill["Anzahl Experten"]
             };
-            branch.push(grandchild);
+            branch.push(child);
         }
 
         function createTree(aggregation) {
