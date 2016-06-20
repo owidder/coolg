@@ -25,16 +25,26 @@ d3.json("skills.json", function(json) {
         });
 
     cell.append("svg:rect")
-        .attr("width", function(d) { return d.dx; })
-        .attr("height", function(d) { return d.dy; })
+        .attr("width", function(d) {
+            return d.dx;
+        })
+        .attr("height", function(d) {
+            return d.dy;
+        })
         .style("fill", function(d) {
             return d.children ? color(d.name) : null;
         });
 
     cell.append("svg:text")
-        .attr("x", function(d) { return d.dx / 2; })
-        .attr("y", function(d) { return d.dy / 2; })
+        .attr("x", function(d) {
+            return d.dx / 2;
+        })
+        .attr("y", function(d) {
+            return d.dy / 2;
+        })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .text(function(d) { return d.children ? null : d.name; });
+        .text(function(d) {
+            return d.children ? null : d.name;
+        });
 });
