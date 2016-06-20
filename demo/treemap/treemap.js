@@ -6,7 +6,7 @@ var treemap = d3.layout.treemap()
     .padding(4)
     .size([w, h])
     .value(function(d) {
-        return d.expertCount;
+        return d.ma;
     });
 
 var svg = d3.select("body").append("svg:svg")
