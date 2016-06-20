@@ -55,6 +55,8 @@ bottle.factory("Skills", function(container) {
             aggregation.forEach(function(skill) {
                 addToClusters(skill);
             });
+
+            return clusters;
         }
 
         function createTree(aggregation) {
@@ -63,13 +65,7 @@ bottle.factory("Skills", function(container) {
                 children: []
             };
 
-            function addToTree(skill) {
-                var
-            }
-
-            aggregation.forEach(function(skill) {
-
-            });
+            var clusters = clusterSkills(aggregation);
         }
 
         var promise = new SimplePromise();
