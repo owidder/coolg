@@ -456,7 +456,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return 4;
 
                 default:
-                    return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+                    return dl.max(data, funcs.createAccessorFunction(ya));
             }
         }
 
