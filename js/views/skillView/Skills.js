@@ -88,7 +88,13 @@ bottle.factory("Skills", function(container) {
         }
 
         function createFlatTree(aggregation) {
-
+            var tree = {
+                name: "Skills",
+                children: []
+            };
+            
+            aggregation.forEach(function(skill) {
+            });
         }
 
         var promise = new SimplePromise();
