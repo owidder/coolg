@@ -45,7 +45,7 @@ d3.json("skills.json", function(json) {
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .attr("font-size", function(d) {
-            return dx / 10 + "px";
+            return d.dx / 10 + "px";
         })
         .text(function(d) {
             return d.children ? null : d.name;
