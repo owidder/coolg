@@ -535,7 +535,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var vertices = filteredData.map(function (d) {
                 var vert = [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
                 vert.skill = d["Skill"];
-                vert.category = categoryFromSkill(d);
+                vert.category = skills.categoryFromSkill(d);
                 vert.ma = d["Mittlere Bewertung"];
                 vert.md = d["Mittlere Skilldauer"];
                 vert.count = d["Anzahl Mitarbeiter"];
