@@ -1,1 +1,3261 @@
-{"name":"Skills","children":[{"name":"Sprache","children":[{"name":"(J)Ruby","ma":1.5714285714285714,"count":10,"expertCount":0},{"name":".Net","ma":1.8666666666666665,"count":20,"expertCount":5},{"name":"ABAP","ma":1,"count":2,"expertCount":0},{"name":"ActionScript","ma":2.3333333333333335,"count":3,"expertCount":1},{"name":"AspectJ","ma":1.5,"count":16,"expertCount":1},{"name":"Assembler","ma":1.4444444444444444,"count":13,"expertCount":0},{"name":"BASIC","ma":1,"count":2,"expertCount":0},{"name":"C","ma":1.8857142857142857,"count":69,"expertCount":11},{"name":"C#","ma":1.9199999999999997,"count":58,"expertCount":8},{"name":"C++","ma":1.8055555555555558,"count":79,"expertCount":11},{"name":"Cobol","ma":1.6363636363636362,"count":15,"expertCount":2},{"name":"CSS","ma":2.1500000000000004,"count":80,"expertCount":24},{"name":"Delphi","ma":1.7777777777777777,"count":10,"expertCount":1},{"name":"Fortran","ma":1.5,"count":4,"expertCount":0},{"name":"GNU Octave","ma":1.5,"count":2,"expertCount":0},{"name":"Groovy","ma":1.888888888888889,"count":28,"expertCount":4},{"name":"GSP","ma":1.6,"count":5,"expertCount":0},{"name":"Haskell","ma":1.6,"count":6,"expertCount":0},{"name":"HTML","ma":2.121951219512195,"count":100,"expertCount":34},{"name":"HTML5","ma":2,"count":37,"expertCount":7},{"name":"J#","ma":3,"count":1,"expertCount":1},{"name":"Java","ma":2.2553191489361697,"count":171,"expertCount":89},{"name":"Java 8","ma":1.9999999999999998,"count":39,"expertCount":7},{"name":"Java EE","ma":2.1111111111111107,"count":107,"expertCount":37},{"name":"JavaScript","ma":2.177777777777778,"count":114,"expertCount":28},{"name":"JSON","ma":2.0909090909090904,"count":72,"expertCount":15},{"name":"JSP","ma":1.896551724137931,"count":56,"expertCount":12},{"name":"Lisp","ma":1,"count":2,"expertCount":0},{"name":"Lua","ma":2,"count":2,"expertCount":1},{"name":"Machine Learning","ma":1.6,"count":13,"expertCount":1},{"name":"Markdown","ma":2,"count":11,"expertCount":2},{"name":"Natural","ma":2.25,"count":4,"expertCount":2},{"name":"Objective-C","ma":1.7,"count":10,"expertCount":2},{"name":"OpenGL","ma":1.3333333333333333,"count":11,"expertCount":0},{"name":"Pascal","ma":1.6363636363636362,"count":14,"expertCount":1},{"name":"Perl","ma":1.8666666666666665,"count":23,"expertCount":5},{"name":"PHP","ma":1.935483870967742,"count":61,"expertCount":10},{"name":"Prolog","ma":1.8,"count":8,"expertCount":1},{"name":"Python","ma":1.8888888888888888,"count":33,"expertCount":4},{"name":"R","ma":1.5833333333333333,"count":18,"expertCount":1},{"name":"Sass","ma":1.3333333333333333,"count":13,"expertCount":0},{"name":"Scala","ma":1.8,"count":21,"expertCount":2},{"name":"Shell-Scripts","ma":1.875,"count":36,"expertCount":7},{"name":"Smalltalk","ma":1.625,"count":11,"expertCount":1},{"name":"SQL","ma":2,"count":128,"expertCount":47},{"name":"Swift","ma":1.25,"count":5,"expertCount":0},{"name":"TypeScript","ma":1.25,"count":4,"expertCount":0},{"name":"Velocity","ma":1.6666666666666667,"count":13,"expertCount":1},{"name":"Visual Basic","ma":1.6,"count":26,"expertCount":3},{"name":"WSDL","ma":1.75,"count":30,"expertCount":3},{"name":"XLT","ma":2,"count":1,"expertCount":0},{"name":"XML","ma":2.0666666666666664,"count":115,"expertCount":39},{"name":"XSLT","ma":1.9259259259259258,"count":41,"expertCount":9}]},{"name":"Sonstiges (Technologie)","children":[{"name":"Active Directory","ma":1.5454545454545454,"count":15,"expertCount":1},{"name":"Apache Solr","ma":1.3333333333333333,"count":9,"expertCount":0},{"name":"Apache Webserver","ma":1.653846153846154,"count":44,"expertCount":2},{"name":"Arduino","ma":1.9166666666666667,"count":18,"expertCount":3},{"name":"Augmented Reality","ma":1.2857142857142858,"count":7,"expertCount":0},{"name":"bash","ma":1.869565217391304,"count":39,"expertCount":7},{"name":"Bluetooth Low Energy","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"Bugzilla","ma":1.625,"count":11,"expertCount":1},{"name":"CAN-Bus","ma":1.75,"count":7,"expertCount":1},{"name":"CIM (power systems models)","ma":1,"count":3,"expertCount":0},{"name":"Clustering","ma":3,"count":1,"expertCount":1},{"name":"CMS","ma":1.7692307692307692,"count":18,"expertCount":2},{"name":"Confluence","ma":2.034482758620689,"count":51,"expertCount":12},{"name":"dCache","ma":3,"count":1,"expertCount":1},{"name":"Dijit","ma":1.5,"count":2,"expertCount":0},{"name":"eTicketing","ma":3,"count":1,"expertCount":1},{"name":"FlexRay-Bus","ma":2,"count":1,"expertCount":0},{"name":"FTPS","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"GeoCoding","ma":1.3333333333333333,"count":4,"expertCount":0},{"name":"GeoServer","ma":1.6666666666666667,"count":5,"expertCount":0},{"name":"GlassFish","ma":1.9473684210526314,"count":41,"expertCount":6},{"name":"Hazelcast","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"HTTP","ma":1.8214285714285714,"count":44,"expertCount":10},{"name":"IBM Websphere","ma":1.7272727272727273,"count":17,"expertCount":3},{"name":"IBM Websphere MQ","ma":1.6,"count":5,"expertCount":1},{"name":"JBoss","ma":1.9999999999999998,"count":39,"expertCount":7},{"name":"Jetty","ma":1.7857142857142856,"count":19,"expertCount":2},{"name":"Jira","ma":2.078947368421053,"count":85,"expertCount":20},{"name":"Kerberos","ma":1.3333333333333333,"count":4,"expertCount":0},{"name":"Künstliche Intelligenz","ma":1.75,"count":5,"expertCount":1},{"name":"LIN-Bus","ma":2,"count":1,"expertCount":0},{"name":"MagicDraw","ma":1.6,"count":7,"expertCount":0},{"name":"Magnolia CMS","ma":2,"count":1,"expertCount":0},{"name":"MediaWiki","ma":1.4,"count":6,"expertCount":0},{"name":"NetIQ Identity Manager","ma":2,"count":1,"expertCount":0},{"name":"nginx","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"Objektentwurf","ma":2.2857142857142856,"count":8,"expertCount":3},{"name":"Oracle Application Server","ma":1,"count":4,"expertCount":0},{"name":"OSB (Oracle Service Bus)","ma":1,"count":1,"expertCount":0},{"name":"OSGi","ma":1.6666666666666665,"count":8,"expertCount":1},{"name":"PDF","ma":1.5,"count":4,"expertCount":0},{"name":"PostScript","ma":1,"count":1,"expertCount":0},{"name":"Sensorik","ma":1.5,"count":2,"expertCount":0},{"name":"Smart Home","ma":1.5,"count":2,"expertCount":0},{"name":"SVG","ma":1.8181818181818181,"count":13,"expertCount":2},{"name":"Systementwurf","ma":1.7777777777777777,"count":10,"expertCount":2},{"name":"TCP/IP","ma":1.65,"count":23,"expertCount":3},{"name":"Tomcat","ma":2.0571428571428565,"count":84,"expertCount":19},{"name":"VDV-Kernapplikation","ma":3,"count":1,"expertCount":1},{"name":"Wearables","ma":1.5,"count":4,"expertCount":0},{"name":"WebLogic","ma":2,"count":34,"expertCount":8},{"name":"WebSocket","ma":2,"count":2,"expertCount":0},{"name":"Windows Azure","ma":2,"count":1,"expertCount":0},{"name":"Xpath","ma":2,"count":26,"expertCount":5},{"name":"ZooKeeper","ma":1.5,"count":2,"expertCount":0}]},{"name":"Framework","children":[{"name":"ActiveMQ","ma":1.4,"count":5,"expertCount":0},{"name":"ADO.NET","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"Ajax","ma":2.1785714285714284,"count":41,"expertCount":15},{"name":"AndroMDA","ma":2,"count":1,"expertCount":0},{"name":"AngularJS","ma":2.052631578947368,"count":63,"expertCount":9},{"name":"Apache Daemon","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"Apache POI","ma":1.5714285714285714,"count":26,"expertCount":2},{"name":"Apache XMLBeans","ma":1.5,"count":2,"expertCount":0},{"name":"Arquillian","ma":1.2857142857142858,"count":11,"expertCount":0},{"name":"ASF","ma":2,"count":1,"expertCount":0},{"name":"ASP","ma":1.5,"count":2,"expertCount":0},{"name":"ASP.NET","ma":1.6,"count":10,"expertCount":0},{"name":"AssertJ","ma":2,"count":4,"expertCount":0},{"name":"Atmosphere","ma":2,"count":1,"expertCount":0},{"name":"Axis","ma":1.7777777777777777,"count":10,"expertCount":2},{"name":"BIRT","ma":1.625,"count":12,"expertCount":0},{"name":"Bluecove","ma":1,"count":1,"expertCount":0},{"name":"C++ MFC","ma":2,"count":3,"expertCount":1},{"name":"CakePHP","ma":1.5,"count":2,"expertCount":0},{"name":"Camel","ma":1.5,"count":5,"expertCount":0},{"name":"Camunda","ma":2.142857142857143,"count":10,"expertCount":2},{"name":"CDI","ma":1.4444444444444444,"count":10,"expertCount":0},{"name":"Cocoa","ma":1.8,"count":5,"expertCount":1},{"name":"codeBeamer","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"CORBA","ma":1.5454545454545456,"count":15,"expertCount":2},{"name":"Cordova","ma":1,"count":1,"expertCount":0},{"name":"Core Data","ma":2,"count":1,"expertCount":0},{"name":"Corona","ma":2,"count":1,"expertCount":0},{"name":"CUDA","ma":1.25,"count":4,"expertCount":0},{"name":"CXF","ma":1.9090909090909092,"count":15,"expertCount":2},{"name":"D3.js","ma":1.25,"count":4,"expertCount":0},{"name":"Dagger","ma":1.3333333333333333,"count":9,"expertCount":0},{"name":"Dagger 2","ma":1,"count":2,"expertCount":0},{"name":"DbUnit","ma":1.6923076923076923,"count":18,"expertCount":3},{"name":"DevExpress","ma":1.5,"count":2,"expertCount":0},{"name":"Docker","ma":1.9999999999999998,"count":33,"expertCount":7},{"name":"docx4j","ma":2,"count":1,"expertCount":0},{"name":"Drools","ma":1.4,"count":6,"expertCount":0},{"name":"Eclipse Modeling Framework","ma":1.5,"count":11,"expertCount":1},{"name":"Eclipse RCP","ma":1.894736842105263,"count":24,"expertCount":6},{"name":"EclipseLink","ma":1.75,"count":9,"expertCount":0},{"name":"Ehcache","ma":1.625,"count":9,"expertCount":0},{"name":"EJB","ma":1.7391304347826089,"count":36,"expertCount":6},{"name":"Elasticsearch","ma":1.75,"count":14,"expertCount":1},{"name":"Entity Framework","ma":2,"count":3,"expertCount":0},{"name":"ESB (Enterprise Service Bus)","ma":1.875,"count":14,"expertCount":3},{"name":"ESC/Java2","ma":2,"count":1,"expertCount":0},{"name":"Ext JS","ma":1.2,"count":5,"expertCount":0},{"name":"Facelets","ma":1.625,"count":9,"expertCount":1},{"name":"Flash","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"Gatling","ma":1.5,"count":7,"expertCount":0},{"name":"GCM","ma":1.8,"count":6,"expertCount":1},{"name":"Google App Engine","ma":1,"count":6,"expertCount":0},{"name":"Google Maps","ma":1.3,"count":15,"expertCount":0},{"name":"Grails","ma":1.9999999999999998,"count":20,"expertCount":5},{"name":"Guava","ma":1.923076923076923,"count":21,"expertCount":4},{"name":"GWT","ma":1.7058823529411762,"count":27,"expertCount":1},{"name":"GXT","ma":1.6666666666666667,"count":7,"expertCount":0},{"name":"Hadoop","ma":1.7777777777777777,"count":15,"expertCount":2},{"name":"Hibernate","ma":2.0882352941176467,"count":93,"expertCount":25},{"name":"Hibernate Search","ma":1.3333333333333333,"count":8,"expertCount":0},{"name":"Highcharts","ma":1.6666666666666667,"count":5,"expertCount":0},{"name":"Hive MQ","ma":2.3333333333333335,"count":3,"expertCount":1},{"name":"HTMLUnit","ma":1.5,"count":4,"expertCount":0},{"name":"iBatis","ma":1.6,"count":7,"expertCount":2},{"name":"iText","ma":1.375,"count":11,"expertCount":0},{"name":"JAAF","ma":2,"count":1,"expertCount":0},{"name":"JavaFX","ma":1,"count":9,"expertCount":0},{"name":"JAX-RS","ma":1.909090909090909,"count":20,"expertCount":3},{"name":"JAXB","ma":1.8333333333333333,"count":22,"expertCount":2},{"name":"JBehave","ma":1.3333333333333333,"count":4,"expertCount":0},{"name":"JBoss Seam","ma":1,"count":2,"expertCount":0},{"name":"JDO","ma":2.25,"count":4,"expertCount":2},{"name":"Jersey","ma":1.4166666666666667,"count":17,"expertCount":1},{"name":"JFreeChart","ma":1.375,"count":8,"expertCount":0},{"name":"JHipster","ma":1.8333333333333335,"count":14,"expertCount":2},{"name":"JMeter","ma":1.6363636363636362,"count":14,"expertCount":1},{"name":"JMockit","ma":1.5,"count":3,"expertCount":0},{"name":"JMS","ma":1.6923076923076925,"count":16,"expertCount":6},{"name":"JPA","ma":2.0333333333333337,"count":61,"expertCount":15},{"name":"jQuery","ma":1.9230769230769227,"count":47,"expertCount":9},{"name":"jQuery Mobile","ma":1.7142857142857144,"count":7,"expertCount":0},{"name":"JSF","ma":2.071428571428571,"count":49,"expertCount":14},{"name":"JSTL","ma":1.8,"count":11,"expertCount":2},{"name":"JUnit","ma":2.102564102564102,"count":94,"expertCount":26},{"name":"Kendo UI","ma":1,"count":1,"expertCount":0},{"name":"Kibana","ma":1.6,"count":6,"expertCount":0},{"name":"LDAP","ma":1.5555555555555556,"count":23,"expertCount":1},{"name":"Liferay","ma":2.0555555555555554,"count":26,"expertCount":6},{"name":"Log4J","ma":1.7200000000000002,"count":45,"expertCount":11},{"name":"Logstash","ma":1.9,"count":11,"expertCount":2},{"name":"Lucene","ma":1.4166666666666667,"count":17,"expertCount":1},{"name":"MapStruct","ma":2.2,"count":6,"expertCount":2},{"name":"Mockito","ma":1.6842105263157894,"count":43,"expertCount":1},{"name":"Neo4J","ma":2.25,"count":8,"expertCount":3},{"name":"NGTP","ma":1.25,"count":4,"expertCount":0},{"name":"Node.js","ma":1.5833333333333335,"count":26,"expertCount":1},{"name":"NUnit","ma":2.3333333333333335,"count":3,"expertCount":1},{"name":"Oozie","ma":2,"count":2,"expertCount":0},{"name":"OPC UA","ma":1.3333333333333333,"count":4,"expertCount":0},{"name":"OpenAM","ma":2,"count":2,"expertCount":0},{"name":"OpenCV","ma":1.6,"count":5,"expertCount":0},{"name":"OpenLayers","ma":1.75,"count":10,"expertCount":1},{"name":"Play","ma":1.2857142857142858,"count":8,"expertCount":0},{"name":"Portlets","ma":2.1,"count":11,"expertCount":4},{"name":"PowerMock","ma":1.6666666666666667,"count":6,"expertCount":0},{"name":"Primefaces","ma":2,"count":14,"expertCount":3},{"name":"Protobuf","ma":1.6,"count":7,"expertCount":0},{"name":"QT","ma":1.2,"count":7,"expertCount":0},{"name":"Quartz","ma":1.75,"count":15,"expertCount":2},{"name":"Querydsl","ma":1.6,"count":5,"expertCount":0},{"name":"REST","ma":1.9999999999999996,"count":81,"expertCount":17},{"name":"Resteasy","ma":2,"count":2,"expertCount":0},{"name":"RichFaces","ma":1.7272727272727273,"count":15,"expertCount":3},{"name":"RMI","ma":1.5,"count":4,"expertCount":1},{"name":"Robotium","ma":1.6666666666666667,"count":4,"expertCount":0},{"name":"Scip","ma":2,"count":1,"expertCount":0},{"name":"Selenium","ma":1.6000000000000003,"count":34,"expertCount":2},{"name":"SEO","ma":1.3333333333333333,"count":6,"expertCount":0},{"name":"Serenity BDD","ma":1.5,"count":4,"expertCount":0},{"name":"Servlets","ma":1.8095238095238095,"count":25,"expertCount":4},{"name":"Siteminder","ma":1.4,"count":5,"expertCount":0},{"name":"Slick","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"SOA","ma":2.157894736842105,"count":23,"expertCount":7},{"name":"SOAP","ma":1.8636363636363638,"count":33,"expertCount":6},{"name":"Spring","ma":2.176470588235294,"count":85,"expertCount":27},{"name":"Spring Batch","ma":1.7777777777777777,"count":15,"expertCount":1},{"name":"Spring Boot","ma":1.8666666666666665,"count":38,"expertCount":6},{"name":"Spring Data","ma":1.7777777777777777,"count":11,"expertCount":2},{"name":"Spring Integration","ma":2,"count":1,"expertCount":0},{"name":"Spring MVC","ma":1.923076923076923,"count":18,"expertCount":3},{"name":"Spring Security","ma":1.6923076923076923,"count":25,"expertCount":2},{"name":"Struts","ma":1.8235294117647058,"count":28,"expertCount":3},{"name":"Swing","ma":1.857142857142857,"count":36,"expertCount":6},{"name":"SWT","ma":1.857142857142857,"count":9,"expertCount":2},{"name":"Symfony","ma":2,"count":1,"expertCount":0},{"name":"Tcl/Tk","ma":2,"count":3,"expertCount":0},{"name":"TestNG","ma":1.8333333333333333,"count":15,"expertCount":2},{"name":"three.js","ma":1.5,"count":2,"expertCount":0},{"name":"Twitter Bootstrap","ma":2,"count":29,"expertCount":8},{"name":"UTC/SA","ma":1.6666666666666665,"count":6,"expertCount":1},{"name":"Vaadin","ma":1.4,"count":7,"expertCount":1},{"name":"Vert.x","ma":1.5,"count":2,"expertCount":0},{"name":"WCF","ma":1.5,"count":7,"expertCount":1},{"name":"Webservice","ma":2.1379310344827585,"count":55,"expertCount":17},{"name":"Wicket","ma":1.7999999999999998,"count":35,"expertCount":5},{"name":"Windows Forms","ma":2.4,"count":6,"expertCount":3},{"name":"WPF","ma":1.7777777777777777,"count":10,"expertCount":3},{"name":"WPT","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"XAdES4J","ma":2,"count":1,"expertCount":0},{"name":"Xtext","ma":1.5,"count":7,"expertCount":0},{"name":"XUL","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"ZK","ma":2,"count":2,"expertCount":1}]},{"name":"DBMS","children":[{"name":"ADABAS","ma":2,"count":5,"expertCount":3},{"name":"Apache Derby","ma":1,"count":3,"expertCount":0},{"name":"Apache Giraph","ma":2,"count":1,"expertCount":0},{"name":"Apache Mesos","ma":1.5,"count":2,"expertCount":0},{"name":"Apache Spark","ma":1.6666666666666665,"count":6,"expertCount":1},{"name":"Business Intelligence","ma":1.5,"count":19,"expertCount":1},{"name":"CouchDB","ma":1.25,"count":6,"expertCount":0},{"name":"Data Mining","ma":1.5833333333333335,"count":16,"expertCount":3},{"name":"Data Warehouse","ma":1.75,"count":16,"expertCount":2},{"name":"Datenbanksysteme","ma":1.88,"count":45,"expertCount":9},{"name":"Datenmodellierung","ma":2.178571428571429,"count":44,"expertCount":19},{"name":"DB2","ma":1.9166666666666663,"count":42,"expertCount":10},{"name":"ETL","ma":1.3333333333333333,"count":4,"expertCount":0},{"name":"FAST ESP","ma":1,"count":1,"expertCount":0},{"name":"Flyway","ma":1.9999999999999998,"count":23,"expertCount":4},{"name":"HBase","ma":2,"count":2,"expertCount":0},{"name":"Hive SQL","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"HSQLDB","ma":1.8125,"count":27,"expertCount":5},{"name":"Informatica","ma":1,"count":1,"expertCount":0},{"name":"Informix","ma":1.6666666666666667,"count":4,"expertCount":0},{"name":"JDBC","ma":1.777777777777778,"count":57,"expertCount":14},{"name":"KNIME","ma":2,"count":1,"expertCount":0},{"name":"Liquibase","ma":1.8666666666666665,"count":21,"expertCount":3},{"name":"MapReduce","ma":1.75,"count":10,"expertCount":1},{"name":"MariaDB","ma":2,"count":5,"expertCount":1},{"name":"MongoDB","ma":1.6666666666666665,"count":29,"expertCount":2},{"name":"MS Access","ma":2,"count":1,"expertCount":0},{"name":"MS SQL Server","ma":1.9655172413793105,"count":53,"expertCount":7},{"name":"MySQL","ma":1.9749999999999999,"count":121,"expertCount":30},{"name":"Oracle","ma":2.046511627906977,"count":120,"expertCount":33},{"name":"Oracle ADF","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"Oracle BI","ma":1,"count":1,"expertCount":0},{"name":"Oracle BPEL","ma":1.5,"count":2,"expertCount":0},{"name":"Oracle Mapviewer","ma":2,"count":1,"expertCount":0},{"name":"Oracle Siebel","ma":1,"count":1,"expertCount":0},{"name":"Oracle Spatial","ma":2,"count":1,"expertCount":0},{"name":"PL/SQL","ma":2,"count":40,"expertCount":7},{"name":"PostgreSQL","ma":1.851851851851852,"count":57,"expertCount":8},{"name":"Redis","ma":1,"count":5,"expertCount":0},{"name":"SQLite","ma":1.7857142857142856,"count":25,"expertCount":4},{"name":"T-SQL","ma":1.5,"count":4,"expertCount":0},{"name":"Talend","ma":1.6666666666666667,"count":6,"expertCount":0},{"name":"Text Mining","ma":2,"count":2,"expertCount":0},{"name":"Toad","ma":1.8,"count":12,"expertCount":3}]},{"name":"Ohne Zuordnung","children":[{"name":"Adobe AfterEffects","ma":2,"count":1,"expertCount":0},{"name":"Adobe Illustrator","ma":2,"count":1,"expertCount":0},{"name":"Adobe Photoshop","ma":2.25,"count":4,"expertCount":2},{"name":"Angular 2","ma":1,"count":1,"expertCount":0},{"name":"arc42","ma":3,"count":1,"expertCount":1},{"name":"Architektur","ma":1.5,"count":2,"expertCount":0},{"name":"asdasdsd","ma":2,"count":1,"expertCount":0},{"name":"Autodesk Maya","ma":1.5,"count":2,"expertCount":0},{"name":"Bootstrap","ma":1.5,"count":4,"expertCount":0},{"name":"Cinema4D","ma":3,"count":1,"expertCount":1},{"name":"CSS3","ma":1.5,"count":7,"expertCount":0},{"name":"DocBridge Pilot","ma":1,"count":1,"expertCount":0},{"name":"Elasticray","ma":1,"count":1,"expertCount":0},{"name":"Fach","ma":4,"count":1,"expertCount":1},{"name":"Gerrit","ma":2,"count":2,"expertCount":0},{"name":"High Lebel Shader Language (HLSL)","ma":2,"count":1,"expertCount":0},{"name":"HP BSM","ma":2,"count":1,"expertCount":0},{"name":"IBM Unified Method Framework","ma":3,"count":1,"expertCount":1},{"name":"Kassensysteme","ma":1,"count":1,"expertCount":0},{"name":"Less","ma":1,"count":1,"expertCount":0},{"name":"Mathematik","ma":2.6666666666666665,"count":3,"expertCount":2},{"name":"NLP","ma":1,"count":1,"expertCount":0},{"name":"openg","ma":1,"count":1,"expertCount":0},{"name":"OpenStreetMap","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"Payment Systeme","ma":2,"count":1,"expertCount":0},{"name":"Professional Scrum Product Owner","ma":3,"count":1,"expertCount":1},{"name":"Rational Portfolio Manager","ma":2,"count":1,"expertCount":0},{"name":"React.js","ma":1,"count":1,"expertCount":0},{"name":"Sitescope","ma":1,"count":1,"expertCount":0},{"name":"Slack","ma":1,"count":2,"expertCount":0},{"name":"SPICE","ma":3,"count":1,"expertCount":1},{"name":"Systems Engineering","ma":2,"count":1,"expertCount":0},{"name":"tensorflow","ma":1,"count":1,"expertCount":0},{"name":"Thin Client","ma":2,"count":1,"expertCount":0},{"name":"TOGAF","ma":1,"count":1,"expertCount":0},{"name":"Tosca","ma":1,"count":1,"expertCount":0},{"name":"Unity 3D","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"XWiki","ma":2,"count":1,"expertCount":0},{"name":"Zend Framework","ma":2,"count":1,"expertCount":0},{"name":"zSeries","ma":1,"count":1,"expertCount":0}]},{"name":"Vorgehen","children":[{"name":"Agile Methoden","ma":2.0285714285714285,"count":72,"expertCount":20},{"name":"ATAM","ma":1.5,"count":5,"expertCount":0},{"name":"Behaviour-Driven Development","ma":1.6,"count":8,"expertCount":0},{"name":"CMMI","ma":2.2857142857142856,"count":8,"expertCount":4},{"name":"Demand Management","ma":2.1052631578947367,"count":23,"expertCount":5},{"name":"Design Thinking","ma":1.25,"count":12,"expertCount":0},{"name":"Dojo","ma":2.5,"count":2,"expertCount":1},{"name":"Flow Design","ma":2,"count":1,"expertCount":0},{"name":"IT-Strategie","ma":2.3333333333333335,"count":11,"expertCount":3},{"name":"iterativ - agil","ma":2.166666666666666,"count":51,"expertCount":13},{"name":"ITIL","ma":1.8095238095238095,"count":34,"expertCount":4},{"name":"Kanban","ma":1.875,"count":32,"expertCount":3},{"name":"MDA","ma":1.8333333333333335,"count":6,"expertCount":1},{"name":"Model Driven Software Development","ma":2.0625,"count":21,"expertCount":4},{"name":"Nearshore / Offshore","ma":2,"count":17,"expertCount":3},{"name":"OOA","ma":2.1111111111111107,"count":21,"expertCount":6},{"name":"Produktmanagement","ma":2.5,"count":2,"expertCount":1},{"name":"Qualitätsmanagement","ma":2.2105263157894735,"count":31,"expertCount":11},{"name":"Risikomanagement","ma":1.9999999999999998,"count":24,"expertCount":7},{"name":"Rollout","ma":1.8,"count":5,"expertCount":1},{"name":"RUP","ma":1.75,"count":14,"expertCount":2},{"name":"Scrum","ma":2.2162162162162162,"count":93,"expertCount":27},{"name":"Test Driven Development","ma":1.8695652173913044,"count":30,"expertCount":5},{"name":"UML","ma":2.1136363636363638,"count":119,"expertCount":33},{"name":"V-Modell","ma":2.0434782608695654,"count":30,"expertCount":9},{"name":"XP","ma":1.5384615384615385,"count":16,"expertCount":2}]},{"name":"Betriebssystem","children":[{"name":"AIX","ma":1.5,"count":7,"expertCount":0},{"name":"Android","ma":1.967741935483871,"count":69,"expertCount":14},{"name":"Android Wear","ma":1.4,"count":5,"expertCount":0},{"name":"iOS","ma":2.0588235294117645,"count":21,"expertCount":6},{"name":"Linux","ma":1.8205128205128203,"count":101,"expertCount":24},{"name":"OS X","ma":1.9130434782608694,"count":32,"expertCount":10},{"name":"OS/1100","ma":1,"count":1,"expertCount":0},{"name":"OS/390","ma":1.2,"count":6,"expertCount":0},{"name":"Solaris","ma":1.6,"count":5,"expertCount":0},{"name":"Unix","ma":1.806451612903226,"count":50,"expertCount":13},{"name":"Windows","ma":2.1315789473684217,"count":116,"expertCount":48},{"name":"Windows Phone","ma":1,"count":4,"expertCount":0},{"name":"Windows Server","ma":1.8461538461538463,"count":15,"expertCount":2}]},{"name":"Werkzeug","children":[{"name":"Android Studio","ma":1.75,"count":29,"expertCount":3},{"name":"AppCode","ma":2,"count":2,"expertCount":0},{"name":"AppDynamics","ma":1.75,"count":5,"expertCount":1},{"name":"ArchStyler","ma":3,"count":1,"expertCount":1},{"name":"Assentis DocFamily","ma":2.142857142857143,"count":9,"expertCount":2},{"name":"camos Develop","ma":3,"count":1,"expertCount":1},{"name":"cloc","ma":2,"count":2,"expertCount":0},{"name":"Cognos","ma":1.25,"count":4,"expertCount":0},{"name":"ConQAT","ma":1.5,"count":2,"expertCount":0},{"name":"CPLEX","ma":2,"count":1,"expertCount":0},{"name":"Crystal Reports","ma":1.625,"count":8,"expertCount":0},{"name":"Cucumber","ma":1.5,"count":9,"expertCount":0},{"name":"DataGrip","ma":2,"count":1,"expertCount":0},{"name":"DB-Visualizer","ma":1.6666666666666667,"count":10,"expertCount":1},{"name":"Eclipse","ma":2.095238095238095,"count":134,"expertCount":54},{"name":"Emacs","ma":1.5,"count":4,"expertCount":0},{"name":"ENOVIA","ma":1.5,"count":2,"expertCount":0},{"name":"Enterprise Architect","ma":2.0294117647058822,"count":75,"expertCount":15},{"name":"Enterprise Tester","ma":1,"count":2,"expertCount":0},{"name":"Gurobi","ma":2,"count":1,"expertCount":0},{"name":"HP LoadRunner","ma":1,"count":4,"expertCount":0},{"name":"ILOG JViews","ma":1,"count":2,"expertCount":0},{"name":"Innovator","ma":1.6666666666666665,"count":8,"expertCount":1},{"name":"IntelliJ IDEA","ma":2.1071428571428568,"count":69,"expertCount":18},{"name":"iteraplan","ma":2.0454545454545454,"count":36,"expertCount":14},{"name":"JasperReports","ma":1.3636363636363638,"count":15,"expertCount":0},{"name":"JavaCC","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"jBPM","ma":1,"count":3,"expertCount":0},{"name":"Lotus Notes","ma":1.3636363636363638,"count":16,"expertCount":0},{"name":"Maple","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"Mathematica","ma":1.6666666666666665,"count":3,"expertCount":1},{"name":"Matlab","ma":1.8,"count":19,"expertCount":3},{"name":"MS Visio","ma":1.9374999999999998,"count":54,"expertCount":7},{"name":"NDepend","ma":1.3333333333333333,"count":6,"expertCount":0},{"name":"NetBeans","ma":2.1500000000000004,"count":31,"expertCount":7},{"name":"Notepad++","ma":1.8333333333333333,"count":47,"expertCount":9},{"name":"objectIF","ma":1,"count":1,"expertCount":0},{"name":"Oracle SQL Developer","ma":1.9285714285714286,"count":16,"expertCount":4},{"name":"PowerBuilder","ma":1.8,"count":5,"expertCount":1},{"name":"Powerdesigner","ma":1.3333333333333333,"count":3,"expertCount":0},{"name":"Predict Case","ma":2.5,"count":3,"expertCount":1},{"name":"QlikView","ma":1.7142857142857142,"count":8,"expertCount":2},{"name":"Quality Center","ma":2,"count":8,"expertCount":4},{"name":"Rational Rose","ma":2.111111111111111,"count":10,"expertCount":3},{"name":"Redmine","ma":1.75,"count":16,"expertCount":1},{"name":"ReSharper","ma":2,"count":6,"expertCount":1},{"name":"Review Board","ma":3,"count":1,"expertCount":1},{"name":"ServiceTrace","ma":1,"count":1,"expertCount":0},{"name":"SilkTest","ma":1,"count":1,"expertCount":0},{"name":"SoapUI","ma":1.789473684210526,"count":40,"expertCount":3},{"name":"Sqoop","ma":3,"count":1,"expertCount":1},{"name":"STAN","ma":4,"count":1,"expertCount":1},{"name":"StringTemplate","ma":2,"count":1,"expertCount":0},{"name":"Sublime","ma":2,"count":2,"expertCount":0},{"name":"Swagger","ma":1.375,"count":10,"expertCount":0},{"name":"TestComplete","ma":1,"count":1,"expertCount":0},{"name":"Text Template Transformation Toolkit","ma":3,"count":1,"expertCount":1},{"name":"Uniserv DQ BatchSuite","ma":1,"count":1,"expertCount":0},{"name":"Uniserv Identity RT","ma":1,"count":1,"expertCount":0},{"name":"Uniserv post","ma":1,"count":1,"expertCount":0},{"name":"Vagrant","ma":2,"count":7,"expertCount":1},{"name":"vi","ma":2,"count":8,"expertCount":2},{"name":"Visual Studio","ma":1.9310344827586203,"count":46,"expertCount":9},{"name":"WebPagetest","ma":2.6666666666666665,"count":5,"expertCount":3},{"name":"Webstorm","ma":1.9285714285714286,"count":20,"expertCount":3},{"name":"Wireshark","ma":1.6,"count":14,"expertCount":1},{"name":"Xamarin","ma":1,"count":4,"expertCount":0},{"name":"Xcode","ma":1.7692307692307692,"count":13,"expertCount":2}]},{"name":"AnfMgt","children":[{"name":"Anforderungsanalyse","ma":2.1944444444444438,"count":73,"expertCount":26},{"name":"Anforderungsmanagement","ma":2.333333333333334,"count":55,"expertCount":26},{"name":"BPEL","ma":1.8,"count":12,"expertCount":2},{"name":"BPMN","ma":1.9999999999999996,"count":49,"expertCount":7},{"name":"EPK","ma":1.9333333333333333,"count":23,"expertCount":3},{"name":"ER-Modellierung","ma":2.0384615384615383,"count":43,"expertCount":10},{"name":"Fachkonzeption","ma":2.1739130434782608,"count":40,"expertCount":15},{"name":"Machbarkeitsanalyse","ma":2,"count":4,"expertCount":1}]},{"name":"Build","children":[{"name":"Ansible","ma":2.5,"count":8,"expertCount":3},{"name":"Ant","ma":1.9999999999999998,"count":84,"expertCount":20},{"name":"Apache Ivy","ma":1.3333333333333333,"count":8,"expertCount":0},{"name":"Artifactory","ma":1.8,"count":5,"expertCount":1},{"name":"Atom","ma":1,"count":2,"expertCount":0},{"name":"Bamboo","ma":1.375,"count":13,"expertCount":0},{"name":"CheckStyle","ma":1.8333333333333333,"count":32,"expertCount":6},{"name":"Chef","ma":3,"count":1,"expertCount":1},{"name":"ClearCase","ma":1.8888888888888888,"count":13,"expertCount":5},{"name":"Cobertura","ma":2,"count":5,"expertCount":1},{"name":"CPD","ma":1.5,"count":2,"expertCount":0},{"name":"CruiseControl","ma":1.6,"count":6,"expertCount":1},{"name":"CVS","ma":1.9583333333333335,"count":35,"expertCount":10},{"name":"EMMA","ma":1.5,"count":2,"expertCount":0},{"name":"FindBugs","ma":1.7142857142857146,"count":36,"expertCount":3},{"name":"Git","ma":2.1621621621621614,"count":99,"expertCount":25},{"name":"Gradle","ma":1.8333333333333333,"count":52,"expertCount":8},{"name":"Grunt","ma":1.4444444444444444,"count":20,"expertCount":0},{"name":"gulp","ma":1.6,"count":7,"expertCount":1},{"name":"Jenkins","ma":2.051282051282051,"count":99,"expertCount":26},{"name":"make","ma":2,"count":7,"expertCount":1},{"name":"Maven","ma":2.1315789473684212,"count":110,"expertCount":36},{"name":"Mercurial","ma":1.7142857142857142,"count":8,"expertCount":1},{"name":"Nexus","ma":1.7368421052631577,"count":28,"expertCount":3},{"name":"PMD","ma":2.2857142857142856,"count":9,"expertCount":4},{"name":"Puppet","ma":1.8571428571428572,"count":8,"expertCount":1},{"name":"RCS","ma":1.5,"count":2,"expertCount":0},{"name":"SBT","ma":1,"count":3,"expertCount":0},{"name":"Sonar","ma":2.1199999999999997,"count":47,"expertCount":10},{"name":"Stash","ma":2,"count":1,"expertCount":0},{"name":"SVN","ma":2.0930232558139528,"count":123,"expertCount":46},{"name":"Team Foundation Server","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"Trac","ma":1.5384615384615385,"count":20,"expertCount":1}]},{"name":"ITM","children":[{"name":"Architekturmanagement","ma":2.1333333333333333,"count":21,"expertCount":10},{"name":"Change-Management","ma":1.9999999999999998,"count":20,"expertCount":5},{"name":"Cobit","ma":1.4444444444444444,"count":13,"expertCount":1},{"name":"Data Governance","ma":2,"count":2,"expertCount":0},{"name":"Datenqualitätsmanagement","ma":2,"count":1,"expertCount":0},{"name":"Enterprise Architecture Management","ma":2.0454545454545454,"count":39,"expertCount":15},{"name":"ERP","ma":2,"count":2,"expertCount":1},{"name":"IT Governance","ma":1.8666666666666665,"count":19,"expertCount":3},{"name":"IT Service Management","ma":1.8666666666666665,"count":21,"expertCount":3},{"name":"IT Transformation","ma":1.6666666666666667,"count":3,"expertCount":0},{"name":"IT-Bebauungsmanagement","ma":2.157894736842105,"count":28,"expertCount":10},{"name":"Organisationsaufbau","ma":1,"count":1,"expertCount":0},{"name":"Outsourcing","ma":1.875,"count":11,"expertCount":1},{"name":"Prozessmanagement","ma":2.0999999999999996,"count":23,"expertCount":7},{"name":"Prozessmodellierung","ma":2.095238095238095,"count":32,"expertCount":9}]},{"name":"Standardsoftware","children":[{"name":"ARIS","ma":1.7058823529411764,"count":24,"expertCount":3},{"name":"BizTalk","ma":2,"count":4,"expertCount":1},{"name":"Clarity","ma":2,"count":1,"expertCount":0},{"name":"IBM DOORS","ma":1.8,"count":6,"expertCount":1},{"name":"IIS","ma":1.5,"count":7,"expertCount":0},{"name":"LaTeX","ma":1.9999999999999996,"count":64,"expertCount":8},{"name":"MS Excel","ma":2,"count":87,"expertCount":24},{"name":"MS Office","ma":2.064516129032258,"count":83,"expertCount":26},{"name":"MS Powerpoint","ma":1.9375000000000004,"count":78,"expertCount":17},{"name":"MS Word","ma":1.967741935483871,"count":80,"expertCount":24},{"name":"OpenOffice / LibreOffice","ma":1.6363636363636365,"count":24,"expertCount":3},{"name":"SAP","ma":1.6666666666666667,"count":12,"expertCount":1},{"name":"SAP BO","ma":1,"count":1,"expertCount":0},{"name":"SharePoint","ma":1.625,"count":39,"expertCount":2},{"name":"Wordpress","ma":1.5714285714285716,"count":22,"expertCount":1}]},{"name":"Sonstiges (Methodik)","children":[{"name":"Ausschreibungsmanagement","ma":2.3333333333333335,"count":3,"expertCount":1},{"name":"Moderationstechniken","ma":2,"count":6,"expertCount":1},{"name":"Negotiation","ma":3,"count":1,"expertCount":1},{"name":"Testmanagement","ma":2.0384615384615383,"count":37,"expertCount":9}]},{"name":"PM","children":[{"name":"MS Project","ma":1.9999999999999996,"count":32,"expertCount":7},{"name":"Open Workbench","ma":1.5,"count":2,"expertCount":0},{"name":"Programm-Management","ma":2.2142857142857144,"count":17,"expertCount":8},{"name":"Projektmanagement","ma":2.2571428571428567,"count":82,"expertCount":36}]}]}
+{
+  "name": "Skills",
+  "children": [
+    {
+      "name": "Sprache",
+      "children": [
+        {
+          "name": "(J)Ruby",
+          "ma": 1.5714285714285714,
+          "count": 10,
+          "expertCount": 0
+        },
+        {
+          "name": ".Net",
+          "ma": 1.8666666666666665,
+          "count": 20,
+          "expertCount": 5
+        },
+        {
+          "name": "ABAP",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "ActionScript",
+          "ma": 2.3333333333333335,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "AspectJ",
+          "ma": 1.5,
+          "count": 16,
+          "expertCount": 1
+        },
+        {
+          "name": "Assembler",
+          "ma": 1.4444444444444444,
+          "count": 13,
+          "expertCount": 0
+        },
+        {
+          "name": "BASIC",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "C",
+          "ma": 1.8857142857142857,
+          "count": 69,
+          "expertCount": 11
+        },
+        {
+          "name": "C#",
+          "ma": 1.9199999999999997,
+          "count": 58,
+          "expertCount": 8
+        },
+        {
+          "name": "C++",
+          "ma": 1.8055555555555558,
+          "count": 79,
+          "expertCount": 11
+        },
+        {
+          "name": "Cobol",
+          "ma": 1.6363636363636362,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "CSS",
+          "ma": 2.1500000000000004,
+          "count": 80,
+          "expertCount": 24
+        },
+        {
+          "name": "Delphi",
+          "ma": 1.7777777777777777,
+          "count": 10,
+          "expertCount": 1
+        },
+        {
+          "name": "Fortran",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "GNU Octave",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Groovy",
+          "ma": 1.888888888888889,
+          "count": 28,
+          "expertCount": 4
+        },
+        {
+          "name": "GSP",
+          "ma": 1.6,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Haskell",
+          "ma": 1.6,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "HTML",
+          "ma": 2.121951219512195,
+          "count": 100,
+          "expertCount": 34
+        },
+        {
+          "name": "HTML5",
+          "ma": 2,
+          "count": 37,
+          "expertCount": 7
+        },
+        {
+          "name": "J#",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Java",
+          "ma": 2.2553191489361697,
+          "count": 171,
+          "expertCount": 89
+        },
+        {
+          "name": "Java 8",
+          "ma": 1.9999999999999998,
+          "count": 39,
+          "expertCount": 7
+        },
+        {
+          "name": "Java EE",
+          "ma": 2.1111111111111107,
+          "count": 107,
+          "expertCount": 37
+        },
+        {
+          "name": "JavaScript",
+          "ma": 2.177777777777778,
+          "count": 114,
+          "expertCount": 28
+        },
+        {
+          "name": "JSON",
+          "ma": 2.0909090909090904,
+          "count": 72,
+          "expertCount": 15
+        },
+        {
+          "name": "JSP",
+          "ma": 1.896551724137931,
+          "count": 56,
+          "expertCount": 12
+        },
+        {
+          "name": "Lisp",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Lua",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 1
+        },
+        {
+          "name": "Machine Learning",
+          "ma": 1.6,
+          "count": 13,
+          "expertCount": 1
+        },
+        {
+          "name": "Markdown",
+          "ma": 2,
+          "count": 11,
+          "expertCount": 2
+        },
+        {
+          "name": "Natural",
+          "ma": 2.25,
+          "count": 4,
+          "expertCount": 2
+        },
+        {
+          "name": "Objective-C",
+          "ma": 1.7,
+          "count": 10,
+          "expertCount": 2
+        },
+        {
+          "name": "OpenGL",
+          "ma": 1.3333333333333333,
+          "count": 11,
+          "expertCount": 0
+        },
+        {
+          "name": "Pascal",
+          "ma": 1.6363636363636362,
+          "count": 14,
+          "expertCount": 1
+        },
+        {
+          "name": "Perl",
+          "ma": 1.8666666666666665,
+          "count": 23,
+          "expertCount": 5
+        },
+        {
+          "name": "PHP",
+          "ma": 1.935483870967742,
+          "count": 61,
+          "expertCount": 10
+        },
+        {
+          "name": "Prolog",
+          "ma": 1.8,
+          "count": 8,
+          "expertCount": 1
+        },
+        {
+          "name": "Python",
+          "ma": 1.8888888888888888,
+          "count": 33,
+          "expertCount": 4
+        },
+        {
+          "name": "R",
+          "ma": 1.5833333333333333,
+          "count": 18,
+          "expertCount": 1
+        },
+        {
+          "name": "Sass",
+          "ma": 1.3333333333333333,
+          "count": 13,
+          "expertCount": 0
+        },
+        {
+          "name": "Scala",
+          "ma": 1.8,
+          "count": 21,
+          "expertCount": 2
+        },
+        {
+          "name": "Shell-Scripts",
+          "ma": 1.875,
+          "count": 36,
+          "expertCount": 7
+        },
+        {
+          "name": "Smalltalk",
+          "ma": 1.625,
+          "count": 11,
+          "expertCount": 1
+        },
+        {
+          "name": "SQL",
+          "ma": 2,
+          "count": 128,
+          "expertCount": 47
+        },
+        {
+          "name": "Swift",
+          "ma": 1.25,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "TypeScript",
+          "ma": 1.25,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Velocity",
+          "ma": 1.6666666666666667,
+          "count": 13,
+          "expertCount": 1
+        },
+        {
+          "name": "Visual Basic",
+          "ma": 1.6,
+          "count": 26,
+          "expertCount": 3
+        },
+        {
+          "name": "WSDL",
+          "ma": 1.75,
+          "count": 30,
+          "expertCount": 3
+        },
+        {
+          "name": "XLT",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "XML",
+          "ma": 2.0666666666666664,
+          "count": 115,
+          "expertCount": 39
+        },
+        {
+          "name": "XSLT",
+          "ma": 1.9259259259259258,
+          "count": 41,
+          "expertCount": 9
+        }
+      ]
+    },
+    {
+      "name": "Sonstiges (Technologie)",
+      "children": [
+        {
+          "name": "Active Directory",
+          "ma": 1.5454545454545454,
+          "count": 15,
+          "expertCount": 1
+        },
+        {
+          "name": "Apache Solr",
+          "ma": 1.3333333333333333,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "Apache Webserver",
+          "ma": 1.653846153846154,
+          "count": 44,
+          "expertCount": 2
+        },
+        {
+          "name": "Arduino",
+          "ma": 1.9166666666666667,
+          "count": 18,
+          "expertCount": 3
+        },
+        {
+          "name": "Augmented Reality",
+          "ma": 1.2857142857142858,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "bash",
+          "ma": 1.869565217391304,
+          "count": 39,
+          "expertCount": 7
+        },
+        {
+          "name": "Bluetooth Low Energy",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Bugzilla",
+          "ma": 1.625,
+          "count": 11,
+          "expertCount": 1
+        },
+        {
+          "name": "CAN-Bus",
+          "ma": 1.75,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "CIM (power systems models)",
+          "ma": 1,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Clustering",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "CMS",
+          "ma": 1.7692307692307692,
+          "count": 18,
+          "expertCount": 2
+        },
+        {
+          "name": "Confluence",
+          "ma": 2.034482758620689,
+          "count": 51,
+          "expertCount": 12
+        },
+        {
+          "name": "dCache",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Dijit",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "eTicketing",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "FlexRay-Bus",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "FTPS",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "GeoCoding",
+          "ma": 1.3333333333333333,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "GeoServer",
+          "ma": 1.6666666666666667,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "GlassFish",
+          "ma": 1.9473684210526314,
+          "count": 41,
+          "expertCount": 6
+        },
+        {
+          "name": "Hazelcast",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "HTTP",
+          "ma": 1.8214285714285714,
+          "count": 44,
+          "expertCount": 10
+        },
+        {
+          "name": "IBM Websphere",
+          "ma": 1.7272727272727273,
+          "count": 17,
+          "expertCount": 3
+        },
+        {
+          "name": "IBM Websphere MQ",
+          "ma": 1.6,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "JBoss",
+          "ma": 1.9999999999999998,
+          "count": 39,
+          "expertCount": 7
+        },
+        {
+          "name": "Jetty",
+          "ma": 1.7857142857142856,
+          "count": 19,
+          "expertCount": 2
+        },
+        {
+          "name": "Jira",
+          "ma": 2.078947368421053,
+          "count": 85,
+          "expertCount": 20
+        },
+        {
+          "name": "Kerberos",
+          "ma": 1.3333333333333333,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Künstliche Intelligenz",
+          "ma": 1.75,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "LIN-Bus",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "MagicDraw",
+          "ma": 1.6,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "Magnolia CMS",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "MediaWiki",
+          "ma": 1.4,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "NetIQ Identity Manager",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "nginx",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Objektentwurf",
+          "ma": 2.2857142857142856,
+          "count": 8,
+          "expertCount": 3
+        },
+        {
+          "name": "Oracle Application Server",
+          "ma": 1,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "OSB (Oracle Service Bus)",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "OSGi",
+          "ma": 1.6666666666666665,
+          "count": 8,
+          "expertCount": 1
+        },
+        {
+          "name": "PDF",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "PostScript",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Sensorik",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Smart Home",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "SVG",
+          "ma": 1.8181818181818181,
+          "count": 13,
+          "expertCount": 2
+        },
+        {
+          "name": "Systementwurf",
+          "ma": 1.7777777777777777,
+          "count": 10,
+          "expertCount": 2
+        },
+        {
+          "name": "TCP/IP",
+          "ma": 1.65,
+          "count": 23,
+          "expertCount": 3
+        },
+        {
+          "name": "Tomcat",
+          "ma": 2.0571428571428565,
+          "count": 84,
+          "expertCount": 19
+        },
+        {
+          "name": "VDV-Kernapplikation",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Wearables",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "WebLogic",
+          "ma": 2,
+          "count": 34,
+          "expertCount": 8
+        },
+        {
+          "name": "WebSocket",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Windows Azure",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Xpath",
+          "ma": 2,
+          "count": 26,
+          "expertCount": 5
+        },
+        {
+          "name": "ZooKeeper",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        }
+      ]
+    },
+    {
+      "name": "Framework",
+      "children": [
+        {
+          "name": "ActiveMQ",
+          "ma": 1.4,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "ADO.NET",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Ajax",
+          "ma": 2.1785714285714284,
+          "count": 41,
+          "expertCount": 15
+        },
+        {
+          "name": "AndroMDA",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "AngularJS",
+          "ma": 2.052631578947368,
+          "count": 63,
+          "expertCount": 9
+        },
+        {
+          "name": "Apache Daemon",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Apache POI",
+          "ma": 1.5714285714285714,
+          "count": 26,
+          "expertCount": 2
+        },
+        {
+          "name": "Apache XMLBeans",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Arquillian",
+          "ma": 1.2857142857142858,
+          "count": 11,
+          "expertCount": 0
+        },
+        {
+          "name": "ASF",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "ASP",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "ASP.NET",
+          "ma": 1.6,
+          "count": 10,
+          "expertCount": 0
+        },
+        {
+          "name": "AssertJ",
+          "ma": 2,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Atmosphere",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Axis",
+          "ma": 1.7777777777777777,
+          "count": 10,
+          "expertCount": 2
+        },
+        {
+          "name": "BIRT",
+          "ma": 1.625,
+          "count": 12,
+          "expertCount": 0
+        },
+        {
+          "name": "Bluecove",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "C++ MFC",
+          "ma": 2,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "CakePHP",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Camel",
+          "ma": 1.5,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Camunda",
+          "ma": 2.142857142857143,
+          "count": 10,
+          "expertCount": 2
+        },
+        {
+          "name": "CDI",
+          "ma": 1.4444444444444444,
+          "count": 10,
+          "expertCount": 0
+        },
+        {
+          "name": "Cocoa",
+          "ma": 1.8,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "codeBeamer",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "CORBA",
+          "ma": 1.5454545454545456,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "Cordova",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Core Data",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Corona",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "CUDA",
+          "ma": 1.25,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "CXF",
+          "ma": 1.9090909090909092,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "D3.js",
+          "ma": 1.25,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Dagger",
+          "ma": 1.3333333333333333,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "Dagger 2",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "DbUnit",
+          "ma": 1.6923076923076923,
+          "count": 18,
+          "expertCount": 3
+        },
+        {
+          "name": "DevExpress",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Docker",
+          "ma": 1.9999999999999998,
+          "count": 33,
+          "expertCount": 7
+        },
+        {
+          "name": "docx4j",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Drools",
+          "ma": 1.4,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Eclipse Modeling Framework",
+          "ma": 1.5,
+          "count": 11,
+          "expertCount": 1
+        },
+        {
+          "name": "Eclipse RCP",
+          "ma": 1.894736842105263,
+          "count": 24,
+          "expertCount": 6
+        },
+        {
+          "name": "EclipseLink",
+          "ma": 1.75,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "Ehcache",
+          "ma": 1.625,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "EJB",
+          "ma": 1.7391304347826089,
+          "count": 36,
+          "expertCount": 6
+        },
+        {
+          "name": "Elasticsearch",
+          "ma": 1.75,
+          "count": 14,
+          "expertCount": 1
+        },
+        {
+          "name": "Entity Framework",
+          "ma": 2,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "ESB (Enterprise Service Bus)",
+          "ma": 1.875,
+          "count": 14,
+          "expertCount": 3
+        },
+        {
+          "name": "ESC/Java2",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Ext JS",
+          "ma": 1.2,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Facelets",
+          "ma": 1.625,
+          "count": 9,
+          "expertCount": 1
+        },
+        {
+          "name": "Flash",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Gatling",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "GCM",
+          "ma": 1.8,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Google App Engine",
+          "ma": 1,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Google Maps",
+          "ma": 1.3,
+          "count": 15,
+          "expertCount": 0
+        },
+        {
+          "name": "Grails",
+          "ma": 1.9999999999999998,
+          "count": 20,
+          "expertCount": 5
+        },
+        {
+          "name": "Guava",
+          "ma": 1.923076923076923,
+          "count": 21,
+          "expertCount": 4
+        },
+        {
+          "name": "GWT",
+          "ma": 1.7058823529411762,
+          "count": 27,
+          "expertCount": 1
+        },
+        {
+          "name": "GXT",
+          "ma": 1.6666666666666667,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "Hadoop",
+          "ma": 1.7777777777777777,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "Hibernate",
+          "ma": 2.0882352941176467,
+          "count": 93,
+          "expertCount": 25
+        },
+        {
+          "name": "Hibernate Search",
+          "ma": 1.3333333333333333,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "Highcharts",
+          "ma": 1.6666666666666667,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Hive MQ",
+          "ma": 2.3333333333333335,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "HTMLUnit",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "iBatis",
+          "ma": 1.6,
+          "count": 7,
+          "expertCount": 2
+        },
+        {
+          "name": "iText",
+          "ma": 1.375,
+          "count": 11,
+          "expertCount": 0
+        },
+        {
+          "name": "JAAF",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "JavaFX",
+          "ma": 1,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "JAX-RS",
+          "ma": 1.909090909090909,
+          "count": 20,
+          "expertCount": 3
+        },
+        {
+          "name": "JAXB",
+          "ma": 1.8333333333333333,
+          "count": 22,
+          "expertCount": 2
+        },
+        {
+          "name": "JBehave",
+          "ma": 1.3333333333333333,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "JBoss Seam",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "JDO",
+          "ma": 2.25,
+          "count": 4,
+          "expertCount": 2
+        },
+        {
+          "name": "Jersey",
+          "ma": 1.4166666666666667,
+          "count": 17,
+          "expertCount": 1
+        },
+        {
+          "name": "JFreeChart",
+          "ma": 1.375,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "JHipster",
+          "ma": 1.8333333333333335,
+          "count": 14,
+          "expertCount": 2
+        },
+        {
+          "name": "JMeter",
+          "ma": 1.6363636363636362,
+          "count": 14,
+          "expertCount": 1
+        },
+        {
+          "name": "JMockit",
+          "ma": 1.5,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "JMS",
+          "ma": 1.6923076923076925,
+          "count": 16,
+          "expertCount": 6
+        },
+        {
+          "name": "JPA",
+          "ma": 2.0333333333333337,
+          "count": 61,
+          "expertCount": 15
+        },
+        {
+          "name": "jQuery",
+          "ma": 1.9230769230769227,
+          "count": 47,
+          "expertCount": 9
+        },
+        {
+          "name": "jQuery Mobile",
+          "ma": 1.7142857142857144,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "JSF",
+          "ma": 2.071428571428571,
+          "count": 49,
+          "expertCount": 14
+        },
+        {
+          "name": "JSTL",
+          "ma": 1.8,
+          "count": 11,
+          "expertCount": 2
+        },
+        {
+          "name": "JUnit",
+          "ma": 2.102564102564102,
+          "count": 94,
+          "expertCount": 26
+        },
+        {
+          "name": "Kendo UI",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Kibana",
+          "ma": 1.6,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "LDAP",
+          "ma": 1.5555555555555556,
+          "count": 23,
+          "expertCount": 1
+        },
+        {
+          "name": "Liferay",
+          "ma": 2.0555555555555554,
+          "count": 26,
+          "expertCount": 6
+        },
+        {
+          "name": "Log4J",
+          "ma": 1.7200000000000002,
+          "count": 45,
+          "expertCount": 11
+        },
+        {
+          "name": "Logstash",
+          "ma": 1.9,
+          "count": 11,
+          "expertCount": 2
+        },
+        {
+          "name": "Lucene",
+          "ma": 1.4166666666666667,
+          "count": 17,
+          "expertCount": 1
+        },
+        {
+          "name": "MapStruct",
+          "ma": 2.2,
+          "count": 6,
+          "expertCount": 2
+        },
+        {
+          "name": "Mockito",
+          "ma": 1.6842105263157894,
+          "count": 43,
+          "expertCount": 1
+        },
+        {
+          "name": "Neo4J",
+          "ma": 2.25,
+          "count": 8,
+          "expertCount": 3
+        },
+        {
+          "name": "NGTP",
+          "ma": 1.25,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Node.js",
+          "ma": 1.5833333333333335,
+          "count": 26,
+          "expertCount": 1
+        },
+        {
+          "name": "NUnit",
+          "ma": 2.3333333333333335,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "Oozie",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "OPC UA",
+          "ma": 1.3333333333333333,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "OpenAM",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "OpenCV",
+          "ma": 1.6,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "OpenLayers",
+          "ma": 1.75,
+          "count": 10,
+          "expertCount": 1
+        },
+        {
+          "name": "Play",
+          "ma": 1.2857142857142858,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "Portlets",
+          "ma": 2.1,
+          "count": 11,
+          "expertCount": 4
+        },
+        {
+          "name": "PowerMock",
+          "ma": 1.6666666666666667,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Primefaces",
+          "ma": 2,
+          "count": 14,
+          "expertCount": 3
+        },
+        {
+          "name": "Protobuf",
+          "ma": 1.6,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "QT",
+          "ma": 1.2,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "Quartz",
+          "ma": 1.75,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "Querydsl",
+          "ma": 1.6,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "REST",
+          "ma": 1.9999999999999996,
+          "count": 81,
+          "expertCount": 17
+        },
+        {
+          "name": "Resteasy",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "RichFaces",
+          "ma": 1.7272727272727273,
+          "count": 15,
+          "expertCount": 3
+        },
+        {
+          "name": "RMI",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 1
+        },
+        {
+          "name": "Robotium",
+          "ma": 1.6666666666666667,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Scip",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Selenium",
+          "ma": 1.6000000000000003,
+          "count": 34,
+          "expertCount": 2
+        },
+        {
+          "name": "SEO",
+          "ma": 1.3333333333333333,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Serenity BDD",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Servlets",
+          "ma": 1.8095238095238095,
+          "count": 25,
+          "expertCount": 4
+        },
+        {
+          "name": "Siteminder",
+          "ma": 1.4,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Slick",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "SOA",
+          "ma": 2.157894736842105,
+          "count": 23,
+          "expertCount": 7
+        },
+        {
+          "name": "SOAP",
+          "ma": 1.8636363636363638,
+          "count": 33,
+          "expertCount": 6
+        },
+        {
+          "name": "Spring",
+          "ma": 2.176470588235294,
+          "count": 85,
+          "expertCount": 27
+        },
+        {
+          "name": "Spring Batch",
+          "ma": 1.7777777777777777,
+          "count": 15,
+          "expertCount": 1
+        },
+        {
+          "name": "Spring Boot",
+          "ma": 1.8666666666666665,
+          "count": 38,
+          "expertCount": 6
+        },
+        {
+          "name": "Spring Data",
+          "ma": 1.7777777777777777,
+          "count": 11,
+          "expertCount": 2
+        },
+        {
+          "name": "Spring Integration",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Spring MVC",
+          "ma": 1.923076923076923,
+          "count": 18,
+          "expertCount": 3
+        },
+        {
+          "name": "Spring Security",
+          "ma": 1.6923076923076923,
+          "count": 25,
+          "expertCount": 2
+        },
+        {
+          "name": "Struts",
+          "ma": 1.8235294117647058,
+          "count": 28,
+          "expertCount": 3
+        },
+        {
+          "name": "Swing",
+          "ma": 1.857142857142857,
+          "count": 36,
+          "expertCount": 6
+        },
+        {
+          "name": "SWT",
+          "ma": 1.857142857142857,
+          "count": 9,
+          "expertCount": 2
+        },
+        {
+          "name": "Symfony",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Tcl/Tk",
+          "ma": 2,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "TestNG",
+          "ma": 1.8333333333333333,
+          "count": 15,
+          "expertCount": 2
+        },
+        {
+          "name": "three.js",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Twitter Bootstrap",
+          "ma": 2,
+          "count": 29,
+          "expertCount": 8
+        },
+        {
+          "name": "UTC/SA",
+          "ma": 1.6666666666666665,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Vaadin",
+          "ma": 1.4,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "Vert.x",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "WCF",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "Webservice",
+          "ma": 2.1379310344827585,
+          "count": 55,
+          "expertCount": 17
+        },
+        {
+          "name": "Wicket",
+          "ma": 1.7999999999999998,
+          "count": 35,
+          "expertCount": 5
+        },
+        {
+          "name": "Windows Forms",
+          "ma": 2.4,
+          "count": 6,
+          "expertCount": 3
+        },
+        {
+          "name": "WPF",
+          "ma": 1.7777777777777777,
+          "count": 10,
+          "expertCount": 3
+        },
+        {
+          "name": "WPT",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "XAdES4J",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Xtext",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "XUL",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "ZK",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 1
+        }
+      ]
+    },
+    {
+      "name": "DBMS",
+      "children": [
+        {
+          "name": "ADABAS",
+          "ma": 2,
+          "count": 5,
+          "expertCount": 3
+        },
+        {
+          "name": "Apache Derby",
+          "ma": 1,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Apache Giraph",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Apache Mesos",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Apache Spark",
+          "ma": 1.6666666666666665,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Business Intelligence",
+          "ma": 1.5,
+          "count": 19,
+          "expertCount": 1
+        },
+        {
+          "name": "CouchDB",
+          "ma": 1.25,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Data Mining",
+          "ma": 1.5833333333333335,
+          "count": 16,
+          "expertCount": 3
+        },
+        {
+          "name": "Data Warehouse",
+          "ma": 1.75,
+          "count": 16,
+          "expertCount": 2
+        },
+        {
+          "name": "Datenbanksysteme",
+          "ma": 1.88,
+          "count": 45,
+          "expertCount": 9
+        },
+        {
+          "name": "Datenmodellierung",
+          "ma": 2.178571428571429,
+          "count": 44,
+          "expertCount": 19
+        },
+        {
+          "name": "DB2",
+          "ma": 1.9166666666666663,
+          "count": 42,
+          "expertCount": 10
+        },
+        {
+          "name": "ETL",
+          "ma": 1.3333333333333333,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "FAST ESP",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Flyway",
+          "ma": 1.9999999999999998,
+          "count": 23,
+          "expertCount": 4
+        },
+        {
+          "name": "HBase",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Hive SQL",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "HSQLDB",
+          "ma": 1.8125,
+          "count": 27,
+          "expertCount": 5
+        },
+        {
+          "name": "Informatica",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Informix",
+          "ma": 1.6666666666666667,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "JDBC",
+          "ma": 1.777777777777778,
+          "count": 57,
+          "expertCount": 14
+        },
+        {
+          "name": "KNIME",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Liquibase",
+          "ma": 1.8666666666666665,
+          "count": 21,
+          "expertCount": 3
+        },
+        {
+          "name": "MapReduce",
+          "ma": 1.75,
+          "count": 10,
+          "expertCount": 1
+        },
+        {
+          "name": "MariaDB",
+          "ma": 2,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "MongoDB",
+          "ma": 1.6666666666666665,
+          "count": 29,
+          "expertCount": 2
+        },
+        {
+          "name": "MS Access",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "MS SQL Server",
+          "ma": 1.9655172413793105,
+          "count": 53,
+          "expertCount": 7
+        },
+        {
+          "name": "MySQL",
+          "ma": 1.9749999999999999,
+          "count": 121,
+          "expertCount": 30
+        },
+        {
+          "name": "Oracle",
+          "ma": 2.046511627906977,
+          "count": 120,
+          "expertCount": 33
+        },
+        {
+          "name": "Oracle ADF",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle BI",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle BPEL",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle Mapviewer",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle Siebel",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle Spatial",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "PL/SQL",
+          "ma": 2,
+          "count": 40,
+          "expertCount": 7
+        },
+        {
+          "name": "PostgreSQL",
+          "ma": 1.851851851851852,
+          "count": 57,
+          "expertCount": 8
+        },
+        {
+          "name": "Redis",
+          "ma": 1,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "SQLite",
+          "ma": 1.7857142857142856,
+          "count": 25,
+          "expertCount": 4
+        },
+        {
+          "name": "T-SQL",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Talend",
+          "ma": 1.6666666666666667,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Text Mining",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Toad",
+          "ma": 1.8,
+          "count": 12,
+          "expertCount": 3
+        }
+      ]
+    },
+    {
+      "name": "Ohne Zuordnung",
+      "children": [
+        {
+          "name": "Adobe AfterEffects",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Adobe Illustrator",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Adobe Photoshop",
+          "ma": 2.25,
+          "count": 4,
+          "expertCount": 2
+        },
+        {
+          "name": "Angular 2",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "arc42",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Architektur",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "asdasdsd",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Autodesk Maya",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Bootstrap",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Cinema4D",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "CSS3",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "DocBridge Pilot",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Elasticray",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Fach",
+          "ma": 4,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Gerrit",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "High Lebel Shader Language (HLSL)",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "HP BSM",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "IBM Unified Method Framework",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Kassensysteme",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Less",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Mathematik",
+          "ma": 2.6666666666666665,
+          "count": 3,
+          "expertCount": 2
+        },
+        {
+          "name": "NLP",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "openg",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "OpenStreetMap",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Payment Systeme",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Professional Scrum Product Owner",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Rational Portfolio Manager",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "React.js",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Sitescope",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Slack",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "SPICE",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Systems Engineering",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "tensorflow",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Thin Client",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "TOGAF",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Tosca",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Unity 3D",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "XWiki",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Zend Framework",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "zSeries",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        }
+      ]
+    },
+    {
+      "name": "Vorgehen",
+      "children": [
+        {
+          "name": "Agile Methoden",
+          "ma": 2.0285714285714285,
+          "count": 72,
+          "expertCount": 20
+        },
+        {
+          "name": "ATAM",
+          "ma": 1.5,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Behaviour-Driven Development",
+          "ma": 1.6,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "CMMI",
+          "ma": 2.2857142857142856,
+          "count": 8,
+          "expertCount": 4
+        },
+        {
+          "name": "Demand Management",
+          "ma": 2.1052631578947367,
+          "count": 23,
+          "expertCount": 5
+        },
+        {
+          "name": "Design Thinking",
+          "ma": 1.25,
+          "count": 12,
+          "expertCount": 0
+        },
+        {
+          "name": "Dojo",
+          "ma": 2.5,
+          "count": 2,
+          "expertCount": 1
+        },
+        {
+          "name": "Flow Design",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "IT-Strategie",
+          "ma": 2.3333333333333335,
+          "count": 11,
+          "expertCount": 3
+        },
+        {
+          "name": "iterativ - agil",
+          "ma": 2.166666666666666,
+          "count": 51,
+          "expertCount": 13
+        },
+        {
+          "name": "ITIL",
+          "ma": 1.8095238095238095,
+          "count": 34,
+          "expertCount": 4
+        },
+        {
+          "name": "Kanban",
+          "ma": 1.875,
+          "count": 32,
+          "expertCount": 3
+        },
+        {
+          "name": "MDA",
+          "ma": 1.8333333333333335,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Model Driven Software Development",
+          "ma": 2.0625,
+          "count": 21,
+          "expertCount": 4
+        },
+        {
+          "name": "Nearshore / Offshore",
+          "ma": 2,
+          "count": 17,
+          "expertCount": 3
+        },
+        {
+          "name": "OOA",
+          "ma": 2.1111111111111107,
+          "count": 21,
+          "expertCount": 6
+        },
+        {
+          "name": "Produktmanagement",
+          "ma": 2.5,
+          "count": 2,
+          "expertCount": 1
+        },
+        {
+          "name": "Qualitätsmanagement",
+          "ma": 2.2105263157894735,
+          "count": 31,
+          "expertCount": 11
+        },
+        {
+          "name": "Risikomanagement",
+          "ma": 1.9999999999999998,
+          "count": 24,
+          "expertCount": 7
+        },
+        {
+          "name": "Rollout",
+          "ma": 1.8,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "RUP",
+          "ma": 1.75,
+          "count": 14,
+          "expertCount": 2
+        },
+        {
+          "name": "Scrum",
+          "ma": 2.2162162162162162,
+          "count": 93,
+          "expertCount": 27
+        },
+        {
+          "name": "Test Driven Development",
+          "ma": 1.8695652173913044,
+          "count": 30,
+          "expertCount": 5
+        },
+        {
+          "name": "UML",
+          "ma": 2.1136363636363638,
+          "count": 119,
+          "expertCount": 33
+        },
+        {
+          "name": "V-Modell",
+          "ma": 2.0434782608695654,
+          "count": 30,
+          "expertCount": 9
+        },
+        {
+          "name": "XP",
+          "ma": 1.5384615384615385,
+          "count": 16,
+          "expertCount": 2
+        }
+      ]
+    },
+    {
+      "name": "Betriebssystem",
+      "children": [
+        {
+          "name": "AIX",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "Android",
+          "ma": 1.967741935483871,
+          "count": 69,
+          "expertCount": 14
+        },
+        {
+          "name": "Android Wear",
+          "ma": 1.4,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "iOS",
+          "ma": 2.0588235294117645,
+          "count": 21,
+          "expertCount": 6
+        },
+        {
+          "name": "Linux",
+          "ma": 1.8205128205128203,
+          "count": 101,
+          "expertCount": 24
+        },
+        {
+          "name": "OS X",
+          "ma": 1.9130434782608694,
+          "count": 32,
+          "expertCount": 10
+        },
+        {
+          "name": "OS/1100",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "OS/390",
+          "ma": 1.2,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "Solaris",
+          "ma": 1.6,
+          "count": 5,
+          "expertCount": 0
+        },
+        {
+          "name": "Unix",
+          "ma": 1.806451612903226,
+          "count": 50,
+          "expertCount": 13
+        },
+        {
+          "name": "Windows",
+          "ma": 2.1315789473684217,
+          "count": 116,
+          "expertCount": 48
+        },
+        {
+          "name": "Windows Phone",
+          "ma": 1,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Windows Server",
+          "ma": 1.8461538461538463,
+          "count": 15,
+          "expertCount": 2
+        }
+      ]
+    },
+    {
+      "name": "Werkzeug",
+      "children": [
+        {
+          "name": "Android Studio",
+          "ma": 1.75,
+          "count": 29,
+          "expertCount": 3
+        },
+        {
+          "name": "AppCode",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "AppDynamics",
+          "ma": 1.75,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "ArchStyler",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Assentis DocFamily",
+          "ma": 2.142857142857143,
+          "count": 9,
+          "expertCount": 2
+        },
+        {
+          "name": "camos Develop",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "cloc",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Cognos",
+          "ma": 1.25,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "ConQAT",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "CPLEX",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Crystal Reports",
+          "ma": 1.625,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "Cucumber",
+          "ma": 1.5,
+          "count": 9,
+          "expertCount": 0
+        },
+        {
+          "name": "DataGrip",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "DB-Visualizer",
+          "ma": 1.6666666666666667,
+          "count": 10,
+          "expertCount": 1
+        },
+        {
+          "name": "Eclipse",
+          "ma": 2.095238095238095,
+          "count": 134,
+          "expertCount": 54
+        },
+        {
+          "name": "Emacs",
+          "ma": 1.5,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "ENOVIA",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Enterprise Architect",
+          "ma": 2.0294117647058822,
+          "count": 75,
+          "expertCount": 15
+        },
+        {
+          "name": "Enterprise Tester",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Gurobi",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "HP LoadRunner",
+          "ma": 1,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "ILOG JViews",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Innovator",
+          "ma": 1.6666666666666665,
+          "count": 8,
+          "expertCount": 1
+        },
+        {
+          "name": "IntelliJ IDEA",
+          "ma": 2.1071428571428568,
+          "count": 69,
+          "expertCount": 18
+        },
+        {
+          "name": "iteraplan",
+          "ma": 2.0454545454545454,
+          "count": 36,
+          "expertCount": 14
+        },
+        {
+          "name": "JasperReports",
+          "ma": 1.3636363636363638,
+          "count": 15,
+          "expertCount": 0
+        },
+        {
+          "name": "JavaCC",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "jBPM",
+          "ma": 1,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Lotus Notes",
+          "ma": 1.3636363636363638,
+          "count": 16,
+          "expertCount": 0
+        },
+        {
+          "name": "Maple",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Mathematica",
+          "ma": 1.6666666666666665,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "Matlab",
+          "ma": 1.8,
+          "count": 19,
+          "expertCount": 3
+        },
+        {
+          "name": "MS Visio",
+          "ma": 1.9374999999999998,
+          "count": 54,
+          "expertCount": 7
+        },
+        {
+          "name": "NDepend",
+          "ma": 1.3333333333333333,
+          "count": 6,
+          "expertCount": 0
+        },
+        {
+          "name": "NetBeans",
+          "ma": 2.1500000000000004,
+          "count": 31,
+          "expertCount": 7
+        },
+        {
+          "name": "Notepad++",
+          "ma": 1.8333333333333333,
+          "count": 47,
+          "expertCount": 9
+        },
+        {
+          "name": "objectIF",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Oracle SQL Developer",
+          "ma": 1.9285714285714286,
+          "count": 16,
+          "expertCount": 4
+        },
+        {
+          "name": "PowerBuilder",
+          "ma": 1.8,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "Powerdesigner",
+          "ma": 1.3333333333333333,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Predict Case",
+          "ma": 2.5,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "QlikView",
+          "ma": 1.7142857142857142,
+          "count": 8,
+          "expertCount": 2
+        },
+        {
+          "name": "Quality Center",
+          "ma": 2,
+          "count": 8,
+          "expertCount": 4
+        },
+        {
+          "name": "Rational Rose",
+          "ma": 2.111111111111111,
+          "count": 10,
+          "expertCount": 3
+        },
+        {
+          "name": "Redmine",
+          "ma": 1.75,
+          "count": 16,
+          "expertCount": 1
+        },
+        {
+          "name": "ReSharper",
+          "ma": 2,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Review Board",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "ServiceTrace",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "SilkTest",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "SoapUI",
+          "ma": 1.789473684210526,
+          "count": 40,
+          "expertCount": 3
+        },
+        {
+          "name": "Sqoop",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "STAN",
+          "ma": 4,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "StringTemplate",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Sublime",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Swagger",
+          "ma": 1.375,
+          "count": 10,
+          "expertCount": 0
+        },
+        {
+          "name": "TestComplete",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Text Template Transformation Toolkit",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Uniserv DQ BatchSuite",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Uniserv Identity RT",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Uniserv post",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Vagrant",
+          "ma": 2,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "vi",
+          "ma": 2,
+          "count": 8,
+          "expertCount": 2
+        },
+        {
+          "name": "Visual Studio",
+          "ma": 1.9310344827586203,
+          "count": 46,
+          "expertCount": 9
+        },
+        {
+          "name": "WebPagetest",
+          "ma": 2.6666666666666665,
+          "count": 5,
+          "expertCount": 3
+        },
+        {
+          "name": "Webstorm",
+          "ma": 1.9285714285714286,
+          "count": 20,
+          "expertCount": 3
+        },
+        {
+          "name": "Wireshark",
+          "ma": 1.6,
+          "count": 14,
+          "expertCount": 1
+        },
+        {
+          "name": "Xamarin",
+          "ma": 1,
+          "count": 4,
+          "expertCount": 0
+        },
+        {
+          "name": "Xcode",
+          "ma": 1.7692307692307692,
+          "count": 13,
+          "expertCount": 2
+        }
+      ]
+    },
+    {
+      "name": "AnfMgt",
+      "children": [
+        {
+          "name": "Anforderungsanalyse",
+          "ma": 2.1944444444444438,
+          "count": 73,
+          "expertCount": 26
+        },
+        {
+          "name": "Anforderungsmanagement",
+          "ma": 2.333333333333334,
+          "count": 55,
+          "expertCount": 26
+        },
+        {
+          "name": "BPEL",
+          "ma": 1.8,
+          "count": 12,
+          "expertCount": 2
+        },
+        {
+          "name": "BPMN",
+          "ma": 1.9999999999999996,
+          "count": 49,
+          "expertCount": 7
+        },
+        {
+          "name": "EPK",
+          "ma": 1.9333333333333333,
+          "count": 23,
+          "expertCount": 3
+        },
+        {
+          "name": "ER-Modellierung",
+          "ma": 2.0384615384615383,
+          "count": 43,
+          "expertCount": 10
+        },
+        {
+          "name": "Fachkonzeption",
+          "ma": 2.1739130434782608,
+          "count": 40,
+          "expertCount": 15
+        },
+        {
+          "name": "Machbarkeitsanalyse",
+          "ma": 2,
+          "count": 4,
+          "expertCount": 1
+        }
+      ]
+    },
+    {
+      "name": "Build",
+      "children": [
+        {
+          "name": "Ansible",
+          "ma": 2.5,
+          "count": 8,
+          "expertCount": 3
+        },
+        {
+          "name": "Ant",
+          "ma": 1.9999999999999998,
+          "count": 84,
+          "expertCount": 20
+        },
+        {
+          "name": "Apache Ivy",
+          "ma": 1.3333333333333333,
+          "count": 8,
+          "expertCount": 0
+        },
+        {
+          "name": "Artifactory",
+          "ma": 1.8,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "Atom",
+          "ma": 1,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Bamboo",
+          "ma": 1.375,
+          "count": 13,
+          "expertCount": 0
+        },
+        {
+          "name": "CheckStyle",
+          "ma": 1.8333333333333333,
+          "count": 32,
+          "expertCount": 6
+        },
+        {
+          "name": "Chef",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "ClearCase",
+          "ma": 1.8888888888888888,
+          "count": 13,
+          "expertCount": 5
+        },
+        {
+          "name": "Cobertura",
+          "ma": 2,
+          "count": 5,
+          "expertCount": 1
+        },
+        {
+          "name": "CPD",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "CruiseControl",
+          "ma": 1.6,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "CVS",
+          "ma": 1.9583333333333335,
+          "count": 35,
+          "expertCount": 10
+        },
+        {
+          "name": "EMMA",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "FindBugs",
+          "ma": 1.7142857142857146,
+          "count": 36,
+          "expertCount": 3
+        },
+        {
+          "name": "Git",
+          "ma": 2.1621621621621614,
+          "count": 99,
+          "expertCount": 25
+        },
+        {
+          "name": "Gradle",
+          "ma": 1.8333333333333333,
+          "count": 52,
+          "expertCount": 8
+        },
+        {
+          "name": "Grunt",
+          "ma": 1.4444444444444444,
+          "count": 20,
+          "expertCount": 0
+        },
+        {
+          "name": "gulp",
+          "ma": 1.6,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "Jenkins",
+          "ma": 2.051282051282051,
+          "count": 99,
+          "expertCount": 26
+        },
+        {
+          "name": "make",
+          "ma": 2,
+          "count": 7,
+          "expertCount": 1
+        },
+        {
+          "name": "Maven",
+          "ma": 2.1315789473684212,
+          "count": 110,
+          "expertCount": 36
+        },
+        {
+          "name": "Mercurial",
+          "ma": 1.7142857142857142,
+          "count": 8,
+          "expertCount": 1
+        },
+        {
+          "name": "Nexus",
+          "ma": 1.7368421052631577,
+          "count": 28,
+          "expertCount": 3
+        },
+        {
+          "name": "PMD",
+          "ma": 2.2857142857142856,
+          "count": 9,
+          "expertCount": 4
+        },
+        {
+          "name": "Puppet",
+          "ma": 1.8571428571428572,
+          "count": 8,
+          "expertCount": 1
+        },
+        {
+          "name": "RCS",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "SBT",
+          "ma": 1,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Sonar",
+          "ma": 2.1199999999999997,
+          "count": 47,
+          "expertCount": 10
+        },
+        {
+          "name": "Stash",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "SVN",
+          "ma": 2.0930232558139528,
+          "count": 123,
+          "expertCount": 46
+        },
+        {
+          "name": "Team Foundation Server",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "Trac",
+          "ma": 1.5384615384615385,
+          "count": 20,
+          "expertCount": 1
+        }
+      ]
+    },
+    {
+      "name": "ITM",
+      "children": [
+        {
+          "name": "Architekturmanagement",
+          "ma": 2.1333333333333333,
+          "count": 21,
+          "expertCount": 10
+        },
+        {
+          "name": "Change-Management",
+          "ma": 1.9999999999999998,
+          "count": 20,
+          "expertCount": 5
+        },
+        {
+          "name": "Cobit",
+          "ma": 1.4444444444444444,
+          "count": 13,
+          "expertCount": 1
+        },
+        {
+          "name": "Data Governance",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Datenqualitätsmanagement",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Enterprise Architecture Management",
+          "ma": 2.0454545454545454,
+          "count": 39,
+          "expertCount": 15
+        },
+        {
+          "name": "ERP",
+          "ma": 2,
+          "count": 2,
+          "expertCount": 1
+        },
+        {
+          "name": "IT Governance",
+          "ma": 1.8666666666666665,
+          "count": 19,
+          "expertCount": 3
+        },
+        {
+          "name": "IT Service Management",
+          "ma": 1.8666666666666665,
+          "count": 21,
+          "expertCount": 3
+        },
+        {
+          "name": "IT Transformation",
+          "ma": 1.6666666666666667,
+          "count": 3,
+          "expertCount": 0
+        },
+        {
+          "name": "IT-Bebauungsmanagement",
+          "ma": 2.157894736842105,
+          "count": 28,
+          "expertCount": 10
+        },
+        {
+          "name": "Organisationsaufbau",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "Outsourcing",
+          "ma": 1.875,
+          "count": 11,
+          "expertCount": 1
+        },
+        {
+          "name": "Prozessmanagement",
+          "ma": 2.0999999999999996,
+          "count": 23,
+          "expertCount": 7
+        },
+        {
+          "name": "Prozessmodellierung",
+          "ma": 2.095238095238095,
+          "count": 32,
+          "expertCount": 9
+        }
+      ]
+    },
+    {
+      "name": "Standardsoftware",
+      "children": [
+        {
+          "name": "ARIS",
+          "ma": 1.7058823529411764,
+          "count": 24,
+          "expertCount": 3
+        },
+        {
+          "name": "BizTalk",
+          "ma": 2,
+          "count": 4,
+          "expertCount": 1
+        },
+        {
+          "name": "Clarity",
+          "ma": 2,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "IBM DOORS",
+          "ma": 1.8,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "IIS",
+          "ma": 1.5,
+          "count": 7,
+          "expertCount": 0
+        },
+        {
+          "name": "LaTeX",
+          "ma": 1.9999999999999996,
+          "count": 64,
+          "expertCount": 8
+        },
+        {
+          "name": "MS Excel",
+          "ma": 2,
+          "count": 87,
+          "expertCount": 24
+        },
+        {
+          "name": "MS Office",
+          "ma": 2.064516129032258,
+          "count": 83,
+          "expertCount": 26
+        },
+        {
+          "name": "MS Powerpoint",
+          "ma": 1.9375000000000004,
+          "count": 78,
+          "expertCount": 17
+        },
+        {
+          "name": "MS Word",
+          "ma": 1.967741935483871,
+          "count": 80,
+          "expertCount": 24
+        },
+        {
+          "name": "OpenOffice / LibreOffice",
+          "ma": 1.6363636363636365,
+          "count": 24,
+          "expertCount": 3
+        },
+        {
+          "name": "SAP",
+          "ma": 1.6666666666666667,
+          "count": 12,
+          "expertCount": 1
+        },
+        {
+          "name": "SAP BO",
+          "ma": 1,
+          "count": 1,
+          "expertCount": 0
+        },
+        {
+          "name": "SharePoint",
+          "ma": 1.625,
+          "count": 39,
+          "expertCount": 2
+        },
+        {
+          "name": "Wordpress",
+          "ma": 1.5714285714285716,
+          "count": 22,
+          "expertCount": 1
+        }
+      ]
+    },
+    {
+      "name": "Sonstiges (Methodik)",
+      "children": [
+        {
+          "name": "Ausschreibungsmanagement",
+          "ma": 2.3333333333333335,
+          "count": 3,
+          "expertCount": 1
+        },
+        {
+          "name": "Moderationstechniken",
+          "ma": 2,
+          "count": 6,
+          "expertCount": 1
+        },
+        {
+          "name": "Negotiation",
+          "ma": 3,
+          "count": 1,
+          "expertCount": 1
+        },
+        {
+          "name": "Testmanagement",
+          "ma": 2.0384615384615383,
+          "count": 37,
+          "expertCount": 9
+        }
+      ]
+    },
+    {
+      "name": "PM",
+      "children": [
+        {
+          "name": "MS Project",
+          "ma": 1.9999999999999996,
+          "count": 32,
+          "expertCount": 7
+        },
+        {
+          "name": "Open Workbench",
+          "ma": 1.5,
+          "count": 2,
+          "expertCount": 0
+        },
+        {
+          "name": "Programm-Management",
+          "ma": 2.2142857142857144,
+          "count": 17,
+          "expertCount": 8
+        },
+        {
+          "name": "Projektmanagement",
+          "ma": 2.2571428571428567,
+          "count": 82,
+          "expertCount": 36
+        }
+      ]
+    }
+  ]
+}
