@@ -59,6 +59,16 @@ bottle.factory("Skills", function(container) {
             return clusters;
         }
 
+        function addSkillToBranch(skill, branch) {
+            var child = {
+                name: skill["Skill"],
+                ma: skill["Mittlere Bewertung"],
+                count: skill["Anzahl Mitarbeiter"],
+                expertCount: skill["Anzahl Experten"]
+            };
+            branch.push(grandchild);
+        }
+
         function createTree(aggregation) {
             var tree = {
                 name: "Skills",
@@ -81,6 +91,10 @@ bottle.factory("Skills", function(container) {
             });
 
             return tree;
+        }
+
+        function createFlatTree(aggregation) {
+
         }
 
         var promise = new SimplePromise();
