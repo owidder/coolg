@@ -41,8 +41,8 @@ bottle.factory("Skills", function(container) {
 
         var rawData;
 
-        function createTree() {
-            
+        function createTree(agregation) {
+
         }
 
         function recalcSkills(locations, categories) {
