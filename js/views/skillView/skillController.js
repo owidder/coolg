@@ -515,9 +515,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var data = skills.recalcSkills(locations, categories);
 
-            var tree = skills.createFlatTree(data);
-            console.log(JSON.stringify(tree));
-
             drawField(xMax(data), 4);
             createLayers();
 
