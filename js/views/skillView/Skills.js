@@ -43,7 +43,7 @@ bottle.factory("Skills", function(container) {
         }
 
         function createTree(aggregation) {
-            aggregation.forEach(function (skill) {
+            aggregation.forEach(function(skill) {
                 
             });
         }
