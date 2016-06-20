@@ -20,7 +20,9 @@ d3.json("skills.json", function(json) {
         .data(treemap)
         .enter().append("svg:g")
         .attr("class", "cell")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
 
     cell.append("svg:rect")
         .attr("width", function(d) { return d.dx; })
