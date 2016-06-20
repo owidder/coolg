@@ -41,6 +41,10 @@ bottle.factory("Skills", function(container) {
 
         var rawData;
 
+        function createTree() {
+            
+        }
+
         function recalcSkills(locations, categories) {
             function filter(skill) {
                 var valLocation = funcs.isInArray(locations, "*") || funcs.isInArray(locations, skill["Standort"]);
