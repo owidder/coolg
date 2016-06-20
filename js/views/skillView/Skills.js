@@ -66,6 +66,9 @@ bottle.factory("Skills", function(container) {
             };
 
             var clusters = clusterSkills(aggregation);
+            funcs.forEachKeyAndVal(clusters, function(category, skills) {
+                var child = {name: category, children: skills};
+            });
         }
 
         var promise = new SimplePromise();
