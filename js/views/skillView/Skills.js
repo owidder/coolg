@@ -88,6 +88,7 @@ bottle.factory("Skills", function(container) {
         me.locations = undefined;
         me.categoryToColor = categoryToColor;
         me.categoryFromSkill = categoryFromSkill;
+        me.createTree = createTree;
 
         var rawData;
 
