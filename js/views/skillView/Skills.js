@@ -51,6 +51,10 @@ bottle.factory("Skills", function(container) {
                 }
                 clusters[category].push(skill);
             }
+
+            aggregation.forEach(function(skill) {
+                addToClusters(skill);
+            });
         }
 
         function createTree(aggregation) {
