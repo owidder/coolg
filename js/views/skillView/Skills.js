@@ -47,6 +47,11 @@ bottle.factory("Skills", function(container) {
                 name: "Skills",
                 children: []
             };
+
+            function addToTree(skill) {
+                
+            }
+
             aggregation.forEach(function(skill) {
 
             });
