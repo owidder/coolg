@@ -47,7 +47,7 @@ d3.json("skills.json", function(json) {
         .attr("font-size", function(d) {
             var quotx = d.dx / d.name.length;
             var quoty = d.dy / 2;
-            return (quot > 4 ? quot : 0) + "px";
+            return Math.min(quotx, quoty) + "px";
         })
         .text(function(d) {
             return d.children ? null : d.name;
