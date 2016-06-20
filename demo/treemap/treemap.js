@@ -32,7 +32,7 @@ d3.json("skills.json", function(json) {
             return d.dy;
         })
         .style("fill", function(d) {
-            return d.children ? null : color(d.category);
+            return color(d.category);
         });
 
     cell.append("svg:text")
