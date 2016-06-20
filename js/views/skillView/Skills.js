@@ -77,6 +77,7 @@ bottle.factory("Skills", function(container) {
                     };
                     child.children.push(grandchild);
                 });
+                tree.children.push(child);
             });
         }
 
