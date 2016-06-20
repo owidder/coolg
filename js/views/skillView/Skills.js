@@ -75,6 +75,7 @@ bottle.factory("Skills", function(container) {
                         count: skill["Anzahl Mitarbeiter"],
                         expertCount: skill["Anzahl Experten"]
                     }
+                    child.children.push(grandchild);
                 });
             });
         }
