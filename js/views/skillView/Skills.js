@@ -32,15 +32,6 @@ bottle.factory("Skills", function(container) {
             return locations;
         }
 
-        var promise = new SimplePromise();
-
-        me.ready = promise.promise;
-        me.categories = undefined;
-        me.locations = undefined;
-        me.categoryToColor = categoryToColor;
-
-        var rawData;
-
         function categoryFromSkill(skill) {
             var cat = "?";
             var categoryValues = skill["values_Skill-Unterkategorie"];
@@ -50,6 +41,16 @@ bottle.factory("Skills", function(container) {
 
             return cat;
         }
+
+        var promise = new SimplePromise();
+
+        me.ready = promise.promise;
+        me.categories = undefined;
+        me.locations = undefined;
+        me.categoryToColor = categoryToColor;
+        me.categoryFromSkill = categoryFromSkill;
+
+        var rawData;
 
         function createTree(agregation) {
 
