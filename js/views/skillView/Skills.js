@@ -41,6 +41,16 @@ bottle.factory("Skills", function(container) {
 
         var rawData;
 
+        function categoryFromSkill(skill) {
+            var cat = "?";
+            var categoryValues = skill["values_Skill-Unterkategorie"];
+            if (!funcs.isEmpty(categoryValues)) {
+                cat = categoryValues[0]["Skill-Unterkategorie"];
+            }
+
+            return cat;
+        }
+
         function createTree(agregation) {
 
         }
