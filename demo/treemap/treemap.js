@@ -15,7 +15,7 @@ var svg = d3.select("body").append("svg:svg")
     .append("svg:g")
     .attr("transform", "translate(-.5,-.5)");
 
-d3.json("skills.json", function(json) {
+d3.json("flatSkills.json", function(json) {
     var cell = svg.data([json]).selectAll("g")
         .data(treemap)
         .enter().append("svg:g")
