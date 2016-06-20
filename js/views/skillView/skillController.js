@@ -453,6 +453,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
         }
 
+        function getYAttribute() {
+            switch($routeParams.y) {
+                case "ec":
+                    return "Anzahl Experten";
+
+                default:
+                    return "Mittlere Bewertung";
+            }
+        }
+
         function getMode() {
             switch($routeParams.mode) {
                 case "v":
