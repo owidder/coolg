@@ -44,12 +44,9 @@ d3.json("skills.json", function(json) {
         })
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .attr("opacity", function(d) {
-            var quot = d.dx / d.name.length;
-            return quot > 4 ? 1 : 0;
-        })
         .attr("font-size", function(d) {
-            var quot = d.dx / d.name.length;
+            var quotx = d.dx / d.name.length;
+            var quoty = d.dy / 2;
             return (quot > 4 ? quot : 0) + "px";
         })
         .text(function(d) {
