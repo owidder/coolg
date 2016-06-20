@@ -46,11 +46,11 @@ d3.json("skills.json", function(json) {
         .attr("text-anchor", "middle")
         .attr("opacity", function(d) {
             var quot = d.dx / d.name.length;
-            return quot > 1 ? 1 : 0;
+            return quot > 3 ? 1 : 0;
         })
         .attr("font-size", function(d) {
             var quot = d.dx / d.name.length;
-            return (quot > 1 ? quot : 0) + "px";
+            return (quot > 3 ? quot : 0) + "px";
         })
         .text(function(d) {
             return d.children ? null : d.name;
