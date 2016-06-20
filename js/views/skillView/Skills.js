@@ -96,6 +96,8 @@ bottle.factory("Skills", function(container) {
             aggregation.forEach(function(skill) {
                 addSkillToBranch(skill, tree.children);
             });
+
+            return tree;
         }
 
         var promise = new SimplePromise();
