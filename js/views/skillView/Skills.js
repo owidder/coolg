@@ -92,8 +92,9 @@ bottle.factory("Skills", function(container) {
                 name: "Skills",
                 children: []
             };
-            
+
             aggregation.forEach(function(skill) {
+                addSkillToBranch(skill, tree.children);
             });
         }
 
