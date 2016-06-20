@@ -74,7 +74,7 @@ bottle.factory("Skills", function(container) {
                         ma: skill["Mittlere Bewertung"],
                         count: skill["Anzahl Mitarbeiter"],
                         expertCount: skill["Anzahl Experten"]
-                    }
+                    };
                     child.children.push(grandchild);
                 });
             });
