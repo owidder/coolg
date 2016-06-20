@@ -69,7 +69,12 @@ bottle.factory("Skills", function(container) {
             funcs.forEachKeyAndVal(clusters, function(category, skills) {
                 var child = {name: category, children: []};
                 skills.forEach(function(skill) {
-                    
+                    var grandchild = {
+                        name: skill["Skill"],
+                        ma: skill["Mittlere Bewertung"],
+                        count: skill["Anzahl Mitarbeiter"],
+                        expertCount: skill["Anzahl Experten"]
+                    }
                 });
             });
         }
