@@ -450,7 +450,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function yMax(data) {
-            return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+            var ya = getYAttribute();
+            switch(getYAttribute()) {
+                case "Mittlere Bewertung":
+                    return 4;
+
+                default:
+                    return dl.max(data, funcs.createAccessorFunction("Mittlere Bewertung"));
+            }
         }
 
         function getYAttribute() {
