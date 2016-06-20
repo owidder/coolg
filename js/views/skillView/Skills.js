@@ -43,7 +43,10 @@ bottle.factory("Skills", function(container) {
         }
 
         function createTree(aggregation) {
-            var tree = {};
+            var tree = {
+                name: "Skills",
+                children: []
+            };
             aggregation.forEach(function(skill) {
 
             });
