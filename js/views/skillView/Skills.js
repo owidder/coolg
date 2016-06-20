@@ -42,6 +42,17 @@ bottle.factory("Skills", function(container) {
             return cat;
         }
 
+        function clusterSkills(aggregation) {
+            var clusters = {};
+            function addToClusters(skill) {
+                var category = categoryFromSkill(skill);
+                if(!funcs.isDefined(clusters[category])) {
+                    clusters[category] = [];
+                }
+                clusters[category].push(skill);
+            }
+        }
+
         function createTree(aggregation) {
             var tree = {
                 name: "Skills",
@@ -49,7 +60,7 @@ bottle.factory("Skills", function(container) {
             };
 
             function addToTree(skill) {
-                
+                var
             }
 
             aggregation.forEach(function(skill) {
