@@ -467,6 +467,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             switch(ya) {
                 case "Anzahl Experten":
                     $location.search("y", "ec");
+                    break;
+
+                default:
+                    $location.search("y", null);
             }
         }
 
