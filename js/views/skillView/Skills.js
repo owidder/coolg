@@ -42,6 +42,12 @@ bottle.factory("Skills", function(container) {
             return cat;
         }
 
+        function createTree(aggregation) {
+            aggregation.forEach(function (skill) {
+                
+            });
+        }
+
         var promise = new SimplePromise();
 
         me.ready = promise.promise;
@@ -51,10 +57,6 @@ bottle.factory("Skills", function(container) {
         me.categoryFromSkill = categoryFromSkill;
 
         var rawData;
-
-        function createTree(agregation) {
-
-        }
 
         function recalcSkills(locations, categories) {
             function filter(skill) {
