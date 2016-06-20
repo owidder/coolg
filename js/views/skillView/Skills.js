@@ -79,6 +79,8 @@ bottle.factory("Skills", function(container) {
                 });
                 tree.children.push(child);
             });
+
+            return tree;
         }
 
         var promise = new SimplePromise();
