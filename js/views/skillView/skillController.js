@@ -485,7 +485,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         
         function switchYAttribute() {
-            setYAttribute(input.ya)
+            setYAttribute(input.ya);
+            $timeout(function() {
+                resetField();
+                draw();
+            });
         }
 
         function getMode() {
