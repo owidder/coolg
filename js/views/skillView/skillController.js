@@ -369,7 +369,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function yScaleForSkill(skill) {
-            return skill["Mittlere Bewertung"];
+            var ya = getYAttribute();
+            return skill[ya];
         }
 
         function radiusForSkill(skill) {
