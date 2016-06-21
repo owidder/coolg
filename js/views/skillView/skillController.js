@@ -270,8 +270,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var xLabel = root.append("text")
             .attr("x", 0)
             .attr("y", height + 60)
-            .attr("class", "y axis wcm-label")
-            .text("Anzahl Mitarbeiter");
+            .attr("class", "y axis wcm-label");
 
         var yLabelX = -60;
         var yLabelY = height;
@@ -405,6 +404,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .transition()
                 .call(yAxis);
 
+            svg.select("text.y.axis")
+                .transition()
+                .text(getYAttribute());
         }
 
         /* **************
