@@ -568,6 +568,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 vert.ma = d["Mittlere Bewertung"];
                 vert.md = d["Mittlere Skilldauer"];
                 vert.count = d["Anzahl Mitarbeiter"];
+                vert.ec = d["Anzahl Experten"];
                 return vert;
             });
 
