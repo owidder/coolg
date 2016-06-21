@@ -812,7 +812,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var input = {
             showText: true,
-            mode: getMode()
+            mode: getMode(),
+            ya: "Mittlere Bewertung"
         };
 
         $scope.input = input;
