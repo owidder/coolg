@@ -554,7 +554,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var data = skills.recalcSkills(locations, categories);
 
-            drawField(xMax(data), 4);
+            drawField(xMax(data), yMax(data));
             createLayers();
 
             var filteredData = data.filter(function (d) {
