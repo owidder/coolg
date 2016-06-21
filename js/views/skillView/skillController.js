@@ -800,6 +800,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_count", function (d) {
                     return d["Anzahl Mitarbeiter"];
                 })
+                .attr("_ec", function (d) {
+                    return d["Anzahl Experten"];
+                })
                 .attr("_ma", function (d) {
                     return d["Mittlere Bewertung"];
                 })
