@@ -612,6 +612,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_count", function (d) {
                     return d.point.count;
                 })
+                .attr("_ec", function (d) {
+                    return d.point.ec;
+                })
                 .attr("_ma", function (d) {
                     return d.point.ma;
                 })
