@@ -653,6 +653,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_count", function (d) {
                     return d.count;
                 })
+                .attr("_ec", function (d) {
+                    return d.ec;
+                })
                 .attr("_ma", function (d) {
                     return d.ma;
                 })
