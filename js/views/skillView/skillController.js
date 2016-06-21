@@ -325,6 +325,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("y", yScalePercent(100 / 6 * 5));
 
         var horizontalLine = field.append("line")
+            .attr("", )
             .attr("class", "divider horizontal")
             .attr("x1", 0)
             .attr("y1", yScalePercent(100 / 2 + 0.5))
