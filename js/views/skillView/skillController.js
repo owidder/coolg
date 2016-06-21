@@ -325,7 +325,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("y", yScalePercent(100 / 6 * 5));
 
         var horizontalLine = field.append("line")
-            .attr("", )
+            .attr("stroke-dasharray", "5,5")
             .attr("class", "divider horizontal")
             .attr("x1", 0)
             .attr("y1", yScalePercent(100 / 2 + 0.5))
@@ -333,6 +333,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("y2", yScalePercent(100 / 2 + 0.5));
 
         var verticalLine = field.append("line")
+            .attr("stroke-dasharray", "5,5")
             .attr("class", "divider vertical")
             .attr("x1", xScalePercent(100 / 2 + 0.5))
             .attr("y1", 0)
