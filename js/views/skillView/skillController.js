@@ -270,15 +270,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var xLabel = root.append("text")
             .attr("x", 0)
             .attr("y", height + 60)
-            .attr("class", "y axis wcm-label");
+            .attr("class", "x axis wcm-label")
+            .text("Anzahl Mitarbeiter");
 
         var yLabelX = -60;
         var yLabelY = height;
         var yLabel = root.append("text")
             .attr("x", yLabelX)
             .attr("y", yLabelY)
-            .attr("class", "axis wcm-label")
-            .text("Durchschnittliche Bewertung")
+            .attr("class", "y axis wcm-label")
             .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
         var field = root.append("g")
