@@ -3,6 +3,7 @@ var w = 960,
     color = d3.scale.category20c();
 
 
+// from: http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-url-parameter
 var queryString = function () {
     var query_string = {};
     var query = window.location.search.substring(1);
