@@ -90,7 +90,7 @@ function draw(ya) {
 }
 
 
-d3.json("flatSkills.json", function(json) {
+d3.json(queryString.file + ".json", function(json) {
     jsonData = json;
     svg = d3.select("#graph").append("svg:svg")
         .style("width", w)
