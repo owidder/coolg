@@ -67,6 +67,11 @@ function draw(ya) {
         });
 
     cellEnter.append("svg:text")
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .text(function(d) {
+            return d.children ? null : d.name;
+        });
 
     svg.selectAll("text.skill")
         .transition()
@@ -76,16 +81,11 @@ function draw(ya) {
         .attr("y", function(d) {
             return d.dy / 2;
         })
-        .attr("dy", ".35em")
-        .attr("text-anchor", "middle")
         .attr("font-size", function(d) {
             var quotx = d.dx / d.name.length;
             var quoty = d.dy / 2;
             return Math.min(quotx, quoty) + "px";
         })
-        .text(function(d) {
-            return d.children ? null : d.name;
-        });
 }
 
 
