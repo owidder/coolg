@@ -69,6 +69,7 @@ function draw(ya) {
         });
 
     cellEnter.append("svg:text")
+        .attr("class", "skill")
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .text(function(d) {
