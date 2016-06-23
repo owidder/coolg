@@ -52,14 +52,18 @@ function draw(ya) {
         });
 
     cellEnter.append("svg:rect")
+        .attr("class", "skill")
+        .style("fill", function(d) {
+            return color(d.category);
+        });
+
+    svg.selectAll("rect.skill")
+        .transition()
         .attr("width", function(d) {
             return d.dx;
         })
         .attr("height", function(d) {
             return d.dy;
-        })
-        .style("fill", function(d) {
-            return color(d.category);
         });
 
     cellEnter.append("svg:text")
