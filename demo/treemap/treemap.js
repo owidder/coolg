@@ -38,17 +38,20 @@ function draw(ya) {
             return d[queryString.ya];
         });
 
-    var cell = svg.data([json]).selectAll("g")
+    var cellEnter = svg.data([json]).selectAll("g")
         .data(treemap, function(d) {
             return d.name;
         })
         .enter().append("svg:g")
-        .attr("class", "cell")
+        .attr("class", "cell"):
+
+    svg.selectAll("g.cell")
+        .transition()
         .attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
         });
 
-    cell.append("svg:rect")
+    cellEnter.append("svg:rect")
         .attr("width", function(d) {
             return d.dx;
         })
@@ -59,7 +62,7 @@ function draw(ya) {
             return color(d.category);
         });
 
-    cell.append("svg:text")
+    cellEnter.append("svg:text")
         .attr("x", function(d) {
             return d.dx / 2;
         })
