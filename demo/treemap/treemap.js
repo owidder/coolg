@@ -56,7 +56,12 @@ function draw(ya) {
     cellEnter.append("svg:rect")
         .attr("class", "skill")
         .style("fill", function(d) {
-            return color(d.category);
+            if(queryString.file == "skills") {
+                return d.children ? color(d.category) : null;
+            }
+            else {
+                return color(d.category);
+            }
         });
 
     svg.selectAll("rect.skill")
