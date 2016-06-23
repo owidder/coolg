@@ -25,6 +25,8 @@ var queryString = function () {
     return query_string;
 }();
 
+var svg;
+
 function yaChanged() {
     var ya = $("input[name='ya']:checked").val();
     draw(ya);
@@ -90,7 +92,7 @@ function draw(ya) {
 
 
 d3.json("flatSkills.json", function(json) {
-    var svg = d3.select("#graph").append("svg:svg")
+    svg = d3.select("#graph").append("svg:svg")
         .style("width", w)
         .style("height", h)
         .append("svg:g")
