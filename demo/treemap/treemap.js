@@ -36,13 +36,13 @@ var treemap = d3.layout.treemap()
         return d[queryString.ya];
     });
 
-var svg = d3.select("#graph").append("svg:svg")
-    .style("width", w)
-    .style("height", h)
-    .append("svg:g")
-    .attr("transform", "translate(-.5,-.5)");
-
 d3.json("flatSkills.json", function(json) {
+    var svg = d3.select("#graph").append("svg:svg")
+        .style("width", w)
+        .style("height", h)
+        .append("svg:g")
+        .attr("transform", "translate(-.5,-.5)");
+
     var cell = svg.data([json]).selectAll("g")
         .data(treemap)
         .enter().append("svg:g")
