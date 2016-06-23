@@ -4,8 +4,6 @@ var w = 960,
 
 
 var queryString = function () {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
     var query_string = {};
     var query = window.location.search.substring(1);
     var vars = query.split("&");
