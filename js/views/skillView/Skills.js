@@ -128,8 +128,8 @@ bottle.factory("Skills", function(container) {
                     {name: 'Anzahl Mitarbeiter', ops: ['sum'], as: ['Anzahl Mitarbeiter']},
                     {
                         name: 'Anzahl Experten',
-                        get: function(row) {
-                            return (row['Bewertung'] > 2 ? row['Anzahl Mitarbeiter'] : 0);
+                        get: function(skill) {
+                            return (skill['Bewertung'] > 2 ? skill['Anzahl Mitarbeiter'] : 0);
                         },
                         ops: ['sum'],
                         as: ['Anzahl Experten']
