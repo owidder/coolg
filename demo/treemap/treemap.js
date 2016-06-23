@@ -39,7 +39,9 @@ function draw(ya) {
         });
 
     var cell = svg.data([json]).selectAll("g")
-        .data(treemap)
+        .data(treemap, function(d) {
+            return d.name;
+        })
         .enter().append("svg:g")
         .attr("class", "cell")
         .attr("transform", function(d) {
