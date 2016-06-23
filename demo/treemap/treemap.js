@@ -57,7 +57,7 @@ function draw(ya) {
         .attr("class", "skill")
         .style("fill", function(d) {
             if(queryString.file == "skills") {
-                return d.children ? color(d.category) : null;
+                return d.children ? color(d.name) : null;
             }
             else {
                 return color(d.category);
