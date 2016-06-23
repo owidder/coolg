@@ -26,7 +26,7 @@ var queryString = function () {
 }();
 
 function yaChanged() {
-    var ya = $("input[name='ya']")
+    var ya = $("input[name='ya']:checked").val()
 }
 
 
