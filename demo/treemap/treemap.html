@@ -25,5 +25,26 @@
 <body>
 <script src="../../bower_components/d3/d3.js"></script>
 <script type="text/javascript" src="treemap.js"></script>
+
+<div class="row">
+    <div class="col s10">
+        <div id="graph"></div>
+    </div>
+
+    <div class="col s12">
+                        <span class="switch">
+                            <input name="ya" type="radio" id="ya-ma" value="Mittlere Bewertung" ng-model="input.ya" ng-click="switchYAttribute()"/>
+                            <label for="ya-ma">Mittlere Bewertung</label>
+                        </span>
+    </div>
+    <div class="col s12">
+                        <span class="switch">
+                            <input name="ya" type="radio" id="ya-expertCount" value="Anzahl Experten" ng-model="input.ya" ng-click="switchYAttribute()"/>
+                            <label for="ya-expertCount">Anzahl Experten</label>
+                        </span>
+    </div>
+</div>
+
+
 </body>
 </html>
