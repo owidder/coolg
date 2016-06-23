@@ -36,7 +36,7 @@ var treemap = d3.layout.treemap()
         return d[queryString.ya];
     });
 
-var svg = d3.select("body").append("svg:svg")
+var svg = d3.select("#graph").append("svg:svg")
     .style("width", w)
     .style("height", h)
     .append("svg:g")
