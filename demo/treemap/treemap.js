@@ -60,7 +60,6 @@ function draw(ya) {
         });
 
     svg.selectAll("rect.skill")
-        .transition()
         .attr("width", function(d) {
             return d.dx;
         })
