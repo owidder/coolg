@@ -40,7 +40,7 @@ function draw(ya) {
             return d[queryString.ya];
         });
 
-    var cellEnter = svg.data([json]).selectAll("g")
+    var cellEnter = svg.data([jsonData]).selectAll("g")
         .data(treemap, function(d) {
             return d.name;
         })
