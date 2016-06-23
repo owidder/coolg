@@ -25,6 +25,10 @@ var queryString = function () {
     return query_string;
 }();
 
+function getYa() {
+    
+}
+
 var treemap = d3.layout.treemap()
     .padding(4)
     .size([w, h])
