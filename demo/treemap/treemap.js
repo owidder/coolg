@@ -67,6 +67,9 @@ function draw(ya) {
         });
 
     cellEnter.append("svg:text")
+
+    svg.selectAll("text.skill")
+        .transition()
         .attr("x", function(d) {
             return d.dx / 2;
         })
