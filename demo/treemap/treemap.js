@@ -26,18 +26,18 @@ var queryString = function () {
 }();
 
 function yaChanged() {
-    var ya = $("input[name='ya']:checked").val()
+    var ya = $("input[name='ya']:checked").val();
+    draw(ya);
 }
 
+function draw(ya) {
+    var treemap = d3.layout.treemap()
+        .padding(4)
+        .size([w, h])
+        .value(function(d) {
+            return d[queryString.ya];
+        });
 
-var treemap = d3.layout.treemap()
-    .padding(4)
-    .size([w, h])
-    .value(function(d) {
-        return d[queryString.ya];
-    });
-
-d3.json("flatSkills.json", function(json) {
     var svg = d3.select("#graph").append("svg:svg")
         .style("width", w)
         .style("height", h)
@@ -80,4 +80,8 @@ d3.json("flatSkills.json", function(json) {
         .text(function(d) {
             return d.children ? null : d.name;
         });
+}
+
+
+d3.json("flatSkills.json", function(json) {
 });
