@@ -48,7 +48,6 @@ function draw(ya) {
         .attr("class", "cell");
 
     svg.selectAll("g.cell")
-        .transition()
         .attr("transform", function(d) {
             return "translate(" + d.x + "," + d.y + ")";
         });
@@ -60,6 +59,7 @@ function draw(ya) {
         });
 
     svg.selectAll("rect.skill")
+        .transition()
         .attr("width", function(d) {
             return d.dx;
         })
@@ -76,7 +76,6 @@ function draw(ya) {
         });
 
     svg.selectAll("text.skill")
-        .transition()
         .attr("x", function(d) {
             return d.dx / 2;
         })
