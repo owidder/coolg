@@ -25,9 +25,10 @@ var queryString = function () {
     return query_string;
 }();
 
-function getYa() {
-    
+function yaChanged() {
+    var ya $("input")
 }
+
 
 var treemap = d3.layout.treemap()
     .padding(4)
