@@ -26,7 +26,7 @@ var queryString = function () {
 }();
 
 function yaChanged() {
-    var ya $("input[name=")
+    var ya = $("input[name='ya']")
 }
 
 
