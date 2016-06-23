@@ -43,7 +43,7 @@ function draw(ya) {
             return d.name;
         })
         .enter().append("svg:g")
-        .attr("class", "cell"):
+        .attr("class", "cell");
 
     svg.selectAll("g.cell")
         .transition()
