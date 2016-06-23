@@ -37,7 +37,7 @@ function draw(ya) {
         .padding(4)
         .size([w, h])
         .value(function(d) {
-            return d[queryString.ya];
+            return d[ya];
         });
 
     var cellEnter = svg.data([jsonData]).selectAll("g")
