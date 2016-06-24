@@ -260,85 +260,87 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
 
-        root.append("g")
-            .attr("class", "axis xaxis")
-            .attr("transform", "translate(0," + (height + 25) + ")");
+        function createQuadrants() {
+            root.append("g")
+                .attr("class", "axis xaxis")
+                .attr("transform", "translate(0," + (height + 25) + ")");
 
-        root.append("g")
-            .attr("class", "axis yaxis")
-            .attr("transform", "translate(-25, 0)");
+            root.append("g")
+                .attr("class", "axis yaxis")
+                .attr("transform", "translate(-25, 0)");
 
-        var xLabel = root.append("text")
-            .attr("x", 0)
-            .attr("y", height + 60)
-            .attr("class", "x axis wcm-label")
-            .text("Anzahl Mitarbeiter");
+            var xLabel = root.append("text")
+                .attr("x", 0)
+                .attr("y", height + 60)
+                .attr("class", "x axis wcm-label")
+                .text("Anzahl Mitarbeiter");
 
-        var yLabelX = -60;
-        var yLabelY = height;
-        var yLabel = root.append("text")
-            .attr("x", yLabelX)
-            .attr("y", yLabelY)
-            .attr("class", "y axis wcm-label")
-            .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
+            var yLabelX = -60;
+            var yLabelY = height;
+            var yLabel = root.append("text")
+                .attr("x", yLabelX)
+                .attr("y", yLabelY)
+                .attr("class", "y axis wcm-label")
+                .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-        var field = root.append("g")
-            .attr("class", "field")
-            .attr("transform", "translate(0, 0)");
+            var field = root.append("g")
+                .attr("class", "field")
+                .attr("transform", "translate(0, 0)");
 
-        appendLegend();
+            appendLegend();
 
-        var xScale, yScale;
-        var xScalePercent = d3.scale.linear()
-            .domain([0, 100])
-            .range([0, width]);
-        var yScalePercent = d3.scale.linear()
-            .domain([0, 100])
-            .range([height, 0]);
+            var xScale, yScale;
+            var xScalePercent = d3.scale.linear()
+                .domain([0, 100])
+                .range([0, width]);
+            var yScalePercent = d3.scale.linear()
+                .domain([0, 100])
+                .range([height, 0]);
 
-        var textLowerLeft = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Weißer Fleck")
-            .attr("class", "quad-label lower-left")
-            .attr("x", xScalePercent(100 / 6))
-            .attr("y", yScalePercent(100 / 6));
+            var textLowerLeft = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Weißer Fleck")
+                .attr("class", "quad-label lower-left")
+                .attr("x", xScalePercent(100 / 6))
+                .attr("y", yScalePercent(100 / 6));
 
-        var textUpperLeft = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Einzelne Experten")
-            .attr("class", "quad-label upper-left")
-            .attr("x", xScalePercent(100 / 6))
-            .attr("y", yScalePercent(100 / 6 * 5));
+            var textUpperLeft = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Einzelne Experten")
+                .attr("class", "quad-label upper-left")
+                .attr("x", xScalePercent(100 / 6))
+                .attr("y", yScalePercent(100 / 6 * 5));
 
-        var textLowerRight = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Viel Einäugige")
-            .attr("class", "quad-label lower-right")
-            .attr("x", xScalePercent(100 / 6 * 5))
-            .attr("y", yScalePercent(100 / 6));
+            var textLowerRight = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Viel Einäugige")
+                .attr("class", "quad-label lower-right")
+                .attr("x", xScalePercent(100 / 6 * 5))
+                .attr("y", yScalePercent(100 / 6));
 
-        var textUpperRight = field.append("text")
-            .attr("text-anchor", "middle")
-            .text("Hohe Kompetenzdichte")
-            .attr("class", "quad-label upper-right")
-            .attr("x", xScalePercent(100 / 6 * 5))
-            .attr("y", yScalePercent(100 / 6 * 5));
+            var textUpperRight = field.append("text")
+                .attr("text-anchor", "middle")
+                .text("Hohe Kompetenzdichte")
+                .attr("class", "quad-label upper-right")
+                .attr("x", xScalePercent(100 / 6 * 5))
+                .attr("y", yScalePercent(100 / 6 * 5));
 
-        var horizontalLine = field.append("line")
-            .attr("stroke-dasharray", "5,5")
-            .attr("class", "divider horizontal")
-            .attr("x1", 0)
-            .attr("y1", yScalePercent(100 / 2 + 0.5))
-            .attr("x2", xScalePercent(100))
-            .attr("y2", yScalePercent(100 / 2 + 0.5));
+            var horizontalLine = field.append("line")
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "divider horizontal")
+                .attr("x1", 0)
+                .attr("y1", yScalePercent(100 / 2 + 0.5))
+                .attr("x2", xScalePercent(100))
+                .attr("y2", yScalePercent(100 / 2 + 0.5));
 
-        var verticalLine = field.append("line")
-            .attr("stroke-dasharray", "5,5")
-            .attr("class", "divider vertical")
-            .attr("x1", xScalePercent(100 / 2 + 0.5))
-            .attr("y1", 0)
-            .attr("x2", xScalePercent(100 / 2 + 0.5))
-            .attr("y2", yScalePercent(0));
+            var verticalLine = field.append("line")
+                .attr("stroke-dasharray", "5,5")
+                .attr("class", "divider vertical")
+                .attr("x1", xScalePercent(100 / 2 + 0.5))
+                .attr("y1", 0)
+                .attr("x2", xScalePercent(100 / 2 + 0.5))
+                .attr("y2", yScalePercent(0));
+        }
 
         function updateGrid() {
             textLowerLeft.transition()
