@@ -260,6 +260,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
 
+        var field;
+
         function createQuadrants() {
             root.append("g")
                 .attr("class", "axis xaxis")
@@ -283,7 +285,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "y axis wcm-label")
                 .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-            var field = root.append("g")
+            field = root.append("g")
                 .attr("class", "field")
                 .attr("transform", "translate(0, 0)");
 
