@@ -260,7 +260,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
 
-        var field;
+        var field, xScale, xScalePercent, yScale, yScalePercent;
 
         function createQuadrants() {
             root.append("g")
@@ -291,11 +291,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             appendLegend();
 
-            var xScale, yScale;
-            var xScalePercent = d3.scale.linear()
+            xScalePercent = d3.scale.linear()
                 .domain([0, 100])
                 .range([0, width]);
-            var yScalePercent = d3.scale.linear()
+            yScalePercent = d3.scale.linear()
                 .domain([0, 100])
                 .range([height, 0]);
 
