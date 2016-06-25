@@ -818,7 +818,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.children ? null : d.name;
                 });
 
-            svg.selectAll("text.skill")
+            root.selectAll("text.skill")
                 .attr("x", function(d) {
                     return d.dx / 2;
                 })
