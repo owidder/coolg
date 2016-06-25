@@ -813,6 +813,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return "translate(" + d.x + "," + d.y + ")";
                 });
 
+            // propagate downwards
+            root.selectAll("g.cell").select("rect.skill");
+
             cellEnter.append("rect")
                 .attr("class", function(d) {
                     var classes = "skill";
