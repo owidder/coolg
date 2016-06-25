@@ -768,6 +768,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var treemapData = treemap(skillTree);
 
+            var root = svg.select("g.root");
+
             var cellEnter = svg.data([jsonData]).selectAll("g")
                 .data(treemap, function(d) {
                     return d.name;
