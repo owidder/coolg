@@ -568,6 +568,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
            }
 
             var data = skills.recalcSkills(locations, categories);
+            var maxX = xMax(data);
+            var maxY = yMax(data);
 
             drawField(xMax(data), yMax(data));
             createLayers();
