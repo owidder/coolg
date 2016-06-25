@@ -39,7 +39,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             })
             .on("mouseout", hideLegend);
 
-        var root = svg.append("g")
+        svg.append("g")
             .attr("class", "root")
             .attr("transform", "translate(100, 20)");
 
