@@ -872,6 +872,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.children ? null : d.name;
                 });
 
+            // propagate downwards
+            root.selectAll("g.cell").select("text.skill");
+
             root.selectAll("text.skill")
                 .transition()
                 .attr("x", function(d) {
