@@ -396,14 +396,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function drawField(maxX, maxY) {
 
-            xScale = createXScale(maxX);
+            var xScale = createXScale(maxX);
 
             var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .ticks(10)
                 .orient("bottom");
 
-            yScale = createYScale(maxY);
+            var yScale = createYScale(maxY);
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
