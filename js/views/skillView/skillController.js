@@ -831,7 +831,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 })
                 .style("fill", function(d) {
                     if(withCategories) {
-                        return d.children ? color(d.name) : null;
+                        return d.children ? skills.categoryToColor(d.name) : null;
                     }
                     else {
                         return color(d.category);
