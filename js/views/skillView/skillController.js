@@ -764,10 +764,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var skillTree;
 
             if(withCategories) {
-                skillTree = skills.createTree(data);
+                skillTree = skills.createTree(filteredData);
             }
             else {
-                skillTree = skills.createFlatTree(data);
+                skillTree = skills.createFlatTree(filteredData);
             }
 
             var treemap = d3.layout.treemap()
