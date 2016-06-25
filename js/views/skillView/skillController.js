@@ -879,7 +879,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     var quotx = d.dx / d.name.length;
                     var quoty = d.dy / 2;
                     return Math.min(quotx, quoty) + "px";
-                })
+                });
+
+            cellData.exit().remove();
         }
 
         function drawSkills() {
