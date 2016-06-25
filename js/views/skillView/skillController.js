@@ -838,6 +838,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_count", function(d) {
                     return d["count"];
                 })
+                .attr("_ec", function(d) {
+                    return d["expertCount"];
+                })
                 .attr("width", function(d) {
                     return d.dx;
                 })
