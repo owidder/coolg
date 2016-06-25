@@ -594,6 +594,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return funcs.isDefined(d);
             });
 
+            var root = svg.select("g.root");
             var field = root.select("g.field");
             var pathData = field.select("g.paths").selectAll("path.skill")
                 .data(voronoiVerticesWithoutUndefines, polygon);
