@@ -103,6 +103,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return getNearestSkillCircles;
 
                 case MODE_BUBBLES:
+                case MODE_TREEMAP:
                     return getNearbySkillForlegends;
             }
         }
