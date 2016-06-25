@@ -30,6 +30,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var width = dimensions.width(-50) * 10 / 12;
         var height = dimensions.height(-70);
 
+        var xScalePercent = d3.scale.linear()
+            .domain([0, 100])
+            .range([0, width]);
+        var yScalePercent = d3.scale.linear()
+            .domain([0, 100])
+            .range([height, 0]);
+
         function createLegendSkillList(elementList) {
             var skillList = [];
             var skillName;
