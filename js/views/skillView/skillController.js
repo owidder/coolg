@@ -757,7 +757,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         
         function drawTreemapSkills(withCategories) {
             var data = skills.recalcSkills(locations, categories);
-            var skillTree = skills.createTree(data);
+            var skillTree;
+
+            if(withCategories) {
+                skillTree = skills.createTree(data);
+            }
+            else {
+                skillTree = skills.createFlatTree(data);
+            }
 
             var treemap = d3.layout.treemap()
                 .padding(4)
