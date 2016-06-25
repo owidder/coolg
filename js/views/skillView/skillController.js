@@ -158,7 +158,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var skillStrList = createLegendSkillList(nearbySkillForlegends);
             updateLegend(skillStrList);
 
-            legend
+            svg.select("g.ekegend")
                 .attr("transform", "translate(" + (x + 10) + "," + (y + 10) + ")");
         }
 
