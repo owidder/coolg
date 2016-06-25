@@ -799,10 +799,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var root = svg.select("g.root");
 
-            var cellEnter = root.selectAll("g.cell")
+            var cellData = root.selectAll("g.cell")
                 .data(treemapData, function(d) {
                     return d.name;
-                })
+                });
+
+            var cellEnter = cellData
                 .enter()
                 .append("g")
                 .attr("class", "cell");
