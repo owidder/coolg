@@ -187,13 +187,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             legend.classed("on", true);
         }
 
-        var legendRect;
-
         function appendLegend() {
             var legend = svg.append("g")
                 .attr("class", "legend off");
 
-            legendRect = legend.append("rect")
+            legend.append("rect")
                 .attr("class", "legend")
                 .attr("fill", "#ff00ff")
                 .attr("width", 100)
