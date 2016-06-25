@@ -758,7 +758,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
          */
         function drawSkills() {
             var data = skills.recalcSkills(locations, categories);
-            drawField(xMax(data), yMax(data));
+            var maxX = xMax(data);
+            var maxY = yMax(data);
+            var xScale = createXScale(maxX);
+            var yScale = createYScale(maxY);
+
+            drawField(maxX, maxY);
 
             var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
