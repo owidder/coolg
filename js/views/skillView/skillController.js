@@ -7,6 +7,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var MODE_VORONOI = "voronoi";
         var MODE_BUBBLES = "bubbles";
+        var MODE_TREEMAP = "treemap";
 
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
