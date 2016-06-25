@@ -757,6 +757,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         
         function drawTreemapSkills(ya, withCategories) {
             var data = skills.recalcSkills(locations, categories);
+            var filteredData = data.filter(function (d) {
+                return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
+            });
+
             var skillTree;
 
             if(withCategories) {
