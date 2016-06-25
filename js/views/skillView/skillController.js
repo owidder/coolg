@@ -814,7 +814,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             cellEnter.append("rect")
-                .attr("class", "skill")
+                .attr("class", "skill forlegend")
                 .style("fill", function(d) {
                     if(withCategories) {
                         return d.children ? color(d.name) : null;
