@@ -835,6 +835,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             root.selectAll("rect.skill")
+                .attr("_count", function(d) {
+                    return d["count"];
+                })
                 .attr("width", function(d) {
                     return d.dx;
                 })
