@@ -528,10 +528,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function draw() {
             switch(getMode()) {
                 case MODE_VORONOI:
+                    createQuadrants();
                     drawVoronoiSkills();
                     break;
 
                 case MODE_BUBBLES:
+                    createQuadrants();
                     drawSkills();
                     break;
             }
