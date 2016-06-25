@@ -559,6 +559,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getLegendDetectorRadius() {
             switch (getMode()) {
                 case MODE_VORONOI:
+                case MODE_TREEMAP:
                     return 0;
 
                 case MODE_BUBBLES:
