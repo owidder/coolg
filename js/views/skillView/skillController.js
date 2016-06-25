@@ -787,12 +787,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             cellEnter.append("rect")
                 .attr("class", "skill")
                 .style("fill", function(d) {
-                    if(queryString.file == "skills") {
-                        return d.children ? color(d.name) : null;
-                    }
-                    else {
-                        return color(d.category);
-                    }
+                    return d.children ? color(d.name) : null;
                 });
 
             svg.selectAll("rect.skill")
