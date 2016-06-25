@@ -823,6 +823,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     if(!d.children) {
                         classes += " forlegend";
                     }
+                    return classes;
                 })
                 .attr("_skill", function(d) {
                     if(!d.children) {
