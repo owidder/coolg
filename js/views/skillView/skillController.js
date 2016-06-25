@@ -755,7 +755,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             field.selectAll("g").remove();
         }
         
-        function drawTreemapSkills(withCategories) {
+        function drawTreemapSkills(ya, withCategories) {
             var data = skills.recalcSkills(locations, categories);
             var skillTree;
 
