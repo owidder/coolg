@@ -791,7 +791,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var treemap = d3.layout.treemap()
                 .padding(4)
-                .size([w, h])
+                .size([width, height])
                 .value(function(d) {
                     return d[ya];
                 });
