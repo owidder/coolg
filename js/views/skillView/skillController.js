@@ -770,11 +770,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var root = svg.select("g.root");
 
-            var cellEnter = root.selectAll("g")
+            var cellEnter = root.selectAll("g.cell")
                 .data(treemapData, function(d) {
                     return d.name;
                 })
-                .enter().append("g")
+                .enter()
+                .append("g")
                 .attr("class", "cell");
 
             svg.selectAll("g.cell")
