@@ -205,6 +205,12 @@
                             <label for="mode-voronoi">Voronoi</label>
                         </span>
                     </div>
+                    <div class="col s12">
+                        <span class="switch">
+                            <input name="mode" type="radio" id="mode-treemap" value="voronoi" ng-model="input.mode" ng-click="switchMode()"/>
+                            <label for="mode-voronoi">Voronoi</label>
+                        </span>
+                    </div>
                 </div>
                 <div class="col s12">
                     <input name="location" type="radio" id="loc-all" ng-click="showLocation('*')" checked="checked"/>
