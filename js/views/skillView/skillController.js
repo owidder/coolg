@@ -289,41 +289,41 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "y axis wcm-label")
                 .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-            var field = root.append("g")
+            var field = quadrantsEnter.append("g")
                 .attr("class", "field")
                 .attr("transform", "translate(0, 0)");
 
             appendLegend();
 
-            var textLowerLeft = field.append("text")
+            field.append("text")
                 .attr("text-anchor", "middle")
                 .text("Weißer Fleck")
                 .attr("class", "quad-label lower-left")
                 .attr("x", xScalePercent(100 / 6))
                 .attr("y", yScalePercent(100 / 6));
 
-            var textUpperLeft = field.append("text")
+            field.append("text")
                 .attr("text-anchor", "middle")
                 .text("Einzelne Experten")
                 .attr("class", "quad-label upper-left")
                 .attr("x", xScalePercent(100 / 6))
                 .attr("y", yScalePercent(100 / 6 * 5));
 
-            var textLowerRight = field.append("text")
+            field.append("text")
                 .attr("text-anchor", "middle")
                 .text("Viel Einäugige")
                 .attr("class", "quad-label lower-right")
                 .attr("x", xScalePercent(100 / 6 * 5))
                 .attr("y", yScalePercent(100 / 6));
 
-            var textUpperRight = field.append("text")
+            field.append("text")
                 .attr("text-anchor", "middle")
                 .text("Hohe Kompetenzdichte")
                 .attr("class", "quad-label upper-right")
                 .attr("x", xScalePercent(100 / 6 * 5))
                 .attr("y", yScalePercent(100 / 6 * 5));
 
-            var horizontalLine = field.append("line")
+            field.append("line")
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "divider horizontal")
                 .attr("x1", 0)
@@ -331,7 +331,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("x2", xScalePercent(100))
                 .attr("y2", yScalePercent(100 / 2 + 0.5));
 
-            var verticalLine = field.append("line")
+            field.append("line")
                 .attr("stroke-dasharray", "5,5")
                 .attr("class", "divider vertical")
                 .attr("x1", xScalePercent(100 / 2 + 0.5))
