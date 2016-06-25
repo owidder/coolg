@@ -834,7 +834,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         return d.children ? skills.categoryToColor(d.name) : null;
                     }
                     else {
-                        return color(d.category);
+                        return skills.categoryToColor(d.category);
                     }
                 });
 
