@@ -844,6 +844,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_ma", function(d) {
                     return d["ma"];
                 })
+                .attr("_md", function(d) {
+                    return d["md"];
+                })
                 .attr("width", function(d) {
                     return d.dx;
                 })
