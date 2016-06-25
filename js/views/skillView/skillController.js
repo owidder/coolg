@@ -267,7 +267,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
 
-        var field, xScale, xScalePercent, yScale, yScalePercent;
+        var field, xScale, yScale;
 
         function createQuadrants() {
             root.append("g")
@@ -297,13 +297,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("transform", "translate(0, 0)");
 
             appendLegend();
-
-            xScalePercent = d3.scale.linear()
-                .domain([0, 100])
-                .range([0, width]);
-            yScalePercent = d3.scale.linear()
-                .domain([0, 100])
-                .range([height, 0]);
 
             var textLowerLeft = field.append("text")
                 .attr("text-anchor", "middle")
