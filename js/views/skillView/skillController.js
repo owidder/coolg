@@ -766,6 +766,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d[ya];
                 });
 
+            var treemapData = treemap(skillTree);
+
             var cellEnter = svg.data([jsonData]).selectAll("g")
                 .data(treemap, function(d) {
                     return d.name;
