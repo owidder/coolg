@@ -395,7 +395,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .range([height, 0]);
         }
 
-        function drawField(maxX, maxY) {
+        function updateAxes(maxX, maxY) {
 
             var xScale = createXScale(maxX);
 
@@ -577,7 +577,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var xScale = createXScale(maxX);
             var yScale = createYScale(maxY);
 
-            drawField(maxX, maxY);
+            updateAxes(maxX, maxY);
             createLayers();
 
             var filteredData = data.filter(function (d) {
@@ -847,7 +847,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var xScale = createXScale(maxX);
             var yScale = createYScale(maxY);
 
-            drawField(maxX, maxY);
+            updateAxes(maxX, maxY);
 
             var filteredData = data.filter(function (d) {
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
