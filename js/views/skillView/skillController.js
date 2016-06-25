@@ -382,20 +382,28 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return skill["Mittlere Skilldauer"] * 5;
         }
 
-        function drawField(maxX, maxY) {
-
-            xScale = d3.scale.linear()
+        function createXScale(maxX) {
+            return d3.scale.linear()
                 .domain([1, maxX])
                 .range([0, width]);
+        }
+
+        function createYScale(maxY) {
+            return d3.scale.linear()
+                .domain([0, maxY])
+                .range([height, 0]);
+        }
+
+        function drawField(maxX, maxY) {
+
+            xScale = createXScale(maxX);
 
             var xAxis = d3.svg.axis()
                 .scale(xScale)
                 .ticks(10)
                 .orient("bottom");
 
-            yScale = d3.scale.linear()
-                .domain([0, maxY])
-                .range([height, 0]);
+            yScale = createYScale(maxY);
 
             var yAxis = d3.svg.axis()
                 .scale(yScale)
