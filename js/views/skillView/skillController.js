@@ -260,6 +260,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function createQuadrants() {
             var root = svg.select("g.root");
+
+            root.selectAll("g.quadrants")
+                .data(["quadrants"])
+                .enter()
+                .append("g")
+                .attr("class", funcs.identity);
+
             root.append("g")
                 .attr("class", "axis xaxis")
                 .attr("transform", "translate(0," + (height + 25) + ")");
