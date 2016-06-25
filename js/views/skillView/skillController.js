@@ -544,6 +544,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     drawVoronoiSkills();
                     break;
 
+                case MODE_TREEMAP:
+                    removeQuadrants();
+                    drawTreemapSkills("expertCount", true);
+
                 case MODE_BUBBLES:
                     createQuadrants();
                     drawSkills();
