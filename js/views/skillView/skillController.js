@@ -292,7 +292,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "y axis wcm-label")
                 .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")");
 
-            field = root.append("g")
+            var field = root.append("g")
                 .attr("class", "field")
                 .attr("transform", "translate(0, 0)");
 
