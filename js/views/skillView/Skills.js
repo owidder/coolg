@@ -63,6 +63,7 @@ bottle.factory("Skills", function(container) {
             var child = {
                 name: skill["Skill"],
                 ma: skill["Mittlere Bewertung"],
+                md: skill["Mittlere Skilldauer"],
                 count: skill["Anzahl Mitarbeiter"],
                 expertCount: skill["Anzahl Experten"],
                 category: categoryFromSkill(skill)
