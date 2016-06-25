@@ -754,10 +754,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var field = root.select("g.field");
             field.selectAll("g").remove();
         }
+        
+        function drawTreemapSkills() {
+            
+        }
 
-        /**
-         * draw the matrix and circles
-         */
         function drawSkills() {
             var data = skills.recalcSkills(locations, categories);
             var maxX = xMax(data);
