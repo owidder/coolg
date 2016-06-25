@@ -267,15 +267,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .append("g")
                 .attr("class", funcs.identity);
 
-            root.append("g")
+            quadrantsEnter.append("g")
                 .attr("class", "axis xaxis")
                 .attr("transform", "translate(0," + (height + 25) + ")");
 
-            root.append("g")
+            quadrantsEnter.append("g")
                 .attr("class", "axis yaxis")
                 .attr("transform", "translate(-25, 0)");
 
-            var xLabel = root.append("text")
+            quadrantsEnter.append("text")
                 .attr("x", 0)
                 .attr("y", height + 60)
                 .attr("class", "x axis wcm-label")
@@ -283,7 +283,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var yLabelX = -60;
             var yLabelY = height;
-            var yLabel = root.append("text")
+            quadrantsEnter.append("text")
                 .attr("x", yLabelX)
                 .attr("y", yLabelY)
                 .attr("class", "y axis wcm-label")
