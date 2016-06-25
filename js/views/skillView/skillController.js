@@ -258,6 +258,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function removeQuadrants() {
+            svg.select("g.quadrants").remove();
+        }
+
         function createQuadrants() {
             var root = svg.select("g.root");
 
