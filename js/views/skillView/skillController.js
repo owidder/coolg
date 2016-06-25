@@ -794,7 +794,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             cellEnter.append("rect")
                 .attr("class", "skill")
                 .style("fill", function(d) {
-                    if(queryString.file == "skills") {
+                    if(withCategories) {
                         return d.children ? color(d.name) : null;
                     }
                     else {
