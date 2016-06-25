@@ -756,7 +756,68 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         
         function drawTreemapSkills() {
-            
+            var data = skills.recalcSkills(locations, categories);
+            var skillTree = skills.createTree(data);
+
+            var treemap = d3.layout.treemap()
+                .padding(4)
+                .size([w, h])
+                .value(function(d) {
+                    return d[ya];
+                });
+
+            var cellEnter = svg.data([jsonData]).selectAll("g")
+                .data(treemap, function(d) {
+                    return d.name;
+                })
+                .enter().append("svg:g")
+                .attr("class", "cell");
+
+            svg.selectAll("g.cell")
+                .transition()
+                .attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            cellEnter.append("svg:rect")
+                .attr("class", "skill")
+                .style("fill", function(d) {
+                    if(queryString.file == "skills") {
+                        return d.children ? color(d.name) : null;
+                    }
+                    else {
+                        return color(d.category);
+                    }
+                });
+
+            svg.selectAll("rect.skill")
+                .attr("width", function(d) {
+                    return d.dx;
+                })
+                .attr("height", function(d) {
+                    return d.dy;
+                });
+
+            cellEnter.append("svg:text")
+                .attr("class", "skill")
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+                .text(function(d) {
+                    return d.children ? null : d.name;
+                });
+
+            svg.selectAll("text.skill")
+                .attr("x", function(d) {
+                    return d.dx / 2;
+                })
+                .attr("y", function(d) {
+                    return d.dy / 2;
+                })
+                .attr("font-size", function(d) {
+                    var quotx = d.dx / d.name.length;
+                    var quoty = d.dy / 2;
+                    return Math.min(quotx, quoty) + "px";
+                })
         }
 
         function drawSkills() {
