@@ -212,6 +212,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("height", (skillStrList.length + 2) + "em")
                 .attr("width", (maxLength + 1) * (2 / 3) + "em");
 
+            var legendText = svg.select("text.legend");
             var legendData = legendText.selectAll(".textline")
                 .data(skillStrList);
 
