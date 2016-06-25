@@ -182,6 +182,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function showLegend() {
+            var legend = svg.select()
             legend.classed("off", false);
             legend.classed("on", true);
         }
