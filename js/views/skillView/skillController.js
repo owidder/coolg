@@ -513,6 +513,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 case "v":
                     return MODE_VORONOI;
 
+                case "t":
+                    return MODE_TREEMAP;
+
                 default:
                     return MODE_BUBBLES;
             }
