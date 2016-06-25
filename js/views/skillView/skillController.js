@@ -770,8 +770,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function resetField() {
             var root = svg.select("g.root");
-            var field = root.select("g.field");
-            field.selectAll("g").remove();
+            root.selectAll("g").remove();
         }
         
         function drawTreemapSkills(ya, withCategories) {
