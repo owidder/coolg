@@ -802,7 +802,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     }
                 });
 
-            svg.selectAll("rect.skill")
+            root.selectAll("rect.skill")
                 .attr("width", function(d) {
                     return d.dx;
                 })
