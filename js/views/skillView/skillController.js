@@ -267,7 +267,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
 
-        var field, xScale, yScale;
+        var xScale, yScale;
 
         function createQuadrants() {
             root.append("g")
