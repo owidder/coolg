@@ -25,6 +25,23 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .domain([0, 100])
             .range([height, 0]);
 
+        var svg = d3.select("#canvas")
+            .append("svg")
+            .attr("width", width + 300)
+            .attr("height", height + 300)
+            .attr("class", "svg canvas")
+            .on("click", function () {
+                switchLegend();
+            })
+            .on("mousemove", function () {
+                var evt = d3.mouse(this);
+                mouseMoved(evt[0], evt[1]);
+            })
+            .on("mouseout", hideLegend);
+
+        var root = svg.append("g")
+            .attr("transform", "translate(100, 20)");
+
         function createLegendSkillList(elementList) {
             var skillList = [];
             var skillName;
@@ -239,23 +256,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 showLegend();
             }
         }
-
-        var svg = d3.select("#canvas")
-            .append("svg")
-            .attr("width", width + 300)
-            .attr("height", height + 300)
-            .attr("class", "svg canvas")
-            .on("click", function () {
-                switchLegend();
-            })
-            .on("mousemove", function () {
-                var evt = d3.mouse(this);
-                mouseMoved(evt[0], evt[1]);
-            })
-            .on("mouseout", hideLegend);
-
-        var root = svg.append("g")
-            .attr("transform", "translate(100, 20)");
 
         function createQuadrants() {
             root.append("g")
