@@ -573,7 +573,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             var xScale = createXScale(maxX);
             var yScale = createYScale(maxY);
 
-            drawField(xMax(data), yMax(data));
+            drawField(maxX, maxY);
             createLayers();
 
             var filteredData = data.filter(function (d) {
