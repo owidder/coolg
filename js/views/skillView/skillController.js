@@ -527,6 +527,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     $location.search("mode", "v");
                     break;
 
+                case MODE_TREEMAP:
+                    $location.search("mode", "t");
+                    break;
+
                 default:
                     $location.search("mode", null);
                     break;
