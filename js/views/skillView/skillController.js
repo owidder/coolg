@@ -820,6 +820,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         classes += " forlegend";
                     }
                 })
+                .attr("_skill", function(d) {
+                    if(!d.children) {
+                        return d.name;
+                    }
+                })
                 .style("fill", function(d) {
                     if(withCategories) {
                         return d.children ? color(d.name) : null;
