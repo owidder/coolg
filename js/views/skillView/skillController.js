@@ -13,8 +13,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var $categories = bottle.container.$categories;
         var mathUtil = bottle.container.mathUtil;
 
-        var currentAttributes = [];
-
         var skills = new Skills();
 
         function getAttributesForSkill(skill) {
