@@ -778,13 +778,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .append("g")
                 .attr("class", "cell");
 
-            svg.selectAll("g.cell")
+            root.selectAll("g.cell")
                 .transition()
                 .attr("transform", function(d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
 
-            cellEnter.append("svg:rect")
+            cellEnter.append("rect")
                 .attr("class", "skill")
                 .style("fill", function(d) {
                     if(queryString.file == "skills") {
