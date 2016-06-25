@@ -760,6 +760,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return funcs.isEmpty(input.skillNameFilter) || d["Skill"].toLowerCase().indexOf(input.skillNameFilter) > -1;
             });
 
+            var root = svg.select("g.root");
             var field = root.select("g.field");
             var gSkillData = field.selectAll("g.skill")
                 .data(filteredData, function (d) {
