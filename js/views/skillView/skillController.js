@@ -737,6 +737,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function resetField() {
+            var field = root.select("g.field");
             field.selectAll("g").remove();
         }
 
