@@ -209,6 +209,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function updateLegend(skillStrList) {
             var maxLength = funcs.getLongestString(skillStrList);
 
+            var legendRect = svg.select("rect.legend");
             legendRect.transition()
                 .attr("height", (skillStrList.length + 2) + "em")
                 .attr("width", (maxLength + 1) * (2 / 3) + "em");
