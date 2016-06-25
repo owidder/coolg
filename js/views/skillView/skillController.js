@@ -810,7 +810,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.dy;
                 });
 
-            cellEnter.append("svg:text")
+            cellEnter.append("text")
                 .attr("class", "skill")
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
