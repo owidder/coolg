@@ -262,12 +262,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             })
             .on("mouseout", hideLegend);
 
-        var svgElement = document.querySelector("svg.canvas");
-
         var root = svg.append("g")
             .attr("transform", "translate(100, 20)");
-
-        var xScale, yScale;
 
         function createQuadrants() {
             root.append("g")
