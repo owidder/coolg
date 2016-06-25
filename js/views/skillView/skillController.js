@@ -15,10 +15,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         var skills = new Skills();
 
-        function getAttributesForSkill(skill) {
-            return [];
-        }
-
         var width = dimensions.width(-50) * 10 / 12;
         var height = dimensions.height(-70);
 
