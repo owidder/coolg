@@ -827,6 +827,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                         return d.name;
                     }
                 })
+                .attr("opacity", function(d) {
+                    return d.children ? "0" : "1";
+                })
                 .style("fill", function(d) {
                     if(withCategories) {
                         return d.children ? skills.categoryToColor(d.name) : skills.categoryToColor(d.category);
