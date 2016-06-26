@@ -8,12 +8,7 @@ bottle.factory("constants", function(container) {
         STOCK_PROPERTY_NAME: "Close",
         ATTRIBUTE_ANZAHL_EXPERTEN: "expertCount",
         ATTRIBUTE_ANZAHL_MITARBEITER: "count",
-        ATTRIBUTE_MITTLERE_BEWERTUNG: "ma"
+        ATTRIBUTE_MITTLERE_BEWERTUNG: "ma",
+        ATTRIBUTE_MITTLERE_DAUER: "md"
     }
 });
-
-var ATTRIBUTE_ANZAHL_EXPERTEN = "expertCount";
-var ATTRIBUTE_ANZAHL_MITARBEITER = "count";
-var ATTRIBUTE_MITTLERE_BEWERTUNG = "ma";
-var ATTRIBUTE_MITTLERE_DAUER = "md";
-
