@@ -7,6 +7,7 @@ bottle.factory("constants", function(container) {
         END_DATE: "2015-03-01",
         STOCK_PROPERTY_NAME: "Close",
         ATTRIBUTE_SKILL: "Skill",
+        ATTRIBUTE_CATEGORY: "category",
         ATTRIBUTE_ANZAHL_EXPERTEN: "expertCount",
         ATTRIBUTE_ANZAHL_MITARBEITER: "count",
         ATTRIBUTE_MITTLERE_BEWERTUNG: "ma",
