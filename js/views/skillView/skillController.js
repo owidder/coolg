@@ -491,6 +491,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
+        function getYAttributeAsText() {
+            switch($routeParams.ya) {
+                case "ec":
+                    return "Anzahl Experten";
+
+                default:
+                    return "Mittlere Bewertung";
+            }
+        }
+
         function setYAttribute(ya) {
             switch(ya) {
                 case "Anzahl Experten":
