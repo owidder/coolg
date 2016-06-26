@@ -127,7 +127,7 @@ bottle.factory("Skills", function(container) {
             var aggregation = dl.groupby('Skill')
                 .summarize([
                     {name: constants.COLUMN_BEWERTUNG, ops: ['mean'], as: ['Mittlere Bewertung']},
-                    {name: 'Anzahl Mitarbeiter', ops: ['sum'], as: ['Anzahl Mitarbeiter']},
+                    {name: constants.COLUMN_ANZAHL_MITARBEITER, ops: ['sum'], as: ['Anzahl Mitarbeiter']},
                     {
                         name: 'Anzahl Experten',
                         get: function(skill) {
