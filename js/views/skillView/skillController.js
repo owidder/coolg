@@ -900,7 +900,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 })
                 .attr("font-size", function(d) {
                     var quotx = isLandscape(d) ? d.dx / d.name.length : d.dx / 2;
-                    var quoty = isLandscape(d) ? d.dy / 2 : d.dy / d.name.lengh;
+                    var quoty = isLandscape(d) ? d.dy / 2 : d.dy / d.name.length;
                     return Math.min(quotx, quoty) + "px";
                 });
 
