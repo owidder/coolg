@@ -136,8 +136,8 @@ bottle.factory("Skills", function(container) {
                         ops: ['sum'],
                         as: ['Anzahl Experten']
                     },
-                    {name: 'Skill Dauer', ops: ['mean'], as: ['Mittlere Skilldauer']},
-                    {name: 'Skill-Unterkategorie', ops: ['values']}
+                    {name: constants.COLUMN_SKILL_DAUER, ops: ['mean'], as: ['Mittlere Skilldauer']},
+                    {name: constants.COLUMN_SKILL_UNTERKATEGORIE, ops: ['values']}
                 ]).execute(filteredData);
 
             return aggregation;
