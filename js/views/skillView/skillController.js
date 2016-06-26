@@ -414,11 +414,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .orient("left");
 
             svg.select(".xaxis")
-                .transition()
+                .transition().duration(1000)
                 .call(xAxis);
 
             svg.select(".yaxis")
-                .transition()
+                .transition().duration(1000)
                 .call(yAxis);
 
             svg.select("text.y.axis")
