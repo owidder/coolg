@@ -552,7 +552,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             switch(getMode()) {
                 case MODE_VORONOI:
                     createQuadrants();
-                    drawVoronoiSkills(ya^);
+                    drawVoronoiSkills(ya);
                     break;
 
                 case MODE_TREEMAP:
@@ -561,8 +561,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     break;
 
                 case MODE_BUBBLES:
-                    createQuadrants(ya);
-                    drawSkills();
+                    createQuadrants();
+                    drawSkills(ya);
                     break;
             }
         }
