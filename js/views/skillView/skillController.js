@@ -347,7 +347,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function updateGrid() {
-            textLowerLeft.transition().duration(1000)
+            textLowerLeft.transition()
                 .attr("x", xScalePercent(100 / 6))
                 .attr("y", yScalePercent(100 / 6));
 
