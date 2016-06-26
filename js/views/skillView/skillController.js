@@ -491,14 +491,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function setYAttribute(ya) {
-            switch(ya) {
-                case constants.ATTRIBUTE_ANZAHL_EXPERTEN:
-                    $location.search("ya", "ec");
-                    break;
-
-                default:
-                    $location.search("ya", null);
-            }
+            $location.search("ya", ya);
         }
         
         function switchYAttribute() {
