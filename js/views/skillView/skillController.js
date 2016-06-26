@@ -603,7 +603,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var vert = [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
                 vert.skill = d["Skill"];
                 vert.category = skills.categoryFromSkill(d);
-                vert.ma = d["Mittlere Bewertung"];
+                vert.ma = d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
                 vert.md = d["Mittlere Skilldauer"];
                 vert.count = d["Anzahl Mitarbeiter"];
                 vert.ec = d["Anzahl Experten"];
