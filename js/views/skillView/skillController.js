@@ -383,7 +383,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function radiusForSkill(skill) {
-            return skill[constants.ATTRIBUTE_MITTLERE_DAUER] * 5;
+            return skill[constants.ATTRIBUTE_MITTLERE_SKILLDAUER] * 5;
         }
 
         function createXScale(maxX) {

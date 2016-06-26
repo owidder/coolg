@@ -10,7 +10,7 @@ bottle.factory("constants", function(container) {
         ATTRIBUTE_ANZAHL_EXPERTEN: "expertCount",
         ATTRIBUTE_ANZAHL_MITARBEITER: "count",
         ATTRIBUTE_MITTLERE_BEWERTUNG: "ma",
-        ATTRIBUTE_MITTLERE_DAUER: "md",
+        ATTRIBUTE_MITTLERE_SKILLDAUER: "md",
         COLUMN_SKILL_UNTERKATEGORIE: "Skill-Unterkategorie",
         COLUMN_STANDORT: "Standort",
         COLUMN_BEWERTUNG: "Bewertung",
