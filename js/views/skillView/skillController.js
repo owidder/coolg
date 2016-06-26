@@ -1007,6 +1007,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return show;
         }
 
+        function showTextSwitch() {
+            return getMode() != MODE_TREEMAP;
+        }
+
+        function showCategorySwitch() {
+            return getMode() == MODE_TREEMAP;
+        }
+
         function showModeSwitch(mode) {
             var show = true;
             if(getYAttribute() == constants.ATTRIBUTE_ANZAHL_MITARBEITER && (mode == MODE_BUBBLES || MODE_VORONOI)) {
