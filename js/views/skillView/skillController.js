@@ -730,7 +730,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             field.selectAll("text.skill")
-                .transition()
+                .transition().duration(1000)
                 .attr("x", function (d) {
                     return d[0];
                 })
