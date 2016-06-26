@@ -474,6 +474,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getYAttribute() {
+            if(funcs.isEmpty($routeParams.ya)) {
+                return constants.ATTRIBUTE_MITTLERE_BEWERTUNG;
+            }
             return $routeParams.ya;
         }
 
