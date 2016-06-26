@@ -969,7 +969,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Anzahl Experten"];
                 })
                 .attr("_ma", function (d) {
-                    return d["Mittlere Bewertung"];
+                    return d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
                 })
                 .attr("_md", function (d) {
                     return d["Mittlere Skilldauer"];
