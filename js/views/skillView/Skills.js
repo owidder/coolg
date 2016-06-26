@@ -37,7 +37,7 @@ bottle.factory("Skills", function(container) {
             var cat = "?";
             var categoryValues = skill["values_" + constants.COLUMN_SKILL_UNTERKATEGORIE];
             if (!funcs.isEmpty(categoryValues)) {
-                cat = categoryValues[0]["Skill-Unterkategorie"];
+                cat = categoryValues[0][constants.COLUMN_SKILL_UNTERKATEGORIE];
             }
 
             return cat;
