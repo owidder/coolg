@@ -300,8 +300,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "field")
                 .attr("transform", "translate(0, 0)");
 
-            appendLegend();
-
             field.append("text")
                 .attr("text-anchor", "middle")
                 .text("Weißer Fleck")
@@ -1038,6 +1036,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             $scope.switchMode = switchMode;
             $scope.switchYAttribute = switchYAttribute;
 
+            appendLegend();
             draw();
         });
     });
