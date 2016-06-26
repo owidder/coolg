@@ -548,6 +548,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function draw() {
+            var ya = getYAttribute();
             switch(getMode()) {
                 case MODE_VORONOI:
                     createQuadrants();
