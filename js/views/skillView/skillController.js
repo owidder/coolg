@@ -467,7 +467,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function xMax(data) {
-            return dl.max(data, funcs.createAccessorFunction("Anzahl Mitarbeiter"));
+            return dl.max(data, funcs.createAccessorFunction(constants.ATTRIBUTE_ANZAHL_MITARBEITER));
         }
 
         function yMax(data) {
@@ -600,12 +600,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
 
             var vertices = filteredData.map(function (d) {
-                var vert = [xScale(d["Anzahl Mitarbeiter"]), yScale(yScaleForSkill(d))];
+                var vert = [xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]), yScale(yScaleForSkill(d))];
                 vert.skill = d["Skill"];
                 vert.category = skills.categoryFromSkill(d);
                 vert.ma = d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
                 vert.md = d["Mittlere Skilldauer"];
-                vert.count = d["Anzahl Mitarbeiter"];
+                vert.count = d[constants.ATTRIBUTE_ANZAHL_MITARBEITER];
                 vert.ec = d["Anzahl Experten"];
                 return vert;
             });
