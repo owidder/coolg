@@ -890,6 +890,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y", function(d) {
                     return d.dy / 2;
                 })
+                .attr("transform", "rotate(270 " + yLabelX + "," + yLabelY + ")")
                 .attr("font-size", function(d) {
                     var quotx = d.dx / d.name.length;
                     var quoty = d.dy / 2;
