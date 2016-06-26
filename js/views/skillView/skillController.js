@@ -577,7 +577,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             }
         }
 
-        function drawVoronoiSkills() {
+        function drawVoronoiSkills(ya) {
             function createLayers() {
                 var layers = ["paths", "circles", "texts"];
                 var root = svg.select("g.root");
@@ -597,7 +597,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             var data = skills.recalcSkills(locations, categories);
             var maxX = xMax(data);
-            var maxY = yMax(data);
+            var maxY = yMax(ya, data);
             var xScale = createXScale(maxX);
             var yScale = createYScale(maxY);
 
