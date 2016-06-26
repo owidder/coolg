@@ -903,10 +903,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             cellData.exit().remove();
         }
 
-        function drawSkills() {
+        function drawSkills(ya, ) {
             var data = skills.recalcSkills(locations, categories);
             var maxX = xMax(data);
-            var maxY = yMax(data);
+            var maxY = yMax(ya, data);
             var xScale = createXScale(maxX);
             var yScale = createYScale(maxY);
 
