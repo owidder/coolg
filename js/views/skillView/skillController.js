@@ -769,7 +769,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function resetField() {
-            var root = svg.select("g.root");
+            var root = svg.select("g.root").select("g.field");
             root.selectAll("g").remove();
         }
         
