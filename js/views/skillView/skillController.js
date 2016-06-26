@@ -13,6 +13,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var dl = bottle.container.$datalib;
         var $categories = bottle.container.$categories;
         var mathUtil = bottle.container.mathUtil;
+        var constants = bottle.container.constants;
 
         var skills = new Skills();
 
@@ -472,7 +473,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function yMax(data) {
             var ya = getYAttribute();
             switch(ya) {
-                case "Mittlere Bewertung":
+                case constants.ATTRIBUTE_MITTLERE_BEWERTUNG:
                     return 4;
 
                 default:
@@ -486,7 +487,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return "Anzahl Experten";
 
                 default:
-                    return "Mittlere Bewertung";
+                    return con;
             }
         }
 
