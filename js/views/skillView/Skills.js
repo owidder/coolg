@@ -129,7 +129,6 @@ bottle.factory("Skills", function(container) {
                     {name: constants.COLUMN_BEWERTUNG, ops: ['mean'], as: [constants.ATTRIBUTE_MITTLERE_BEWERTUNG]},
                     {name: constants.COLUMN_ANZAHL_MITARBEITER, ops: ['sum'], as: [constants.ATTRIBUTE_ANZAHL_MITARBEITER]},
                     {
-                        name: 'Anzahl Experten',
                         get: function(skill) {
                             return (skill[constants.COLUMN_BEWERTUNG] > 2 ? skill[constants.COLUMN_ANZAHL_MITARBEITER] : 0);
                         },
