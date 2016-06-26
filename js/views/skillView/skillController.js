@@ -377,10 +377,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y2", yScalePercent(0));
         }
 
-        function yScaleForSkill(ya, skill) {
-            return skill[ya];
-        }
-
         function radiusForSkill(skill) {
             return skill[constants.ATTRIBUTE_MITTLERE_SKILLDAUER] * 5;
         }
