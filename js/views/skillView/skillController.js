@@ -1004,6 +1004,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return show;
         }
 
+        function showModeSwitch(mode) {
+            var show = true;
+            if(getYAttribute() == constants.ATTRIBUTE_ANZAHL_MITARBEITER && (mode == MODE_BUBBLES || MODE_VORONOI)) {
+                show = false;
+            }
+
+            return show;
+        }
+
         $scope.skillNameFilterChanged = skillNameFilterChanged;
 
         var input = {
