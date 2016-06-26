@@ -1018,7 +1018,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var input = {
             showText: true,
             mode: getMode(),
-            ya: getYAttribute()
+            ya: getYAttribute(),
+            withCategories: true
         };
 
         $scope.input = input;
