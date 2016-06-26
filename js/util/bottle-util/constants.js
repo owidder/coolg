@@ -12,6 +12,7 @@ bottle.factory("constants", function(container) {
         ATTRIBUTE_MITTLERE_BEWERTUNG: "ma",
         ATTRIBUTE_MITTLERE_DAUER: "md",
         COLUMN_SKILL_UNTERKATEGORIE: "Skill-Unterkategorie",
-        COLUMN_STANDORT: "Standort"
+        COLUMN_STANDORT: "Standort",
+        COLUMN_BEWERTUNG: 
     }
 });
