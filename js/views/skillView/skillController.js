@@ -772,11 +772,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             root.selectAll("g").remove();
         }
 
-        function resetField() {
-            var root = svg.select("g.root").select("g.field");
-            root.selectAll("g").remove();
-        }
-        
         function drawTreemapSkills(ya, withCategories) {
             var data = skills.recalcSkills(locations, categories);
             var filteredData = data.filter(function (d) {
