@@ -609,7 +609,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
 
             var vertices = filteredData.map(function (d) {
-                var vert = [xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]), yScale(yScaleForSkill(d))];
+                var vert = [xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]), yScale(d[ya])];
                 vert.skill = d["Skill"];
                 vert.category = skills.categoryFromSkill(d);
                 vert.ma = d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
