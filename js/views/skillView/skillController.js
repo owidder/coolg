@@ -474,21 +474,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function getYAttribute() {
-            switch($routeParams.ya) {
-                case "ec":
-                    return constants.ATTRIBUTE_ANZAHL_EXPERTEN;
-
-                default:
-                    return constants.ATTRIBUTE_MITTLERE_BEWERTUNG;
-            }
+            return $routeParams.ya;
         }
 
         function getYAttributeAsText() {
             switch($routeParams.ya) {
-                case "ec":
+                case constants.ATTRIBUTE_ANZAHL_EXPERTEN:
                     return "Anzahl Experten";
 
-                default:
+                case constants.ATTRIBUTE_ANZAHL_MITARBEITER:
+                    return "Anzahl Mitarbeiter";
+
+                case constants.ATTRIBUTE_MITTLERE_BEWERTUNG:
                     return "Mittlere Bewertung";
             }
         }
