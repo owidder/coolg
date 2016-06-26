@@ -422,7 +422,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .call(yAxis);
 
             svg.select("text.y.axis")
-                .transition().duration(1000)
+                .transition()
                 .text(getYAttribute());
         }
 
