@@ -883,7 +883,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             // propagate downwards
             root.selectAll("g.cell").select("text.skill");
 
-            function isHorizontal(d) {
+            function isLandscape(d) {
                 return d.dx >= d.dy;
             }
 
@@ -895,11 +895,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.dy / 2;
                 })
                 .attr("transform", function(d) {
-                    var angle = isHorizontal(d) ? 0 : 270;
+                    var angle = isLandscape(d) ? 0 : 270;
                     return "rotate(" + angle + " " + d.dx / 2 + "," + d.dy / 2 + ")";
                 })
                 .attr("font-size", function(d) {
-                    var quotx = d.dx >= d.dy ? d.dx / d.name.length : d.dx / 2;
+                    var quotx = isLandscape(d) ? d.dx / d.name.length : d.dx / 2;
                     var quoty = d.dx >= d.dy ? d.dy / 2 : d.dy / d.name.lengh;
                     return Math.min(quotx, quoty) + "px";
                 });
