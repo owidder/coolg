@@ -331,6 +331,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         });
     }
 
+    function copyObjectInto(srcObject, destObject) {
+        forEachKeyAndVal(srcObject, function(key, val) {
+            destObject[key] = val;
+        });
+    }
+
     return {
         hashCode: hashCode,
         if: _if,
