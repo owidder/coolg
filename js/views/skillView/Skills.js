@@ -62,7 +62,7 @@ bottle.factory("Skills", function(container) {
 
         function addSkillToBranch(skill, branch) {
             var child = {
-                name: skill["Skill"],
+                name: skill[constants.ATTRIBUTE_SKILL],
                 category: categoryFromSkill(skill)
             };
             funcs.copyObjectInto(skill, child);
