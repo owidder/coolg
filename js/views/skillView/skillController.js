@@ -614,7 +614,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 vert.skill = d["Skill"];
                 vert.category = skills.categoryFromSkill(d);
                 vert.ma = d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
-                vert.md = d["Mittlere Skilldauer"];
+                vert.md = d[constants.ATTRIBUTE_MITTLERE_SKILLDAUER];
                 vert.count = d[constants.ATTRIBUTE_ANZAHL_MITARBEITER];
                 vert.ec = d[constants.ATTRIBUTE_ANZAHL_EXPERTEN];
                 return vert;
@@ -982,7 +982,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d[constants.ATTRIBUTE_MITTLERE_BEWERTUNG];
                 })
                 .attr("_md", function (d) {
-                    return d["Mittlere Skilldauer"];
+                    return d[constants.ATTRIBUTE_MITTLERE_SKILLDAUER];
                 })
                 .attr("_cat", skills.categoryFromSkill);
 
