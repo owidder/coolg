@@ -134,7 +134,7 @@ bottle.factory("Skills", function(container) {
                             return (skill[constants.COLUMN_BEWERTUNG] > 2 ? skill[constants.COLUMN_ANZAHL_MITARBEITER] : 0);
                         },
                         ops: ['sum'],
-                        as: ['Anzahl Experten']
+                        as: [constants.ATTRIBUTE_ANZAHL_EXPERTEN]
                     },
                     {name: constants.COLUMN_SKILL_DAUER, ops: ['mean'], as: ['Mittlere Skilldauer']},
                     {name: constants.COLUMN_SKILL_UNTERKATEGORIE, ops: ['values']}
