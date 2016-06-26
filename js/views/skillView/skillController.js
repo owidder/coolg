@@ -938,7 +938,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             field.selectAll("g.skill")
                 .transition().duration(1000)
                 .attr("transform", function (d) {
-                    return "translate(" + xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]) + "," + yScale(yScaleForSkill(d)) + ")";
+                    return "translate(" + xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]) + "," + yScale(d[ya]) + ")";
                 });
 
             var gSkillEnterG = gSkillEnter.append("g");
