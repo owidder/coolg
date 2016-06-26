@@ -9,6 +9,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var MODE_BUBBLES = "bubbles";
         var MODE_TREEMAP = "treemap";
 
+        var ATTRIBUTE_ANZAHL_EXPERTEN = "expertCount";
+
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
         var $categories = bottle.container.$categories;
