@@ -10,6 +10,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var MODE_TREEMAP = "treemap";
 
         var ATTRIBUTE_ANZAHL_EXPERTEN = "expertCount";
+        var ATTRIBUTE_ANZAHL_MITARBEITER = "count";
+        var ATTRIBUTE_MITTLERE_BEWERTUNG = "ma";
+        var ATTRIBUTE_MITTLERE_DAUER = "md";
 
         var Skills = bottle.container.Skills;
         var dl = bottle.container.$datalib;
