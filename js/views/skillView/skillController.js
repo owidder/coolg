@@ -484,7 +484,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         function getYAttribute() {
             switch($routeParams.ya) {
                 case "ec":
-                    return "Anzahl Experten";
+                    return constants.ATTRIBUTE_ANZAHL_EXPERTEN;
 
                 default:
                     return constants.ATTRIBUTE_MITTLERE_BEWERTUNG;
@@ -503,7 +503,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         function setYAttribute(ya) {
             switch(ya) {
-                case "Anzahl Experten":
+                case constants.ATTRIBUTE_ANZAHL_EXPERTEN:
                     $location.search("ya", "ec");
                     break;
 
