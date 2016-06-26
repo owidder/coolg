@@ -995,6 +995,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
         }
 
+        function showYaSwitch(ya) {
+            var show = true;
+            if(ya == constants.ATTRIBUTE_ANZAHL_MITARBEITER && getMode() != MODE_TREEMAP) {
+                show = false;
+            }
+
+            return show;
+        }
+
         $scope.skillNameFilterChanged = skillNameFilterChanged;
 
         var input = {
@@ -1028,7 +1037,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             $scope.switchText = switchText;
             $scope.switchMode = switchMode;
             $scope.switchYAttribute = switchYAttribute;
-            $scope.getMode = getMode;
+            $scope.showYaSwitch = showYaSwitch;
 
             appendLegend();
             draw();
