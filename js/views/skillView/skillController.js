@@ -1048,6 +1048,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             $scope.switchYAttribute = switchYAttribute;
             $scope.showYaSwitch = showYaSwitch;
             $scope.showModeSwitch = showModeSwitch;
+            $scope.draw = draw;
 
             appendLegend();
             draw();
