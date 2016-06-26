@@ -20,7 +20,7 @@ bottle.factory("Skills", function(container) {
         }
 
         function extractCategories(data) {
-            var categories = dl.unique(data, funcs.createAccessorFunction("Skill-Unterkategorie"));
+            var categories = dl.unique(data, funcs.createAccessorFunction(constants.COLUMN_SKILL_UNTERKATEGORIE));
             categories.sort();
 
             return categories;
