@@ -69,7 +69,6 @@ bottle.factory("Skills", function(container) {
                 expertCount: skill["Anzahl Experten"],
                 category: categoryFromSkill(skill)
             };
-            child[constants.ATTRIBUTE_MITTLERE_BEWERTUNG]
             branch.push(child);
         }
 
