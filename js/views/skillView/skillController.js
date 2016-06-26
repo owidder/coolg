@@ -883,6 +883,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             // propagate downwards
             root.selectAll("g.cell").select("text.skill");
 
+            function isHorizontal(d) {
+                return d.dx >= d.dy;
+            }
+
             root.selectAll("text.skill")
                 .attr("x", function(d) {
                     return d.dx / 2;
@@ -891,7 +895,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d.dy / 2;
                 })
                 .attr("transform", function(d) {
-                    var angle = d.dx >= d.dy ? 0 : 270;
+                    var angle = isHorizontal(d) ? 0 : 270;
                     return "rotate(" + angle + " " + d.dx / 2 + "," + d.dy / 2 + ")";
                 })
                 .attr("font-size", function(d) {
