@@ -660,7 +660,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_md", function (d) {
                     return d.point.md;
                 })
-                .transition()
+                .transition().duration(1000)
                 .attr("d", polygon);
 
             //pathData.order();
@@ -701,7 +701,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_md", function (d) {
                     return d.md;
                 })
-                .transition()
+                .transition().duration(1000)
                 .attr("cx", function (d) {
                     return d[0];
                 })
