@@ -470,8 +470,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return dl.max(data, funcs.createAccessorFunction(constants.ATTRIBUTE_ANZAHL_MITARBEITER));
         }
 
-        function yMax(data) {
-            var ya = getYAttribute();
+        function yMax(ya, data) {
             switch(ya) {
                 case constants.ATTRIBUTE_MITTLERE_BEWERTUNG:
                     return 4;
