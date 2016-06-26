@@ -876,7 +876,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             root.selectAll("g.cell").select("text.skill");
 
             root.selectAll("text.skill")
-                .transition().duration(1000)
                 .attr("x", function(d) {
                     return d.dx / 2;
                 })
