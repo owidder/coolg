@@ -924,7 +924,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             field.selectAll("g.skill")
-                .transition()
+                .transition().duration(1000)
                 .attr("transform", function (d) {
                     return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
