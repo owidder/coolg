@@ -929,7 +929,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             field.selectAll("g.skill")
                 .transition().duration(1000)
                 .attr("transform", function (d) {
-                    return "translate(" + xScale(d["Anzahl Mitarbeiter"]) + "," + yScale(yScaleForSkill(d)) + ")";
+                    return "translate(" + xScale(d[constants.ATTRIBUTE_ANZAHL_MITARBEITER]) + "," + yScale(yScaleForSkill(d)) + ")";
                 });
 
             var gSkillEnterG = gSkillEnter.append("g");
@@ -963,7 +963,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return d["Skill"];
                 })
                 .attr("_count", function (d) {
-                    return d["Anzahl Mitarbeiter"];
+                    return d[constants.ATTRIBUTE_ANZAHL_MITARBEITER];
                 })
                 .attr("_ec", function (d) {
                     return d["Anzahl Experten"];
