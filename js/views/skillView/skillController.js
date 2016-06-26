@@ -543,7 +543,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
                 case MODE_TREEMAP:
                     removeQuadrants();
-                    drawTreemapSkills(ya, true);
+                    drawTreemapSkills(ya, input.withCategories);
                     break;
 
                 case MODE_BUBBLES:
