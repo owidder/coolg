@@ -810,7 +810,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("class", "cell");
 
             root.selectAll("g.cell")
-                .transition()
                 .attr("transform", function(d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
@@ -856,6 +855,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("_md", function(d) {
                     return d["md"];
                 })
+                .transition()
                 .attr("width", function(d) {
                     return d.dx;
                 })
