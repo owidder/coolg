@@ -203,19 +203,19 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12" ng-show="showModeSwitch('bubbles')">
                         <span class="switch">
                             <input name="mode" type="radio" id="mode-bubbles" value="bubbles" ng-model="input.mode" ng-click="switchMode()"/>
                             <label for="mode-bubbles">Bubbles</label>
                         </span>
                     </div>
-                    <div class="col s12">
+                    <div class="col s12" ng-show="showModeSwitch('voronoi')">
                         <span class="switch">
                             <input name="mode" type="radio" id="mode-voronoi" value="voronoi" ng-model="input.mode" ng-click="switchMode()"/>
                             <label for="mode-voronoi">Voronoi</label>
                         </span>
                     </div>
-                    <div class="col s12">
+                    <div class="col s12" ng-show="showModeSwitch('treemap')">
                         <span class="switch">
                             <input name="mode" type="radio" id="mode-treemap" value="treemap" ng-model="input.mode" ng-click="switchMode()"/>
                             <label for="mode-treemap">Treemap</label>
