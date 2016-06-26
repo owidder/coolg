@@ -895,8 +895,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     return "rotate(" + angle + " " + d.dx / 2 + "," + d.dy / 2 + ")";
                 })
                 .attr("font-size", function(d) {
-                    var quotx = d.dx / d.name.length;
-                    var quoty = d.dy / 2;
+                    var quotx = d.dx >= d.dy ? d.dx / d.name.length : d.dx / 2;
+                    var quoty = d.dx >= d.dy ? d.dy / 2 : d.dy / d.name.lengh;
                     return Math.min(quotx, quoty) + "px";
                 });
 
