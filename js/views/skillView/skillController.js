@@ -377,8 +377,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .attr("y2", yScalePercent(0));
         }
 
-        function yScaleForSkill(skill) {
-            var ya = getYAttribute();
+        function yScaleForSkill(ya, skill) {
             return skill[ya];
         }
 
