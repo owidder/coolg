@@ -368,6 +368,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory('funcs', function() {
         createArrayOfNthElements: createArrayOfNthElements,
         makeSafeForCSS: makeSafeForCSS,
         getLongestString: getLongestString,
-        copyAttributes: copyAttributes
+        copyAttributes: copyAttributes,
+        copyObjectInto: copyObjectInto
     };
 });
