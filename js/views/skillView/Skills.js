@@ -63,12 +63,9 @@ bottle.factory("Skills", function(container) {
         function addSkillToBranch(skill, branch) {
             var child = {
                 name: skill["Skill"],
-                ma: skill["Mittlere Bewertung"],
-                md: skill["Mittlere Skilldauer"],
-                count: skill["Anzahl Mitarbeiter"],
-                expertCount: skill["Anzahl Experten"],
                 category: categoryFromSkill(skill)
             };
+            funcs.copyObjectInto(skill, child);
             branch.push(child);
         }
 
