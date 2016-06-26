@@ -5,6 +5,7 @@ bottle.factory("Skills", function(container) {
     var dl = container.$datalib;
     var SimplePromise = container.SimplePromise;
     var colorUtil = container.colorUtil;
+    var constants = container.constants;
 
     function Skills() {
         var me = this;
