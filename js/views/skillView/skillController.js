@@ -867,7 +867,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 });
 
             cellEnter.append("text")
-                .attr("class", "skill")
+                .attr("class", function () {
+                    return "skill " + (shouldShowText() ? "on" : "off");
+                })
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
                 .text(function(d) {
