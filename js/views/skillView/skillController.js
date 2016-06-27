@@ -69,7 +69,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         
         function createRadioButtonStyles() {
-            
+            skills.categories.forEach(function(category) {
+                
+            });
         }
 
         function getSvgBoundingRectOfElement(selector) {
