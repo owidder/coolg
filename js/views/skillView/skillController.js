@@ -75,8 +75,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             skills.categories.forEach(function(category) {
                 cssNameOfStyle = funcs.makeSafeForCSS(category);
                 colorOfStyle = skills.categoryToColor(category);
-                styleForChecked = "[type=\"radio\"].cat-" + cssNameOfStyle + ".with-gap:checked + label:after + {background-color: " + colorOfStyle + ";}\n";
-                styleForUnchecked = "[type=\"radio\"].cat-" + cssNameOfStyle + ".with-gap:not(:checked) + label:before + {background-color: " + colorOfStyle + ";}\n";
+                styleForChecked = "[type=\"radio\"].cat-" + cssNameOfStyle + ".with-gap:checked + label:after {background-color: " + colorOfStyle + ";}\n";
+                styleForUnchecked = "[type=\"radio\"].cat-" + cssNameOfStyle + ".with-gap:not(:checked) + label:before {background-color: " + colorOfStyle + ";}\n";
                 styleString += styleForChecked;
                 styleString += styleForUnchecked;
             });
