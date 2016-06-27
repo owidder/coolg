@@ -243,12 +243,12 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <input name="category" type="radio" id="cat-all" ng-click="showCategory('*')" checked="checked"/>
+                    <input name="category" type="radio" class="with-gap" id="cat-all" ng-click="showCategory('*')" checked="checked"/>
                     <label for="cat-all">Alle</label>
                 </div>
                 <div class="col s12" ng-repeat="category in allCategories">
                     <span class="switch">
-                        <input name="category" type="radio" id="cat-{{makeSafeForCSS(category)}}" ng-click="showCategory(category)"/>
+                        <input name="category" type="radio" class="with-gap" id="cat-{{makeSafeForCSS(category)}}" ng-click="showCategory(category)"/>
                         <label for="cat-{{makeSafeForCSS(category)}}">{{shorten(category)}}</label>
                     </span>
                 </div>
