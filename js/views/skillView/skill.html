@@ -173,18 +173,18 @@
                     <input placeholder="Search" id="skillNameFilter" type="text" ng-model="input.skillNameFilter" ng-change="skillNameFilterChanged()">
                 </div>
                 <div class="row">
-                    <div class="col s12 switch" ng-disabled="disableTextSwitch()">
+                    <div class="col s12 switch">
                         <label>
                             Text<br>Off
-                            <input type="checkbox" ng-model="input.showText">
+                            <input type="checkbox" ng-model="input.showText" ng-disabled="disableTextSwitch()">
                             <span class="lever"></span>
                             On
                         </label>
                     </div>
-                    <div class="col s12 switch" ng-disabled="disableCategorySwitch()">
+                    <div class="col s12 switch">
                         <label>
                             Kategorien<br>Off
-                            <input type="checkbox" ng-model="input.withCategories" ng-change="draw()">
+                            <input type="checkbox" ng-model="input.withCategories" ng-change="draw()" ng-disabled="disableCategorySwitch()">
                             <span class="lever"></span>
                             On
                         </label>
