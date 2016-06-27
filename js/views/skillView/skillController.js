@@ -1007,12 +1007,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return show;
         }
 
-        function showTextSwitch() {
-            return getMode() != MODE_TREEMAP;
+        function disableTextSwitch() {
+            return getMode() == MODE_TREEMAP;
         }
 
-        function showCategorySwitch() {
-            return getMode() == MODE_TREEMAP;
+        function disableCategorySwitch() {
+            return getMode() != MODE_TREEMAP;
         }
 
         function showModeSwitch(mode) {
@@ -1061,8 +1061,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             $scope.showYaSwitch = showYaSwitch;
             $scope.showModeSwitch = showModeSwitch;
             $scope.draw = draw;
-            $scope.showTextSwitch = showTextSwitch;
-            $scope.showCategorySwitch = showCategorySwitch;
+            $scope.disableTextSwitch = disableTextSwitch;
+            $scope.disableCategorySwitch = disableCategorySwitch;
 
             appendLegend();
             draw();
