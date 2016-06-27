@@ -176,7 +176,7 @@
                     <div class="col s12 switch">
                         <label>
                             Text<br>Off
-                            <input type="checkbox" ng-model="input.showText" ng-disabled="disableTextSwitch()">
+                            <input type="checkbox" ng-model="input.showText" ng-change="switchText()" ng-disabled="disableTextSwitch()">
                             <span class="lever"></span>
                             On
                         </label>
