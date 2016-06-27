@@ -70,10 +70,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         
         function createRadioButtonStyles() {
             var styleForChecked, styleForUnchecked;
-            var cssNameOfStyle;
+            var cssNameOfStyle, colorOfStyle;
             skills.categories.forEach(function(category) {
                 cssNameOfStyle = funcs.makeSafeForCSS(category);
-                styleForChecked = "[type=\"radio\"].with-gap:checked"
+                colorOfStyle = skills.categoryToColor(category);
+                styleForChecked = "[type=\"radio\"].cat-" + cssNameOfStyle + ".with-gap:checked + label:after + {background-color: "
             });
         }
 
