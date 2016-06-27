@@ -157,7 +157,19 @@
             stroke: white;
         }
 
-        [type="radio"].with-gap + label:after {
+        [type="radio"].with-gap:checked + label:after {
+            background-color: black;
+        }
+
+        [type="radio"].with-gap:not(:checked) + label:before {
+            background-color: black;
+        }
+
+        [type="radio"].cat-all.with-gap:checked + label:after {
+            background-color: black;
+        }
+
+        [type="radio"].cat-all.with-gap:not(:checked) + label:before {
             background-color: black;
         }
 
