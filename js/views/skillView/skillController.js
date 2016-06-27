@@ -998,10 +998,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
         }
 
-        function showYaSwitch(ya) {
-            var show = true;
+        function disableYaSwitch(ya) {
+            var show = false;
             if(ya == constants.ATTRIBUTE_ANZAHL_MITARBEITER && getMode() != MODE_TREEMAP) {
-                show = false;
+                show = true;
             }
 
             return show;
