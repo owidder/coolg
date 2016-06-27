@@ -1059,6 +1059,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         $scope.makeSafeForCSS = funcs.makeSafeForCSS;
 
         skills.ready.then(function () {
+            createRadioButtonStyles();
+
             $scope.switchCategory = switchCategory;
             $scope.showCategory = showCategory;
             $scope.showLocation = showLocation;
