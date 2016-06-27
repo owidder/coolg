@@ -176,12 +176,12 @@
                     <div class="col s12 switch" ng-disabled="disableTextSwitch()">
                         <label>
                             Text<br>Off
-                            <input type="checkbox" ng-model="input.showText" ng-disabled="disableCategorySwitch()">
+                            <input type="checkbox" ng-model="input.showText">
                             <span class="lever"></span>
                             On
                         </label>
                     </div>
-                    <div class="col s12 switch" ng-show="showCategorySwitch()">
+                    <div class="col s12 switch" ng-disabled="disableCategorySwitch()">
                         <label>
                             Kategorien<br>Off
                             <input type="checkbox" ng-model="input.withCategories" ng-change="draw()">
