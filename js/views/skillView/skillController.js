@@ -1015,10 +1015,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             return getMode() != MODE_TREEMAP;
         }
 
-        function showModeSwitch(mode) {
-            var show = true;
+        function disableModeSwitch(mode) {
+            var show = false;
             if(getYAttribute() == constants.ATTRIBUTE_ANZAHL_MITARBEITER && (mode == MODE_BUBBLES || MODE_VORONOI)) {
-                show = false;
+                show = true;
             }
 
             return show;
