@@ -211,21 +211,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12" ng-show="showModeSwitch('bubbles')">
+                    <div class="col s12">
                         <span class="switch">
-                            <input name="mode" type="radio" id="mode-bubbles" value="bubbles" ng-model="input.mode" ng-click="switchMode()"/>
+                            <input name="mode" type="radio" id="mode-bubbles" value="bubbles" ng-model="input.mode" ng-click="switchMode()" ng-disabled="disableModeSwitch('bubbles')"/>
                             <label for="mode-bubbles">Bubbles</label>
                         </span>
                     </div>
-                    <div class="col s12" ng-show="showModeSwitch('voronoi')">
+                    <div class="col s12">
                         <span class="switch">
-                            <input name="mode" type="radio" id="mode-voronoi" value="voronoi" ng-model="input.mode" ng-click="switchMode()"/>
+                            <input name="mode" type="radio" id="mode-voronoi" value="voronoi" ng-model="input.mode" ng-click="switchMode()" ng-disabled="disableModeSwitch('voronoi')"/>
                             <label for="mode-voronoi">Voronoi</label>
                         </span>
                     </div>
-                    <div class="col s12" ng-show="showModeSwitch('treemap')">
+                    <div class="col s12">
                         <span class="switch">
-                            <input name="mode" type="radio" id="mode-treemap" value="treemap" ng-model="input.mode" ng-click="switchMode()"/>
+                            <input name="mode" type="radio" id="mode-treemap" value="treemap" ng-model="input.mode" ng-click="switchMode()" ng-disabled="disableModeSwitch('treemap')"/>
                             <label for="mode-treemap">Treemap</label>
                         </span>
                     </div>
