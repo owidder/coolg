@@ -69,6 +69,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         
         function createRadioButtonStyles() {
+            var styleString = "<style>\n";
             var styleForChecked, styleForUnchecked;
             var cssNameOfStyle, colorOfStyle;
             skills.categories.forEach(function(category) {
