@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta charset="utf-8" />
+    <title>Approximating the Area of an SVG Path</title>
+    <style type="text/css">
+        html,body { margin:0; padding:0; height:100%; text-align:center; font-family:Calibri,sans-serif; user-select:none; -moz-user-select:none; -webkit-user-select:none; }
+        label { margin:1em 2em; display:inline-block; }
+        svg { width:100%; height:80%; display:block; }
+        #dragcatcher { fill:white }
+        path { fill:steelblue; stroke:darkblue; opacity:0.8 }
+        .editable-path-handle { fill:yellow; fill-opacity:0.5; stroke:#cc0; stroke-width:0.5px; stroke-opacity:0.8; }
+        .editable-path-handle.relative { fill:cyan; stroke:#03c; }
+        polygon, polyline { fill:white; fill-opacity:0.2; stroke:white; stroke-opacity:0.7; vector-effect:non-scaling-stroke; }
+        footer { font-style:italic }
+    </style>
+</head><body>
+
+<label>Extra Samples: <input id="samples" type="range" min="2" max="100" value="5" /><output for="samples" id="samples-value"/></label>
+<label>Area: <output id="area" value="0"/></label>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="200 0 400 300">
+    <rect id="dragcatcher" x="-1000" y="-1000" width="2000" height="2000" />
+    <path d="M300,140 C300,40,500,40,500,140z"/>
+</svg>
+
+<footer>Written to support <a href="http://stackoverflow.com/a/10045537/405017">this Stack Overflow answer</a>.</footer>
+
+<script type="text/javascript" src="./pathseg.js"></script>
+<script type="text/javascript" src="./EditableSVGPath.js"></script>
+<script type="text/javascript" src="./SVGPathToPoly.js"></script>
+<script type="text/javascript" src="./SVGPolyArea.js"></script>
+<script type="text/javascript"><![CDATA[
+var path    = document.querySelector('path'),
+        samples = document.querySelector('#samples'),
+        sampOut = document.querySelector('#samples-value'),
+        area    = document.querySelector('#area');
+var poly;
+
+path.addEventListener('dragged',updatePoly,false);
+document.querySelector('#samples').addEventListener('input',updatePoly,false);
+updatePoly();
+EditablePath(path,5); // Do this after the poly so the points show on top
+
+function updatePoly(){
+    sampOut.value = samples.value;
+    var next=poly && poly.nextSibling;
+    if (poly) poly.parentNode.removeChild(poly);
+    poly = pathToPolygon(path,samples.value);
+    path.parentNode.insertBefore(poly,next);
+    area.value = polyArea(poly).toFixed(0);
+}
+]]></script>
+</body></html>
