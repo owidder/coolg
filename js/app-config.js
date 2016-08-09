@@ -7,7 +7,11 @@ angular.module(com_geekAndPoke_coolg.moduleName)
                 templateUrl: 'js/views/stockView/stockView.html',
                 controller: com_geekAndPoke_coolg.STOCK_CONTROLLER
             })
-            .otherwise({redirectTo: '/stock'});
+            .when('/pici', {
+                templateUrl: 'js/views/piciView/piciView.html',
+                controller: com_geekAndPoke_coolg.PICI_CONTROLLER
+            })
+            .otherwise({redirectTo: '/pici'});
     }])
     .run(function(dateUtil, funcs, dimensions, mathUtil) {
         bottle.factory('dateUtil', function() {
