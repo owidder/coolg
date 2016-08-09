@@ -38,15 +38,19 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     function createFlatTreeFromAreaMap(areaMap) {
         var flatTree = {
             name: "root",
-            children: []
+            children: [],
+            indexes: {}
         };
 
         funcs.forEachKeyAndVal(areaMap, function(clazz, area) {
+            flatTree.indexes[clazz] = flatTree.children.length;
             flatTree.children.push({
                 name: clazz,
                 area: area
             });
         });
+
+        return flatTree;
     }
 
     function createTreeMapDataFromFlatTree(flatTree) {
@@ -66,6 +70,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         document.querySelector("#pici").appendChild(xml.documentElement);
         var areaMap = computeAreaMap();
         var flatTree = createFlatTreeFromAreaMap(areaMap);
+        var treeMapData = createTreeMapDataFromFlatTree(flatTree);
+
+        console.log(treeMapData);
     });
 
 });
