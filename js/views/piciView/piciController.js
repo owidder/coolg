@@ -178,17 +178,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         d3.selectAll(".picipath")
             .transition()
             .delay(function() {
-                var delay = mathUtil.randomIntBetween(0, 10000);
+                var delay = mathUtil.randomIntBetween(0, 1000);
                 return delay;
             })
             .duration(function() {
-                var duration = mathUtil.randomIntBetween(1000, 50000);
+                var duration = mathUtil.randomIntBetween(100, 60000);
                 return duration;
             })
             .attr("d", function() {
                 var origPath = this.__piciData__.origPath;
                 return origPath;
             });
+    }
+
+    function makeVisible() {
+        document.querySelector("#pici").className = "visible";
     }
 
     d3.xml("rsrc/abendmahl.svg").mimeType("image/svg+xml").get(function(error, xml) {
@@ -201,9 +205,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         createPiciData(flatTree);
 
         $timeout(function() {
-            transitionToTreeMap();
-            $timeout(transitionToRects, 10);
-            $timeout(transitionToOriginal, 15);
+            transitionToRects();
+            $timeout(makeVisible);
+            $timeout(function() {
+                makeVisible();
+                transitionToOriginal();
+            });
         }, 0);
     });
 
