@@ -158,10 +158,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function transitionToRects() {
         d3.selectAll(".picipath")
-            .transition()
-            .duration(function() {
-                return mathUtil.randomIntBetween(1000, 20000);
-            })
             .attr("d", function() {
                 var rect = this.__piciData__.rect;
                 var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
@@ -182,11 +178,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         d3.selectAll(".picipath")
             .transition()
             .delay(function() {
-                var delay = mathUtil.randomIntBetween(0, 15000);
+                var delay = mathUtil.randomIntBetween(0, 10000);
                 return delay;
             })
             .duration(function() {
-                var duration = mathUtil.randomIntBetween(30000, 50000);
+                var duration = mathUtil.randomIntBetween(1000, 50000);
                 return duration;
             })
             .attr("d", function() {
@@ -195,7 +191,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
-    d3.xml("rsrc/picasso1.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    d3.xml("rsrc/abendmahl.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
         document.querySelector("#pici").appendChild(xml.documentElement);
         var areaMap = computeAreaMap();
@@ -206,9 +202,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         $timeout(function() {
             transitionToTreeMap();
-            $timeout(transitionToRects, 5000);
-            $timeout(transitionToOriginal, 25000);
-        }, 1);
+            $timeout(transitionToRects, 10);
+            $timeout(transitionToOriginal, 15);
+        }, 0);
     });
 
 });
