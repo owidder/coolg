@@ -2,12 +2,28 @@
 
 com_geekAndPoke_coolg.PICI_CONTROLLER = "piciController";
 
-angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function() {
+angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function($timeout) {
     var dimensions  = bottle.container.dimensions;
     var funcs  = bottle.container.funcs;
+    var mathUtil = bottle.container.mathUtil;
 
     var width = dimensions.width(-50);
     var height = dimensions.height(-70);
+
+    function relativeBoundingRect(element, relativeToSelector) {
+        var relativeToBoundingRect = document.querySelector(relativeToSelector).getBoundingClientRect();
+        var boundingRect = element.getBoundingClientRect();
+        var relativeBoundingRect = {
+            width: boundingRect.width,
+            height: boundingRect.height,
+            left: boundingRect.left - relativeToBoundingRect.left,
+            top: boundingRect.top - relativeToBoundingRect.top,
+            bottom: boundingRect.bottom - relativeToBoundingRect.bottom,
+            right: boundingRect.right - relativeToBoundingRect.right
+        };
+
+        return relativeBoundingRect;
+    }
 
     function computeArea(element) {
         var rect = element.getBoundingClientRect();
@@ -26,6 +42,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var areaMap = {};
 
         d3.selectAll("svg > path")
+            .attr("class", function() {
+                var clazz = this.getAttribute("class");
+                return clazz + " picipath";
+            })
             .each(function() {
                 var area = computeArea(this);
                 var clazz = this.getAttribute("class");
@@ -65,6 +85,116 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         return treeMapData;
     }
 
+    function createRectPath(x, y, dx, dy) {
+        return "M" + x + " " + y + " H " + (x + dx) + " V " + (y + dy) + " H " + x + " Z";
+    }
+
+    function createCirclePath(cx, cy, r) {
+        return "M " + cx + " " + cy + " m " + (-1 * r) +
+            ", 0 a " + r + "," + r + " 0 1,0 " + (r * 2) +
+            ",0 a " + r + "," + r + " 0 1,0 " + (-2 * r) + ",0";
+    }
+
+    function createPaths(flatTree) {
+        d3.selectAll(".picipath")
+            .each(function() {
+                var clazz = this.getAttribute("class");
+                var nodeIndex = flatTree.indexes[clazz];
+                var treeNode = flatTree.children[nodeIndex];
+                var rectPath = createRectPath(treeNode.x, treeNode.y, treeNode.dx, treeNode.dy);
+                var cx = treeNode.x + (treeNode.dx / 2);
+                var cy = treeNode.y + (treeNode.dy / 2);
+                var radius = 1;
+                var circlePath = createCirclePath(cx, cy, radius);
+                var origPath = this.getAttribute("d");
+
+                this.setAttribute("_rectPath", rectPath);
+                this.setAttribute("_origPath", origPath);
+                this.setAttribute("_circlePath", circlePath);
+            });
+    }
+
+    function centerOfRect(rect) {
+        var cx = rect.x + (rect.dx / 2);
+        var cy = rect.y + (rect.dy / 2);
+
+        return {
+            cx: cx,
+            cy: cy
+        }
+    }
+
+    function createPiciData(flatTree) {
+        d3.selectAll(".picipath")
+            .each(function() {
+                var clazz = this.getAttribute("class");
+                var nodeIndex = flatTree.indexes[clazz];
+                var treeNode = flatTree.children[nodeIndex];
+                var boundingRect = relativeBoundingRect(this, "#pici");
+                var piciData = {
+                    origPath: this.getAttribute("d"),
+                    treeNode: treeNode,
+                    rect: {
+                        x: boundingRect.left,
+                        y: boundingRect.top,
+                        dx: boundingRect.width,
+                        dy: boundingRect.height
+                    }
+                };
+                this.__piciData__ = piciData;
+            });
+    }
+
+    function transitionToCircles() {
+        d3.selectAll(".picipath")
+            .attr("d", function() {
+                var rect = this.__piciData__.rect;
+                var center = centerOfRect(rect);
+                var radius = 1;
+                var circlePath = createCirclePath(center.cx, center.cy, radius);
+                return circlePath;
+            });
+    }
+
+    function transitionToRects() {
+        d3.selectAll(".picipath")
+            .transition()
+            .duration(function() {
+                return mathUtil.randomIntBetween(1000, 20000);
+            })
+            .attr("d", function() {
+                var rect = this.__piciData__.rect;
+                var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
+                return rectPath;
+            });
+    }
+
+    function transitionToTreeMap() {
+        d3.selectAll(".picipath")
+            .attr("d", function() {
+                var rect = this.__piciData__.treeNode;
+                var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
+                return rectPath;
+            });
+    }
+
+    function transitionToOriginal() {
+        d3.selectAll(".picipath")
+            .transition()
+            .delay(function() {
+                var delay = mathUtil.randomIntBetween(0, 15000);
+                return delay;
+            })
+            .duration(function() {
+                var duration = mathUtil.randomIntBetween(30000, 50000);
+                return duration;
+            })
+            .attr("d", function() {
+                var origPath = this.__piciData__.origPath;
+                return origPath;
+            });
+    }
+
     d3.xml("rsrc/picasso1.svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
         document.querySelector("#pici").appendChild(xml.documentElement);
@@ -72,7 +202,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var flatTree = createFlatTreeFromAreaMap(areaMap);
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
-        console.log(treeMapData);
+        createPiciData(flatTree);
+
+        $timeout(function() {
+            transitionToTreeMap();
+            $timeout(transitionToRects, 5000);
+            $timeout(transitionToOriginal, 25000);
+        }, 1);
     });
 
 });

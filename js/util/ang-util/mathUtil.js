@@ -16,8 +16,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).factory("mathUtil", function() 
         return Math.round(n * factor) / factor;
     }
 
+    function randomIntBetween(lower, upper) {
+        var rand = Math.random() * (upper - lower) + lower;
+        return Math.trunc(rand);
+    }
+
     return {
         hexToDec: hexToDec,
-        round: round
+        round: round,
+        randomIntBetween: randomIntBetween
     }
 });
