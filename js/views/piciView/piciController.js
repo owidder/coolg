@@ -7,6 +7,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var funcs  = bottle.container.funcs;
     var mathUtil = bottle.container.mathUtil;
 
+    var width, height;
+
     function relativeBoundingRect(element, relativeToSelector) {
         var relativeToBoundingRect = document.querySelector(relativeToSelector).getBoundingClientRect();
         var boundingRect = element.getBoundingClientRect();
@@ -80,7 +82,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         return flatTree;
     }
 
-    function createTreeMapDataFromFlatTree(flatTree, width, height) {
+    function createTreeMapDataFromFlatTree(flatTree) {
         var treeMap = d3.layout.treemap()
             .size([width, height])
             .value(function(d) {
@@ -213,8 +215,57 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
+    function getStepFromId(stepId) {
+        var steps = [
+            shakeStep,
+            transitionToRectStep
+        ];
+
+        return steps[stepId];
+    }
+
+    function startCascade() {
+        d3.selectAll(".picipath")
+            .each(function() {
+                var firstStep = getStepFromId(0);
+                firstStep(this, 1);
+            });
+    }
+
+    function shakeStep(element, nextStepId) {
+        d3.select(element)
+            .transition()
+            .duration(2000)
+            .attr("transform", function() {
+                var translateX = mathUtil.randomIntBetween(-width/2, width/2);
+                var translateY = mathUtil.randomIntBetween(-height/2, height/2);
+                var rotate = mathUtil.randomIntBetween(0, 360);
+                return "translate(" + translateX + "," + translateY + ") rotate(" + rotate + ")";
+            })
+            .each("end", function() {
+                var nextStep = getStepFromId(nextStepId);
+                nextStep(this, nextStepId);
+            });
+    }
+
+    function transitionToRectStep(element, nextStepId) {
+        d3.select(element)
+            .transition()
+            .duration(1000)
+            .attr("d", function() {
+                var rect = this.__piciData__.rect;
+                var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
+                return rectPath;
+            })
+            .each("end", function() {
+                var nextStep = getStepFromId(nextStepId);
+                nextStep(this, nextStepId);
+            });
+    }
+
     function makeVisible() {
-        document.querySelector("#pici").className = "visible";
+        d3.selectAll("#pici")
+            .attr("class", "visible");
     }
 
     var picId = $routeParams.p;
@@ -238,28 +289,24 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     d3.xml("rsrc/" + picData[picId].filename + ".svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
-        var piciElement = document.querySelector("#pici");
-        var piciElementRect = piciElement.getBoundingClientRect();
-        var width = piciElementRect.width;
-        var height = piciElementRect.height;
 
         document.querySelector("#pici").appendChild(xml.documentElement);
         var areaMap = computeAreaMap();
         var flatTree = createFlatTreeFromAreaMap(areaMap);
-        var treeMapData = createTreeMapDataFromFlatTree(flatTree, width, height);
+        var piciElement = document.querySelector("#pici");
+        var piciElementRect = piciElement.getBoundingClientRect();
+        width = piciElementRect.width;
+        height = piciElementRect.height;
+        var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
         createPiciData(flatTree);
+        transitionToTreeMap();
+        makeVisible();
+        $timeout(makeVisible);
 
         $timeout(function() {
-            transitionToTreeMap();
-            makeVisible();
-            shake(width, height);
-            $timeout(transitionToRects, 3000);
-            $timeout(function() {
-                makeVisible();
-                transitionToOriginal();
-            }, 5000);
-        }, 1);
+            startCascade();
+        }, 2000);
     });
 
 });
