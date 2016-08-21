@@ -2,13 +2,10 @@
 
 com_geekAndPoke_coolg.PICI_CONTROLLER = "piciController";
 
-angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function($timeout) {
+angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function($timeout, $routeParams) {
     var dimensions  = bottle.container.dimensions;
     var funcs  = bottle.container.funcs;
     var mathUtil = bottle.container.mathUtil;
-
-    var width = dimensions.width(-50);
-    var height = dimensions.height(-70);
 
     function relativeBoundingRect(element, relativeToSelector) {
         var relativeToBoundingRect = document.querySelector(relativeToSelector).getBoundingClientRect();
@@ -36,6 +33,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         areaMap[clazz] += area;
+    }
+
+    function gWrap() {
+        d3.selectAll("svg > path")
+            .each(function() {
+                var g = document.createElement("svg:g");
+                var newElement = this.parentNode.insertBefore(g, this);
+                var clonedPath = this.cloneNode();
+                newElement.appendChild(clonedPath);
+            });
     }
 
     function computeAreaMap() {
@@ -73,7 +80,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         return flatTree;
     }
 
-    function createTreeMapDataFromFlatTree(flatTree) {
+    function createTreeMapDataFromFlatTree(flatTree, width, height) {
         var treeMap = d3.layout.treemap()
             .size([width, height])
             .value(function(d) {
@@ -133,6 +140,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var boundingRect = relativeBoundingRect(this, "#pici");
                 var piciData = {
                     origPath: this.getAttribute("d"),
+                    origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
                     rect: {
                         x: boundingRect.left,
@@ -158,10 +166,33 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function transitionToRects() {
         d3.selectAll(".picipath")
+            .transition()
+            .duration(2000)
             .attr("d", function() {
                 var rect = this.__piciData__.rect;
                 var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
                 return rectPath;
+            });
+    }
+
+    function shake(width, height) {
+        d3.selectAll(".picipath")
+            .transition()
+            .duration(2000)
+            .attr("transform", function() {
+                var translateX = mathUtil.randomIntBetween(-width/2, width/2);
+                var translateY = mathUtil.randomIntBetween(-height/2, height/2);
+                var rotate = mathUtil.randomIntBetween(0, 360);
+                return "translate(" + translateX + "," + translateY + ") rotate(" + rotate + ")";
+            });
+    }
+
+    function unshake() {
+        d3.selectAll(".picipath")
+            .transition()
+            .duration(2000)
+            .attr("transform", function() {
+                return this.__piciData__.origTransform;
             });
     }
 
@@ -176,15 +207,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function transitionToOriginal() {
         d3.selectAll(".picipath")
-            .transition()
-            .delay(function() {
-                var delay = mathUtil.randomIntBetween(0, 1000);
-                return delay;
-            })
-            .duration(function() {
-                var duration = mathUtil.randomIntBetween(100, 60000);
-                return duration;
-            })
             .attr("d", function() {
                 var origPath = this.__piciData__.origPath;
                 return origPath;
@@ -195,23 +217,49 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         document.querySelector("#pici").className = "visible";
     }
 
-    d3.xml("rsrc/abendmahl.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    var picId = $routeParams.p;
+    if(funcs.isEmpty(picId)) {
+        picId = '1';
+    }
+    var picData = {
+        '1': {
+            filename: 'picasso1',
+            artist: 'Picasso'
+        },
+        '2': {
+            filename: 'mona_1',
+            artits: 'Leonardo da Vinci'
+        },
+        '3': {
+            filename: 'abendmahl',
+            artist: 'Rembrandt'
+        }
+    };
+
+    d3.xml("rsrc/" + picData[picId].filename + ".svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
+        var piciElement = document.querySelector("#pici");
+        var piciElementRect = piciElement.getBoundingClientRect();
+        var width = piciElementRect.width;
+        var height = piciElementRect.height;
+
         document.querySelector("#pici").appendChild(xml.documentElement);
         var areaMap = computeAreaMap();
         var flatTree = createFlatTreeFromAreaMap(areaMap);
-        var treeMapData = createTreeMapDataFromFlatTree(flatTree);
+        var treeMapData = createTreeMapDataFromFlatTree(flatTree, width, height);
 
         createPiciData(flatTree);
 
         $timeout(function() {
-            transitionToRects();
-            $timeout(makeVisible);
+            transitionToTreeMap();
+            makeVisible();
+            shake(width, height);
+            $timeout(transitionToRects, 3000);
             $timeout(function() {
                 makeVisible();
                 transitionToOriginal();
-            });
-        }, 0);
+            }, 5000);
+        }, 1);
     });
 
 });
