@@ -315,7 +315,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
     var picData = {
         '1': {
-            filename: 'picasso1',
+            filename: 'guernica3',
             artist: 'Picasso'
         },
         '2': {
@@ -325,6 +325,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         '3': {
             filename: 'abendmahl',
             artist: 'Rembrandt'
+        },
+        '4': {
+            filename: 'schrei',
+            artist: 'Munch'
+        },
+        '5': {
+            filename: 'Starry-Night-Over-the-Rhone-2',
+            artist: 'Van Gogh'
         }
     };
 
