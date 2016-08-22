@@ -231,9 +231,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function getStepFromId(stepId) {
         var steps = [
-            shakeStep,
-            transitionToRectStep,
             transitionToOriginalStep,
+            shakeStep,
+            shakeStep,
+            shakeStep,
+            shakeStep,
+            shakeStep,
             unshakeStep,
             stop
         ];
@@ -256,7 +259,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     function shakeStep(element, nextStepId) {
         d3.select(element)
             .transition()
-            .duration(2000)
+            .duration(function() {
+                var duration = mathUtil.randomIntBetween(2000, 3000);
+                return duration;
+            })
             .attr("transform", function() {
                 var translateX = mathUtil.randomIntBetween(-width/2, width/2);
                 var translateY = mathUtil.randomIntBetween(-height/2, height/2);
