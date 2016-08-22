@@ -218,10 +218,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     function getStepFromId(stepId) {
         var steps = [
             shakeStep,
-            transitionToRectStep
+            transitionToRectStep,
+            transitionToOriginalStep,
+            unshakeStep,
+            stop
         ];
 
         return steps[stepId];
+    }
+
+    function stop() {
+        // do nothing
     }
 
     function startCascade() {
@@ -244,8 +251,42 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             })
             .each("end", function() {
                 var nextStep = getStepFromId(nextStepId);
-                nextStep(this, nextStepId);
+                nextStep(this, nextStepId + 1);
             });
+    }
+
+    function unshakeStep(element, nextStepId) {
+        d3.select(element)
+            .transition()
+            .delay(function() {
+                var delay = mathUtil.randomIntBetween(0, 10000);
+                return delay;
+            })
+            .duration(function() {
+                var duration = mathUtil.randomIntBetween(1000, 60000);
+                return duration;
+            })
+            .attr("transform", function() {
+                return this.__piciData__.origTransform;
+            })
+            .each("end", function() {
+                var nextStep = getStepFromId(nextStepId);
+                nextStep(this, nextStepId + 1);
+            });
+    }
+
+    function transitionToOriginalStep(element, nextStepId) {
+        $timeout(function() {
+            d3.select(element)
+                .attr("d", function() {
+                    var origPath = this.__piciData__.origPath;
+                    return origPath;
+                })
+                .each(function() {
+                    var nextStep = getStepFromId(nextStepId);
+                    nextStep(this, nextStepId + 1);
+                });
+        }, mathUtil.randomIntBetween(0, 10000));
     }
 
     function transitionToRectStep(element, nextStepId) {
@@ -259,7 +300,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             })
             .each("end", function() {
                 var nextStep = getStepFromId(nextStepId);
-                nextStep(this, nextStepId);
+                nextStep(this, nextStepId + 1);
             });
     }
 
