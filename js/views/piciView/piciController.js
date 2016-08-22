@@ -6,6 +6,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var dimensions  = bottle.container.dimensions;
     var funcs  = bottle.container.funcs;
     var mathUtil = bottle.container.mathUtil;
+    var SimplePromise = bottle.container.SimplePromise;
 
     var width, height;
 
@@ -140,7 +141,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var nodeIndex = flatTree.indexes[clazz];
                 var treeNode = flatTree.children[nodeIndex];
                 var boundingRect = relativeBoundingRect(this, "#pici");
+                var shakePhaseReadyPromise = new SimplePromise();
+                shakePhaseReadyPromises.push(shakePhaseReadyPromise);
                 var piciData = {
+                    shakePhaseReadyPromise: shakePhaseReadyPromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -228,6 +232,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return origPath;
             });
     }
+
+    var shakePhaseReadyPromises = [];
 
     function getStepFromId(stepId) {
         var steps = [
@@ -329,6 +335,38 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "visible");
     }
 
+    function insertButton() {
+        d3.select(".picipath:last-of-type")
+            .each(function () {
+                var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                var newElement = this.parentNode.insertBefore(gElement, null);
+                newElement.setAttribute("class", "buttons");
+            });
+
+        d3.select("g.buttons")
+            .append("circle")
+            .attr("class", "button")
+            .attr("cx", 30)
+            .attr("cy", 30)
+            .attr("r", 30);
+
+        d3.select("g.buttons")
+            .append("path")
+            .attr("class", "button eins");
+
+        d3.select("g.buttons")
+            .append("path")
+            .attr("class", "button zwei");
+    }
+
+    function setButtonType() {
+        d3.select("path.button.eins")
+            .attr("d", "M8 5v14l11-7z");
+
+        d3.select("path.button.zwei")
+            .attr("d", "M0 0h24v24H0z");
+    }
+
     var picId = $routeParams.p;
     if(funcs.isEmpty(picId)) {
         picId = '1';
@@ -371,7 +409,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         createPiciData(flatTree);
         transitionToTreeMap();
         makeVisible();
-        $timeout(makeVisible);
+        insertButton();
+        setButtonType();
 
         $timeout(function() {
             startCascade();
