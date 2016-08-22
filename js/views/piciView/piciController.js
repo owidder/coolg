@@ -177,6 +177,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
+    function centerOfElement(element) {
+        var rect = element.getBoundingClientRect();
+        var cx = (rect.width/2);
+        var cy = (rect.height/2);
+
+        return {
+            cx: cx,
+            cy: cy
+        }
+    }
+
     function shake(width, height) {
         d3.selectAll(".picipath")
             .transition()
@@ -184,8 +195,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", function() {
                 var translateX = mathUtil.randomIntBetween(-width/2, width/2);
                 var translateY = mathUtil.randomIntBetween(-height/2, height/2);
-                var rotate = mathUtil.randomIntBetween(0, 360);
-                return "translate(" + translateX + "," + translateY + ") rotate(" + rotate + ")";
+                var center = centerOfElement(this);
+                var rotate1 = mathUtil.randomIntBetween(0, 3600);
+                var rotate2 = mathUtil.randomIntBetween(0, 3600);
+                return "translate(" + translateX + "," + translateY + ") rotate(" + rotate1 + ") rotate(" + rotate2 + "," + center.cx + "," + center.cy + ")";
+                //return "translate(" + translateX + "," + translateY + ") rotate(" + rotate2 + "," + center.cx + "," + center.cy + ")";
             });
     }
 
