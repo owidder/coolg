@@ -335,6 +335,36 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "visible");
     }
 
+    function buttonBlink() {
+        function toCol(color) {
+            d3.select("path.button.eins")
+                .transition()
+                .duration(1000)
+                .style("fill", color)
+                .each("end", function() {
+                    if(color == "white") {
+                        toCol("black");
+                    }
+                    else {
+                        toCol("white");
+                    }
+                });
+        }
+
+        toCol("white");
+    }
+
+    var buttonType;
+
+    function performButtonFunction() {
+        switch(buttonType) {
+            case 'start':
+                startCascade();
+                setButtonType('stop');
+                break;
+        }
+    }
+
     function insertButton() {
         d3.select(".picipath:last-of-type")
             .each(function () {
@@ -346,25 +376,49 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         d3.select("g.buttons")
             .append("circle")
             .attr("class", "button")
-            .attr("cx", 30)
-            .attr("cy", 30)
-            .attr("r", 30);
+            .attr("cx", 15)
+            .attr("cy", 15)
+            .attr("r", 15)
+            .on("click", performButtonFunction);
 
         d3.select("g.buttons")
-            .append("path")
-            .attr("class", "button eins");
+            .append("g")
+            .attr("class", "buttonpaths")
+            .attr("transform", "translate(3, 3)");
 
-        d3.select("g.buttons")
+        d3.select("g.buttonpaths")
             .append("path")
-            .attr("class", "button zwei");
+            .style("fill", "black")
+            .attr("class", "button eins")
+            .on("click", performButtonFunction);
+
+        d3.select("g.buttonpaths")
+            .append("path")
+            .style("fill", "none")
+            .attr("class", "button zwei")
+            .on("click", performButtonFunction);
     }
 
-    function setButtonType() {
-        d3.select("path.button.eins")
-            .attr("d", "M8 5v14l11-7z");
+    function setButtonType(_buttonType) {
+        buttonType = _buttonType;
 
-        d3.select("path.button.zwei")
-            .attr("d", "M0 0h24v24H0z");
+        switch(_buttonType) {
+            case 'start':
+                d3.select("path.button.eins")
+                    .attr("d", "M8 5v14l11-7z");
+
+                d3.select("path.button.zwei")
+                    .attr("d", "M0 0h24v24H0z");
+                break;
+
+            case 'stop':
+                d3.select("path.button.eins")
+                    .attr("d", "M6 6h12v12H6z");
+
+                d3.select("path.button.zwei")
+                    .attr("d", "M0 0h24v24H0z");
+                break;
+        }
     }
 
     var picId = $routeParams.p;
@@ -386,10 +440,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         },
         '4': {
             filename: 'schrei',
+            name: 'Der Schrei',
             artist: 'Munch'
         },
         '5': {
-            filename: 'Starry-Night-Over-the-Rhone-2',
+            filename: 'starry-night',
+            name: 'Starry Night',
             artist: 'Van Gogh'
         }
     };
@@ -410,11 +466,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         transitionToTreeMap();
         makeVisible();
         insertButton();
-        setButtonType();
-
-        $timeout(function() {
-            startCascade();
-        }, 2000);
+        setButtonType('start');
+        buttonBlink();
     });
 
 });
