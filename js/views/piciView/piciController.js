@@ -105,34 +105,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             ",0 a " + r + "," + r + " 0 1,0 " + (-2 * r) + ",0";
     }
 
-    function createPaths(flatTree) {
-        d3.selectAll(".picipath")
-            .each(function() {
-                var clazz = this.getAttribute("class");
-                var nodeIndex = flatTree.indexes[clazz];
-                var treeNode = flatTree.children[nodeIndex];
-                var rectPath = createRectPath(treeNode.x, treeNode.y, treeNode.dx, treeNode.dy);
-                var cx = treeNode.x + (treeNode.dx / 2);
-                var cy = treeNode.y + (treeNode.dy / 2);
-                var radius = 1;
-                var circlePath = createCirclePath(cx, cy, radius);
-                var origPath = this.getAttribute("d");
-
-                this.setAttribute("_rectPath", rectPath);
-                this.setAttribute("_origPath", origPath);
-                this.setAttribute("_circlePath", circlePath);
-            });
-    }
-
-    function centerOfRect(rect) {
-        var cx = rect.x + (rect.dx / 2);
-        var cy = rect.y + (rect.dy / 2);
-
-        return {
-            cx: cx,
-            cy: cy
-        }
-    }
+    var allTransitionStartedPromises = [];
 
     function createPiciData(flatTree) {
         d3.selectAll(".picipath")
@@ -141,10 +114,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var nodeIndex = flatTree.indexes[clazz];
                 var treeNode = flatTree.children[nodeIndex];
                 var boundingRect = relativeBoundingRect(this, "#pici");
-                var shakePhaseReadyPromise = new SimplePromise();
-                shakePhaseReadyPromises.push(shakePhaseReadyPromise);
+                var transitionStartedPromise = new SimplePromise();
+                allTransitionStartedPromises.push(transitionStartedPromise.promise);
                 var piciData = {
-                    shakePhaseReadyPromise: shakePhaseReadyPromise,
+                    transitionStartedPromise: transitionStartedPromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -159,63 +132,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
-    function transitionToCircles() {
-        d3.selectAll(".picipath")
-            .attr("d", function() {
-                var rect = this.__piciData__.rect;
-                var center = centerOfRect(rect);
-                var radius = 1;
-                var circlePath = createCirclePath(center.cx, center.cy, radius);
-                return circlePath;
-            });
-    }
-
-    function transitionToRects() {
-        d3.selectAll(".picipath")
-            .transition()
-            .duration(2000)
-            .attr("d", function() {
-                var rect = this.__piciData__.rect;
-                var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
-                return rectPath;
-            });
-    }
-
-    function centerOfElement(element) {
-        var rect = element.getBoundingClientRect();
-        var cx = (rect.width/2);
-        var cy = (rect.height/2);
-
-        return {
-            cx: cx,
-            cy: cy
-        }
-    }
-
-    function shake(width, height) {
-        d3.selectAll(".picipath")
-            .transition()
-            .duration(2000)
-            .attr("transform", function() {
-                var translateX = mathUtil.randomIntBetween(-width/2, width/2);
-                var translateY = mathUtil.randomIntBetween(-height/2, height/2);
-                var center = centerOfElement(this);
-                var rotate1 = mathUtil.randomIntBetween(0, 3600);
-                var rotate2 = mathUtil.randomIntBetween(0, 3600);
-                return "translate(" + translateX + "," + translateY + ") rotate(" + rotate1 + ") rotate(" + rotate2 + "," + center.cx + "," + center.cy + ")";
-                //return "translate(" + translateX + "," + translateY + ") rotate(" + rotate2 + "," + center.cx + "," + center.cy + ")";
-            });
-    }
-
-    function unshake() {
-        d3.selectAll(".picipath")
-            .transition()
-            .duration(2000)
-            .attr("transform", function() {
-                return this.__piciData__.origTransform;
-            });
-    }
-
     function transitionToTreeMap() {
         d3.selectAll(".picipath")
             .attr("d", function() {
@@ -224,16 +140,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return rectPath;
             });
     }
-
-    function transitionToOriginal() {
-        d3.selectAll(".picipath")
-            .attr("d", function() {
-                var origPath = this.__piciData__.origPath;
-                return origPath;
-            });
-    }
-
-    var shakePhaseReadyPromises = [];
 
     function getStepFromId(stepId) {
         var steps = [
@@ -301,6 +207,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
+    function resolveStep() {
+
+    }
+
     function transitionToOriginalStep(element, nextStepId) {
         $timeout(function() {
             d3.select(element)
@@ -328,6 +238,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var nextStep = getStepFromId(nextStepId);
                 nextStep(this, nextStepId + 1);
             });
+    }
+
+    function pause() {
+        d3.selectAll(".picipath")
+            .transition()
+            .duration(0);
     }
 
     function makeVisible() {
@@ -360,7 +276,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         switch(buttonType) {
             case 'start':
                 startCascade();
-                setButtonType('stop');
+                setButtonType('none');
+                break;
+
+            case 'stop':
+                pause();
                 break;
         }
     }
@@ -389,13 +309,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         d3.select("g.buttonpaths")
             .append("path")
             .style("fill", "black")
-            .attr("class", "button eins")
+            .attr("class", "button fill")
             .on("click", performButtonFunction);
 
         d3.select("g.buttonpaths")
             .append("path")
             .style("fill", "none")
-            .attr("class", "button zwei")
+            .attr("class", "button fillnone")
             .on("click", performButtonFunction);
     }
 
@@ -404,18 +324,26 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         switch(_buttonType) {
             case 'start':
-                d3.select("path.button.eins")
+                d3.select("path.button.fill")
                     .attr("d", "M8 5v14l11-7z");
 
-                d3.select("path.button.zwei")
+                d3.select("path.button.fillnone")
                     .attr("d", "M0 0h24v24H0z");
                 break;
 
             case 'stop':
-                d3.select("path.button.eins")
+                d3.select("path.button.fikk")
                     .attr("d", "M6 6h12v12H6z");
 
-                d3.select("path.button.zwei")
+                d3.select("path.button.fillnone")
+                    .attr("d", "M0 0h24v24H0z");
+                break;
+
+            case 'none':
+                d3.select("path.button.fill")
+                    .attr("d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z");
+
+                d3.select("path.button.fillnone")
                     .attr("d", "M0 0h24v24H0z");
                 break;
         }
@@ -467,6 +395,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         makeVisible();
         insertButton();
         setButtonType('start');
+        Promise.all(allTransitionStartedPromises).then(function() {
+            setButtonType('stop');
+        });
         buttonBlink();
     });
 
