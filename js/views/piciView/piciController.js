@@ -223,7 +223,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     this.__piciData__.transitionStartedPromise.resolve();
                     nextStep(this, nextStepId + 1);
                 });
-        }, mathUtil.randomIntBetween(0, 1000));
+        }, mathUtil.randomIntBetween(0, 5000));
     }
 
     function transitionToRectStep(element, nextStepId) {
@@ -258,6 +258,17 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             allPaused = true;
         });
         doPause();
+    }
+
+    function solve() {
+        d3.selectAll(".picipath")
+            .attr("d", function() {
+                var origPath = this.__piciData__.origPath;
+                return origPath;
+            })
+            .attr("transform", function() {
+                return this.__piciData__.origTransform;
+            });
     }
 
     function makeVisible() {
@@ -296,6 +307,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             case 'stop':
                 pause();
                 setButtonType('solve');
+                break;
+
+            case 'solve':
+                solve();
+                setButtonType('next');
                 break;
         }
     }
@@ -370,6 +386,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                     .attr("d", "M0 0h24v24H0z");
                 break;
 
+            case 'next':
+                d3.select("path.button.fill")
+                    .attr("d", "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z");
+
+                d3.select("path.button.fillnone")
+                    .attr("d", "M0 0h24v24H0z");
+                break;
         }
     }
 
