@@ -106,6 +106,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
 
     var allTransitionStartedPromises = [];
+    var allTransitionStoppedPromises = [];
 
     function createPiciData(flatTree) {
         d3.selectAll(".picipath")
@@ -115,9 +116,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var treeNode = flatTree.children[nodeIndex];
                 var boundingRect = relativeBoundingRect(this, "#pici");
                 var transitionStartedPromise = new SimplePromise();
+                var transitionStoppedPromise = new SimplePromise();
                 allTransitionStartedPromises.push(transitionStartedPromise.promise);
+                allTransitionStoppedPromises.push(transitionStoppedPromise.promise);
                 var piciData = {
                     transitionStartedPromise: transitionStartedPromise,
+                    transitionStoppedPromise: transitionStoppedPromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -207,10 +211,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             });
     }
 
-    function resolveStep() {
-
-    }
-
     function transitionToOriginalStep(element, nextStepId) {
         $timeout(function() {
             d3.select(element)
@@ -220,9 +220,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 })
                 .each(function() {
                     var nextStep = getStepFromId(nextStepId);
+                    this.__piciData__.transitionStartedPromise.resolve();
                     nextStep(this, nextStepId + 1);
                 });
-        }, mathUtil.randomIntBetween(0, 10000));
+        }, mathUtil.randomIntBetween(0, 1000));
     }
 
     function transitionToRectStep(element, nextStepId) {
@@ -241,9 +242,22 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
 
     function pause() {
-        d3.selectAll(".picipath")
-            .transition()
-            .duration(0);
+        var allPaused = false;
+        function doPause() {
+            d3.selectAll(".picipath")
+                .transition()
+                .duration(0)
+                .each("end", function() {
+                    this.__piciData__.transitionStoppedPromise.resolve();
+                });
+            if(!allPaused) {
+                $timeout(doPause, 1000);
+            }
+        }
+        Promise.all(allTransitionStoppedPromises).then(function() {
+            allPaused = true;
+        });
+        doPause();
     }
 
     function makeVisible() {
@@ -253,7 +267,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function buttonBlink() {
         function toCol(color) {
-            d3.select("path.button.eins")
+            d3.select("path.button.fill")
                 .transition()
                 .duration(1000)
                 .style("fill", color)
@@ -281,6 +295,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             case 'stop':
                 pause();
+                setButtonType('solve');
                 break;
         }
     }
@@ -332,7 +347,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 break;
 
             case 'stop':
-                d3.select("path.button.fikk")
+                d3.select("path.button.fill")
                     .attr("d", "M6 6h12v12H6z");
 
                 d3.select("path.button.fillnone")
@@ -346,6 +361,15 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 d3.select("path.button.fillnone")
                     .attr("d", "M0 0h24v24H0z");
                 break;
+
+            case 'solve':
+                d3.select("path.button.fill")
+                    .attr("d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z");
+
+                d3.select("path.button.fillnone")
+                    .attr("d", "M0 0h24v24H0z");
+                break;
+
         }
     }
 
