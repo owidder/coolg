@@ -2,7 +2,7 @@
 
 com_geekAndPoke_coolg.PICI_CONTROLLER = "piciController";
 
-angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function($timeout, $routeParams) {
+angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_coolg.PICI_CONTROLLER, function($timeout, $routeParams, $location) {
     var dimensions  = bottle.container.dimensions;
     var funcs  = bottle.container.funcs;
     var mathUtil = bottle.container.mathUtil;
@@ -315,6 +315,13 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 solve();
                 setButtonType('next');
                 break;
+
+            case 'next':
+                nextPicId();
+                $timeout(function() {
+                    $location.search("p", picId);
+                }, 100);
+                break;
         }
     }
 
@@ -377,8 +384,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
 
     var picId = parseInt($routeParams.p);
-    if(funcs.isEmpty(picId)) {
-        picId = '1';
+    if(isNaN(picId)) {
+        picId = 0;
     }
 
     var picData = [
@@ -440,14 +447,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         console.log(height);
         console.log(screenWidth);
         console.log(screenHeight);
-
-/*
-        if(height > screenHeight) {
-            var scale = screenHeight / height;
-            d3.select("svg")
-                .attr("transform", "scale(" + scale + " " + scale + ")");
-        }
-*/
 
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
