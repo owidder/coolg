@@ -9,6 +9,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var SimplePromise = bottle.container.SimplePromise;
 
     var width, height;
+    var screenWidth = dimensions.width();
+    var screenHeight = dimensions.height();
 
     function relativeBoundingRect(element, relativeToSelector) {
         var relativeToBoundingRect = document.querySelector(relativeToSelector).getBoundingClientRect();
@@ -85,7 +87,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function createTreeMapDataFromFlatTree(flatTree) {
         var treeMap = d3.layout.treemap()
-            .size([width, height])
+            .size([screenWidth, screenHeight])
             .value(function(d) {
                 return d.area
             });
@@ -433,6 +435,20 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var piciElementRect = piciElement.getBoundingClientRect();
         width = piciElementRect.width;
         height = piciElementRect.height;
+
+        console.log(width);
+        console.log(height);
+        console.log(screenWidth);
+        console.log(screenHeight);
+
+/*
+        if(height > screenHeight) {
+            var scale = screenHeight / height;
+            d3.select("svg")
+                .attr("transform", "scale(" + scale + " " + scale + ")");
+        }
+*/
+
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
         createPiciData(flatTree);
