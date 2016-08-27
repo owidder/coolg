@@ -353,77 +353,75 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     function setButtonType(_buttonType) {
         buttonType = _buttonType;
 
-        switch(_buttonType) {
-            case 'start':
-                d3.select("path.button.fill")
-                    .attr("d", "M8 5v14l11-7z");
-
-                d3.select("path.button.fillnone")
-                    .attr("d", "M0 0h24v24H0z");
-                break;
-
-            case 'stop':
-                d3.select("path.button.fill")
-                    .attr("d", "M6 6h12v12H6z");
-
-                d3.select("path.button.fillnone")
-                    .attr("d", "M0 0h24v24H0z");
-                break;
-
-            case 'none':
-                d3.select("path.button.fill")
-                    .attr("d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z");
-
-                d3.select("path.button.fillnone")
-                    .attr("d", "M0 0h24v24H0z");
-                break;
-
-            case 'solve':
-                d3.select("path.button.fill")
-                    .attr("d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z");
-
-                d3.select("path.button.fillnone")
-                    .attr("d", "M0 0h24v24H0z");
-                break;
-
-            case 'next':
-                d3.select("path.button.fill")
-                    .attr("d", "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z");
-
-                d3.select("path.button.fillnone")
-                    .attr("d", "M0 0h24v24H0z");
-                break;
+        var symbolId = _buttonType;
+        if(symbolId == 'next' && isLastPicId()) {
+            symbolId = 'first';
         }
+
+        var paths = {
+            start: "M8 5v14l11-7z",
+            stop: "M6 6h12v12H6z",
+            none: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z",
+            solve: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z",
+            next: "M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z",
+            first: "M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+        };
+
+        d3.select("path.button.fill")
+            .attr("d", paths[symbolId]);
+
+        d3.select("path.button.fillnone")
+            .attr("d", "M0 0h24v24H0z");
     }
 
-    var picId = $routeParams.p;
+    var picId = parseInt($routeParams.p);
     if(funcs.isEmpty(picId)) {
         picId = '1';
     }
-    var picData = {
-        '1': {
+
+    var picData = [
+        {
             filename: 'guernica3',
             artist: 'Picasso'
         },
-        '2': {
+        {
             filename: 'mona_1',
             artits: 'Leonardo da Vinci'
         },
-        '3': {
+        {
             filename: 'abendmahl',
             artist: 'Rembrandt'
         },
-        '4': {
+        {
             filename: 'schrei',
             name: 'Der Schrei',
             artist: 'Munch'
         },
-        '5': {
+        {
             filename: 'starry-night',
             name: 'Starry Night',
             artist: 'Van Gogh'
         }
-    };
+    ];
+
+    function getLastPicId() {
+        return picData.length - 1;
+    }
+
+    function isLastPicId() {
+        var lastPicId = getLastPicId();
+        return picId >= lastPicId;
+    }
+
+    function nextPicId() {
+        var lastPicId = getLastPicId();
+        if(picId < lastPicId) {
+            picId++;
+        }
+        else {
+            picId = 0;
+        }
+    }
 
     d3.xml("rsrc/" + picData[picId].filename + ".svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
