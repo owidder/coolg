@@ -273,7 +273,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return this.__piciData__.origTransform;
             });
 
-        insertSolveText(picData[picId].artist);
+        insertSolveText(picData[picId].artist + " / " + picData[picId].name);
     }
 
     function makeVisible() {
@@ -328,6 +328,32 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
 
     function insertSolveText(text) {
+        var textWidth;
+
+        function moveLeft() {
+            d3.select(".solveText")
+                .transition()
+                .duration(20000)
+                .attr("transform", function() {
+                    var translate = "translate(-" + textWidth + ")";
+                    console.log(translate);
+                    return translate;
+                })
+                .each("end", moveRight);
+        }
+
+        function moveRight() {
+            d3.select(".solveText")
+                .transition()
+                .duration(20000)
+                .attr("transform", function() {
+                    var translate = "translate(" + screenWidth + ")";
+                    console.log(translate);
+                    return translate;
+                })
+                .each("end", moveLeft);
+        }
+
         d3.select(".picipath:last-of-type")
             .each(function () {
                 var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -335,7 +361,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 newElement.innerHTML = text;
                 newElement.setAttribute("class", "solveText");
                 newElement.setAttribute("y", screenHeight/2);
+                textWidth = newElement.getBoundingClientRect().width;
                 blink(".solveText");
+                moveLeft();
             });
     }
 
@@ -405,20 +433,23 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var picData = [
         {
             filename: 'guernica3',
+            name: 'Guernica',
             artist: 'Picasso'
         },
         {
             filename: 'mona_1',
+            name: 'Mona Lisa',
             artist: 'Leonardo da Vinci'
         },
         {
             filename: 'abendmahl',
+            name: 'Last Supper',
             artist: 'Rembrandt'
         },
         {
             filename: 'schrei',
-            name: 'Der Schrei',
-            artist: 'Munch'
+            name: 'The Scream',
+            artist: 'Edvard Munch'
         },
         {
             filename: 'starry-night',
@@ -456,11 +487,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var piciElementRect = piciElement.getBoundingClientRect();
         width = piciElementRect.width;
         height = piciElementRect.height;
-
-        console.log(width);
-        console.log(height);
-        console.log(screenWidth);
-        console.log(screenHeight);
 
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
