@@ -109,6 +109,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     var allTransitionStartedPromises = [];
     var allTransitionStoppedPromises = [];
+    var allSolvedPromises = [];
 
     function createPiciData(flatTree) {
         d3.selectAll(".picipath")
@@ -119,11 +120,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var boundingRect = relativeBoundingRect(this, "#pici");
                 var transitionStartedPromise = new SimplePromise();
                 var transitionStoppedPromise = new SimplePromise();
+                var solvedPromise = new SimplePromise();
                 allTransitionStartedPromises.push(transitionStartedPromise.promise);
                 allTransitionStoppedPromises.push(transitionStoppedPromise.promise);
+                allSolvedPromises.push(solvedPromise.promise);
                 var piciData = {
                     transitionStartedPromise: transitionStartedPromise,
                     transitionStoppedPromise: transitionStoppedPromise,
+                    solvedPromise: solvedPromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -268,12 +272,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("d", function() {
                 var origPath = this.__piciData__.origPath;
                 return origPath;
-            })
-            .attr("transform", function() {
-                return this.__piciData__.origTransform;
             });
 
-        insertSolveText(picData[picId].artist + " / " + picData[picId].name);
+        d3.selectAll(".picipath")
+            .transition()
+            .duration(5000)
+            .attr("transform", function() {
+                return this.__piciData__.origTransform;
+            })
+            .each("end", function() {
+                this.__piciData__.solvedPromise.resolve();
+            });
+
+        Promise.all(allSolvedPromises).then(function() {
+            insertSolveText(picData[picId].artist + " / " + picData[picId].name);
+        });
     }
 
     function makeVisible() {
