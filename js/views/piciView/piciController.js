@@ -286,6 +286,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         Promise.all(allSolvedPromises).then(function() {
             insertSolveText(picData[picId].artist + " / " + picData[picId].name);
+            setButtonType('next');
         });
     }
 
@@ -327,8 +328,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 break;
 
             case 'solve':
-                solve();
-                setButtonType('next');
+                $timeout(solve, 1000);
                 break;
 
             case 'next':
