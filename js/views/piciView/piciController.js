@@ -258,6 +258,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
         Promise.all(allTransitionStoppedPromises).then(function() {
             allPaused = true;
+            setButtonType('solve');
         });
         doPause();
     }
@@ -271,6 +272,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("transform", function() {
                 return this.__piciData__.origTransform;
             });
+
+        insertSolveText(picData[picId].artist);
     }
 
     function makeVisible() {
@@ -278,9 +281,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .attr("class", "visible");
     }
 
-    function buttonBlink() {
+    function blink(selector) {
         function toCol(color) {
-            d3.select("path.button.fill")
+            d3.select(selector)
                 .transition()
                 .duration(1000)
                 .style("fill", color)
@@ -308,7 +311,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
             case 'stop':
                 pause();
-                setButtonType('solve');
                 break;
 
             case 'solve':
@@ -323,6 +325,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 }, 100);
                 break;
         }
+    }
+
+    function insertSolveText(text) {
+        d3.select(".picipath:last-of-type")
+            .each(function () {
+                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                var newElement = this.parentNode.insertBefore(textElement, null);
+                newElement.innerHTML = text;
+                newElement.setAttribute("class", "solveText");
+                newElement.setAttribute("y", screenHeight/2);
+                blink(".solveText");
+            });
     }
 
     function insertButton() {
@@ -395,7 +409,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         },
         {
             filename: 'mona_1',
-            artits: 'Leonardo da Vinci'
+            artist: 'Leonardo da Vinci'
         },
         {
             filename: 'abendmahl',
@@ -458,7 +472,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         Promise.all(allTransitionStartedPromises).then(function() {
             setButtonType('stop');
         });
-        buttonBlink();
+        blink("path.button.fill");
     });
 
 });
