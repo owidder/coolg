@@ -344,7 +344,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var distance;
 
         function moveLeft() {
-            d3.select(".solveText")
+            d3.select("g.solvetext")
                 .transition()
                 .duration(20000)
                 .attr("transform", function() {
@@ -356,7 +356,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
 
         function moveRight() {
-            d3.select(".solveText")
+            d3.select("g.solvetext")
                 .transition()
                 .duration(20000)
                 .attr("transform", function() {
@@ -369,17 +369,31 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         d3.select(".picipath:last-of-type")
             .each(function () {
-                var textElement = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                var newElement = this.parentNode.insertBefore(textElement, null);
-                newElement.innerHTML = text;
-                newElement.setAttribute("class", "solveText");
-                newElement.setAttribute("y", screenHeight/2);
-                distance = screenWidth - newElement.getBoundingClientRect().width;
-                blink(".solveText");
-                if(distance < 0) {
-                    moveLeft();
-                }
+                var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                var newElement = this.parentNode.insertBefore(gElement, null);
+                newElement.setAttribute("class", "solvetext");
             });
+
+        d3.select("g.solvetext")
+            .append("text")
+            .text(text)
+            .attr("y", screenHeight/2)
+            .attr("class", "solvetext");
+
+        d3.select("text.solvetext")
+            .each(function() {
+                distance = screenWidth - this.getBoundingClientRect().width;
+            });
+
+        $timeout(function() {
+            blink("text.solvetext");
+        }, 1000);
+
+        if(distance < 0) {
+            $timeout(function() {
+                moveLeft();
+            }, 3000);
+        }
     }
 
     function insertButton() {
