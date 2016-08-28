@@ -328,14 +328,14 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     }
 
     function insertSolveText(text) {
-        var textWidth;
+        var distance;
 
         function moveLeft() {
             d3.select(".solveText")
                 .transition()
                 .duration(20000)
                 .attr("transform", function() {
-                    var translate = "translate(-" + textWidth + ")";
+                    var translate = "translate(" + distance + ")";
                     console.log(translate);
                     return translate;
                 })
@@ -347,7 +347,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .transition()
                 .duration(20000)
                 .attr("transform", function() {
-                    var translate = "translate(" + screenWidth + ")";
+                    var translate = "translate(0)";
                     console.log(translate);
                     return translate;
                 })
@@ -361,9 +361,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 newElement.innerHTML = text;
                 newElement.setAttribute("class", "solveText");
                 newElement.setAttribute("y", screenHeight/2);
-                textWidth = newElement.getBoundingClientRect().width;
+                distance = screenWidth - newElement.getBoundingClientRect().width;
                 blink(".solveText");
-                moveLeft();
+                if(distance < 0) {
+                    moveLeft();
+                }
             });
     }
 
