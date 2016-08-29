@@ -598,6 +598,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function resetSvgViewBox() {
         d3.select("svg")
+            .transition()
+            .duration(5000)
             .attr("viewBox", origViewBox);
     }
 
