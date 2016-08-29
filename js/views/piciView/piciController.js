@@ -171,8 +171,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return duration;
             })
             .attr("class", function() {
-                this.__piciData__.visiblePromise.resolve();
                 return this.__oldClasses__;
+            })
+            .each("end", function() {
+                this.__piciData__.visiblePromise.resolve();
             });
 
         Promise.all(allVisiblePromises).then(function() {
@@ -573,9 +575,9 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
         createPiciData(flatTree);
+        insertButton();
         setButtonType('none');
         transitionToTreeMap();
-        insertButton();
         Promise.all(allTransitionStartedPromises).then(function() {
             resetSvgViewBox();
             setButtonType('stop');
