@@ -110,6 +110,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var allTransitionStartedPromises = [];
     var allTransitionStoppedPromises = [];
     var allSolvedPromises = [];
+    var allVisiblePromises = [];
 
     function createPiciData(flatTree) {
         d3.selectAll(".picipath")
@@ -121,13 +122,16 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var transitionStartedPromise = new SimplePromise();
                 var transitionStoppedPromise = new SimplePromise();
                 var solvedPromise = new SimplePromise();
+                var visiblePromise = new SimplePromise();
                 allTransitionStartedPromises.push(transitionStartedPromise.promise);
                 allTransitionStoppedPromises.push(transitionStoppedPromise.promise);
                 allSolvedPromises.push(solvedPromise.promise);
+                allVisiblePromises.push(visiblePromise.promise);
                 var piciData = {
                     transitionStartedPromise: transitionStartedPromise,
                     transitionStoppedPromise: transitionStoppedPromise,
                     solvedPromise: solvedPromise,
+                    visiblePromise: visiblePromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -144,11 +148,36 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function transitionToTreeMap() {
         d3.selectAll(".picipath")
+            .attr("class", function() {
+                var classes = this.getAttribute("class");
+                this.__oldClasses__ = classes;
+                return classes + " inv";
+            });
+
+        makeVisible();
+
+        d3.selectAll(".picipath")
             .attr("d", function() {
                 var rect = this.__piciData__.treeNode;
                 var rectPath = createRectPath(rect.x, rect.y, rect.dx, rect.dy);
                 return rectPath;
+            })
+            .attr("transform", "translate(0,0)");
+
+        d3.selectAll(".picipath")
+            .transition()
+            .delay(function() {
+                var duration = mathUtil.randomIntBetween(1, 1000);
+                return duration;
+            })
+            .attr("class", function() {
+                this.__piciData__.visiblePromise.resolve();
+                return this.__oldClasses__;
             });
+
+        Promise.all(allVisiblePromises).then(function() {
+            setButtonType('start');
+        });
     }
 
     function getStepFromId(stepId) {
@@ -340,6 +369,22 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
     }
 
+    function insertText(text, clazz, x, y) {
+        d3.select(".picipath:last-of-type")
+            .each(function () {
+                var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                var newElement = this.parentNode.insertBefore(gElement, null);
+                newElement.setAttribute("class", clazz);
+            });
+
+        d3.select("g." + clazz)
+            .append("text")
+            .text(text)
+            .attr("x", x)
+            .attr("y", y)
+            .attr("class", clazz);
+    }
+
     function insertSolveText(text) {
         var distance;
 
@@ -367,18 +412,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 .each("end", moveLeft);
         }
 
-        d3.select(".picipath:last-of-type")
-            .each(function () {
-                var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                var newElement = this.parentNode.insertBefore(gElement, null);
-                newElement.setAttribute("class", "solvetext");
-            });
-
-        d3.select("g.solvetext")
-            .append("text")
-            .text(text)
-            .attr("y", screenHeight/2)
-            .attr("class", "solvetext");
+        insertText(text, "solvetext", 0, screenHeight/2);
 
         d3.select("text.solvetext")
             .each(function() {
@@ -506,10 +540,29 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
     }
 
+    var origViewBox;
+
+    function removeSvgViewBox() {
+        d3.select("svg")
+            .attr("viewBox", function() {
+                origViewBox = this.getAttribute("viewBox");
+                return null;
+            });
+
+    }
+
+    function resetSvgViewBox() {
+        d3.select("svg")
+            .attr("viewBox", origViewBox);
+    }
+
     d3.xml("rsrc/" + picData[picId].filename + ".svg").mimeType("image/svg+xml").get(function(error, xml) {
         if (error) throw error;
 
         document.querySelector("#pici").appendChild(xml.documentElement);
+
+        removeSvgViewBox();
+
         var areaMap = computeAreaMap();
         var flatTree = createFlatTreeFromAreaMap(areaMap);
         var piciElement = document.querySelector("#pici");
@@ -520,11 +573,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
         createPiciData(flatTree);
+        setButtonType('none');
         transitionToTreeMap();
-        makeVisible();
         insertButton();
-        setButtonType('start');
         Promise.all(allTransitionStartedPromises).then(function() {
+            resetSvgViewBox();
             setButtonType('stop');
         });
         blink("path.button.fill");
