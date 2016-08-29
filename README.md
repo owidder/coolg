@@ -1,2 +1,2 @@
-# coolg
-see https://cdn.rawgit.com/owidder/coolg/2.1.2/index.html#/stock?demo
+# pici
+see https://cdn.rawgit.com/owidder/coolg/pici-1.0.1/index.html#/pici?p=0

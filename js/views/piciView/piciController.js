@@ -550,6 +550,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             artist: 'Leonardo da Vinci'
         },
         {
+            filename: 'the-persistence-of-memory',
+            name: 'The Persistence Of Memory',
+            artist: 'Salvadore Dali'
+        },
+        {
             filename: 'abendmahl',
             name: 'Last Supper',
             artist: 'Rembrandt'
@@ -558,6 +563,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             filename: 'schrei',
             name: 'The Scream',
             artist: 'Edvard Munch'
+        },
+        {
+            filename: 'nighthawks',
+            name: 'Nighthawks',
+            artist: 'Edward Hopper'
+        },
+        {
+            filename: 'American_Gothic',
+            name: 'American Gothic',
+            artist: 'Grant Wood'
+        },
+        {
+            filename: 'Claude-Monet-Painting-Poppies',
+            name: 'Poppy Field in Argenteuil',
+            artist: 'Claude Monet'
         },
         {
             filename: 'starry-night',
