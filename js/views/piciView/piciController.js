@@ -462,6 +462,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             .style("fill", "none")
             .attr("class", "button fillnone")
             .on("click", performButtonFunction);
+
+        d3.select("svg")
+            .on("touchstart", performButtonFunction);
+
+        d3.select("svg")
+            .on("click", performButtonFunction);
     }
 
     function setButtonType(_buttonType) {
