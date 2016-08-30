@@ -522,12 +522,12 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         };
 
         var helptexts = {
-            start: "Press button to start",
-            stop: "Press button to stop",
+            start: "Click/touch to start",
+            stop: "Click/touch to stop",
             none: "Wait ...",
-            solve: "Press button to solve",
-            next: "Press button to get to next pic",
-            first: "Press button to get to first pic"
+            solve: "Click/touch to solve",
+            next: "Click/touch to get to next pic",
+            first: "Click/touch to get to first pic"
         };
 
         d3.select("path.button.fill")
