@@ -111,6 +111,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
     var allTransitionStoppedPromises = [];
     var allSolvedPromises = [];
     var allVisiblePromises = [];
+    var allUnshakePromises = [];
 
     function createPiciData(flatTree) {
         d3.selectAll(".picipath")
@@ -123,15 +124,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 var transitionStoppedPromise = new SimplePromise();
                 var solvedPromise = new SimplePromise();
                 var visiblePromise = new SimplePromise();
+                var unshakePromise = new SimplePromise();
                 allTransitionStartedPromises.push(transitionStartedPromise.promise);
                 allTransitionStoppedPromises.push(transitionStoppedPromise.promise);
                 allSolvedPromises.push(solvedPromise.promise);
                 allVisiblePromises.push(visiblePromise.promise);
+                allUnshakePromises.push(unshakePromise.promise);
                 var piciData = {
                     transitionStartedPromise: transitionStartedPromise,
                     transitionStoppedPromise: transitionStoppedPromise,
                     solvedPromise: solvedPromise,
                     visiblePromise: visiblePromise,
+                    unshakePromise: unshakePromise,
                     origPath: this.getAttribute("d"),
                     origTransform: this.getAttribute("transform"),
                     treeNode: treeNode,
@@ -171,8 +175,10 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return duration;
             })
             .attr("class", function() {
-                this.__piciData__.visiblePromise.resolve();
                 return this.__oldClasses__;
+            })
+            .each("end", function() {
+                this.__piciData__.visiblePromise.resolve();
             });
 
         Promise.all(allVisiblePromises).then(function() {
@@ -241,6 +247,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 return this.__piciData__.origTransform;
             })
             .each("end", function() {
+                this.__piciData__.unshakePromise.resolve();
                 var nextStep = getStepFromId(nextStepId);
                 nextStep(this, nextStepId + 1);
             });
@@ -296,7 +303,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         doPause();
     }
 
-    function solve() {
+    function solve(duration) {
+        if(isNaN(duration)) {
+            duration = 5000;
+        }
+
         d3.selectAll(".picipath")
             .attr("d", function() {
                 var origPath = this.__piciData__.origPath;
@@ -305,7 +316,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
         d3.selectAll(".picipath")
             .transition()
-            .duration(5000)
+            .duration(duration)
             .attr("transform", function() {
                 return this.__piciData__.origTransform;
             })
@@ -357,6 +368,7 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
                 break;
 
             case 'solve':
+                setButtonType('none');
                 $timeout(solve, 1000);
                 break;
 
@@ -369,20 +381,42 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         }
     }
 
-    function insertText(text, clazz, x, y) {
-        d3.select(".picipath:last-of-type")
-            .each(function () {
-                var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                var newElement = this.parentNode.insertBefore(gElement, null);
-                newElement.setAttribute("class", clazz);
-            });
+    function insertText(text, clazz, x, y, withMove) {
+        if(document.querySelectorAll("g." + clazz).length == 0) {
+            d3.select(".picipath:last-of-type")
+                .each(function () {
+                    var gElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    var newElement = this.parentNode.insertBefore(gElement, null);
+                    newElement.setAttribute("class", clazz);
+                });
 
-        d3.select("g." + clazz)
-            .append("text")
-            .text(text)
-            .attr("x", x)
-            .attr("y", y)
-            .attr("class", clazz);
+            d3.select("g." + clazz)
+                .append("text")
+                .text(text)
+                .attr("x", x)
+                .attr("y", y)
+                .attr("class", clazz);
+
+            blink("text.helptext");
+
+            if(withMove) {
+                d3.select("g." + clazz)
+                    .transition()
+                    .duration(2000)
+                    .attr("transform", function() {
+                        var rect = this.getBoundingClientRect();
+                        return "translate(0," +  rect.height + ")";
+                    });
+            }
+        }
+        else {
+            d3.select("text." + clazz)
+                .text(text);
+        }
+    }
+
+    function insertHelpText(text) {
+        insertText(text, "helptext", 50, 0, true);
     }
 
     function insertSolveText(text) {
@@ -487,11 +521,22 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             first: "M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
         };
 
+        var helptexts = {
+            start: "Press button to start",
+            stop: "Press button to stop",
+            none: "Wait ...",
+            solve: "Press button to solve",
+            next: "Press button to get to next pic",
+            first: "Press button to get to first pic"
+        };
+
         d3.select("path.button.fill")
             .attr("d", paths[symbolId]);
 
         d3.select("path.button.fillnone")
             .attr("d", "M0 0h24v24H0z");
+
+        insertHelpText(helptexts[symbolId]);
     }
 
     var picId = parseInt($routeParams.p);
@@ -511,6 +556,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             artist: 'Leonardo da Vinci'
         },
         {
+            filename: 'the-persistence-of-memory',
+            name: 'The Persistence Of Memory',
+            artist: 'Salvadore Dali'
+        },
+        {
             filename: 'abendmahl',
             name: 'Last Supper',
             artist: 'Rembrandt'
@@ -519,6 +569,21 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             filename: 'schrei',
             name: 'The Scream',
             artist: 'Edvard Munch'
+        },
+        {
+            filename: 'nighthawks',
+            name: 'Nighthawks',
+            artist: 'Edward Hopper'
+        },
+        {
+            filename: 'American_Gothic',
+            name: 'American Gothic',
+            artist: 'Grant Wood'
+        },
+        {
+            filename: 'Claude-Monet-Painting-Poppies',
+            name: 'Poppy Field in Argenteuil',
+            artist: 'Claude Monet'
         },
         {
             filename: 'starry-night',
@@ -559,6 +624,8 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
 
     function resetSvgViewBox() {
         d3.select("svg")
+            .transition()
+            .duration(5000)
             .attr("viewBox", origViewBox);
     }
 
@@ -579,14 +646,18 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         var treeMapData = createTreeMapDataFromFlatTree(flatTree);
 
         createPiciData(flatTree);
+        insertButton();
         setButtonType('none');
         transitionToTreeMap();
-        insertButton();
         Promise.all(allTransitionStartedPromises).then(function() {
             resetSvgViewBox();
             setButtonType('stop');
         });
         blink("path.button.fill");
+
+        Promise.all(allUnshakePromises).then(function() {
+            solve(10);
+        });
     });
 
 });
