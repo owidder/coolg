@@ -539,11 +539,6 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
         insertHelpText(helptexts[symbolId]);
     }
 
-    var picId = parseInt($routeParams.p);
-    if(isNaN(picId)) {
-        picId = 0;
-    }
-
     var picData = [
         {
             filename: 'guernica3',
@@ -591,6 +586,11 @@ angular.module(com_geekAndPoke_coolg.moduleName).controller(com_geekAndPoke_cool
             artist: 'Van Gogh'
         }
     ];
+
+    var picId = parseInt($routeParams.p);
+    if(isNaN(picId)) {
+        picId = mathUtil.randomIntBetween(0, picData.length);
+    }
 
     function getLastPicId() {
         return picData.length - 1;
