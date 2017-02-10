@@ -51,10 +51,6 @@
 
 <body>
 <div class="canvas"></div>
-<div class="panel">
-    <button class="step1 waves-effect waves-light btn" type="button" onclick="forecast()">Step 1: Click here to draw forecast</button><p>
-    <button class="step2 waves-effect waves-light btn disabled" type="button" onclick="reality()">Step 2: Click here to draw <r></r>eality</button>
-</div>
 <script src="../../lib/d3.v4.min.js"></script>
 <script src="../../bower_components/Matter/build/matter.js"></script>
 <script src="./matterD3Renderer.js"></script>
@@ -65,8 +61,6 @@
     var height = window.innerHeight;
 
     var svg = d3.select("div.canvas").append("svg")
-        .attr("x", 0)
-        .attr("y", 0)
         .attr("width", width)
         .attr("height", height);
 
@@ -146,32 +140,12 @@
         el.attr("transform", attr);
     }
 
-    function showTank() {
-        d3.xml("tank.svg").mimeType("image/svg+xml").get(function(error, xml) {
-            if (error) throw error;
-            var paths = xml.documentElement.getElementsByTagName("path");
-            gTank.selectAll("path.tank")
-                .data(paths)
-                .enter()
-                .append("path")
-                .attr("d", function (d) {
-                    return d.getAttribute("d");
-                });
-
-            gTank.attr("transform", "scale(.5, .5)");
-
-            move(500, 500, gTank);
-        });
-    }
-
     function shoot(ctr) {
         if(ctr == null) {
             ctr = 0;
         }
         setTimeout(function () {
-            var body = Matter.Bodies.circle(BAR_OFFSET + 500, 100, 9, {
-                title: "Reality"
-            });
+            var body = Matter.Bodies.circle(BAR_OFFSET + 500, 100, 9);
             Matter.World.add(engine.world, [body]);
             body.force.x += -.012;
             Matter.Body.setAngularVelocity(body, 2);
@@ -253,20 +227,11 @@
             .classed("disabled", false);
     }
 
-    function forecast() {
-        drawBars(barData);
-        switchToStep2();
-    }
-
-    var worldCreated = false;
-    function reality() {
-        showTank();
-        if(!worldCreated) {
-            worldCreated = true;
-            createWorldFromDynamicElements();
-        }
-        //shoot();
-    }
+    drawBars(barData);
+    setTimeout(function() {
+        createWorldFromDynamicElements();
+        shoot();
+    }, 3000);
 
 </script>
 </body>
