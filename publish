@@ -1,6 +1,0 @@
-set -x
-git add -A
-git commit -m "$1"
-git tag "$1"
-git push --tags
-echo https://cdn.rawgit.com/owidder/hackerschoolPg/$1/hackerRun.html
