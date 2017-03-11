@@ -17,6 +17,8 @@
 </head>
 <body>
 <script src="../bower_components/d3/d3.js"></script>
+<script src="../bower_components/lodash/dist/lodash.js"></script>
+
 <script>
 
     var width = 960,
@@ -26,9 +28,19 @@
     var color = d3.scaleOrdinal()
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
+    var numberOfRings = 3;
+    var numberOfSections = 5;
+    _.range(numberOfRings).map(function(index) {
+        return {
+            lower: index * (radius / numberOfRings),
+            upper: (index+1) * (radius / numberOfRings),
+            data: d3.pie()(_.fill(_.range(numberOfSections), 1))
+        }
+    });
+
     var arc = d3.arc()
         .outerRadius(radius - 10)
-        .innerRadius(radius - 70);
+        .innerRadius(0);
 
     var pie = d3.pie()
         .sort(null)
@@ -49,7 +61,9 @@
             .attr("class", "arc");
 
         g.append("path")
-            .attr("d", arc)
+            .attr("d", function (d) {
+                return arc(d);
+            })
             .style("fill", function(d) { return color(d.data.age); });
 
         g.append("text")
