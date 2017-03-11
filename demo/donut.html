@@ -28,16 +28,6 @@
     var color = d3.scaleOrdinal()
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-    var numberOfRings = 3;
-    var numberOfSections = 5;
-    _.range(numberOfRings).map(function(index) {
-        return {
-            lower: index * (radius / numberOfRings),
-            upper: (index+1) * (radius / numberOfRings),
-            data: d3.pie()(_.fill(_.range(numberOfSections), 1))
-        }
-    });
-
     var arc = d3.arc()
         .outerRadius(radius - 10)
         .innerRadius(0);
