@@ -21,14 +21,14 @@
 
 <script>
 
-    var width = 960,
-        height = 500,
-        radius = Math.min(width, height) / 2;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var radius = (Math.min(width, height) / 2) - 30;
 
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
-    var numberOfRings = 10;
-    var numberOfSections = 20;
+    var numberOfRings = 5;
+    var numberOfSections = 7;
     var data = _.range(numberOfRings).map(function(index) {
         var inner = index * (radius / numberOfRings);
         var outer = (index+1) * (radius / numberOfRings);
@@ -69,7 +69,7 @@
         })
         .style("opacity", function (d) {
             var ringNo = this.parentNode.parentNode.__data__.ringNo;
-            var opacity = (1 / numberOfRings) * ringNo;
+            var opacity = (1 / (numberOfRings+1)) * (ringNo+1);
             return opacity;
         })
 
