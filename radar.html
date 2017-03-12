@@ -23,6 +23,14 @@
             display: block;
         }
 
+        .draw-button {
+            margin: 2%;
+        }
+
+        .container {
+            width: 100%;
+        }
+
     </style>
 
     <script src="./bower_components/d3/d3.js"></script>
@@ -34,6 +42,9 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col s2">
+            <h5>Radar</h5>
+        </div>
         <div class="col s4">
             <label for="numsecs">Number of sections</label>
             <input id="numsecs" class="numsecs" type="text" value="10">
@@ -41,6 +52,9 @@
         <div class="col s4">
             <label for="numrings">Number of rings</label>
             <input id="numrings" class="numrings" type="text" value="5">
+        </div>
+        <div class="col s2">
+            <a class="draw-button waves-effect waves-light btn" onclick="draw()">draw radar</a>
         </div>
     </div>
     <div class="row">
@@ -60,8 +74,21 @@
 <script src="./js/radar.js"></script>
 <script>
 
+    /* global UTIL */
+    /* gobal $ */
+    /* global SvgLegend */
+    /* global Radar */
+    
+    function draw() {
+        var numsecs = $("#numsecs").val();
+        var numrings = $("#numrings").val();
+        window.location.href = "./radar.html?numsecs=" + numsecs + "&numrings=" + numrings;
+    }
+
     var numberOfSections = UTIL.param("numsecs", 10);
+    $("#numsecs").val(numberOfSections);
     var numberOfRings = UTIL.param("numrings", 5);
+    $("#numrings").val(numberOfRings);
 
     var svgLegend = new SvgLegend();
     svgLegend.init();
