@@ -49,18 +49,47 @@ var Radar = function (numberOfRings, numberOfSections) {
                 var opacity = (1 / (numberOfRings+1)) * (ringNo+1);
                 return opacity;
             })
-            .on("mouseover", function (d, i) {
+            .on("mouseover", function (d) {
                 if(RADAR.svgLegend) {
                     var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                    RADAR.svgLegend.setLegendText("Section: " + i + " / Ring: " + ringNo);
+                    RADAR.svgLegend.setLegendText("Ring: " + ringNo);
                 }
             })
             .on("mouseout", function (d) {
                 if(RADAR.svgLegend) {
                     RADAR.svgLegend.setLegendText("");
                 }
-            })
+            });
 
+        var gLegendArc = gRing.selectAll("g.legendarc")
+            .data(function (d) {
+                return d.pie;
+            })
+            .enter()
+            .append("g")
+            .attr("class", "legendarc");
+
+        gLegendArc.append("path")
+            .attr("d", function (d) {
+                var arc = d3.arc().outerRadius(radius + 10).innerRadius(radius + 10);
+                return arc(d)
+            })
+            .attr("id", function (d, i) {
+                return "legendarc" + i;
+            })
+            .style("fill", "none")
+            .style("opacity", "0");
+
+        gLegendArc.append("text")
+            .append("textPath")
+            .attr("xlink:href", function(d, i) {
+                return "#legendarc" + i;
+            })
+            .style("text-anchor","middle") //place the text halfway on the arc
+            .attr("startOffset", "20%")
+            .text(function(d, i) {
+                return "Section: " + i;
+            });
     }
 
     this.draw = draw;
