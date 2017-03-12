@@ -53,7 +53,19 @@ var Radar = function (numberOfRings, numberOfSections) {
                 var ringNo = this.parentNode.parentNode.__data__.ringNo;
                 var opacity = (1 / (numberOfRings+1)) * (ringNo+1);
                 return opacity;
-            });
+            })
+            .on("mouseover", function (d, i) {
+                if(RADAR.svgLegend) {
+                    var ringNo = this.parentNode.parentNode.__data__.ringNo;
+                    RADAR.svgLegend.setLegendText("Section: " + i + " / Ring: " + ringNo);
+                }
+            })
+            .on("mouseout", function (d) {
+                if(RADAR.svgLegend) {
+                    RADAR.svgLegend.setLegendText("");
+                }
+            })
+
     }
 
     this.draw = draw;

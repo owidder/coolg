@@ -8,7 +8,7 @@ RADAR.svg = d3.select("body").append("svg")
     .attr("class", "svg canvas")
     .attr("width", RADAR.width)
     .attr("height", RADAR.height)
-    .on("mousemove", function (d) {
+    .on("mousemove", function () {
         if(RADAR.svgLegend != null) {
             var position = d3.mouse(this);
             RADAR.svgLegend.doLegend(position[0], position[1]);

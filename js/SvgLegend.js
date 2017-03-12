@@ -1,6 +1,7 @@
 'use strict';
 
 /* global UTIL */
+/* global _ */
 
 function SvgLegend(_createEntryFunction, _findSvgElementsForLegendFunction, _legendDetectorRadius, _svgSelector, _forLegendSelector, _legendSelector, _util) {
     var that = this;
@@ -79,13 +80,21 @@ function SvgLegend(_createEntryFunction, _findSvgElementsForLegendFunction, _leg
         return entryList;
     }
 
-    function doLegend(x, y) {
-        var svgElementsForLegend = findSvgElementForLegend(x, y);
-        var entryStrList = createLegendEntryList(svgElementsForLegend);
-        updateLegend(entryStrList);
+    var legendText;
+    function setLegendText(text) {
+        legendText = text;
+    }
 
-        legendCanvas.select("g.legend")
-            .attr("transform", "translate(" + (x + 10) + "," + (y + 10) + ")");
+    function doLegend(x, y) {
+        if(!_.isEmpty(legendText)) {
+            updateLegend([legendText]);
+
+            legendCanvas.select("g.legend")
+                .attr("transform", "translate(" + (x + 10) + "," + (y + 10) + ")");
+        }
+        else {
+            hideLegend();
+        }
     }
 
     function switchLegend() {
@@ -174,6 +183,7 @@ function SvgLegend(_createEntryFunction, _findSvgElementsForLegendFunction, _leg
         appendLegend();
     }
 
+    that.setLegendText = setLegendText;
     that.doLegend = doLegend;
     that.switchLegend = switchLegend;
     that.hideLegend = hideLegend;
