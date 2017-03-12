@@ -1,0 +1,23 @@
+body {
+    font: 10px sans-serif;
+}
+
+.arc path {
+    stroke: #fff;
+}
+
+g.legend.off {
+    display: none;
+}
+
+g.legend.on {
+    display: block;
+}
+
+.draw-button {
+    margin: 2%;
+}
+
+.container {
+    width: 100%;
+}
