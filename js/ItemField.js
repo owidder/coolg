@@ -38,6 +38,8 @@ var ItemField = function () {
         }
     });
 
+    var svgLegend = new SvgLegend();
+
     function dragstarted(d) {
         d3.select(this).raise().classed("active", true);
     }
@@ -64,6 +66,16 @@ var ItemField = function () {
         })
         .style("fill", function (d) {
             return color(d.name);
+        })
+        .on("mouseover", function (d) {
+            if(RADAR.svgLegend != null) {
+                RADAR.svgLegend.setLegendText(d.name);
+            }
+        })
+        .on("mouseout", function (d) {
+            if(RADAR.svgLegend != null) {
+                RADAR.svgLegend.setLegendText("");
+            }
         })
         .call(d3.drag()
             .on("start", dragstarted)
