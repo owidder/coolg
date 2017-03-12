@@ -23,7 +23,6 @@
             display: block;
         }
 
-
     </style>
 
     <script src="./bower_components/d3/d3.js"></script>
@@ -33,9 +32,24 @@
 </head>
 
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col s4">
+            <label for="numsecs">Number of sections</label>
+            <input id="numsecs" class="numsecs" type="text" value="10">
+        </div>
+        <div class="col s4">
+            <label for="numrings">Number of rings</label>
+            <input id="numrings" class="numrings" type="text" value="5">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <div class="svg"></div>
+        </div>
+    </div>
+</div>
 
-Number of sections: <input class="numsecs" type="text" value="10">
-Number of rings: <input class="numrings" type="text" value="5">
 
 <script src="./js/boot.js"></script>
 

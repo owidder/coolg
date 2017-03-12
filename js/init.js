@@ -3,8 +3,8 @@
 /* global RADAR */
 
 RADAR.width = window.innerWidth;
-RADAR.height = window.innerHeight;
-RADAR.svg = d3.select("body").append("svg")
+RADAR.height = window.innerHeight * (4/5);
+RADAR.svg = d3.select("div.svg").append("svg")
     .attr("class", "svg canvas")
     .attr("width", RADAR.width)
     .attr("height", RADAR.height)
