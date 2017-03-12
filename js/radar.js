@@ -11,6 +11,60 @@ var Radar = function (numberOfRings, numberOfSections) {
 
     var gRadar = RADAR.gRadar;
 
+    function techName(index) {
+        var techNames = [
+            "Digitalization",
+            "Microservices",
+            "Docker Swarn",
+            "Consuil",
+            "Cloud Computing",
+            "Gamification",
+            "Infrastructure as Code",
+            "Swarm",
+            "NoSQL",
+            "Grafana",
+            "Let's Encrypt",
+            "Webpack",
+            "React",
+            "Angular 2",
+            "D3",
+            "Cloud IDE",
+            "Clojure",
+            "BYOD",
+            "Ember",
+            "Redux",
+            "Spriong Boot",
+            "Enzyme"
+        ];
+
+        if(index < techNames.length) {
+            return techNames[index];
+        }
+        else {
+            return "Technology " + index;
+        }
+    }
+
+    function ringName(index) {
+        var ringNames = [
+            "Why do you wait? Just Use it!",
+            "Use it slowly",
+            "Make a PoC",
+            "Read about it",
+            "Wait a little longer",
+            "Wait much longer",
+            "C'mon! That's BS",
+            "This will never fly!"
+        ];
+
+        if(index < ringNames.length) {
+            return ringNames[index];
+        }
+        else {
+            return "Ring " + index;
+        }
+    }
+
     function draw() {
         var data = _.range(numberOfRings).map(function(index) {
             var inner = index * (radius / numberOfRings);
@@ -52,7 +106,7 @@ var Radar = function (numberOfRings, numberOfSections) {
             .on("mouseover", function (d) {
                 if(RADAR.svgLegend) {
                     var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                    RADAR.svgLegend.setLegendText("Ring: " + ringNo);
+                    RADAR.svgLegend.setLegendText(ringName(ringNo));
                 }
             })
             .on("mouseout", function (d) {
@@ -88,7 +142,7 @@ var Radar = function (numberOfRings, numberOfSections) {
             .style("text-anchor","middle") //place the text halfway on the arc
             .attr("startOffset", "20%")
             .text(function(d, i) {
-                return "Section: " + i;
+                return techName(i);
             });
     }
 
