@@ -21,3 +21,12 @@ g.legend.on {
 .container {
     width: 100%;
 }
+
+circle.item {
+    stroke: #000;
+    stroke-width: 2px;
+}
+
+circle.item.active {
+    opacity: 0.5;
+}

@@ -16,6 +16,7 @@ RADAR.svg = d3.select("div.svg").append("svg")
     });
 RADAR.gRadar = RADAR.svg.append("g")
     .attr("transform", "translate(" + RADAR.width / 3 + "," + RADAR.height / 2 + ")");
+RADAR.gItems = RADAR.svg.append("g").attr("class", "items");
 RADAR.gLegend = RADAR.svg.append("g").attr("class", "legend canvas");
 
 RADAR.svgLegend = new SvgLegend();

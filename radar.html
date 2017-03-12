@@ -45,6 +45,8 @@
 <script src="./js/init.js"></script>
 <script src="./js/util.js"></script>
 <script src="./js/radar.js"></script>
+<script src="./js/ItemField.js"></script>
+
 <script>
 
     /* global UTIL */
@@ -65,7 +67,9 @@
 
     var svgLegend = new SvgLegend();
     svgLegend.init();
+
     var radar = new Radar(parseInt(numberOfRings), parseInt(numberOfSegments), svgLegend);
+    var itemField = new ItemField();
 
 </script>
 </body>
