@@ -1,0 +1,36 @@
+'use strict';
+
+/* global UTIL */
+/* global _ */
+
+/**
+ * from: http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+ */
+UTIL.param = function (name, defaultVal) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return defaultVal;
+    if (!results[2]) return defaultVal;
+    return _.isEmpty(results[2]) ? defaultVal : decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+
+UTIL.getLongestString = function (arrayOfStrings) {
+    var max = 0;
+    arrayOfStrings.forEach(function (string) {
+        if (!_.isEmpty(string) && string.length > max) {
+            max = string.length;
+        }
+    });
+
+    return max;
+};
+
+UTIL.copyAttributes = function (attributes, src, dest) {
+    attributes.forEach(function (name) {
+        dest[name] = src[name];
+    });
+};
+
+

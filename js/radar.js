@@ -9,8 +9,7 @@ var Radar = function (numberOfRings, numberOfSections) {
 
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
-    var gRadar = RADAR.svg.append("g")
-        .attr("transform", "translate(" + RADAR.width / 2 + "," + RADAR.height / 2 + ")");
+    var gRadar = RADAR.gRadar;
 
     function draw() {
         var data = _.range(numberOfRings).map(function(index) {
@@ -38,6 +37,11 @@ var Radar = function (numberOfRings, numberOfSections) {
             .attr("class", "arc");
 
         gArc.append("path")
+            .attr("class", "forlegend")
+            .attr("_legend", function (d, i) {
+                var ringNo = this.parentNode.parentNode.__data__.ringNo;
+                return "Section: " + i + " / Ring: " + ringNo;
+            })
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d);
