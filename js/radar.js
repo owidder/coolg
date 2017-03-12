@@ -4,7 +4,7 @@
 /* global d3 */
 /* global _ */
 
-var Radar = function (numberOfRings, numberOfSections) {
+var Radar = function (numberOfRings, numberOfSegments) {
     var radius = (Math.min(RADAR.width, RADAR.height) / 2) - 30;
 
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
@@ -58,7 +58,7 @@ var Radar = function (numberOfRings, numberOfSections) {
             return {
                 ringNo: index,
                 arc: d3.arc().outerRadius(outer).innerRadius(inner),
-                pie: d3.pie()(_.fill(_.range(numberOfSections), 1))
+                pie: d3.pie()(_.fill(_.range(numberOfSegments), 1))
             }
         });
 

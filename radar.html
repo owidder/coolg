@@ -19,8 +19,8 @@
             <h5>Radar</h5>
         </div>
         <div class="col s4">
-            <label for="numsecs">Number of sections</label>
-            <input id="numsecs" class="numsecs" type="text" value="10">
+            <label for="numsegs">Number of segments</label>
+            <input id="numsegs" class="numsegs" type="text" value="10">
         </div>
         <div class="col s4">
             <label for="numrings">Number of rings</label>
@@ -53,19 +53,19 @@
     /* global Radar */
     
     function draw() {
-        var numsecs = $("#numsecs").val();
+        var numsegs = $("#numsegs").val();
         var numrings = $("#numrings").val();
-        window.location.href = "./radar.html?numsecs=" + numsecs + "&numrings=" + numrings;
+        window.location.href = "./radar.html?numsegs=" + numsegs + "&numrings=" + numrings;
     }
 
-    var numberOfSections = UTIL.param("numsecs", 5);
-    $("#numsecs").val(numberOfSections);
+    var numberOfSegments = UTIL.param("numsegs", 5);
+    $("#numsegs").val(numberOfSegments);
     var numberOfRings = UTIL.param("numrings", 3);
     $("#numrings").val(numberOfRings);
 
     var svgLegend = new SvgLegend();
     svgLegend.init();
-    var radar = new Radar(parseInt(numberOfRings), parseInt(numberOfSections), svgLegend);
+    var radar = new Radar(parseInt(numberOfRings), parseInt(numberOfSegments), svgLegend);
 
 </script>
 </body>
