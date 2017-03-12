@@ -37,11 +37,6 @@ var Radar = function (numberOfRings, numberOfSections) {
             .attr("class", "arc");
 
         gArc.append("path")
-            .attr("class", "forlegend")
-            .attr("_legend", function (d, i) {
-                var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                return "Section: " + i + " / Ring: " + ringNo;
-            })
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d);
