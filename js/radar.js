@@ -11,37 +11,23 @@ var Radar = function (numberOfRings, numberOfSections) {
 
     var gRadar = RADAR.gRadar;
 
-    function techName(index) {
-        var techNames = [
-            "Digitalization",
-            "Microservices",
-            "Docker Swarn",
-            "Consuil",
-            "Cloud Computing",
-            "Gamification",
-            "Infrastructure as Code",
-            "Swarm",
-            "NoSQL",
-            "Grafana",
-            "Let's Encrypt",
-            "Webpack",
-            "React",
-            "Angular 2",
-            "D3",
-            "Cloud IDE",
-            "Clojure",
-            "BYOD",
-            "Ember",
-            "Redux",
-            "Spriong Boot",
-            "Enzyme"
+    function segmentName(index) {
+        var segmentNames = [
+            "Tools",
+            "Platforms",
+            "Languages",
+            "Methods",
+            "Techniques",
+            "Frameworks",
+            "Architectures",
+            "Misc."
         ];
 
-        if(index < techNames.length) {
-            return techNames[index];
+        if(index < segmentNames.length) {
+            return segmentNames[index];
         }
         else {
-            return "Technology " + index;
+            return "Segment " + index;
         }
     }
 
@@ -142,7 +128,7 @@ var Radar = function (numberOfRings, numberOfSections) {
             .style("text-anchor","middle") //place the text halfway on the arc
             .attr("startOffset", "20%")
             .text(function(d, i) {
-                return techName(i);
+                return segmentName(i);
             });
     }
 

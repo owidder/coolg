@@ -58,9 +58,9 @@
         window.location.href = "./radar.html?numsecs=" + numsecs + "&numrings=" + numrings;
     }
 
-    var numberOfSections = UTIL.param("numsecs", 10);
+    var numberOfSections = UTIL.param("numsecs", 5);
     $("#numsecs").val(numberOfSections);
-    var numberOfRings = UTIL.param("numrings", 5);
+    var numberOfRings = UTIL.param("numrings", 3);
     $("#numrings").val(numberOfRings);
 
     var svgLegend = new SvgLegend();
