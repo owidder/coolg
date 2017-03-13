@@ -32,8 +32,8 @@ var ItemField = function () {
 
     var itemData = itemNames.map(function(name, i) {
         return {
-            x: 20,
-            y: (i+1)*25,
+            x: i < 11 ? 20 : 160,
+            y: i < 11 ? i*40 + 5 : (i-10) * 40 + 5,
             name: name
         }
     });
@@ -45,40 +45,43 @@ var ItemField = function () {
     }
 
     function dragged(d) {
-        d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+        d.x = d3.event.x;
+        d.y = d3.event.y;
+        d3.select(this).attr("transform", "translate(" + d.x + "," + d.y + ")");
     }
 
     function dragended(d) {
         d3.select(this).classed("active", false);
     }
 
-    RADAR.gItems.selectAll("circle.item")
+    var gItemEnter = RADAR.gItems.selectAll("g.item")
         .data(itemData)
         .enter()
-        .append("circle")
+        .append("g")
         .attr("class", "item")
-        .attr("r", 10)
-        .attr("cx", function (d) {
-            return  d.x;
-        })
-        .attr("cy", function (d) {
-            return d.y;
-        })
-        .style("fill", function (d) {
-            return color(d.name);
-        })
-        .on("mouseover", function (d) {
-            if(RADAR.svgLegend != null) {
-                RADAR.svgLegend.setLegendText(d.name);
-            }
-        })
-        .on("mouseout", function (d) {
-            if(RADAR.svgLegend != null) {
-                RADAR.svgLegend.setLegendText("");
-            }
+        .attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
         })
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
             .on("end", dragended));
+
+    gItemEnter
+        .append("circle")
+        .attr("class", "item")
+        .attr("r", 10)
+        .attr("cx", 10)
+        .attr("cy", 10)
+        .style("fill", function (d) {
+            return color(d.name);
+        });
+
+    gItemEnter
+        .append("text")
+        .attr("x", 0)
+        .attr("y", 32)
+        .text(function (d) {
+            return d.name;
+        })
 };
