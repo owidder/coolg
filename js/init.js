@@ -21,3 +21,5 @@ RADAR.gLegend = RADAR.svg.append("g").attr("class", "legend canvas");
 
 RADAR.svgLegend = new SvgLegend();
 RADAR.svgLegend.init();
+
+RADAR.db = new PouchDB('radar');

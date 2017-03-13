@@ -38,51 +38,70 @@ var ItemField = function () {
         }
     });
 
-    var svgLegend = new SvgLegend();
+    function save() {
+        if(RADAR.db != null) {
+            var entry = {
+                _id: new Date().toISOString(),
+                itemData: itemData
+            };
 
-    function dragstarted(d) {
-        d3.select(this).raise().classed("active", true);
+            RADAR.db.put(entry, function (err, result) {
+                if(!err) {
+                    console.log("entry saved");
+                }
+            })
+        }
     }
 
-    function dragged(d) {
-        d.x = d3.event.x;
-        d.y = d3.event.y;
-        d3.select(this).attr("transform", "translate(" + d.x + "," + d.y + ")");
+    function draw() {
+        function dragstarted(d) {
+            d3.select(this).raise().classed("active", true);
+        }
+
+        function dragged(d) {
+            d.x = d3.event.x;
+            d.y = d3.event.y;
+            d3.select(this).attr("transform", "translate(" + d.x + "," + d.y + ")");
+        }
+
+        function dragended(d) {
+            console.log(d3.event.x + " / " + d3.event.y);
+            d3.select(this).classed("active", false);
+        }
+
+        var gItemEnter = RADAR.gItems.selectAll("g.item")
+            .data(itemData)
+            .enter()
+            .append("g")
+            .attr("class", "item")
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            })
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
+        gItemEnter
+            .append("circle")
+            .attr("class", "item")
+            .attr("r", 10)
+            .attr("cx", 10)
+            .attr("cy", 10)
+            .style("fill", function (d) {
+                return color(d.name);
+            });
+
+        gItemEnter
+            .append("text")
+            .attr("x", 0)
+            .attr("y", 32)
+            .text(function (d) {
+                return d.name;
+            })
     }
 
-    function dragended(d) {
-        console.log(d3.event.x + " / " + d3.event.y);
-        d3.select(this).classed("active", false);
-    }
+    this.save = save;
 
-    var gItemEnter = RADAR.gItems.selectAll("g.item")
-        .data(itemData)
-        .enter()
-        .append("g")
-        .attr("class", "item")
-        .attr("transform", function (d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        })
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
-
-    gItemEnter
-        .append("circle")
-        .attr("class", "item")
-        .attr("r", 10)
-        .attr("cx", 10)
-        .attr("cy", 10)
-        .style("fill", function (d) {
-            return color(d.name);
-        });
-
-    gItemEnter
-        .append("text")
-        .attr("x", 0)
-        .attr("y", 32)
-        .text(function (d) {
-            return d.name;
-        })
+    draw();
 };
