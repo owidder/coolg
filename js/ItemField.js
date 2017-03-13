@@ -53,6 +53,18 @@ var ItemField = function () {
         }
     }
 
+    function loadLatest() {
+        if(RADAR.db != null) {
+            RADAR.db.allDocs({include_docs: true, descending: true}, function(err, allDocs) {
+                console.dir(allDocs);
+                if(allDocs.rows.length > 0) {
+                    itemData = allDocs.rows[0].doc.itemData;
+                    draw();
+                }
+            });
+        }
+    }
+
     function draw() {
         function dragstarted(d) {
             d3.select(this).raise().classed("active", true);
@@ -82,6 +94,13 @@ var ItemField = function () {
                 .on("drag", dragged)
                 .on("end", dragended));
 
+        RADAR.gItems.selectAll("g.item")
+            .transition()
+            .duration(1000)
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+
         gItemEnter
             .append("circle")
             .attr("class", "item")
@@ -102,6 +121,7 @@ var ItemField = function () {
     }
 
     this.save = save;
+    this.loadLatest = loadLatest;
 
     draw();
 };
