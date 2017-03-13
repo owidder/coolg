@@ -51,6 +51,7 @@ var ItemField = function () {
     }
 
     function dragended(d) {
+        console.log(d3.event.x + " / " + d3.event.y);
         d3.select(this).classed("active", false);
     }
 
