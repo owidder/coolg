@@ -4,6 +4,8 @@
 
 var ItemField = function () {
 
+    var ID_ITEM_DATA = "itemData";
+
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
     var itemNames = [
@@ -41,7 +43,7 @@ var ItemField = function () {
     function save() {
         if(RADAR.db != null) {
             var entry = {
-                _id: new Date().toISOString(),
+                _id: ID_ITEM_DATA,
                 itemData: itemData
             };
 
@@ -55,10 +57,10 @@ var ItemField = function () {
 
     function loadLatest() {
         if(RADAR.db != null) {
-            RADAR.db.allDocs({include_docs: true, descending: true}, function(err, allDocs) {
-                console.dir(allDocs);
-                if(allDocs.rows.length > 0) {
-                    itemData = allDocs.rows[0].doc.itemData;
+            RADAR.db.get(ID_ITEM_DATA, function(err, doc) {
+                console.dir(doc);
+                if(doc != null) {
+                    itemData = doc.itemData;
                     draw();
                 }
             });
