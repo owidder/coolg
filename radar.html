@@ -27,8 +27,9 @@
 </div>
 
 <script id="input-segments" type="text/x-handlebars-template">
+    <b>Segments</b>
     {{#each segments}}
-        {{name}}<br>
+        <input class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
     {{/each}}
 </script>
 

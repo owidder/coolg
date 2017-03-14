@@ -24,26 +24,44 @@ var Radar = function (numberOfRings, numberOfSegments) {
         "Misc."
     ];
 
-    var segmentNames;
+    var segmentNames = DEMO_SEGMENT_NAMES;
+    var segments = [];
 
     var ID_SEGMENT_NAMES = "segmentNames";
 
-    function loadSegmentNames() {
-        segmentNames = DEMO_SEGMENT_NAMES;
+    function initSegments() {
+        var pies = d3.pie()(_.fill(_.range(segmentNames.length), 1));
+        segments = segmentNames.map(function (name, i) {
+            return {
+                id: "segment" + i,
+                name: name,
+                no: i,
+                pie: pies[i]
+            };
+        });
+    }
+
+    function loadSegments() {
         if(RADAR.db != null) {
             RADAR.db.get(ID_SEGMENT_NAMES, function (doc) {
-                if(doc != null) {
+                if(doc != null && doc.segmentNames != null) {
                     segmentNames = doc.segmentNames;
+                    initSegments();
+                    draw();
                 }
             })
         }
     }
 
-    function segmentName(index) {
-        if(segmentNames == null) {
-            loadSegmentNames();
-        }
+    function changeSegmentName(id, newName) {
+        segments.forEach(function (segment) {
+            if(segment.id == id) {
+                segment.name = newName;
+            }
+        })
+    }
 
+    function segmentName(index) {
         if(index < segmentNames.length) {
             return segmentNames[index];
         }
@@ -76,12 +94,8 @@ var Radar = function (numberOfRings, numberOfSegments) {
         var inputSegmentsTemplateScript = $("#input-segments").html();
         var inputSegmentsTemplate = Handlebars.compile(inputSegmentsTemplateScript);
         var context = {
-            segments: segmentNames.map(function (name) {
-                return {
-                    name: name
-                };
-            })
-        }
+            segments: segments
+        };
         var inputSegmentsHtml = inputSegmentsTemplate(context);
         $("#form-segments").append(inputSegmentsHtml);
     }
@@ -93,31 +107,40 @@ var Radar = function (numberOfRings, numberOfSegments) {
             return {
                 ringNo: index,
                 arc: d3.arc().outerRadius(outer).innerRadius(inner),
-                pie: d3.pie()(_.fill(_.range(numberOfSegments), 1))
+                segments: segments
             }
         });
 
         var gRingData = gRadar.selectAll("g.ring").data(data);
-        var gRingEnter = gRingData.enter();
-
-        var gRing = gRingEnter.append("g")
+        var gRingEnter = gRingData.enter()
+            .append("g")
             .attr("class", "ring");
 
-        var gArc = gRing.selectAll("g.arc")
+        gRingData.exit().remove();
+
+        var gArcData = gRingEnter.selectAll("g.arc")
             .data(function (d) {
-                return d.pie;
-            })
-            .enter()
-            .append("g")
+                return d.segments;
+            });
+
+        var gArcEnter = gArcData.enter().append("g")
             .attr("class", "arc");
 
-        gArc.append("path")
+        gArcEnter.append("path")
+            .attr("class", "arc")
+            .on("mouseout", function (d) {
+                if (RADAR.svgLegend) {
+                    RADAR.svgLegend.setLegendText("");
+                }
+            });
+
+        gRadar.selectAll("path.arc")
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
-                return arc(d);
+                return arc(d.pie);
             })
-            .style("fill", function(d, i) {
-                return color(i);
+            .style("fill", function(d) {
+                return color(d.no);
             })
             .style("opacity", function (d) {
                 var ringNo = this.parentNode.parentNode.__data__.ringNo;
@@ -129,46 +152,53 @@ var Radar = function (numberOfRings, numberOfSegments) {
                     var ringNo = this.parentNode.parentNode.__data__.ringNo;
                     RADAR.svgLegend.setLegendText(ringName(ringNo));
                 }
-            })
-            .on("mouseout", function (d) {
-                if(RADAR.svgLegend) {
-                    RADAR.svgLegend.setLegendText("");
-                }
             });
 
-        var gLegendArc = gRing.selectAll("g.legendarc")
+        gArcData.exit().remove();
+
+        var gLegendArcData = gRingEnter.selectAll("g.legendarc")
             .data(function (d) {
-                return d.pie;
-            })
-            .enter()
+                return d.segments;
+            });
+
+        var gLegendArcEnter = gLegendArcData.enter()
             .append("g")
             .attr("class", "legendarc");
 
-        gLegendArc.append("path")
-            .attr("d", function (d) {
-                var arc = d3.arc().outerRadius(radius + 10).innerRadius(radius + 10);
-                return arc(d)
-            })
-            .attr("id", function (d, i) {
-                return "legendarc" + i;
-            })
+        gLegendArcEnter.append("path")
+            .attr("class", "legendarc")
             .style("fill", "none")
             .style("opacity", "0");
 
-        gLegendArc.append("text")
-            .append("textPath")
-            .attr("xlink:href", function(d, i) {
-                return "#legendarc" + i;
+        gRadar.selectAll("path.legendarc")
+            .attr("d", function (d) {
+                var arc = d3.arc().outerRadius(radius + 10).innerRadius(radius + 10);
+                return arc(d.pie)
             })
-            .style("text-anchor","middle") //place the text halfway on the arc
-            .attr("startOffset", "20%")
-            .text(function(d, i) {
-                return segmentName(i);
+            .attr("id", function (d) {
+                return "legendarc" + d.no;
             });
+
+        gLegendArcEnter.append("text")
+            .append("textPath")
+            .attr("class", "legend")
+            .style("text-anchor","middle") //place the text halfway on the arc
+            .attr("startOffset", "20%");
+
+        gRadar.selectAll("textPath.legend")
+            .attr("xlink:href", function(d) {
+                return "#legendarc" + d.no;
+            })
+            .text(function(d) {
+                return d.name;
+            });
+
+        gLegendArcData.exit().remove();
     }
 
     this.draw = draw;
     this.showSegments = showSegments;
 
+    initSegments();
     draw();
 };

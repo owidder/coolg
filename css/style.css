@@ -30,3 +30,9 @@ circle.item {
 circle.item.active {
     opacity: 0.5;
 }
+
+input.input {
+    margin: 0 0 0 0;
+    font-size: x-small;
+    height: 1rem;
+}
