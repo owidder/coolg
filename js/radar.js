@@ -3,6 +3,8 @@
 /* global RADAR */
 /* global d3 */
 /* global _ */
+/* global $ */
+/* global Handlebars */
 
 var Radar = function (numberOfRings, numberOfSegments) {
     var radius = (Math.min(RADAR.width, RADAR.height) / 2) - 30;
@@ -11,17 +13,36 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
     var gRadar = RADAR.gRadar;
 
+    var DEMO_SEGMENT_NAMES = [
+        "Tools",
+        "Platforms",
+        "Languages",
+        "Methods",
+        "Techniques",
+        "Frameworks",
+        "Architectures",
+        "Misc."
+    ];
+
+    var segmentNames;
+
+    var ID_SEGMENT_NAMES = "segmentNames";
+
+    function loadSegmentNames() {
+        segmentNames = DEMO_SEGMENT_NAMES;
+        if(RADAR.db != null) {
+            RADAR.db.get(ID_SEGMENT_NAMES, function (doc) {
+                if(doc != null) {
+                    segmentNames = doc.segmentNames;
+                }
+            })
+        }
+    }
+
     function segmentName(index) {
-        var segmentNames = [
-            "Tools",
-            "Platforms",
-            "Languages",
-            "Methods",
-            "Techniques",
-            "Frameworks",
-            "Architectures",
-            "Misc."
-        ];
+        if(segmentNames == null) {
+            loadSegmentNames();
+        }
 
         if(index < segmentNames.length) {
             return segmentNames[index];
@@ -49,6 +70,20 @@ var Radar = function (numberOfRings, numberOfSegments) {
         else {
             return "Ring " + index;
         }
+    }
+
+    function showSegments() {
+        var inputSegmentsTemplateScript = $("#input-segments").html();
+        var inputSegmentsTemplate = Handlebars.compile(inputSegmentsTemplateScript);
+        var context = {
+            segments: segmentNames.map(function (name) {
+                return {
+                    name: name
+                };
+            })
+        }
+        var inputSegmentsHtml = inputSegmentsTemplate(context);
+        $("#form-segments").append(inputSegmentsHtml);
     }
 
     function draw() {
@@ -133,6 +168,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     }
 
     this.draw = draw;
+    this.showSegments = showSegments;
 
     draw();
 };

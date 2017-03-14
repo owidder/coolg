@@ -10,6 +10,7 @@
     <script src="./bower_components/lodash/dist/lodash.js"></script>
     <script src="./bower_components/jquery/dist/jquery.js"></script>
     <script src="./bower_components/pouchdb/dist/pouchdb.js"></script>
+    <script src="./bower_components/handlebars/handlebars.js"></script>
 
 </head>
 
@@ -17,7 +18,7 @@
 <div class="container">
     <div class="row">
         <div class="col s2">
-            <h5>Radar</h5>
+            <div id="form-segments"></div>
         </div>
         <div class="col s3">
             <label for="numsegs">Number of segments</label>
@@ -41,6 +42,12 @@
         </div>
     </div>
 </div>
+
+<script id="input-segments" type="text/x-handlebars-template">
+    {{#each segments}}
+        {{name}}<br>
+    {{/each}}
+</script>
 
 
 <script src="./js/boot.js"></script>
@@ -75,6 +82,8 @@
 
     var radar = new Radar(parseInt(numberOfRings), parseInt(numberOfSegments), svgLegend);
     var itemField = new ItemField();
+
+    radar.showSegments();
 
 </script>
 </body>

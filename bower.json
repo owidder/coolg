@@ -18,6 +18,7 @@
     "d3": "^4.7.1",
     "materialize": "^0.98.0",
     "lodash": "^4.17.4",
-    "pouchdb": "^6.1.2"
+    "pouchdb": "^6.1.2",
+    "handlebars": "^4.0.5"
   }
 }
