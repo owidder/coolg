@@ -58,16 +58,8 @@ var Radar = function (numberOfRings, numberOfSegments) {
             if(segment.id == id) {
                 segment.name = newName;
             }
-        })
-    }
-
-    function segmentName(index) {
-        if(index < segmentNames.length) {
-            return segmentNames[index];
-        }
-        else {
-            return "Segment " + index;
-        }
+        });
+        draw();
     }
 
     function ringName(index) {
@@ -198,6 +190,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
     this.draw = draw;
     this.showSegments = showSegments;
+    this.changeSegmentName = changeSegmentName;
 
     initSegments();
     draw();

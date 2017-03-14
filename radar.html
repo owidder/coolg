@@ -29,7 +29,7 @@
 <script id="input-segments" type="text/x-handlebars-template">
     <b>Segments</b>
     {{#each segments}}
-        <input class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
+        <input onkeypress="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
     {{/each}}
 </script>
 
@@ -68,6 +68,11 @@
     var itemField = new ItemField();
 
     radar.showSegments();
+
+    function segmentNameChanged(id) {
+        var newName = $("#" + id).val();
+        radar.changeSegmentName(id, newName);
+    }
 
 </script>
 </body>
