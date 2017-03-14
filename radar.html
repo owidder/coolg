@@ -29,7 +29,7 @@
 <script id="input-segments" type="text/x-handlebars-template">
     <b>Segments</b>
     {{#each segments}}
-        <input onkeypress="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
+        <input onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
     {{/each}}
 </script>
 
