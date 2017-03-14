@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" type="text/css" href="./bower_components/materialize/dist/css/materialize.css" media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/material-icons.css"/>
 
     <script src="./bower_components/d3/d3.js"></script>
     <script src="./bower_components/lodash/dist/lodash.js"></script>
@@ -29,7 +30,16 @@
 <script id="input-segments" type="text/x-handlebars-template">
     <b>Segments</b>
     {{#each segments}}
-        <input onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
+    <table>
+        <tr class="input">
+            <td>
+                <input onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
+            </td>
+            <td>
+                <i class="material-icons">delete_forever</i>
+            </td>
+        </tr>
+    </table>
     {{/each}}
 </script>
 

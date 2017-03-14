@@ -36,3 +36,11 @@ input.input {
     font-size: x-small;
     height: 1rem;
 }
+
+tr.input {
+    height: 1em;
+}
+
+i.material-icons {
+    font-size: 1.5em;
+}
