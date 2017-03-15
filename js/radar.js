@@ -15,25 +15,25 @@ var Radar = function (numberOfRings, numberOfSegments) {
     var gRadar = RADAR.gRadar;
 
     var DEMO_SEGMENTS = [
-        {name: "Tools", id: 0},
-        {name: "Platforms", id: 1},
-        {name: "Languages", id: 2},
-        {name: "Methods", id: 3},
-        {name: "Techniques", id: 4},
-        {name: "Frameworks", id: 5},
-        {name: "Archtectures", id: 6},
-        {name: "Misc.", id: 7}
+        {name: "Tools", id: "segment0"},
+        {name: "Platforms", id: "segment1"},
+        {name: "Languages", id: "segment2"},
+        {name: "Methods", id: "segment3"},
+        {name: "Techniques", id: "segment4"},
+        {name: "Frameworks", id: "segment5"},
+        {name: "Archtectures", id: "segment6"},
+        {name: "Misc.", id: "segment7"}
     ];
 
     var DEMO_RINGS = [
-        {name: "Why do you wait? Just Use it!", id: 0},
-        {name: "Use it slowly", id: 1},
-        {name: "Make a PoC", id: 2},
-        {name: "Read about it", id: 3},
-        {name: "Wait a little longer", id: 4},
-        {name: "Wait much longer", id: 5},
-        {name: "C'mon! That's BS", id: 6},
-        {name: "This will never fly!", id: 7}
+        {name: "Why do you wait? Just Use it!", id: "ring0"},
+        {name: "Use it slowly", id: "ring1"},
+        {name: "Make a PoC", id: "ring2"},
+        {name: "Read about it", id: "ring3"},
+        {name: "Wait a little longer", id: "ring4"},
+        {name: "Wait much longer", id: "ring5"},
+        {name: "C'mon! That's BS", id: "ring6"},
+        {name: "This will never fly!", id: "ring7"}
     ];
 
 
@@ -85,9 +85,24 @@ var Radar = function (numberOfRings, numberOfSegments) {
         draw();
     }
 
+    function changeRingName(id, newName) {
+        rings.forEach(function (ring) {
+            if(ring.id == id) {
+                ring.name = newName;
+            }
+        });
+        draw();
+    }
+
     function segmentFromId(id) {
         return segments.find(function (segment) {
             return segment.id == id;
+        })
+    }
+
+    function ringFromId(id) {
+        return rings.find(function (ring) {
+            return ring.id == id;
         })
     }
 
@@ -100,10 +115,19 @@ var Radar = function (numberOfRings, numberOfSegments) {
         showSegments();
     }
 
+    function removeRing(id) {
+        rings = rings.filter(function (ring) {
+            return  ring.id != id;
+        });
+        initRings();
+        draw();
+        showRings();
+    }
+
     function addSegment() {
         segments.push({
             name: "",
-            id: UTIL.uid()
+            id: "segment" + UTIL.uid()
         });
 
         initSegments();
@@ -111,24 +135,17 @@ var Radar = function (numberOfRings, numberOfSegments) {
         showSegments();
     }
 
-    function ringName(index) {
-        var ringNames = [
-            "Why do you wait? Just Use it!",
-            "Use it slowly",
-            "Make a PoC",
-            "Read about it",
-            "Wait a little longer",
-            "Wait much longer",
-            "C'mon! That's BS",
-            "This will never fly!"
-        ];
+    function addRingAfterId(id) {
+        var ring = ringFromId(id);
+        var index = ring.ringNo;
+        rings.splice(index, 0, {
+            name: "",
+            id: "ring" + UTIL.uid()
+        });
 
-        if(index < ringNames.length) {
-            return ringNames[index];
-        }
-        else {
-            return "Ring " + index;
-        }
+        initRings();
+        draw();
+        showRings();
     }
 
     function showSegments() {
@@ -140,6 +157,17 @@ var Radar = function (numberOfRings, numberOfSegments) {
         };
         var inputSegmentsHtml = inputSegmentsTemplate(context);
         $("#form-segments").append(inputSegmentsHtml);
+    }
+
+    function showRings() {
+        $("#form-rings").empty();
+        var inputRingsTemplateScript = $("#input-rings").html();
+        var inputRingsTemplate = Handlebars.compile(inputRingsTemplateScript);
+        var context = {
+            rings: rings
+        };
+        var inputRingsHtml = inputRingsTemplate(context);
+        $("#form-rings").append(inputRingsHtml);
     }
 
     function draw() {
@@ -264,10 +292,12 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
     this.draw = draw;
     this.showSegments = showSegments;
+    this.showRings = showRings;
     this.changeSegmentName = changeSegmentName;
+    this.changeRingName = changeRingName;
     this.removeSegment = removeSegment;
-    this.addSegment
-        = addSegment;
+    this.addSegment = addSegment;
+    this.addRingAfterId = addRingAfterId;
 
     initSegments();
     initRings();

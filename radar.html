@@ -20,6 +20,7 @@
     <div class="row">
         <div class="col s2">
             <div id="form-segments"></div>
+            <div id="form-rings"></div>
         </div>
         <div class="col s10">
             <div class="svg"></div>
@@ -48,6 +49,28 @@
     </a>
 </script>
 
+<script id="input-rings" type="text/x-handlebars-template">
+    <b>Rings</b>
+    {{#each rings}}
+    <table>
+        <tr class="input">
+            <td class="input">
+                <input onkeyup="ringNameChanged('{{id}}')" class="input" placeholder="Ring name" id="{{id}}" type="text" class="validate" value="{{name}}">
+            </td>
+            <td class="input">
+                <a onclick="removeRing('{{id}}')" class="input" href="#">
+                    <i class="material-icons">delete_forever</i>
+                </a>
+            </td>
+            <td class="input">
+                <a onclick="addRingAfterId('{{id}}')" class="input" href="#">
+                    <i class="material-icons">note_add</i>
+                </a>
+            </td>
+        </tr>
+    </table>
+    {{/each}}
+</script>
 
 <script src="./js/boot.js"></script>
 
@@ -83,10 +106,16 @@
     var itemField = new ItemField();
 
     radar.showSegments();
+    radar.showRings();
 
     function segmentNameChanged(id) {
         var newName = $("#" + id).val();
         radar.changeSegmentName(id, newName);
+    }
+
+    function ringNameChanged(id) {
+        var newName = $("#" + id).val();
+        radar.changeRingName(id, newName);
     }
 
     function removeSegment(id) {
@@ -95,6 +124,10 @@
 
     function addSegment() {
         radar.addSegment();
+    }
+
+    function addRingAfterId(id) {
+        radar.addRingAfterId(id);
     }
 
 </script>
