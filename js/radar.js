@@ -296,6 +296,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     this.changeSegmentName = changeSegmentName;
     this.changeRingName = changeRingName;
     this.removeSegment = removeSegment;
+    this.removeRing = removeRing;
     this.addSegment = addSegment;
     this.addRingAfterId = addRingAfterId;
 
