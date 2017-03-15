@@ -135,6 +135,19 @@ var Radar = function (numberOfRings, numberOfSegments) {
         showSegments();
     }
 
+    function addSegmentAfterId(id) {
+        var segment = segmentFromId(id);
+        var index = segment.no;
+        segments.splice(index, 0, {
+            name: "",
+            id: "segment" + UTIL.uid()
+        });
+
+        initSegments();
+        draw();
+        showSegments();
+    }
+
     function addRingAfterId(id) {
         var ring = ringFromId(id);
         var index = ring.ringNo;
@@ -298,6 +311,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     this.removeSegment = removeSegment;
     this.removeRing = removeRing;
     this.addSegment = addSegment;
+    this.addSegmentAfterId = addSegmentAfterId;
     this.addRingAfterId = addRingAfterId;
 
     initSegments();

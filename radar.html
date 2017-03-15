@@ -41,12 +41,14 @@
                     <i class="material-icons">delete_forever</i>
                 </a>
             </td>
+            <td class="input">
+                <a onclick="addSegmentAfterId('{{id}}')" class="input" href="#">
+                    <i class="material-icons">note_add</i>
+                </a>
+            </td>
         </tr>
     </table>
     {{/each}}
-    <a onclick="addSegment()" class="input" href="#">
-        <i class="material-icons">note_add</i>
-    </a>
 </script>
 
 <script id="input-rings" type="text/x-handlebars-template">
@@ -128,6 +130,10 @@
 
     function addSegment() {
         radar.addSegment();
+    }
+
+    function addSegmentAfterId(id) {
+        radar.addSegmentAfterId(id);
     }
 
     function addRingAfterId(id) {
