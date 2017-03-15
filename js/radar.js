@@ -5,6 +5,7 @@
 /* global _ */
 /* global $ */
 /* global Handlebars */
+/* global UTIL */
 
 var Radar = function (numberOfRings, numberOfSegments) {
     var radius = (Math.min(RADAR.width, RADAR.height) / 2) - 30;
@@ -71,6 +72,17 @@ var Radar = function (numberOfRings, numberOfSegments) {
         segments = segments.filter(function (segment) {
             return  segment.id != id;
         });
+        initSegments();
+        draw();
+        showSegments();
+    }
+
+    function addSegment() {
+        segments.push({
+            name: "",
+            id: UTIL.uid()
+        });
+
         initSegments();
         draw();
         showSegments();
@@ -157,14 +169,14 @@ var Radar = function (numberOfRings, numberOfSegments) {
                     RADAR.svgLegend.setLegendText(ringName(ringNo));
                 }
             })
+            .style("fill", function(d) {
+                return color(d.no);
+            })
             .transition()
             .duration(1000)
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d.pie);
-            })
-            .style("fill", function(d) {
-                return color(d.no);
             })
             .style("opacity", function (d) {
                 var ringNo = this.parentNode.parentNode.__data__.ringNo;
@@ -231,6 +243,8 @@ var Radar = function (numberOfRings, numberOfSegments) {
     this.showSegments = showSegments;
     this.changeSegmentName = changeSegmentName;
     this.removeSegment = removeSegment;
+    this.addSegment
+        = addSegment;
 
     initSegments();
     draw();

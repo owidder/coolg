@@ -43,6 +43,9 @@
         </tr>
     </table>
     {{/each}}
+    <a onclick="addSegment()" class="input" href="#">
+        <i class="material-icons">note_add</i>
+    </a>
 </script>
 
 
@@ -88,6 +91,10 @@
 
     function removeSegment(id) {
         radar.removeSegment(id);
+    }
+
+    function addSegment() {
+        radar.addSegment();
     }
 
 </script>
