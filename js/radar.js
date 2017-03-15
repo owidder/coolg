@@ -151,6 +151,14 @@ var Radar = function (numberOfRings, numberOfSegments) {
         });
 
         gArcAll.selectAll("path.arc")
+            .on("mouseover", function (d) {
+                if(RADAR.svgLegend) {
+                    var ringNo = this.parentNode.parentNode.__data__.ringNo;
+                    RADAR.svgLegend.setLegendText(ringName(ringNo));
+                }
+            })
+            .transition()
+            .duration(1000)
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d.pie);
@@ -162,19 +170,15 @@ var Radar = function (numberOfRings, numberOfSegments) {
                 var ringNo = this.parentNode.parentNode.__data__.ringNo;
                 var opacity = (1 / (numberOfRings+1)) * (ringNo+1);
                 return opacity;
-            })
-            .on("mouseover", function (d) {
-                if(RADAR.svgLegend) {
-                    var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                    RADAR.svgLegend.setLegendText(ringName(ringNo));
-                }
             });
 
         gArcData.exit().remove();
 
-        var gLegendArcData = gRingEnter.selectAll("g.legendarc")
+        var gLegendArcData = gRingAll.selectAll("g.legendarc")
             .data(function (d) {
                 return d.segments;
+            }, function (d) {
+                return d.id;
             });
 
         var gLegendArcEnter = gLegendArcData.enter()
@@ -186,7 +190,18 @@ var Radar = function (numberOfRings, numberOfSegments) {
             .style("fill", "none")
             .style("opacity", "0");
 
-        gRadar.selectAll("path.legendarc")
+        var gLegendArcAll = gRingAll.selectAll("g.legendarc");
+        gLegendArcAll.selectAll("path.legendarc").data(function (d) {
+            return [d];
+        });
+        gLegendArcAll.selectAll("text").data(function (d) {
+            return [d];
+        });
+        gLegendArcAll.selectAll("text").selectAll("textPath.legend").data(function (d) {
+            return [d];
+        });
+
+        gLegendArcAll.selectAll("path.legendarc")
             .attr("d", function (d) {
                 var arc = d3.arc().outerRadius(radius + 10).innerRadius(radius + 10);
                 return arc(d.pie)
