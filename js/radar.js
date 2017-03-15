@@ -13,28 +13,27 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
     var gRadar = RADAR.gRadar;
 
-    var DEMO_SEGMENT_NAMES = [
-        "Tools",
-        "Platforms",
-        "Languages",
-        "Methods",
-        "Techniques",
-        "Frameworks",
-        "Architectures",
-        "Misc."
+    var DEMO_SEGMENTS = [
+        {name: "Tools", id: 0},
+        {name: "Platforms", id: 1},
+        {name: "Languages", id: 2},
+        {name: "Methods", id: 3},
+        {name: "Techniques", id: 4},
+        {name: "Frameworks", id: 5},
+        {name: "Archtectures", id: 6},
+        {name: "Misc.", id: 7}
     ];
 
-    var segmentNames = DEMO_SEGMENT_NAMES;
-    var segments = [];
+    var segments = DEMO_SEGMENTS;
 
-    var ID_SEGMENT_NAMES = "segmentNames";
+    var ID_SEGMENTS = "segments";
 
     function initSegments() {
-        var pies = d3.pie()(_.fill(_.range(segmentNames.length), 1));
-        segments = segmentNames.map(function (name, i) {
+        var pies = d3.pie()(_.fill(_.range(segments.length), 1));
+        segments = segments.map(function (segment, i) {
             return {
-                id: "segment" + i,
-                name: name,
+                name: segment.name,
+                id: segment.id,
                 no: i,
                 pie: pies[i]
             };
@@ -43,9 +42,9 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
     function loadSegments() {
         if(RADAR.db != null) {
-            RADAR.db.get(ID_SEGMENT_NAMES, function (doc) {
-                if(doc != null && doc.segmentNames != null) {
-                    segmentNames = doc.segmentNames;
+            RADAR.db.get(ID_SEGMENTS, function (doc) {
+                if(doc != null && doc.segments != null) {
+                    segments = doc.segments;
                     initSegments();
                     draw();
                 }
@@ -60,6 +59,21 @@ var Radar = function (numberOfRings, numberOfSegments) {
             }
         });
         draw();
+    }
+
+    function segmentFromId(id) {
+        return segments.find(function (segment) {
+            return segment.id == id;
+        })
+    }
+
+    function removeSegment(id) {
+        segments = segments.filter(function (segment) {
+            return  segment.id != id;
+        });
+        initSegments();
+        draw();
+        showSegments();
     }
 
     function ringName(index) {
@@ -83,6 +97,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     }
 
     function showSegments() {
+        $("#form-segments").empty();
         var inputSegmentsTemplateScript = $("#input-segments").html();
         var inputSegmentsTemplate = Handlebars.compile(inputSegmentsTemplateScript);
         var context = {
@@ -191,6 +206,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     this.draw = draw;
     this.showSegments = showSegments;
     this.changeSegmentName = changeSegmentName;
+    this.removeSegment = removeSegment;
 
     initSegments();
     draw();

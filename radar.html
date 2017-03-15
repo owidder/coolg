@@ -36,7 +36,7 @@
                 <input onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
             </td>
             <td class="input">
-                <a class="input" href="#">
+                <a onclick="removeSegment('{{id}}')" class="input" href="#">
                     <i class="material-icons">delete_forever</i>
                 </a>
             </td>
@@ -84,6 +84,10 @@
     function segmentNameChanged(id) {
         var newName = $("#" + id).val();
         radar.changeSegmentName(id, newName);
+    }
+
+    function removeSegment(id) {
+        radar.removeSegment(id);
     }
 
 </script>
