@@ -125,9 +125,13 @@ var Radar = function (numberOfRings, numberOfSegments) {
 
         gRingData.exit().remove();
 
-        var gArcData = gRingEnter.selectAll("g.arc")
+        var gRingAll = gRadar.selectAll("g.ring");
+
+        var gArcData = gRingAll.selectAll("g.arc")
             .data(function (d) {
                 return d.segments;
+            }, function (d) {
+                return d.id;
             });
 
         var gArcEnter = gArcData.enter().append("g")
@@ -141,7 +145,12 @@ var Radar = function (numberOfRings, numberOfSegments) {
                 }
             });
 
-        gRadar.selectAll("path.arc")
+        var gArcAll = gRingAll.selectAll("g.arc");
+        gArcAll.selectAll("path.arc").data(function (d) {
+            return [d];
+        });
+
+        gArcAll.selectAll("path.arc")
             .attr("d", function (d) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d.pie);
