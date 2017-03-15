@@ -25,7 +25,20 @@ var Radar = function (numberOfRings, numberOfSegments) {
         {name: "Misc.", id: 7}
     ];
 
+    var DEMO_RINGS = [
+        {name: "Why do you wait? Just Use it!", id: 0},
+        {name: "Use it slowly", id: 1},
+        {name: "Make a PoC", id: 2},
+        {name: "Read about it", id: 3},
+        {name: "Wait a little longer", id: 4},
+        {name: "Wait much longer", id: 5},
+        {name: "C'mon! That's BS", id: 6},
+        {name: "This will never fly!", id: 7}
+    ];
+
+
     var segments = DEMO_SEGMENTS;
+    var rings = DEMO_RINGS;
 
     var ID_SEGMENTS = "segments";
 
@@ -39,6 +52,16 @@ var Radar = function (numberOfRings, numberOfSegments) {
                 pie: pies[i]
             };
         });
+    }
+
+    function initRings() {
+        rings = rings.map(function (ring, i) {
+            return {
+                name: ring.name,
+                id: ring.id,
+                ringNo: i
+            }
+        })
     }
 
     function loadSegments() {
@@ -120,11 +143,11 @@ var Radar = function (numberOfRings, numberOfSegments) {
     }
 
     function draw() {
-        var data = _.range(numberOfRings).map(function(index) {
-            var inner = index * (radius / numberOfRings);
-            var outer = (index+1) * (radius / numberOfRings);
+        var data = rings.map(function(ring, index) {
+            var inner = index * (radius / rings.length);
+            var outer = (index+1) * (radius / rings.length);
             return {
-                ringNo: index,
+                ring: ring,
                 arc: d3.arc().outerRadius(outer).innerRadius(inner),
                 segments: segments
             }
@@ -165,8 +188,8 @@ var Radar = function (numberOfRings, numberOfSegments) {
         gArcAll.selectAll("path.arc")
             .on("mouseover", function (d) {
                 if(RADAR.svgLegend) {
-                    var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                    RADAR.svgLegend.setLegendText(ringName(ringNo));
+                    var ring = this.parentNode.parentNode.__data__.ring;
+                    RADAR.svgLegend.setLegendText(ring.name);
                 }
             })
             .style("fill", function(d) {
@@ -178,9 +201,9 @@ var Radar = function (numberOfRings, numberOfSegments) {
                 var arc = this.parentNode.parentNode.__data__.arc;
                 return arc(d.pie);
             })
-            .style("opacity", function (d) {
-                var ringNo = this.parentNode.parentNode.__data__.ringNo;
-                var opacity = (1 / (numberOfRings+1)) * (ringNo+1);
+            .style("opacity", function (d, i) {
+                var ringNo = this.parentNode.parentNode.__data__.ring.ringNo;
+                var opacity = (1 / (rings.length+1)) * (ringNo+1);
                 return opacity;
             });
 
@@ -247,5 +270,6 @@ var Radar = function (numberOfRings, numberOfSegments) {
         = addSegment;
 
     initSegments();
+    initRings();
     draw();
 };
