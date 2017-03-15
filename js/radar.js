@@ -138,7 +138,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     function addSegmentAfterId(id) {
         var segment = segmentFromId(id);
         var index = segment.no;
-        segments.splice(index, 0, {
+        segments.splice(index+1, 0, {
             name: "",
             id: "segment" + UTIL.uid()
         });
@@ -151,7 +151,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     function addRingAfterId(id) {
         var ring = ringFromId(id);
         var index = ring.ringNo;
-        rings.splice(index, 0, {
+        rings.splice(index+1, 0, {
             name: "",
             id: "ring" + UTIL.uid()
         });

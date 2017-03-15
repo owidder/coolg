@@ -28,7 +28,7 @@ var ItemField = function () {
         "BYOD",
         "Ember",
         "Redux",
-        "Spriong Boot",
+        "Spring Boot",
         "Enzyme"
     ];
 
