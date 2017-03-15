@@ -32,11 +32,13 @@
     {{#each segments}}
     <table>
         <tr class="input">
-            <td>
+            <td class="input">
                 <input onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
             </td>
-            <td>
-                <i class="material-icons">delete_forever</i>
+            <td class="input">
+                <a class="input" href="#">
+                    <i class="material-icons">delete_forever</i>
+                </a>
             </td>
         </tr>
     </table>

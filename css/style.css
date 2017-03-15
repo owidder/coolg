@@ -37,8 +37,13 @@ input.input {
     height: 1rem;
 }
 
-tr.input {
+tr.input, td.input {
     height: 1em;
+    padding: 0;
+}
+
+a.input:hover {
+    cursor: hand;
 }
 
 i.material-icons {
