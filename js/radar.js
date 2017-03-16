@@ -6,8 +6,9 @@
 /* global $ */
 /* global Handlebars */
 /* global UTIL */
+/* global SimplePromise */
 
-var Radar = function (numberOfRings, numberOfSegments) {
+var Radar = function () {
     var radius = (Math.min(RADAR.width, RADAR.height) / 2) - 30;
 
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
@@ -41,6 +42,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
     var rings = DEMO_RINGS;
 
     var ID_SEGMENTS = "segments";
+    var ID_RINGS = "rings";
 
     function initSegments() {
         var pies = d3.pie()(_.fill(_.range(segments.length), 1));
@@ -64,15 +66,107 @@ var Radar = function (numberOfRings, numberOfSegments) {
         })
     }
 
-    function loadSegments() {
+    function readSegmentsFromDb() {
+        var p = new SimplePromise();
         if(RADAR.db != null) {
-            RADAR.db.get(ID_SEGMENTS, function (doc) {
-                if(doc != null && doc.segments != null) {
-                    segments = doc.segments;
-                    initSegments();
-                    draw();
+            RADAR.db.get(ID_SEGMENTS, function (err, doc) {
+                if(err) {
+                    console.log(err);
+                    p.resolve(null);
                 }
-            })
+                else {
+                    p.resolve(doc);
+                }
+            });
+        }
+        else {
+            p.reject();
+        }
+
+        return p.promise;
+    }
+
+    function loadSegments() {
+        readSegmentsFromDb().then(function (doc) {
+            if(doc != null && doc.segments != null) {
+                segments = doc.segments;
+                initSegments();
+                draw();
+                showSegments();
+            }
+        });
+    }
+
+    function saveSegments() {
+        readSegmentsFromDb().then(function (doc) {
+            if(doc != null) {
+                doc.segments = segments;
+                RADAR.db.put(doc);
+            }
+            else {
+                RADAR.db.put({_id: ID_SEGMENTS, segments: segments});
+            }
+        });
+    }
+
+    function readRingsFromDb() {
+        var p = new SimplePromise();
+        if(RADAR.db != null) {
+            RADAR.db.get(ID_RINGS, function (err, doc) {
+                if(err) {
+                    console.log(err);
+                    p.resolve(null);
+                }
+                else {
+                    p.resolve(doc);
+                }
+            });
+        }
+        else {
+            p.reject();
+        }
+
+        return p.promise;
+    }
+
+    function loadRings() {
+        readRingsFromDb().then(function (doc) {
+            if(doc != null && doc.rings != null) {
+                rings = doc.rings;
+                initRings();
+                draw();
+                showRings();
+            }
+        });
+    }
+
+    function saveRings() {
+        readRingsFromDb().then(function (doc) {
+            if(doc != null) {
+                doc.rings = rings;
+                RADAR.db.put(doc);
+            }
+            else {
+                RADAR.db.put({_id: ID_RINGS, rings: rings});
+            }
+        });
+    }
+
+    function segmentsChanged(withSave) {
+        initSegments();
+        draw();
+        showSegments();
+        if(withSave) {
+            saveSegments();
+        }
+    }
+
+    function ringsChanged(withSave) {
+        initRings();
+        draw();
+        showRings();
+        if(withSave) {
+            saveRings();
         }
     }
 
@@ -83,6 +177,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
             }
         });
         draw();
+        saveSegments();
     }
 
     function changeRingName(id, newName) {
@@ -92,6 +187,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
             }
         });
         draw();
+        saveRings();
     }
 
     function segmentFromId(id) {
@@ -113,6 +209,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
         initSegments();
         draw();
         showSegments();
+        saveSegments();
     }
 
     function removeRing(id) {
@@ -122,6 +219,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
         initRings();
         draw();
         showRings();
+        saveRings();
     }
 
     function addSegment() {
@@ -133,6 +231,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
         initSegments();
         draw();
         showSegments();
+        saveSegments();
     }
 
     function addSegmentAfterId(id) {
@@ -146,6 +245,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
         initSegments();
         draw();
         showSegments();
+        saveSegments();
     }
 
     function addRingAfterId(id) {
@@ -159,6 +259,7 @@ var Radar = function (numberOfRings, numberOfSegments) {
         initRings();
         draw();
         showRings();
+        saveRings();
     }
 
     function showSegments() {
@@ -317,4 +418,6 @@ var Radar = function (numberOfRings, numberOfSegments) {
     initSegments();
     initRings();
     draw();
+    showSegments();
+    showRings();
 };
