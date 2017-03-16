@@ -25,8 +25,11 @@
             <br>
             <a onclick="reset()" class="waves-effect waves-light btn">Reset</a>
         </div>
-        <div class="col s10">
+        <div class="col s8">
             <div class="svg"></div>
+        </div>
+        <div class="col s2">
+            <div id="form-items"></div>
         </div>
     </div>
 </div>
@@ -69,6 +72,29 @@
             </td>
             <td class="input">
                 <a onclick="addRingAfterId('{{id}}')" class="input" href="#">
+                    <i class="material-icons">note_add</i>
+                </a>
+            </td>
+        </tr>
+    </table>
+    {{/each}}
+</script>
+
+<script id="input-items" type="text/x-handlebars-template">
+    <b>Trends</b>
+    {{#each items}}
+    <table>
+        <tr class="input">
+            <td class="input">
+                <input onkeyup="itemNameChanged('{{id}}')" class="input" placeholder="Trend name" id="{{id}}" type="text" class="validate" value="{{name}}">
+            </td>
+            <td class="input">
+                <a onclick="removeItem('{{id}}')" class="input" href="#">
+                    <i class="material-icons">delete_forever</i>
+                </a>
+            </td>
+            <td class="input">
+                <a onclick="addItemAfterId('{{id}}')" class="input" href="#">
                     <i class="material-icons">note_add</i>
                 </a>
             </td>
@@ -131,6 +157,11 @@
 
     function addRingAfterId(id) {
         radar.addRingAfterId(id);
+    }
+
+    function itemNameChanged(id) {
+        var newName = $("#" + id).val();
+        itemField.changeItemName(id, newName);
     }
 
     function reset() {

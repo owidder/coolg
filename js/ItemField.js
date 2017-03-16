@@ -112,6 +112,18 @@ var ItemField = function () {
         });
     }
 
+    function refreshItemForm() {
+        $("#form-items").empty();
+        var inputItemsTemplateScript = $("#input-items").html();
+        var inputItemsTemplate = Handlebars.compile(inputItemsTemplateScript);
+        var context = {
+            items: items
+        };
+        var inputItemsHtml = inputItemsTemplate(context);
+        $("#form-items").append(inputItemsHtml);
+    }
+
+
     function draw() {
         function dragstarted(d) {
             d3.select(this).raise().classed("active", true);
@@ -129,7 +141,9 @@ var ItemField = function () {
             d3.select(this).classed("active", false);
         }
 
-        var gItemData = RADAR.gItems.selectAll("g.item").data(items);
+        var gItemData = RADAR.gItems.selectAll("g.item").data(items, function (d) {
+            return d.id;
+        });
 
         var gItemEnter = gItemData.enter()
             .append("g")
@@ -177,7 +191,9 @@ var ItemField = function () {
     this.save = save;
     this.loadItems = loadItems;
     this.deleteItemsFromDb = deleteItemsFromDb;
+    this.changeItemName = changeItemName;
 
     initItems();
     draw();
+    refreshItemForm();
 };
