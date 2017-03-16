@@ -152,6 +152,30 @@ var Radar = function () {
         });
     }
 
+    function deleteRingsFromDb() {
+        var p = new SimplePromise();
+        readRingsFromDb().then(function (doc) {
+            if(doc != null) {
+                RADAR.db.remove(doc);
+            }
+            p.resolve();
+        }, p.resolve);
+
+        return p.promise;
+    }
+
+    function deleteSegmentsFromDb() {
+        var p = new SimplePromise();
+        readSegmentsFromDb().then(function (doc) {
+            if(doc != null) {
+                RADAR.db.remove(doc);
+            }
+            p.resolve();
+        }, p.resolve);
+
+        return p.promise;
+    }
+
     function segmentsChanged(withSave) {
         initSegments();
         draw();
@@ -416,6 +440,8 @@ var Radar = function () {
     this.addRingAfterId = addRingAfterId;
     this.loadSegments = loadSegments;
     this.loadRings = loadRings;
+    this.deleteRingsFromDb = deleteRingsFromDb;
+    this.deleteSegmentsFromDb = deleteSegmentsFromDb;
 
     initSegments();
     initRings();

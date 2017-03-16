@@ -1,6 +1,7 @@
 'use strict';
 
 /* global RADAR */
+/* global SimplePromise */
 
 var ItemField = function () {
 
@@ -40,19 +41,57 @@ var ItemField = function () {
         }
     });
 
-    function save() {
+    function readItemsFromDb() {
+        var p = new SimplePromise();
         if(RADAR.db != null) {
-            var entry = {
-                _id: ID_ITEM_DATA,
-                itemData: itemData
-            };
-
-            RADAR.db.put(entry, function (err, result) {
-                if(!err) {
-                    console.log("entry saved");
+            RADAR.db.get(ID_ITEM_DATA, function (err, doc) {
+                if(err) {
+                    console.log(err);
+                    p.resolve(null);
                 }
-            })
+                else {
+                    p.resolve(doc);
+                }
+            });
         }
+        else {
+            p.reject();
+        }
+
+        return p.promise;
+    }
+
+    function save() {
+        readItemsFromDb().then(function (doc) {
+            if(doc != null) {
+                doc.itemData = itemData;
+                RADAR.db.put(doc);
+            }
+            else {
+                RADAR.db.put({_id: ID_ITEM_DATA, itemData: itemData});
+            }
+        });
+    }
+
+    function deleteItemsFromDb() {
+        var p = new SimplePromise();
+        readItemsFromDb().then(function (doc) {
+            if(doc != null) {
+                RADAR.db.remove(doc);
+            }
+            p.resolve();
+        }, p.resolve);
+
+        return p.promise;
+    }
+
+    function loadItems() {
+        readItemsFromDb().then(function (doc) {
+            if(doc != null && doc.itemData != null) {
+                itemData = doc.itemData;
+                draw();
+            }
+        });
     }
 
     function loadLatest() {
@@ -79,7 +118,7 @@ var ItemField = function () {
         }
 
         function dragended(d) {
-            console.log(d3.event.x + " / " + d3.event.y);
+            save();
             d3.select(this).classed("active", false);
         }
 
@@ -124,6 +163,8 @@ var ItemField = function () {
 
     this.save = save;
     this.loadLatest = loadLatest;
+    this.loadItems = loadItems;
+    this.deleteItemsFromDb = deleteItemsFromDb;
 
     draw();
 };
