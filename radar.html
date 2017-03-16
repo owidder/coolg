@@ -100,15 +100,7 @@
         window.location.href = "./radar.html?numsegs=" + numsegs + "&numrings=" + numrings;
     }
 
-    var numberOfSegments = UTIL.param("numsegs", 5);
-    $("#numsegs").val(numberOfSegments);
-    var numberOfRings = UTIL.param("numrings", 3);
-    $("#numrings").val(numberOfRings);
-
-    var svgLegend = new SvgLegend();
-    svgLegend.init();
-
-    var radar = new Radar(parseInt(numberOfRings), parseInt(numberOfSegments), svgLegend);
+    var radar = new Radar();
     var itemField = new ItemField();
 
     function segmentNameChanged(id) {
