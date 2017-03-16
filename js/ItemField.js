@@ -9,37 +9,44 @@ var ItemField = function () {
 
     var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
-    var itemNames = [
-        "Digitalization",
-        "Microservices",
-        "Docker Swarm",
-        "Consul",
-        "Cloud Computing",
-        "Gamification",
-        "Infrastructure as Code",
-        "NoSQL",
-        "Grafana",
-        "Let's Encrypt",
-        "Webpack",
-        "React",
-        "Angular 2",
-        "D3",
-        "Cloud IDE",
-        "Clojure",
-        "BYOD",
-        "Ember",
-        "Redux",
-        "Spring Boot",
-        "Enzyme"
+    var DEMO_ITEMS = [
+        {name: "Digitalization", id: "item0"},
+        {name: "Microservices", id: "item1"},
+        {name: "Docker Swarm", id: "item2"},
+        {name: "Consul", id: "item3"},
+        {name: "Cloud Computing", id: "item4"},
+        {name: "Gamification", id: "item5"},
+        {name: "Infrastructure as Code", id: "item6"},
+        {name: "NoSQL", id: "item7"},
+        {name: "Grafana", id: "item8"},
+        {name: "Let's Encrypt", id: "item9"},
+        {name: "Webpack", id: "item10"},
+        {name: "React", id: "item11"},
+        {name: "Angular 2", id: "item12"},
+        {name: "D3", id: "item13"},
+        {name: "Cloud IDE", id: "item14"},
+        {name: "Clojure", id: "item15"},
+        {name: "BYOD", id: "item16"},
+        {name: "Ember", id: "item17"},
+        {name: "Redux", id: "item18"},
+        {name: "Spring Boot", id: "item19"},
+        {name: "Enzyme", id: "item20"}
     ];
 
-    var itemData = itemNames.map(function(name, i) {
-        return {
-            x: i < 11 ? 20 : 160,
-            y: i < 11 ? i*40 + 5 : (i-10) * 40 + 5,
-            name: name
-        }
-    });
+    var items = DEMO_ITEMS;
+
+    function initItems() {
+        items = items.map(function (item, i) {
+            var newX = item.moved != null ? item.x : (i < 11 ? 20 : 160);
+            var newY = item.moved != null ? item.y : (i < 11 ? i*40 + 5 : (i-10) * 40 + 5);
+            return {
+                name: item.name,
+                id: item.id,
+                x: newX,
+                y: newY
+            }
+        })
+    }
 
     function readItemsFromDb() {
         var p = new SimplePromise();
@@ -64,13 +71,23 @@ var ItemField = function () {
     function save() {
         readItemsFromDb().then(function (doc) {
             if(doc != null) {
-                doc.itemData = itemData;
+                doc.items = items;
                 RADAR.db.put(doc);
             }
             else {
-                RADAR.db.put({_id: ID_ITEM_DATA, itemData: itemData});
+                RADAR.db.put({_id: ID_ITEM_DATA, items: items});
             }
         });
+    }
+
+    function changeItemName(id, newName) {
+        items.forEach(function (item) {
+            if(item.id == id) {
+                item.name = newName;
+            }
+        });
+        draw();
+        save();
     }
 
     function deleteItemsFromDb() {
@@ -87,23 +104,12 @@ var ItemField = function () {
 
     function loadItems() {
         readItemsFromDb().then(function (doc) {
-            if(doc != null && doc.itemData != null) {
-                itemData = doc.itemData;
+            if(doc != null && doc.items != null) {
+                items = doc.items;
+                initItems();
                 draw();
             }
         });
-    }
-
-    function loadLatest() {
-        if(RADAR.db != null) {
-            RADAR.db.get(ID_ITEM_DATA, function(err, doc) {
-                console.dir(doc);
-                if(doc != null) {
-                    itemData = doc.itemData;
-                    draw();
-                }
-            });
-        }
     }
 
     function draw() {
@@ -118,13 +124,14 @@ var ItemField = function () {
         }
 
         function dragended(d) {
+            d.moved = true;
             save();
             d3.select(this).classed("active", false);
         }
 
-        var gItemEnter = RADAR.gItems.selectAll("g.item")
-            .data(itemData)
-            .enter()
+        var gItemData = RADAR.gItems.selectAll("g.item").data(items);
+
+        var gItemEnter = gItemData.enter()
             .append("g")
             .attr("class", "item")
             .attr("transform", function (d) {
@@ -135,7 +142,11 @@ var ItemField = function () {
                 .on("drag", dragged)
                 .on("end", dragended));
 
-        RADAR.gItems.selectAll("g.item")
+        gItemData.exit().remove();
+
+        var gItemAll = RADAR.gItems.selectAll("g.item");
+
+        gItemAll
             .transition()
             .duration(1000)
             .attr("transform", function (d) {
@@ -155,16 +166,18 @@ var ItemField = function () {
         gItemEnter
             .append("text")
             .attr("x", 0)
-            .attr("y", 32)
+            .attr("y", 32);
+
+        gItemAll.selectAll("text")
             .text(function (d) {
                 return d.name;
-            })
+            });
     }
 
     this.save = save;
-    this.loadLatest = loadLatest;
     this.loadItems = loadItems;
     this.deleteItemsFromDb = deleteItemsFromDb;
 
+    initItems();
     draw();
 };
