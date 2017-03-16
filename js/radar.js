@@ -414,6 +414,8 @@ var Radar = function () {
     this.addSegment = addSegment;
     this.addSegmentAfterId = addSegmentAfterId;
     this.addRingAfterId = addRingAfterId;
+    this.loadSegments = loadSegments;
+    this.loadRings = loadRings;
 
     initSegments();
     initRings();
