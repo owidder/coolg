@@ -168,6 +168,10 @@
         itemField.addItemAfterId(id);
     }
 
+    function removeItem(id) {
+        itemField.removeItem(id);
+    }
+
     function reset() {
         var promRings = radar.deleteRingsFromDb();
         var promSegments = radar.deleteSegmentsFromDb();

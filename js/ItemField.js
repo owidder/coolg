@@ -103,6 +103,16 @@ var ItemField = function () {
         });
     }
 
+    function removeItem(id) {
+        items = items.filter(function (item) {
+            return  item.id != id;
+        });
+        initItems();
+        draw();
+        refreshItemForm();
+        save();
+    }
+
     function addItemAfterId(id) {
         var item = itemFromId(id);
         var index = item.itemNo;
@@ -231,6 +241,7 @@ var ItemField = function () {
     this.deleteItemsFromDb = deleteItemsFromDb;
     this.changeItemName = changeItemName;
     this.addItemAfterId = addItemAfterId;
+    this.removeItem = removeItem;
 
     initItems();
     draw();
