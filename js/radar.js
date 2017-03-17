@@ -92,7 +92,7 @@ var Radar = function () {
                 segments = doc.segments;
                 initSegments();
                 draw();
-                showSegments();
+                refreshSegmentForm();
             }
         });
     }
@@ -135,7 +135,7 @@ var Radar = function () {
                 rings = doc.rings;
                 initRings();
                 draw();
-                showRings();
+                refreshRingForm();
             }
         });
     }
@@ -222,7 +222,7 @@ var Radar = function () {
         });
         initSegments();
         draw();
-        showSegments();
+        refreshSegmentForm();
         saveSegments();
     }
 
@@ -232,7 +232,7 @@ var Radar = function () {
         });
         initRings();
         draw();
-        showRings();
+        refreshRingForm();
         saveRings();
     }
 
@@ -246,7 +246,7 @@ var Radar = function () {
 
         initSegments();
         draw();
-        showSegments();
+        refreshSegmentForm();
         saveSegments();
     }
 
@@ -260,11 +260,11 @@ var Radar = function () {
 
         initRings();
         draw();
-        showRings();
+        refreshRingForm();
         saveRings();
     }
 
-    function showSegments() {
+    function refreshSegmentForm() {
         $("#form-segments").empty();
         var inputSegmentsTemplateScript = $("#input-segments").html();
         var inputSegmentsTemplate = Handlebars.compile(inputSegmentsTemplateScript);
@@ -275,7 +275,7 @@ var Radar = function () {
         $("#form-segments").append(inputSegmentsHtml);
     }
 
-    function showRings() {
+    function refreshRingForm() {
         $("#form-rings").empty();
         var inputRingsTemplateScript = $("#input-rings").html();
         var inputRingsTemplate = Handlebars.compile(inputRingsTemplateScript);
@@ -407,8 +407,8 @@ var Radar = function () {
     }
 
     this.draw = draw;
-    this.showSegments = showSegments;
-    this.showRings = showRings;
+    this.showSegments = refreshSegmentForm;
+    this.showRings = refreshRingForm;
     this.changeSegmentName = changeSegmentName;
     this.changeRingName = changeRingName;
     this.removeSegment = removeSegment;
@@ -423,6 +423,6 @@ var Radar = function () {
     initSegments();
     initRings();
     draw();
-    showSegments();
-    showRings();
+    refreshSegmentForm();
+    refreshRingForm();
 };
