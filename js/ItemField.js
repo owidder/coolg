@@ -45,7 +45,8 @@ var ItemField = function () {
                 id: item.id,
                 x: newX,
                 y: newY,
-                itemNo: i
+                itemNo: i,
+                moved: item.moved
             }
         })
     }
@@ -116,9 +117,13 @@ var ItemField = function () {
         var p = new SimplePromise();
         readItemsFromDb().then(function (doc) {
             if(doc != null) {
-                RADAR.db.remove(doc);
+                RADAR.db.remove(doc, function () {
+                    p.resolve();
+                });
             }
-            p.resolve();
+            else {
+                p.resolve();
+            }
         }, p.resolve);
 
         return p.promise;
@@ -159,7 +164,7 @@ var ItemField = function () {
         }
 
         function dragended(d) {
-            d.moved = true;
+            d.moved = "yes";
             save();
             d3.select(this).classed("active", false);
         }

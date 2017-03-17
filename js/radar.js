@@ -156,9 +156,13 @@ var Radar = function () {
         var p = new SimplePromise();
         readRingsFromDb().then(function (doc) {
             if(doc != null) {
-                RADAR.db.remove(doc);
+                RADAR.db.remove(doc, function () {
+                    p.resolve();
+                });
             }
-            p.resolve();
+            else {
+                p.resolve();
+            }
         }, p.resolve);
 
         return p.promise;
@@ -168,9 +172,13 @@ var Radar = function () {
         var p = new SimplePromise();
         readSegmentsFromDb().then(function (doc) {
             if(doc != null) {
-                RADAR.db.remove(doc);
+                RADAR.db.remove(doc, function () {
+                    p.resolve();
+                });
             }
-            p.resolve();
+            else {
+                p.resolve();
+            }
         }, p.resolve);
 
         return p.promise;
