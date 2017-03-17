@@ -37,9 +37,13 @@ var ItemField = function () {
 
     function initItems() {
         var half = items.length / 2;
+        var notMovedCtr = 0;
         items = items.map(function (item, i) {
-            var newX = item.moved != null ? item.x : (i < half ? 20 : 160);
-            var newY = item.moved != null ? item.y : (i < half ? i*40 + 5 : (i-half) * 40 + 5);
+            var newX = item.moved != null ? item.x : (notMovedCtr < half ? 20 : 160);
+            var newY = item.moved != null ? item.y : (notMovedCtr < half ? notMovedCtr*40 + 5 : (notMovedCtr-half) * 40 + 5);
+            if(item.moved == null) {
+                notMovedCtr++;
+            }
             return {
                 name: item.name,
                 id: item.id,
@@ -165,8 +169,10 @@ var ItemField = function () {
 
         function dragended(d) {
             d.moved = "yes";
-            save();
             d3.select(this).classed("active", false);
+            save();
+            initItems();
+            draw();
         }
 
         var gItemData = RADAR.gItems.selectAll("g.item").data(items, function (d) {
