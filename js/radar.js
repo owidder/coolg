@@ -184,24 +184,6 @@ var Radar = function () {
         return p.promise;
     }
 
-    function segmentsChanged(withSave) {
-        initSegments();
-        draw();
-        showSegments();
-        if(withSave) {
-            saveSegments();
-        }
-    }
-
-    function ringsChanged(withSave) {
-        initRings();
-        draw();
-        showRings();
-        if(withSave) {
-            saveRings();
-        }
-    }
-
     function changeSegmentName(id, newName) {
         segments.forEach(function (segment) {
             if(segment.id == id) {
@@ -252,18 +234,6 @@ var Radar = function () {
         draw();
         showRings();
         saveRings();
-    }
-
-    function addSegment() {
-        segments.push({
-            name: "",
-            id: "segment" + UTIL.uid()
-        });
-
-        initSegments();
-        draw();
-        showSegments();
-        saveSegments();
     }
 
     function addSegmentAfterId(id) {
@@ -443,7 +413,6 @@ var Radar = function () {
     this.changeRingName = changeRingName;
     this.removeSegment = removeSegment;
     this.removeRing = removeRing;
-    this.addSegment = addSegment;
     this.addSegmentAfterId = addSegmentAfterId;
     this.addRingAfterId = addRingAfterId;
     this.loadSegments = loadSegments;
