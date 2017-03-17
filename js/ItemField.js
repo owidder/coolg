@@ -182,6 +182,10 @@ var ItemField = function () {
             .attr("x", 0)
             .attr("y", 32);
 
+        gItemAll.selectAll("text").data(function (d) {
+            return [d];
+        });
+
         gItemAll.selectAll("text")
             .text(function (d) {
                 return d.name;
