@@ -36,14 +36,16 @@ var ItemField = function () {
     var items = DEMO_ITEMS;
 
     function initItems() {
+        var half = items.length / 2;
         items = items.map(function (item, i) {
-            var newX = item.moved != null ? item.x : (i < 11 ? 20 : 160);
-            var newY = item.moved != null ? item.y : (i < 11 ? i*40 + 5 : (i-10) * 40 + 5);
+            var newX = item.moved != null ? item.x : (i < half ? 20 : 160);
+            var newY = item.moved != null ? item.y : (i < half ? i*40 + 5 : (i-half) * 40 + 5);
             return {
                 name: item.name,
                 id: item.id,
                 x: newX,
-                y: newY
+                y: newY,
+                itemNo: i
             }
         })
     }
@@ -90,6 +92,26 @@ var ItemField = function () {
         save();
     }
 
+    function itemFromId(id) {
+        return items.find(function (item) {
+            return item.id == id;
+        });
+    }
+
+    function addItemAfterId(id) {
+        var item = itemFromId(id);
+        var index = item.itemNo;
+        items.splice(index+1, 0, {
+            name: "",
+            id: "item" + UTIL.uid()
+        });
+
+        initItems();
+        draw();
+        refreshItemForm();
+        save();
+    }
+
     function deleteItemsFromDb() {
         var p = new SimplePromise();
         readItemsFromDb().then(function (doc) {
@@ -108,6 +130,7 @@ var ItemField = function () {
                 items = doc.items;
                 initItems();
                 draw();
+                refreshItemForm();
             }
         });
     }
@@ -196,6 +219,7 @@ var ItemField = function () {
     this.loadItems = loadItems;
     this.deleteItemsFromDb = deleteItemsFromDb;
     this.changeItemName = changeItemName;
+    this.addItemAfterId = addItemAfterId;
 
     initItems();
     draw();
