@@ -106,6 +106,7 @@
     {{/each}}
 </script>
 
+<script src="./js/db.js"></script>
 <script src="./js/SvgLegend.js"></script>
 <script src="./js/SimplePromise.js"></script>
 <script src="./js/context.js"></script>
@@ -118,64 +119,65 @@
     /* gobal $ */
     /* global bottle */
 
-    (function () {
+    var radar = new bottle.container.Radar();
+    var items = new bottle.container.Items();
 
-        var radar = new bottle.container.Radar();
-        var items = new bottle.container.Items();
+    function segmentNameChanged(id) {
+        var newName = $("#" + id).val();
+        radar.changeSegmentName(id, newName);
+    }
 
-        function segmentNameChanged(id) {
-            var newName = $("#" + id).val();
-            radar.changeSegmentName(id, newName);
-        }
+    function ringNameChanged(id) {
+        var newName = $("#" + id).val();
+        radar.changeRingName(id, newName);
+    }
 
-        function ringNameChanged(id) {
-            var newName = $("#" + id).val();
-            radar.changeRingName(id, newName);
-        }
+    function removeSegment(id) {
+        radar.removeSegment(id);
+    }
 
-        function removeSegment(id) {
-            radar.removeSegment(id);
-        }
+    function removeRing(id) {
+        radar.removeRing(id);
+    }
 
-        function removeRing(id) {
-            radar.removeRing(id);
-        }
+    function addSegmentAfterId(id) {
+        radar.addSegmentAfterId(id);
+    }
 
-        function addSegmentAfterId(id) {
-            radar.addSegmentAfterId(id);
-        }
+    function addRingAfterId(id) {
+        radar.addRingAfterId(id);
+    }
 
-        function addRingAfterId(id) {
-            radar.addRingAfterId(id);
-        }
+    function itemNameChanged(id) {
+        var newName = $("#" + id).val();
+        items.changeItemName(id, newName);
+    }
 
-        function itemNameChanged(id) {
-            var newName = $("#" + id).val();
-            items.changeItemName(id, newName);
-        }
+    function addItemAfterId(id) {
+        items.addItemAfterId(id);
+    }
 
-        function addItemAfterId(id) {
-            items.addItemAfterId(id);
-        }
+    function removeItem(id) {
+        items.removeItem(id);
+    }
 
-        function removeItem(id) {
-            items.removeItem(id);
-        }
+    function reset() {
+        var promRings = radar.deleteRingsFromDb();
+        var promSegments = radar.deleteSegmentsFromDb();
+        var promItems = items.deleteItemsFromDb();
 
-        function reset() {
-            var promRings = radar.deleteRingsFromDb();
-            var promSegments = radar.deleteSegmentsFromDb();
-            var promItems = items.deleteItemsFromDb();
+        Promise.all([promRings, promSegments, promItems]).then(function () {
+            window.location.reload();
+        });
+    }
 
-            Promise.all([promRings, promSegments, promItems]).then(function () {
-                window.location.reload();
-            });
-        }
+    var context = bottle.container.context;
+    context.field = new bottle.container.Field();
 
-        radar.loadSegments();
-        radar.loadRings();
-        items.loadItems();
-    })();
+    radar.loadSegments();
+    radar.loadRings();
+    items.loadItems();
+
 </script>
 </body>
 </html>

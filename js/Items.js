@@ -4,6 +4,7 @@
 
 bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
+    var context = container.context;
 
     var Items = function () {
 
@@ -59,7 +60,7 @@ bottle.factory("Items", function (container) {
 
         function readItemsFromDb() {
             var p = new SimplePromise();
-            if(RADAR.db != null) {
+            if(context.field.db != null) {
                 RADAR.db.get(ID_ITEM_DATA, function (err, doc) {
                     if(err) {
                         console.log(err);
