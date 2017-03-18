@@ -106,84 +106,76 @@
     {{/each}}
 </script>
 
-<script src="./js/boot.js"></script>
-
 <script src="./js/SvgLegend.js"></script>
-
 <script src="./js/SimplePromise.js"></script>
-<script src="./js/init.js"></script>
+<script src="./js/context.js"></script>
 <script src="./js/util.js"></script>
-<script src="./js/radar.js"></script>
-<script src="./js/ItemField.js"></script>
+<script src="./js/Radar.js"></script>
+<script src="./js/Items.js"></script>
 
 <script>
 
-    /* global UTIL */
     /* gobal $ */
-    /* global SvgLegend */
-    /* global Radar */
-    
-    function draw() {
-        var numsegs = $("#numsegs").val();
-        var numrings = $("#numrings").val();
-        window.location.href = "./radar.html?numsegs=" + numsegs + "&numrings=" + numrings;
-    }
+    /* global bottle */
 
-    var radar = new Radar();
-    var itemField = new ItemField();
+    (function () {
 
-    function segmentNameChanged(id) {
-        var newName = $("#" + id).val();
-        radar.changeSegmentName(id, newName);
-    }
+        var radar = new bottle.container.Radar();
+        var items = new bottle.container.Items();
 
-    function ringNameChanged(id) {
-        var newName = $("#" + id).val();
-        radar.changeRingName(id, newName);
-    }
+        function segmentNameChanged(id) {
+            var newName = $("#" + id).val();
+            radar.changeSegmentName(id, newName);
+        }
 
-    function removeSegment(id) {
-        radar.removeSegment(id);
-    }
+        function ringNameChanged(id) {
+            var newName = $("#" + id).val();
+            radar.changeRingName(id, newName);
+        }
 
-    function removeRing(id) {
-        radar.removeRing(id);
-    }
+        function removeSegment(id) {
+            radar.removeSegment(id);
+        }
 
-    function addSegmentAfterId(id) {
-        radar.addSegmentAfterId(id);
-    }
+        function removeRing(id) {
+            radar.removeRing(id);
+        }
 
-    function addRingAfterId(id) {
-        radar.addRingAfterId(id);
-    }
+        function addSegmentAfterId(id) {
+            radar.addSegmentAfterId(id);
+        }
 
-    function itemNameChanged(id) {
-        var newName = $("#" + id).val();
-        itemField.changeItemName(id, newName);
-    }
+        function addRingAfterId(id) {
+            radar.addRingAfterId(id);
+        }
 
-    function addItemAfterId(id) {
-        itemField.addItemAfterId(id);
-    }
+        function itemNameChanged(id) {
+            var newName = $("#" + id).val();
+            items.changeItemName(id, newName);
+        }
 
-    function removeItem(id) {
-        itemField.removeItem(id);
-    }
+        function addItemAfterId(id) {
+            items.addItemAfterId(id);
+        }
 
-    function reset() {
-        var promRings = radar.deleteRingsFromDb();
-        var promSegments = radar.deleteSegmentsFromDb();
-        var promItems = itemField.deleteItemsFromDb();
+        function removeItem(id) {
+            items.removeItem(id);
+        }
 
-        Promise.all([promRings, promSegments, promItems]).then(function () {
+        function reset() {
+            var promRings = radar.deleteRingsFromDb();
+            var promSegments = radar.deleteSegmentsFromDb();
+            var promItems = items.deleteItemsFromDb();
+
+            Promise.all([promRings, promSegments, promItems]).then(function () {
                 window.location.reload();
-        });
-    }
+            });
+        }
 
-    radar.loadSegments();
-    radar.loadRings();
-    itemField.loadItems();
+        radar.loadSegments();
+        radar.loadRings();
+        items.loadItems();
+    })();
 </script>
 </body>
 </html>

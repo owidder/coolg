@@ -2,10 +2,10 @@
 
 /* global RADAR */
 
-bottle.factory("ItemField", function (container) {
+bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
 
-    var ItemField = function () {
+    var Items = function () {
 
         var ID_ITEM_DATA = "itemData";
 
@@ -250,6 +250,6 @@ bottle.factory("ItemField", function (container) {
         refreshItemForm();
     };
 
-    return ItemField;
+    return Items;
 });
 
