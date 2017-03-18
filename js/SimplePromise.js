@@ -1,21 +1,24 @@
 'use strict';
 
-function SimplePromise() {
-    var that = this;
-    var _resolve;
-    var _reject;
+bottle.factory("SimplePromise", function (container) {
+    function SimplePromise() {
+        var that = this;
+        var _resolve;
+        var _reject;
 
-    that.promise = new Promise(function(resolve, reject) {
-        _resolve = resolve;
-        _reject = reject;
-    });
+        that.promise = new Promise(function(resolve, reject) {
+            _resolve = resolve;
+            _reject = reject;
+        });
 
-    that.resolve = function (data) {
-        _resolve(data);
-    };
+        that.resolve = function (data) {
+            _resolve(data);
+        };
 
-    that.reject = function(data) {
-        _reject(data);
-    };
-}
+        that.reject = function(data) {
+            _reject(data);
+        };
+    }
 
+    return SimplePromise;
+});

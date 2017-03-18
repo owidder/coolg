@@ -1,249 +1,255 @@
 'use strict';
 
 /* global RADAR */
-/* global SimplePromise */
 
-var ItemField = function () {
+bottle.factory("ItemField", function (container) {
+    var SimplePromise = container.SimplePromise;
 
-    var ID_ITEM_DATA = "itemData";
+    var ItemField = function () {
 
-    var color = d3.scaleOrdinal(d3["schemeCategory20"]);
+        var ID_ITEM_DATA = "itemData";
 
-    var DEMO_ITEMS = [
-        {name: "Digitalization", id: "item0"},
-        {name: "Microservices", id: "item1"},
-        {name: "Docker Swarm", id: "item2"},
-        {name: "Consul", id: "item3"},
-        {name: "Cloud Computing", id: "item4"},
-        {name: "Gamification", id: "item5"},
-        {name: "Infrastructure as Code", id: "item6"},
-        {name: "NoSQL", id: "item7"},
-        {name: "Grafana", id: "item8"},
-        {name: "Let's Encrypt", id: "item9"},
-        {name: "Webpack", id: "item10"},
-        {name: "React", id: "item11"},
-        {name: "Angular 2", id: "item12"},
-        {name: "D3", id: "item13"},
-        {name: "Cloud IDE", id: "item14"},
-        {name: "Clojure", id: "item15"},
-        {name: "BYOD", id: "item16"},
-        {name: "Ember", id: "item17"},
-        {name: "Redux", id: "item18"},
-        {name: "Spring Boot", id: "item19"},
-        {name: "Enzyme", id: "item20"}
-    ];
+        var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
-    var items = DEMO_ITEMS;
+        var DEMO_ITEMS = [
+            {name: "Digitalization", id: "item0"},
+            {name: "Microservices", id: "item1"},
+            {name: "Docker Swarm", id: "item2"},
+            {name: "Consul", id: "item3"},
+            {name: "Cloud Computing", id: "item4"},
+            {name: "Gamification", id: "item5"},
+            {name: "Infrastructure as Code", id: "item6"},
+            {name: "NoSQL", id: "item7"},
+            {name: "Grafana", id: "item8"},
+            {name: "Let's Encrypt", id: "item9"},
+            {name: "Webpack", id: "item10"},
+            {name: "React", id: "item11"},
+            {name: "Angular 2", id: "item12"},
+            {name: "D3", id: "item13"},
+            {name: "Cloud IDE", id: "item14"},
+            {name: "Clojure", id: "item15"},
+            {name: "BYOD", id: "item16"},
+            {name: "Ember", id: "item17"},
+            {name: "Redux", id: "item18"},
+            {name: "Spring Boot", id: "item19"},
+            {name: "Enzyme", id: "item20"}
+        ];
 
-    function initItems() {
-        var half = items.length / 2;
-        var notMovedCtr = 0;
-        items = items.map(function (item, i) {
-            var newX = item.moved != null ? item.x : (notMovedCtr < half ? 20 : 160);
-            var newY = item.moved != null ? item.y : (notMovedCtr < half ? notMovedCtr*40 + 5 : (notMovedCtr-half) * 40 + 5);
-            if(item.moved == null) {
-                notMovedCtr++;
-            }
-            return {
-                name: item.name,
-                id: item.id,
-                x: newX,
-                y: newY,
-                itemNo: i,
-                moved: item.moved
-            }
-        })
-    }
+        var items = DEMO_ITEMS;
 
-    function readItemsFromDb() {
-        var p = new SimplePromise();
-        if(RADAR.db != null) {
-            RADAR.db.get(ID_ITEM_DATA, function (err, doc) {
-                if(err) {
-                    console.log(err);
-                    p.resolve(null);
+        function initItems() {
+            var half = items.length / 2;
+            var notMovedCtr = 0;
+            items = items.map(function (item, i) {
+                var newX = item.moved != null ? item.x : (notMovedCtr < half ? 20 : 160);
+                var newY = item.moved != null ? item.y : (notMovedCtr < half ? notMovedCtr*40 + 5 : (notMovedCtr-half) * 40 + 5);
+                if(item.moved == null) {
+                    notMovedCtr++;
                 }
-                else {
-                    p.resolve(doc);
+                return {
+                    name: item.name,
+                    id: item.id,
+                    x: newX,
+                    y: newY,
+                    itemNo: i,
+                    moved: item.moved
                 }
-            });
-        }
-        else {
-            p.reject();
+            })
         }
 
-        return p.promise;
-    }
-
-    function save() {
-        readItemsFromDb().then(function (doc) {
-            if(doc != null) {
-                doc.items = items;
-                RADAR.db.put(doc);
-            }
-            else {
-                RADAR.db.put({_id: ID_ITEM_DATA, items: items});
-            }
-        });
-    }
-
-    function changeItemName(id, newName) {
-        items.forEach(function (item) {
-            if(item.id == id) {
-                item.name = newName;
-            }
-        });
-        draw();
-        save();
-    }
-
-    function itemFromId(id) {
-        return items.find(function (item) {
-            return item.id == id;
-        });
-    }
-
-    function removeItem(id) {
-        items = items.filter(function (item) {
-            return  item.id != id;
-        });
-        initItems();
-        draw();
-        refreshItemForm();
-        save();
-    }
-
-    function addItemAfterId(id) {
-        var item = itemFromId(id);
-        var index = item.itemNo;
-        items.splice(index+1, 0, {
-            name: "",
-            id: "item" + UTIL.uid()
-        });
-
-        initItems();
-        draw();
-        refreshItemForm();
-        save();
-    }
-
-    function deleteItemsFromDb() {
-        var p = new SimplePromise();
-        readItemsFromDb().then(function (doc) {
-            if(doc != null) {
-                RADAR.db.remove(doc, function () {
-                    p.resolve();
+        function readItemsFromDb() {
+            var p = new SimplePromise();
+            if(RADAR.db != null) {
+                RADAR.db.get(ID_ITEM_DATA, function (err, doc) {
+                    if(err) {
+                        console.log(err);
+                        p.resolve(null);
+                    }
+                    else {
+                        p.resolve(doc);
+                    }
                 });
             }
             else {
-                p.resolve();
+                p.reject();
             }
-        }, p.resolve);
 
-        return p.promise;
-    }
-
-    function loadItems() {
-        readItemsFromDb().then(function (doc) {
-            if(doc != null && doc.items != null) {
-                items = doc.items;
-                initItems();
-                draw();
-                refreshItemForm();
-            }
-        });
-    }
-
-    function refreshItemForm() {
-        $("#form-items").empty();
-        var inputItemsTemplateScript = $("#input-items").html();
-        var inputItemsTemplate = Handlebars.compile(inputItemsTemplateScript);
-        var context = {
-            items: items
-        };
-        var inputItemsHtml = inputItemsTemplate(context);
-        $("#form-items").append(inputItemsHtml);
-    }
-
-
-    function draw() {
-        function dragstarted(d) {
-            d3.select(this).raise().classed("active", true);
+            return p.promise;
         }
 
-        function dragged(d) {
-            d.x = d3.event.x;
-            d.y = d3.event.y;
-            d3.select(this).attr("transform", "translate(" + d.x + "," + d.y + ")");
+        function save() {
+            readItemsFromDb().then(function (doc) {
+                if(doc != null) {
+                    doc.items = items;
+                    RADAR.db.put(doc);
+                }
+                else {
+                    RADAR.db.put({_id: ID_ITEM_DATA, items: items});
+                }
+            });
         }
 
-        function dragended(d) {
-            d.moved = "yes";
-            d3.select(this).classed("active", false);
+        function changeItemName(id, newName) {
+            items.forEach(function (item) {
+                if(item.id == id) {
+                    item.name = newName;
+                }
+            });
+            draw();
             save();
+        }
+
+        function itemFromId(id) {
+            return items.find(function (item) {
+                return item.id == id;
+            });
+        }
+
+        function removeItem(id) {
+            items = items.filter(function (item) {
+                return  item.id != id;
+            });
             initItems();
             draw();
+            refreshItemForm();
+            save();
         }
 
-        var gItemData = RADAR.gItems.selectAll("g.item").data(items, function (d) {
-            return d.id;
-        });
-
-        var gItemEnter = gItemData.enter()
-            .append("g")
-            .attr("class", "item")
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
-            })
-            .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
-
-        gItemData.exit().remove();
-
-        var gItemAll = RADAR.gItems.selectAll("g.item");
-
-        gItemAll
-            .transition()
-            .duration(1000)
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")";
+        function addItemAfterId(id) {
+            var item = itemFromId(id);
+            var index = item.itemNo;
+            items.splice(index+1, 0, {
+                name: "",
+                id: "item" + UTIL.uid()
             });
 
-        gItemEnter
-            .append("circle")
-            .attr("class", "item")
-            .attr("r", 10)
-            .attr("cx", 10)
-            .attr("cy", 10)
-            .style("fill", function (d) {
-                return color(d.name);
+            initItems();
+            draw();
+            refreshItemForm();
+            save();
+        }
+
+        function deleteItemsFromDb() {
+            var p = new SimplePromise();
+            readItemsFromDb().then(function (doc) {
+                if(doc != null) {
+                    RADAR.db.remove(doc, function () {
+                        p.resolve();
+                    });
+                }
+                else {
+                    p.resolve();
+                }
+            }, p.resolve);
+
+            return p.promise;
+        }
+
+        function loadItems() {
+            readItemsFromDb().then(function (doc) {
+                if(doc != null && doc.items != null) {
+                    items = doc.items;
+                    initItems();
+                    draw();
+                    refreshItemForm();
+                }
+            });
+        }
+
+        function refreshItemForm() {
+            $("#form-items").empty();
+            var inputItemsTemplateScript = $("#input-items").html();
+            var inputItemsTemplate = Handlebars.compile(inputItemsTemplateScript);
+            var context = {
+                items: items
+            };
+            var inputItemsHtml = inputItemsTemplate(context);
+            $("#form-items").append(inputItemsHtml);
+        }
+
+
+        function draw() {
+            function dragstarted(d) {
+                d3.select(this).raise().classed("active", true);
+            }
+
+            function dragged(d) {
+                d.x = d3.event.x;
+                d.y = d3.event.y;
+                d3.select(this).attr("transform", "translate(" + d.x + "," + d.y + ")");
+            }
+
+            function dragended(d) {
+                d.moved = "yes";
+                d3.select(this).classed("active", false);
+                save();
+                initItems();
+                draw();
+            }
+
+            var gItemData = RADAR.gItems.selectAll("g.item").data(items, function (d) {
+                return d.id;
             });
 
-        gItemEnter
-            .append("text")
-            .attr("x", 0)
-            .attr("y", 32);
+            var gItemEnter = gItemData.enter()
+                .append("g")
+                .attr("class", "item")
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                })
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended));
 
-        gItemAll.selectAll("text").data(function (d) {
-            return [d];
-        });
+            gItemData.exit().remove();
 
-        gItemAll.selectAll("text")
-            .text(function (d) {
-                return d.name;
+            var gItemAll = RADAR.gItems.selectAll("g.item");
+
+            gItemAll
+                .transition()
+                .duration(1000)
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+
+            gItemEnter
+                .append("circle")
+                .attr("class", "item")
+                .attr("r", 10)
+                .attr("cx", 10)
+                .attr("cy", 10)
+                .style("fill", function (d) {
+                    return color(d.name);
+                });
+
+            gItemEnter
+                .append("text")
+                .attr("x", 0)
+                .attr("y", 32);
+
+            gItemAll.selectAll("text").data(function (d) {
+                return [d];
             });
-    }
 
-    this.save = save;
-    this.loadItems = loadItems;
-    this.deleteItemsFromDb = deleteItemsFromDb;
-    this.changeItemName = changeItemName;
-    this.addItemAfterId = addItemAfterId;
-    this.removeItem = removeItem;
+            gItemAll.selectAll("text")
+                .text(function (d) {
+                    return d.name;
+                });
+        }
 
-    initItems();
-    draw();
-    refreshItemForm();
-};
+        this.save = save;
+        this.loadItems = loadItems;
+        this.deleteItemsFromDb = deleteItemsFromDb;
+        this.changeItemName = changeItemName;
+        this.addItemAfterId = addItemAfterId;
+        this.removeItem = removeItem;
+
+        initItems();
+        draw();
+        refreshItemForm();
+    };
+
+    return ItemField;
+});
+
