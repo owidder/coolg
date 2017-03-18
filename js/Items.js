@@ -1,10 +1,12 @@
 'use strict';
 
-/* global RADAR */
+/* global Handlebars */
+/* global d3 */
 
 bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
     var context = container.context;
+    var db = context.db;
 
     var Items = function () {
 
@@ -61,7 +63,7 @@ bottle.factory("Items", function (container) {
         function readItemsFromDb() {
             var p = new SimplePromise();
             if(context.field.db != null) {
-                RADAR.db.get(ID_ITEM_DATA, function (err, doc) {
+                db.get(ID_ITEM_DATA, function (err, doc) {
                     if(err) {
                         console.log(err);
                         p.resolve(null);
@@ -82,10 +84,10 @@ bottle.factory("Items", function (container) {
             readItemsFromDb().then(function (doc) {
                 if(doc != null) {
                     doc.items = items;
-                    RADAR.db.put(doc);
+                    db.put(doc);
                 }
                 else {
-                    RADAR.db.put({_id: ID_ITEM_DATA, items: items});
+                    db.put({_id: ID_ITEM_DATA, items: items});
                 }
             });
         }
@@ -134,7 +136,7 @@ bottle.factory("Items", function (container) {
             var p = new SimplePromise();
             readItemsFromDb().then(function (doc) {
                 if(doc != null) {
-                    RADAR.db.remove(doc, function () {
+                    db.remove(doc, function () {
                         p.resolve();
                     });
                 }

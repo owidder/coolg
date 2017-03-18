@@ -1,7 +1,5 @@
 'use strict';
 
-/* global PouchDB */
-
 bottle.factory("Field", function (container) {
     SvgLegend = container.SvgLegend;
 
@@ -38,8 +36,6 @@ bottle.factory("Field", function (container) {
 
         this.svgLegend = new SvgLegend();
         this.svgLegend.init();
-
-        this.db = new PouchDB('radar');
     };
 
     return Field;
