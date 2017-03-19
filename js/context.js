@@ -4,5 +4,8 @@
 
 bottle.factory("context", function (container) {
 
-    return {};
+    return {
+        radarId: 1,
+        tenantId: 1
+    };
 });
