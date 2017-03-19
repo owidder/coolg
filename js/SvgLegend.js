@@ -12,7 +12,6 @@ bottle.factory("SvgLegend", function (container) {
         var legendSelector = _legendSelector || ".legend.canvas";
         var forLegendSelector = _forLegendSelector || ".forlegend";
         var createEntry = _createEntryFunction || createEntryFunctionViaLegendAttribute;
-        var findSvgElementForLegend = _findSvgElementsForLegendFunction || findSvgElementsForLegendViaBoundingRects;
         var legendDetectorRadius = _legendDetectorRadius || 0;
 
         var svgCanvas, legendCanvas;
@@ -45,41 +44,6 @@ bottle.factory("SvgLegend", function (container) {
                 x: xAdapted,
                 y: yAdapted
             }
-        }
-
-        function adaptPositionToSvg(x, y) {
-            return adaptPositionToElement(x, y, svgSelector)
-        }
-
-        function findSvgElementsForLegendViaBoundingRects(x, y) {
-            var adapted = adaptPositionToSvg(x, y);
-            var forlegends = document.querySelectorAll(forLegendSelector);
-            var i, forlegend, boundingRect;
-            var nearbyEntryForlegends = [];
-            for (i = 0; i < forlegends.length; i++) {
-                forlegend = forlegends[i];
-                boundingRect = forlegend.getBoundingClientRect();
-                if (adapted.x > boundingRect.left - legendDetectorRadius && adapted.x < boundingRect.right + legendDetectorRadius &&
-                    adapted.y > boundingRect.top - legendDetectorRadius && adapted.y < boundingRect.bottom + legendDetectorRadius) {
-                    nearbyEntryForlegends.push(forlegend);
-                }
-            }
-
-            return nearbyEntryForlegends;
-        }
-
-        function createLegendEntryList(elementList) {
-            var entryList = [];
-            var entryStr;
-            var i, svgElement;
-            for (i = 0; i < elementList.length; i++) {
-                svgElement = elementList[i];
-                var entryStr = createEntry(svgElement);
-                entryList.push(entryStr)
-            }
-
-            entryList.sort();
-            return entryList;
         }
 
         var legendText;
