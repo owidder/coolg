@@ -3,7 +3,7 @@
 /* global bottle */
 
 bottle.factory("Field", function (container) {
-    SvgLegend = container.SvgLegend;
+    var SvgLegend = container.SvgLegend;
 
     var Field = function(svgSelector) {
         if(svgSelector == null) {

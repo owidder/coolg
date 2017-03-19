@@ -6,6 +6,7 @@
 bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
     var db = container.db;
+    var util = con
 
     var Items = function (field) {
 
@@ -122,7 +123,7 @@ bottle.factory("Items", function (container) {
             var index = item.itemNo;
             items.splice(index+1, 0, {
                 name: "",
-                id: "item" + UTIL.uid()
+                id: "item" + util.uid()
             });
 
             initItems();

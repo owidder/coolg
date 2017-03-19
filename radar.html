@@ -113,17 +113,17 @@
 <script src="./js/util.js"></script>
 <script src="./js/Radar.js"></script>
 <script src="./js/Items.js"></script>
+<script src="./js/Field.js"></script>
 
 <script>
 
     /* gobal $ */
     /* global bottle */
 
-    var context = bottle.container.context;
-    context.field = new bottle.container.Field();
+    var field = new bottle.container.Field();
 
-    var radar = new bottle.container.Radar();
-    var items = new bottle.container.Items();
+    var radar = new bottle.container.Radar(field);
+    var items = new bottle.container.Items(field);
 
     function segmentNameChanged(id) {
         var newName = $("#" + id).val();
