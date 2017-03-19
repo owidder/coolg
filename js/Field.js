@@ -34,7 +34,7 @@ bottle.factory("Field", function (container) {
         this.gItems = this.svg.append("g").attr("class", this.gItemsClasses);
         this.gLegend = this.svg.append("g").attr("class", this.gLegendClasses);
 
-        this.svgLegend = new SvgLegend();
+        this.svgLegend = new SvgLegend(".svg.canvas", ".legend.canvas");
         this.svgLegend.init();
     };
 
