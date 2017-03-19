@@ -94,6 +94,11 @@ bottle.factory("Radar", function (container) {
             });
         }
 
+        function load() {
+            loadSegments();
+            loadRings();
+        }
+
         function saveRings() {
             db.save("rings", rings);
         }
@@ -330,8 +335,7 @@ bottle.factory("Radar", function (container) {
         this.removeRing = removeRing;
         this.addSegmentAfterId = addSegmentAfterId;
         this.addRingAfterId = addRingAfterId;
-        this.loadSegments = loadSegments;
-        this.loadRings = loadRings;
+        this.load = load;
 
         initSegments();
         initRings();

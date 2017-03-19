@@ -165,18 +165,11 @@
     }
 
     function reset() {
-        var promRings = radar.deleteRingsFromDb();
-        var promSegments = radar.deleteSegmentsFromDb();
-        var promItems = items.deleteItemsFromDb();
-
-        Promise.all([promRings, promSegments, promItems]).then(function () {
-            window.location.reload();
-        });
+        bottle.container.db.deleteFromDb().then(window.location.reload, window.location.reload);
     }
 
-    radar.loadSegments();
-    radar.loadRings();
-    items.loadItems();
+    radar.load();
+    items.load();
 
 </script>
 </body>

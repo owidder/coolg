@@ -49,14 +49,12 @@ bottle.factory("Items", function (container) {
                 if(item.moved == null) {
                     notMovedCtr++;
                 }
-                return {
-                    name: item.name,
-                    id: item.id,
+                var extendedItem = Object.assign({
                     x: newX,
                     y: newY,
-                    itemNo: i,
-                    moved: item.moved
-                }
+                    itemNo: i
+                }, item);
+                return extendedItem;
             })
         }
 
@@ -104,7 +102,7 @@ bottle.factory("Items", function (container) {
             save();
         }
 
-        function loadItems() {
+        function load() {
             db.load().then(function (radar) {
                 if(radar != null && radar.items != null) {
                     items = radar.items;
@@ -198,7 +196,7 @@ bottle.factory("Items", function (container) {
         }
 
         this.save = save;
-        this.loadItems = loadItems;
+        this.load = load;
         this.changeItemName = changeItemName;
         this.addItemAfterId = addItemAfterId;
         this.removeItem = removeItem;
