@@ -6,6 +6,8 @@ bottle.factory("Field", function (container) {
     var SvgLegend = container.SvgLegend;
 
     var Field = function(svgSelector) {
+        var that = this;
+
         if(svgSelector == null) {
             svgSelector = "div.svg";
         }
@@ -21,9 +23,9 @@ bottle.factory("Field", function (container) {
             .attr("width", this.width)
             .attr("height", this.height)
             .on("mousemove", function () {
-                if(this.svgLegend != null) {
+                if(that.svgLegend != null) {
                     var position = d3.mouse(this);
-                    this.svgLegend.doLegend(position[0], position[1]);
+                    that.svgLegend.doLegend(position[0], position[1]);
                 }
             });
 

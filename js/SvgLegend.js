@@ -4,11 +4,10 @@
 /* global _ */
 
 bottle.factory("SvgLegend", function (container) {
-    var util = container.util;
 
     function SvgLegend(_createEntryFunction, _findSvgElementsForLegendFunction, _legendDetectorRadius, _svgSelector, _forLegendSelector, _legendSelector, _util) {
         var that = this;
-        var util = _util || util;
+        var util = _util || container.util;
         var svgSelector = _svgSelector || ".svg.canvas";
         var legendSelector = _legendSelector || ".legend.canvas";
         var forLegendSelector = _forLegendSelector || ".forlegend";

@@ -6,7 +6,7 @@
 bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
     var db = container.db;
-    var util = con
+    var util = container.util;
 
     var Items = function (field) {
 
