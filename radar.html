@@ -120,6 +120,9 @@
     /* gobal $ */
     /* global bottle */
 
+    var radarId = bottle.container.util.param("radarId", 1);
+    bottle.container.context.radarId = radarId;
+
     var field = new bottle.container.Field();
 
     var background = new bottle.container.Background(field);
