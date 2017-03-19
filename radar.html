@@ -111,7 +111,7 @@
 <script src="./js/SimplePromise.js"></script>
 <script src="./js/context.js"></script>
 <script src="./js/util.js"></script>
-<script src="./js/Radar.js"></script>
+<script src="./js/Background.js"></script>
 <script src="./js/Items.js"></script>
 <script src="./js/Field.js"></script>
 
@@ -122,33 +122,33 @@
 
     var field = new bottle.container.Field();
 
-    var radar = new bottle.container.Radar(field);
+    var background = new bottle.container.Background(field);
     var items = new bottle.container.Items(field);
 
     function segmentNameChanged(id) {
         var newName = $("#" + id).val();
-        radar.changeSegmentName(id, newName);
+        background.changeSegmentName(id, newName);
     }
 
     function ringNameChanged(id) {
         var newName = $("#" + id).val();
-        radar.changeRingName(id, newName);
+        background.changeRingName(id, newName);
     }
 
     function removeSegment(id) {
-        radar.removeSegment(id);
+        background.removeSegment(id);
     }
 
     function removeRing(id) {
-        radar.removeRing(id);
+        background.removeRing(id);
     }
 
     function addSegmentAfterId(id) {
-        radar.addSegmentAfterId(id);
+        background.addSegmentAfterId(id);
     }
 
     function addRingAfterId(id) {
-        radar.addRingAfterId(id);
+        background.addRingAfterId(id);
     }
 
     function itemNameChanged(id) {
@@ -172,7 +172,7 @@
         });
     }
 
-    radar.load();
+    background.load();
     items.load();
 
 </script>

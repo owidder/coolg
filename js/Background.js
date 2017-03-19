@@ -5,12 +5,12 @@
 /* global $ */
 /* global Handlebars */
 
-bottle.factory("Radar", function (container) {
+bottle.factory("Background", function (container) {
     var util = container.util;
     var SimplePromise = container.SimplePromise;
     var db = container.db;
 
-    var Radar = function (field) {
+    var Background = function (field) {
         var radius = (Math.min(field.width, field.height) / 2) - 30;
 
         var color = d3.scaleOrdinal(d3["schemeCategory20"]);
@@ -344,5 +344,5 @@ bottle.factory("Radar", function (container) {
         refreshRingForm();
     };
 
-    return Radar;
+    return Background;
 });
