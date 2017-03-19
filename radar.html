@@ -165,7 +165,11 @@
     }
 
     function reset() {
-        bottle.container.db.deleteFromDb().then(window.location.reload, window.location.reload);
+        bottle.container.db.deleteFromDb().then(function () {
+            window.location.reload();
+        }, function () {
+            window.location.reload();
+        });
     }
 
     radar.load();
