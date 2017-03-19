@@ -68,30 +68,10 @@ bottle.factory("Radar", function (container) {
             })
         }
 
-        function readSegmentsFromDb() {
-            var p = new SimplePromise();
-            if(db != null) {
-                db.get(ID_SEGMENTS, function (err, doc) {
-                    if(err) {
-                        console.log(err);
-                        p.resolve(null);
-                    }
-                    else {
-                        p.resolve(doc);
-                    }
-                });
-            }
-            else {
-                p.reject();
-            }
-
-            return p.promise;
-        }
-
         function loadSegments() {
-            readSegmentsFromDb().then(function (doc) {
-                if(doc != null && doc.segments != null) {
-                    segments = doc.segments;
+            db.load().then(function (radar) {
+                if(radar != null && radar.segments != null) {
+                    segments = radar.segments;
                     initSegments();
                     draw();
                     refreshSegmentForm();
@@ -100,41 +80,13 @@ bottle.factory("Radar", function (container) {
         }
 
         function saveSegments() {
-            readSegmentsFromDb().then(function (doc) {
-                if(doc != null) {
-                    doc.segments = segments;
-                    db.put(doc);
-                }
-                else {
-                    db.put({_id: ID_SEGMENTS, segments: segments});
-                }
-            });
-        }
-
-        function readRingsFromDb() {
-            var p = new SimplePromise();
-            if(db != null) {
-                db.get(ID_RINGS, function (err, doc) {
-                    if(err) {
-                        console.log(err);
-                        p.resolve(null);
-                    }
-                    else {
-                        p.resolve(doc);
-                    }
-                });
-            }
-            else {
-                p.reject();
-            }
-
-            return p.promise;
+            db.save("segments", segments);
         }
 
         function loadRings() {
-            readRingsFromDb().then(function (doc) {
-                if(doc != null && doc.rings != null) {
-                    rings = doc.rings;
+            db.load().then(function (radar) {
+                if(radar != null && radar.rings != null) {
+                    rings = radar.rings;
                     initRings();
                     draw();
                     refreshRingForm();
@@ -143,15 +95,7 @@ bottle.factory("Radar", function (container) {
         }
 
         function saveRings() {
-            readRingsFromDb().then(function (doc) {
-                if(doc != null) {
-                    doc.rings = rings;
-                    db.put(doc);
-                }
-                else {
-                    db.put({_id: ID_RINGS, rings: rings});
-                }
-            });
+            db.save("rings", rings);
         }
 
         function deleteRingsFromDb() {
