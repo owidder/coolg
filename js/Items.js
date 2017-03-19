@@ -49,11 +49,11 @@ bottle.factory("Items", function (container) {
                 if(item.moved == null) {
                     notMovedCtr++;
                 }
-                var extendedItem = Object.assign({
-                    x: newX,
-                    y: newY,
-                    itemNo: i
-                }, item);
+                var extendedItem = Object.assign({}, item);
+                extendedItem.x = newX;
+                extendedItem.y = newY;
+                extendedItem.itemNo = i;
+
                 return extendedItem;
             })
         }
