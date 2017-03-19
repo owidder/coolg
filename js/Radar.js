@@ -98,38 +98,6 @@ bottle.factory("Radar", function (container) {
             db.save("rings", rings);
         }
 
-        function deleteRingsFromDb() {
-            var p = new SimplePromise();
-            readRingsFromDb().then(function (doc) {
-                if(doc != null) {
-                    db.remove(doc, function () {
-                        p.resolve();
-                    });
-                }
-                else {
-                    p.resolve();
-                }
-            }, p.resolve);
-
-            return p.promise;
-        }
-
-        function deleteSegmentsFromDb() {
-            var p = new SimplePromise();
-            readSegmentsFromDb().then(function (doc) {
-                if(doc != null) {
-                    db.remove(doc, function () {
-                        p.resolve();
-                    });
-                }
-                else {
-                    p.resolve();
-                }
-            }, p.resolve);
-
-            return p.promise;
-        }
-
         function changeSegmentName(id, newName) {
             segments.forEach(function (segment) {
                 if(segment.id == id) {
@@ -364,8 +332,6 @@ bottle.factory("Radar", function (container) {
         this.addRingAfterId = addRingAfterId;
         this.loadSegments = loadSegments;
         this.loadRings = loadRings;
-        this.deleteRingsFromDb = deleteRingsFromDb;
-        this.deleteSegmentsFromDb = deleteSegmentsFromDb;
 
         initSegments();
         initRings();

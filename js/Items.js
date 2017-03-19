@@ -60,36 +60,8 @@ bottle.factory("Items", function (container) {
             })
         }
 
-        function readItemsFromDb() {
-            var p = new SimplePromise();
-            if(db != null) {
-                db.get(ID_ITEM_DATA, function (err, doc) {
-                    if(err) {
-                        console.log(err);
-                        p.resolve(null);
-                    }
-                    else {
-                        p.resolve(doc);
-                    }
-                });
-            }
-            else {
-                p.reject();
-            }
-
-            return p.promise;
-        }
-
         function save() {
-            readItemsFromDb().then(function (doc) {
-                if(doc != null) {
-                    doc.items = items;
-                    db.put(doc);
-                }
-                else {
-                    db.put({_id: ID_ITEM_DATA, items: items});
-                }
-            });
+            db.save("items", items);
         }
 
         function changeItemName(id, newName) {
@@ -132,26 +104,10 @@ bottle.factory("Items", function (container) {
             save();
         }
 
-        function deleteItemsFromDb() {
-            var p = new SimplePromise();
-            readItemsFromDb().then(function (doc) {
-                if(doc != null) {
-                    db.remove(doc, function () {
-                        p.resolve();
-                    });
-                }
-                else {
-                    p.resolve();
-                }
-            }, p.resolve);
-
-            return p.promise;
-        }
-
         function loadItems() {
-            readItemsFromDb().then(function (doc) {
-                if(doc != null && doc.items != null) {
-                    items = doc.items;
+            db.load().then(function (radar) {
+                if(radar != null && radar.items != null) {
+                    items = radar.items;
                     initItems();
                     draw();
                     refreshItemForm();
@@ -243,7 +199,6 @@ bottle.factory("Items", function (container) {
 
         this.save = save;
         this.loadItems = loadItems;
-        this.deleteItemsFromDb = deleteItemsFromDb;
         this.changeItemName = changeItemName;
         this.addItemAfterId = addItemAfterId;
         this.removeItem = removeItem;
