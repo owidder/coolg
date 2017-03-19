@@ -1,6 +1,5 @@
 'use strict';
 
-/* global RADAR */
 /* global d3 */
 /* global _ */
 /* global $ */
@@ -9,13 +8,14 @@
 bottle.factory("Radar", function (container) {
     var util = container.util;
     var SimplePromise = container.SimplePromise;
+    var db = container.db;
 
-    var Radar = function () {
-        var radius = (Math.min(RADAR.width, RADAR.height) / 2) - 30;
+    var Radar = function (field) {
+        var radius = (Math.min(field.width, field.height) / 2) - 30;
 
         var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
-        var gRadar = RADAR.gRadar;
+        var gRadar = field.gRadar;
 
         var DEMO_SEGMENTS = [
             {name: "Tools", id: "segment0"},
@@ -70,8 +70,8 @@ bottle.factory("Radar", function (container) {
 
         function readSegmentsFromDb() {
             var p = new SimplePromise();
-            if(RADAR.db != null) {
-                RADAR.db.get(ID_SEGMENTS, function (err, doc) {
+            if(db != null) {
+                db.get(ID_SEGMENTS, function (err, doc) {
                     if(err) {
                         console.log(err);
                         p.resolve(null);
@@ -103,18 +103,18 @@ bottle.factory("Radar", function (container) {
             readSegmentsFromDb().then(function (doc) {
                 if(doc != null) {
                     doc.segments = segments;
-                    RADAR.db.put(doc);
+                    db.put(doc);
                 }
                 else {
-                    RADAR.db.put({_id: ID_SEGMENTS, segments: segments});
+                    db.put({_id: ID_SEGMENTS, segments: segments});
                 }
             });
         }
 
         function readRingsFromDb() {
             var p = new SimplePromise();
-            if(RADAR.db != null) {
-                RADAR.db.get(ID_RINGS, function (err, doc) {
+            if(db != null) {
+                db.get(ID_RINGS, function (err, doc) {
                     if(err) {
                         console.log(err);
                         p.resolve(null);
@@ -146,10 +146,10 @@ bottle.factory("Radar", function (container) {
             readRingsFromDb().then(function (doc) {
                 if(doc != null) {
                     doc.rings = rings;
-                    RADAR.db.put(doc);
+                    db.put(doc);
                 }
                 else {
-                    RADAR.db.put({_id: ID_RINGS, rings: rings});
+                    db.put({_id: ID_RINGS, rings: rings});
                 }
             });
         }
@@ -158,7 +158,7 @@ bottle.factory("Radar", function (container) {
             var p = new SimplePromise();
             readRingsFromDb().then(function (doc) {
                 if(doc != null) {
-                    RADAR.db.remove(doc, function () {
+                    db.remove(doc, function () {
                         p.resolve();
                     });
                 }
@@ -174,7 +174,7 @@ bottle.factory("Radar", function (container) {
             var p = new SimplePromise();
             readSegmentsFromDb().then(function (doc) {
                 if(doc != null) {
-                    RADAR.db.remove(doc, function () {
+                    db.remove(doc, function () {
                         p.resolve();
                     });
                 }
@@ -270,10 +270,10 @@ bottle.factory("Radar", function (container) {
             $("#form-segments").empty();
             var inputSegmentsTemplateScript = $("#input-segments").html();
             var inputSegmentsTemplate = Handlebars.compile(inputSegmentsTemplateScript);
-            var context = {
+            var ctx = {
                 segments: segments
             };
-            var inputSegmentsHtml = inputSegmentsTemplate(context);
+            var inputSegmentsHtml = inputSegmentsTemplate(ctx);
             $("#form-segments").append(inputSegmentsHtml);
         }
 
@@ -281,10 +281,10 @@ bottle.factory("Radar", function (container) {
             $("#form-rings").empty();
             var inputRingsTemplateScript = $("#input-rings").html();
             var inputRingsTemplate = Handlebars.compile(inputRingsTemplateScript);
-            var context = {
+            var ctx = {
                 rings: rings
             };
-            var inputRingsHtml = inputRingsTemplate(context);
+            var inputRingsHtml = inputRingsTemplate(ctx);
             $("#form-rings").append(inputRingsHtml);
         }
 
@@ -300,7 +300,7 @@ bottle.factory("Radar", function (container) {
             });
 
             var gRingData = gRadar.selectAll("g.ring").data(data);
-            var gRingEnter = gRingData.enter()
+            gRingData.enter()
                 .append("g")
                 .attr("class", "ring");
 
@@ -315,14 +315,15 @@ bottle.factory("Radar", function (container) {
                     return d.id;
                 });
 
-            var gArcEnter = gArcData.enter().append("g")
+            var gArcEnter = gArcData.enter()
+                .append("g")
                 .attr("class", "arc");
 
             gArcEnter.append("path")
                 .attr("class", "arc")
                 .on("mouseout", function (d) {
-                    if (RADAR.svgLegend) {
-                        RADAR.svgLegend.setLegendText("");
+                    if (field.svgLegend != null) {
+                        field.svgLegend.setLegendText("");
                     }
                 });
 
@@ -333,9 +334,9 @@ bottle.factory("Radar", function (container) {
 
             gArcAll.selectAll("path.arc")
                 .on("mouseover", function (d) {
-                    if(RADAR.svgLegend) {
+                    if(field.svgLegend != null) {
                         var ring = this.parentNode.parentNode.__data__.ring;
-                        RADAR.svgLegend.setLegendText(ring.name);
+                        field.svgLegend.setLegendText(ring.name);
                     }
                 })
                 .style("fill", function(d) {

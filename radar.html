@@ -119,6 +119,9 @@
     /* gobal $ */
     /* global bottle */
 
+    var context = bottle.container.context;
+    context.field = new bottle.container.Field();
+
     var radar = new bottle.container.Radar();
     var items = new bottle.container.Items();
 
@@ -170,9 +173,6 @@
             window.location.reload();
         });
     }
-
-    var context = bottle.container.context;
-    context.field = new bottle.container.Field();
 
     radar.loadSegments();
     radar.loadRings();

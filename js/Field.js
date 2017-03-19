@@ -1,25 +1,23 @@
 'use strict';
 
+/* global bottle */
+
 bottle.factory("Field", function (container) {
     SvgLegend = container.SvgLegend;
 
-    var Field = function(svgSelector, svgClasses, gLegendClasses) {
+    var Field = function(svgSelector) {
         if(svgSelector == null) {
             svgSelector = "div.svg";
         }
 
-        if(svgClasses == null) {
-            svgClasses = "svg canvas";
-        }
-
-        if(gLegendClasses == null) {
-            gLegendClasses = "legend canvas";
-        }
+        this.svgClasses = "svg canvas";
+        this.gLegendClasses = "legend canvas";
+        this.gItemsClasses = "items";
 
         this.width = window.innerWidth;
         this.height = window.innerHeight * (4/5);
         this.svg = d3.select(svgSelector).append("svg")
-            .attr("class", svgClasses)
+            .attr("class", this.svgClasses)
             .attr("width", this.width)
             .attr("height", this.height)
             .on("mousemove", function () {
@@ -31,8 +29,8 @@ bottle.factory("Field", function (container) {
 
         this.gRadar = this.svg.append("g")
             .attr("transform", "translate(" + this.width / 5 * 2 + "," + this.height / 2 + ")");
-        this.gItems = this.svg.append("g").attr("class", "items");
-        this.gLegend = this.svg.append("g").attr("class", gLegendClasses);
+        this.gItems = this.svg.append("g").attr("class", this.gItemsClasses);
+        this.gLegend = this.svg.append("g").attr("class", this.gLegendClasses);
 
         this.svgLegend = new SvgLegend();
         this.svgLegend.init();
@@ -40,4 +38,3 @@ bottle.factory("Field", function (container) {
 
     return Field;
 });
-

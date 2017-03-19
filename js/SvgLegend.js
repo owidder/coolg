@@ -1,5 +1,6 @@
 'use strict';
 
+/* global bottle */
 /* global _ */
 
 bottle.factory("SvgLegend", function (container) {

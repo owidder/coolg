@@ -1,5 +1,7 @@
 'use strict';
 
+/* global bottle */
+
 bottle.factory("SimplePromise", function (container) {
     function SimplePromise() {
         var that = this;

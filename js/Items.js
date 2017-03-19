@@ -5,10 +5,9 @@
 
 bottle.factory("Items", function (container) {
     var SimplePromise = container.SimplePromise;
-    var context = container.context;
-    var db = context.db;
+    var db = container.db;
 
-    var Items = function () {
+    var Items = function (field) {
 
         var ID_ITEM_DATA = "itemData";
 
@@ -62,7 +61,7 @@ bottle.factory("Items", function (container) {
 
         function readItemsFromDb() {
             var p = new SimplePromise();
-            if(context.field.db != null) {
+            if(db != null) {
                 db.get(ID_ITEM_DATA, function (err, doc) {
                     if(err) {
                         console.log(err);
@@ -163,10 +162,10 @@ bottle.factory("Items", function (container) {
             $("#form-items").empty();
             var inputItemsTemplateScript = $("#input-items").html();
             var inputItemsTemplate = Handlebars.compile(inputItemsTemplateScript);
-            var context = {
+            var ctx = {
                 items: items
             };
-            var inputItemsHtml = inputItemsTemplate(context);
+            var inputItemsHtml = inputItemsTemplate(ctx);
             $("#form-items").append(inputItemsHtml);
         }
 
@@ -190,7 +189,7 @@ bottle.factory("Items", function (container) {
                 draw();
             }
 
-            var gItemData = RADAR.gItems.selectAll("g.item").data(items, function (d) {
+            var gItemData = field.gItems.selectAll("g.item").data(items, function (d) {
                 return d.id;
             });
 
@@ -207,7 +206,7 @@ bottle.factory("Items", function (container) {
 
             gItemData.exit().remove();
 
-            var gItemAll = RADAR.gItems.selectAll("g.item");
+            var gItemAll = field.gItems.selectAll("g.item");
 
             gItemAll
                 .transition()
