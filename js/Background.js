@@ -205,7 +205,15 @@ bottle.factory("Background", function (container) {
             $("#form-rings").append(inputRingsHtml);
         }
 
-        function draw() {
+        function highlightOn(highlightId) {
+            draw(highlightId);
+        }
+
+        function highlightOff() {
+            draw(null);
+        }
+
+        function draw(highlightId) {
             var data = rings.map(function(ring, index) {
                 var inner = index * (radius / rings.length);
                 var outer = (index+1) * (radius / rings.length);
@@ -250,6 +258,10 @@ bottle.factory("Background", function (container) {
             });
 
             gArcAll.selectAll("path.arc")
+                .attr("class", function (d) {
+                    var ringId = this.parentNode.parentNode.__data__.ring.id;
+                    return "arc arc-" + d.id + " arc-" + ringId;
+                })
                 .on("mouseover", function (d) {
                     if(field.svgLegend != null) {
                         var ring = this.parentNode.parentNode.__data__.ring;
@@ -266,8 +278,17 @@ bottle.factory("Background", function (container) {
                     return arc(d.pie);
                 })
                 .style("opacity", function (d, i) {
-                    var ringNo = this.parentNode.parentNode.__data__.ring.ringNo;
-                    var opacity = (1 / (rings.length+1)) * (ringNo+1);
+                    var opacity, ringNo;
+                    if(highlightId == null) {
+                        ringNo = this.parentNode.parentNode.__data__.ring.ringNo;
+                        opacity = (1 / (rings.length+1)) * (ringNo+1);
+                    }
+                    else if(d3.select(this).classed("arc-" + highlightId)) {
+                        opacity = 1;
+                    }
+                    else {
+                        opacity = 0.05;
+                    }
                     return opacity;
                 });
 
@@ -336,6 +357,8 @@ bottle.factory("Background", function (container) {
         this.addSegmentAfterId = addSegmentAfterId;
         this.addRingAfterId = addRingAfterId;
         this.load = load;
+        this.highlightOn = highlightOn;
+        this.highlightOff = highlightOff;
 
         initSegments();
         initRings();
