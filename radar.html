@@ -43,7 +43,15 @@
     <table>
         <tr class="input">
             <td class="input">
-                <input onmouseover="highlightOn('{{id}}')" onmouseout="highlightOff()" onkeyup="segmentNameChanged('{{id}}')" class="input" placeholder="Segment name" id="{{id}}" type="text" class="validate" value="{{name}}">
+                <input onmouseover="highlightBackgroundOn('{{id}}')"
+                       onmouseout="highlightBackgroundOff()"
+                       onkeyup="segmentNameChanged('{{id}}')"
+                       class="input"
+                       placeholder="Segment name"
+                       id="{{id}}"
+                       type="text"
+                       class="validate"
+                       value="{{name}}">
             </td>
             <td class="input">
                 <a onclick="removeSegment('{{id}}')" class="input" href="#">
@@ -66,7 +74,15 @@
     <table>
         <tr class="input">
             <td class="input">
-                <input onmouseover="highlightOn('{{id}}')" onmouseout="highlightOff()" onkeyup="ringNameChanged('{{id}}')" class="input" placeholder="Ring name" id="{{id}}" type="text" class="validate" value="{{name}}">
+                <input onmouseover="highlightBackgroundOn('{{id}}')"
+                       onmouseout="highlightBackgroundOff()"
+                       onkeyup="ringNameChanged('{{id}}')"
+                       class="input"
+                       placeholder="Ring name"
+                       id="{{id}}"
+                       type="text"
+                       class="validate"
+                       value="{{name}}">
             </td>
             <td class="input">
                 <a onclick="removeRing('{{id}}')" class="input" href="#">
@@ -167,11 +183,11 @@
         items.removeItem(id);
     }
 
-    function highlightOn(id) {
+    function highlightBackgroundOn(id) {
         background.highlightOn(id);
     }
 
-    function highlightOff() {
+    function highlightBackgroundOff() {
         background.highlightOff();
     }
 
