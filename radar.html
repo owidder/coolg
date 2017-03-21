@@ -54,12 +54,16 @@
                        value="{{name}}">
             </td>
             <td class="input">
-                <a onclick="removeSegment('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightBackgroundOn('{{id}}')"
+                   onmouseout="highlightBackgroundOff()"
+                   onclick="removeSegment('{{id}}')" class="input" href="#">
                     <i class="material-icons">delete_forever</i>
                 </a>
             </td>
             <td class="input">
-                <a onclick="addSegmentAfterId('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightBackgroundOn('{{id}}')"
+                   onmouseout="highlightBackgroundOff()"
+                   onclick="addSegmentAfterId('{{id}}')" class="input" href="#">
                     <i class="material-icons">note_add</i>
                 </a>
             </td>
@@ -85,12 +89,16 @@
                        value="{{name}}">
             </td>
             <td class="input">
-                <a onclick="removeRing('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightBackgroundOn('{{id}}')"
+                   onmouseout="highlightBackgroundOff()"
+                   onclick="removeRing('{{id}}')" class="input" href="#">
                     <i class="material-icons">delete_forever</i>
                 </a>
             </td>
             <td class="input">
-                <a onclick="addRingAfterId('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightBackgroundOn('{{id}}')"
+                   onmouseout="highlightBackgroundOff()"
+                   onclick="addRingAfterId('{{id}}')" class="input" href="#">
                     <i class="material-icons">note_add</i>
                 </a>
             </td>
