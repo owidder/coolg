@@ -124,12 +124,16 @@
                        value="{{name}}">
             </td>
             <td class="input">
-                <a onclick="removeItem('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightItemsOn('{{id}}')"
+                   onmouseout="highlightItemsOff()"
+                   onclick="removeItem('{{id}}')" class="input" href="#">
                     <i class="material-icons">delete_forever</i>
                 </a>
             </td>
             <td class="input">
-                <a onclick="addItemAfterId('{{id}}')" class="input" href="#">
+                <a onmouseover="highlightItemsOn('{{id}}')"
+                   onmouseout="highlightItemsOff()"
+                   onclick="addItemAfterId('{{id}}')" class="input" href="#">
                     <i class="material-icons">note_add</i>
                 </a>
             </td>

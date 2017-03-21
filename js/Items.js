@@ -134,7 +134,8 @@ bottle.factory("Items", function (container) {
 
         function draw(highlightId) {
             function dragstarted(d) {
-                d3.select(this).raise().classed("active", true);
+                d3.select(this).select("circle").style("opacity", .5);
+                d3.select(this).select("circle").style("filter", "url(#dropShadow)");
             }
 
             function dragged(d) {
@@ -146,6 +147,8 @@ bottle.factory("Items", function (container) {
             function dragended(d) {
                 d.moved = "yes";
                 d3.select(this).classed("active", false);
+                d3.select(this).select("circle").style("opacity", 1);
+                d3.select(this).select("circle").style("filter", "");
                 save();
                 initItems();
                 draw();
