@@ -124,8 +124,15 @@ bottle.factory("Items", function (container) {
             $("#form-items").append(inputItemsHtml);
         }
 
+        function highlightOn(highlightId) {
+            draw(highlightId);
+        }
 
-        function draw() {
+        function highlightOff() {
+            draw(null);
+        }
+
+        function draw(highlightId) {
             function dragstarted(d) {
                 d3.select(this).raise().classed("active", true);
             }
@@ -150,7 +157,9 @@ bottle.factory("Items", function (container) {
 
             var gItemEnter = gItemData.enter()
                 .append("g")
-                .attr("class", "item")
+                .attr("class", function (d) {
+                    return "item item-" + d.id;
+                })
                 .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 })
@@ -166,6 +175,15 @@ bottle.factory("Items", function (container) {
             gItemAll
                 .transition()
                 .duration(1000)
+                .style("opacity", function () {
+                    var opacity = 1;
+
+                    if(highlightId != null && !d3.select(this).classed("item-" + highlightId)) {
+                        opacity = .1;
+                    }
+
+                    return opacity;
+                })
                 .attr("transform", function (d) {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
@@ -200,6 +218,8 @@ bottle.factory("Items", function (container) {
         this.changeItemName = changeItemName;
         this.addItemAfterId = addItemAfterId;
         this.removeItem = removeItem;
+        this.highlightOn = highlightOn;
+        this.highlightOff = highlightOff;
 
         initItems();
         draw();

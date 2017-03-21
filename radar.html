@@ -113,7 +113,15 @@
     <table>
         <tr class="input">
             <td class="input">
-                <input onkeyup="itemNameChanged('{{id}}')" class="input" placeholder="Trend name" id="{{id}}" type="text" class="validate" value="{{name}}">
+                <input onmouseover="highlightItemsOn('{{id}}')"
+                       onmouseout="highlightItemsOff()"
+                       onkeyup="itemNameChanged('{{id}}')"
+                       class="input"
+                       placeholder="Trend name"
+                       id="{{id}}"
+                       type="text"
+                       class="validate"
+                       value="{{name}}">
             </td>
             <td class="input">
                 <a onclick="removeItem('{{id}}')" class="input" href="#">
@@ -197,6 +205,14 @@
 
     function highlightBackgroundOff() {
         background.highlightOff();
+    }
+
+    function highlightItemsOn(id) {
+        items.highlightOn(id);
+    }
+
+    function highlightItemsOff() {
+        items.highlightOff();
     }
 
     function reset() {
