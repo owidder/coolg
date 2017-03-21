@@ -49,22 +49,18 @@ bottle.factory("Background", function (container) {
         function initSegments() {
             var pies = d3.pie()(_.fill(_.range(segments.length), 1));
             segments = segments.map(function (segment, i) {
-                return {
-                    name: segment.name,
-                    id: segment.id,
-                    no: i,
-                    pie: pies[i]
-                };
+                var extendedSegment = Object.assign({}, segment);
+                extendedSegment.no = i;
+                extendedSegment.pie = pies[i];
+                return extendedSegment;
             });
         }
 
         function initRings() {
             rings = rings.map(function (ring, i) {
-                return {
-                    name: ring.name,
-                    id: ring.id,
-                    ringNo: i
-                }
+                var extendedRing = Object.assign({}, ring);
+                extendedRing.ringNo = i;
+                return extendedRing;
             })
         }
 
