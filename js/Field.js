@@ -27,6 +27,11 @@ bottle.factory("Field", function (container) {
                     var position = d3.mouse(this);
                     that.svgLegend.doLegend(position[0], position[1]);
                 }
+            })
+            .on("mouseout", function () {
+                if(that.svgLegend != null) {
+                    that.svgLegend.hideLegend();
+                }
             });
 
         this.defs = this.svg.append("defs");
