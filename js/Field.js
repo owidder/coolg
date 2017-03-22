@@ -34,6 +34,9 @@ bottle.factory("Field", function (container) {
                 }
             });
 
+        /*
+         * Pretty much verbatim from here: http://bl.ocks.org/wimdows/1502762
+         */
         this.defs = this.svg.append("defs");
         var dropShadowFilter = this.defs.append('svg:filter')
             .attr('id', 'dropShadow')
