@@ -39,8 +39,8 @@
 
 <script id="input-segments" type="text/x-handlebars-template">
     <b>Segments</b>
-    {{#each segments}}
     <table>
+    {{#each segments}}
         <tr class="input">
             <td class="input">
                 <input onmouseover="highlightBackgroundOn('{{id}}')"
@@ -68,14 +68,14 @@
                 </a>
             </td>
         </tr>
-    </table>
     {{/each}}
+    </table>
 </script>
 
 <script id="input-rings" type="text/x-handlebars-template">
     <b>Rings</b>
-    {{#each rings}}
     <table>
+    {{#each rings}}
         <tr class="input">
             <td class="input">
                 <input onmouseover="highlightBackgroundOn('{{id}}')"
@@ -103,14 +103,14 @@
                 </a>
             </td>
         </tr>
-    </table>
     {{/each}}
+    </table>
 </script>
 
 <script id="input-items" type="text/x-handlebars-template">
     <b>Trends</b>
-    {{#each items}}
     <table>
+    {{#each items}}
         <tr class="input">
             <td class="input">
                 <input onmouseover="highlightItemsOn('{{id}}')"
@@ -138,8 +138,8 @@
                 </a>
             </td>
         </tr>
-    </table>
     {{/each}}
+    </table>
 </script>
 
 <script src="./js/db.js"></script>
