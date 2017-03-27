@@ -14,11 +14,12 @@ bottle.factory("server", function (container) {
                 type: "POST",
                 url: container.context.serverPath + "/radar",
                 contentType: "application/json",
-                dataType: "json",
-                data: radarStr
-            }).done(function (data) {
-                p.resolve(data);
-            });
+                dataType: "text",
+                data: radarStr,
+                success: function (data) {
+                    p.resolve(data);
+                }
+        });
 
             return p.promise;
         }
@@ -31,9 +32,10 @@ bottle.factory("server", function (container) {
                 type: "GET",
                 url: container.context.serverPath + "/radar",
                 accepts: "application/json",
-                dataType: "json"
-            }).done(function (data) {
-                p.resolve(data);
+                dataType: "text",
+                success: function (data) {
+                    p.resolve(data);
+                }
             });
         }
 

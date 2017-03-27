@@ -27,12 +27,14 @@
             <div id="form-rings"></div>
             <br>
             <a onclick="reset()" class="waves-effect waves-light btn">Reset</a>
-            <br>
-            <br>
-            <a onclick="sendRadar()" class="waves-effect waves-light btn">Send</a>
-            <br>
-            <br>
-            <a onclick="receiveRadar()" class="waves-effect waves-light btn">Receive</a>
+            <div id="send-receive-buttons" class="invisible">
+                <br>
+                <br>
+                <a onclick="sendRadar()" class="waves-effect waves-light btn">Send</a>
+                <br>
+                <br>
+                <a onclick="receiveRadar()" class="waves-effect waves-light btn">Receive</a>
+            </div>
         </div>
         <div class="col s8">
             <div class="svg"></div>
@@ -237,7 +239,7 @@
             bottle.container.server.sendRadar(radar).then(function(data) {
                 console.log("sent: " + data);
             });
-        })
+        });
     }
 
     function receiveRadar() {
@@ -248,6 +250,10 @@
 
     background.load();
     items.load();
+
+    if(bottle.container.util.param("sr", 0) == 1) {
+        $("#send-receive-buttons").toggleClass("invisible");
+    }
 
 </script>
 </body>

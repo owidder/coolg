@@ -49,3 +49,7 @@ a.input:hover {
 i.material-icons {
     font-size: 1.5em;
 }
+
+.invisible {
+    visibility: hidden;
+}
