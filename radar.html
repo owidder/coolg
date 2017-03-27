@@ -27,6 +27,12 @@
             <div id="form-rings"></div>
             <br>
             <a onclick="reset()" class="waves-effect waves-light btn">Reset</a>
+            <br>
+            <br>
+            <a onclick="sendRadar()" class="waves-effect waves-light btn">Send</a>
+            <br>
+            <br>
+            <a onclick="receiveRadar()" class="waves-effect waves-light btn">Receive</a>
         </div>
         <div class="col s8">
             <div class="svg"></div>
@@ -150,17 +156,16 @@
 <script src="./js/Background.js"></script>
 <script src="./js/Items.js"></script>
 <script src="./js/Field.js"></script>
+<script src="./js/server.js"></script>
 
 <script>
 
     /* gobal $ */
     /* global bottle */
 
-    var radarId = bottle.container.util.param("radarId", 1);
-    bottle.container.context.radarId = radarId;
+    bottle.container.context.radarId = bottle.container.util.param("radarId", 1);
 
     var field = new bottle.container.Field();
-
     var background = new bottle.container.Background(field);
     var items = new bottle.container.Items(field);
 
@@ -224,6 +229,20 @@
             window.location.reload();
         }, function () {
             window.location.reload();
+        });
+    }
+
+    function sendRadar() {
+        bottle.container.db.load().then(function (radar) {
+            bottle.container.server.sendRadar(radar).then(function(data) {
+                console.log("sent: " + data);
+            });
+        })
+    }
+
+    function receiveRadar() {
+        bottle.container.server.receiveRadar().then(function (data) {
+            console.log(data);
         });
     }
 
