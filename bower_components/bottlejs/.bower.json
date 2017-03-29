@@ -1,0 +1,50 @@
+{
+  "name": "bottlejs",
+  "version": "1.6.0",
+  "description": "A powerful dependency injection micro container",
+  "main": "dist/bottle.min.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "gruntfile.js",
+    "package.json",
+    "grunt"
+  ],
+  "keywords": [
+    "dependency",
+    "injection",
+    "micro"
+  ],
+  "authors": [
+    {
+      "name": "Stephen Young",
+      "email": "young.steveo@gmail.com",
+      "homepage": "https://github.com/young-steveo"
+    }
+  ],
+  "homepage": "https://github.com/young-steveo/bottlejs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/young-steveo/bottlejs.git"
+  },
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "1.6.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.6.0",
+    "commit": "e2ca51737976c9044a273db1910b9854c7c68ef7"
+  },
+  "_source": "https://github.com/young-steveo/bottlejs.git",
+  "_target": "^1.6.0",
+  "_originalSource": "bottlejs"
+}
