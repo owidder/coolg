@@ -167,19 +167,14 @@
 
     var gStatic = svg.append("g");
     var gDynamic = svg.append("g");
-    var gTank = svg.append("g").attr("class", "tank stay");
 
     var MIN_HEIGHT = 200;
     var BAR_WIDTH = 30;
     var BAR_GAP = 35;
     var BAR_OFFSET = width / 3;
-    var SHOOT_START_X = Math.max(BAR_OFFSET - 500, 200);
     var START_HEIGHT = 50;
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
-    var TANK_DURATION = 5000;
-    var BLOCK_HEIGHT = 150;
-    var BLOCK_WIDTH = 100;
     var RADIUS = 20;
 
     var engine = Matter.Engine.create();
@@ -218,6 +213,7 @@
     function createWorldFromDynamicElements() {
         var elements = document.querySelectorAll("rect.body");
         elements.forEach(function (element) {
+            var data = d3.select(element).datum();
             var svgX = parseFloat(element.getAttribute("x"));
             var svgY = parseFloat(element.getAttribute("y"));
             var height = parseFloat(element.getAttribute("height"));
@@ -242,7 +238,7 @@
                         rectBody = Matter.Bodies.circle(currentX + currentRadius / 2,
                             currentY + currentRadius / 2,
                             currentRadius,
-                            {isStatic: isStatic, className: element.classList.toString()});
+                            {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
                         bodyList.push(rectBody);
                         currentX += currentRadius*2;
                     }

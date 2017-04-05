@@ -10,11 +10,31 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function isDynamic(body) {
-        return !body.isStatic;
+        return !body.isStatic && !body.isFluid;
+    }
+
+    function isCircle(body) {
+        return body.label.startsWith("Circle");
+    }
+
+    function isDynamicCircle(body) {
+        return isDynamic(body) && isCircle(body);
+    }
+
+    function isDynamicNonCircle(body) {
+        return isDynamic(body) && !isCircle(body);
     }
 
     function hasTitle(body) {
         return body.title != null;
+    }
+
+    function isFluid(body) {
+        return body.isFluid;
+    }
+
+    function isFluidWithGroup(body, group) {
+        return body.isFluid() && body.group == group;
     }
 
     function createPathFromBody(d) {
@@ -64,11 +84,47 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         data.exit().remove();
     }
 
-    function renderD3Dynamic() {
-        var dynamicBodies = Matter.Composite.allBodies(engine.world).filter(isDynamic);
+    function smoothPathFromBodies(bodies) {
+        //var coords =
+    }
+
+    function renderD3Fluid(group) {
+        var fluidBodies = Matter.Composite.allBodies(engine.world).filter(function (body) {
+            return isFluidWithGroup(body, group);
+        });
+
+        var data = gDynamic.selectAll("path.dynamic." + group)
+    }
+
+    function renderD3DynamicCircles() {
+        var dynamicCircles = Matter.Composite.allBodies(engine.world).filter(isDynamicCircle);
+
+        var data = gDynamic.selectAll("circle.dynamic")
+            .data(dynamicCircles, function (d) {
+                return d.id;
+            });
+
+        data.enter()
+            .append("circle")
+            .attr("class", createClassNameFromBodyForDynamic)
+            .attr("r", function (d) {
+                return d.circleRadius;
+            });
+
+        gDynamic.selectAll("circle.dynamic")
+            .attr("cx", function (d) {
+                return d.position.x
+            })
+            .attr("cy", function (d) {
+                return d.position.y
+            });
+    }
+
+    function renderD3DynamicNonCircles() {
+        var dynamicNonCircles = Matter.Composite.allBodies(engine.world).filter(isDynamicNonCircle);
 
         var data = gDynamic.selectAll("path.dynamic")
-            .data(dynamicBodies, function(d) {
+            .data(dynamicNonCircles, function(d) {
                 return d.id;
             });
 
@@ -80,6 +136,11 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             .attr("d", createPathFromBody);
 
         data.exit().remove();
+    }
+
+    function renderD3Dynamic() {
+        renderD3DynamicCircles();
+        renderD3DynamicNonCircles();
     }
 
     function renderD3DynamicTitles() {
