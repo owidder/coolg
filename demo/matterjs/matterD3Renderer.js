@@ -62,14 +62,6 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         }
     }
 
-    function createClassNameFromBodyForStatic(d) {
-        return createClassNameFromBody(d, "static");
-    }
-
-    function createClassNameFromBodyForDynamic(d) {
-        return createClassNameFromBody(d, "dynamic");
-    }
-
     function renderD3Static() {
         var staticBodies = Matter.Composite.allBodies(engine.world).filter(isStatic);
 
@@ -78,7 +70,9 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 
         data.enter()
             .append("path")
-            .attr("class", createClassNameFromBodyForStatic)
+            .attr("class", function (d) {
+                return createClassNameFromBody(d, "static")
+            })
             .attr("d", createPathFromBody);
 
         data.exit().remove();
@@ -89,7 +83,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             return [body.position.x, body.position.y];
         });
 
-        var path = d3.svg.line().interpolate('basis-closed')(coords);
+        var path = d3.line().curve(d3.curveCardinalClosed)(coords);
 
         return path;
     }
@@ -99,14 +93,16 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             return isFluidWithGroup(body, group);
         });
 
-        var data = gDynamic.selectAll("path.dynamic." + group)
+        var data = gDynamic.selectAll("path.fluid." + group)
             .data([fluidBodies]);
 
         data.enter()
             .append("path")
-            .attr("class", createClassNameFromBodyForDynamic);
+            .attr("class", function (d) {
+                return createClassNameFromBody(d, "fluid " + group);
+            });
 
-        gDynamic.selectAll("path.dynamic." + group)
+        gDynamic.selectAll("path.fluid." + group)
             .attr("d", smoothPathFromBodies);
     }
 
@@ -124,7 +120,9 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 
         data.enter()
             .append("circle")
-            .attr("class", createClassNameFromBodyForDynamic)
+            .attr("class", function (d) {
+                return createClassNameFromBody(d, "dynamic");
+            })
             .attr("r", function (d) {
                 return d.circleRadius;
             });
@@ -148,7 +146,9 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 
         data.enter()
             .append("path")
-            .attr("class", createClassNameFromBodyForDynamic);
+            .attr("class", function (d) {
+                return createClassNameFromBody(d, "dymamic");
+            });
 
         gDynamic.selectAll("path.dynamic")
             .attr("d", createPathFromBody);

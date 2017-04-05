@@ -229,6 +229,7 @@
                 var radius = Math.min(height, width, RADIUS);
                 var currentRadius, maxRadius;
                 var bodyList = [];
+                var ulCircle =
                 while(currentY < svgY + height) {
                     currentX = svgX;
                     maxRadius = 0;
@@ -238,7 +239,7 @@
                         rectBody = Matter.Bodies.circle(currentX + currentRadius / 2,
                             currentY + currentRadius / 2,
                             currentRadius,
-                            {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
+                            {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: false});
                         bodyList.push(rectBody);
                         currentX += currentRadius*2;
                     }
