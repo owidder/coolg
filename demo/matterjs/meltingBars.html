@@ -170,12 +170,13 @@
 
     var MIN_HEIGHT = 200;
     var BAR_WIDTH = 30;
-    var BAR_GAP = 35;
+    var BAR_GAP = 15;
     var BAR_OFFSET = width / 3;
     var START_HEIGHT = 50;
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
-    var RADIUS = 20;
+    var RADIUS = 5;
+    var STEPS = 20;
 
     var engine = Matter.Engine.create();
 
@@ -223,29 +224,34 @@
 
             var rectBody;
 
-            var isStatic = hasClass(element, "static");
-            if(!isStatic && height > width) {
-                var currentX, currentY = svgY;
-                var radius = Math.min(height, width, RADIUS);
-                var currentRadius, maxRadius;
-                var bodyList = [];
-                var ulCircle =
-                while(currentY < svgY + height) {
-                    currentX = svgX;
-                    maxRadius = 0;
-                    while(currentX < svgX + width) {
-                        currentRadius = Math.min(radius * Math.random(), svgX + width - currentX, svgY + height - currentY);
-                        maxRadius = currentRadius > maxRadius ? currentRadius : maxRadius;
-                        rectBody = Matter.Bodies.circle(currentX + currentRadius / 2,
-                            currentY + currentRadius / 2,
-                            currentRadius,
-                            {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: false});
-                        bodyList.push(rectBody);
-                        currentX += currentRadius*2;
-                    }
-
-                    currentY += maxRadius*2;
+            function createCircle(lr, quot) {
+                var circle;
+                if(lr == "left") {
+                    circle = Matter.Bodies.circle(svgX, svgY + (height * quot), RADIUS,
+                        {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
                 }
+                else {
+                    circle = Matter.Bodies.circle(svgX + width, svgY + (height * quot), RADIUS,
+                        {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
+                }
+
+                return circle;
+            }
+
+            var isStatic = hasClass(element, "static");
+            var q;
+            if(!isStatic && height > width) {
+
+                var bodyList = [];
+
+                for(q = 0; q < 1; q += 1/STEPS) {
+                    bodyList.push(createCircle("right", q));
+                }
+
+                for(q = 1; q > 0; q -= 1/STEPS) {
+                    bodyList.push(createCircle("left", q));
+                }
+
                 Matter.World.add(engine.world, bodyList);
             }
             else {

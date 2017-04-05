@@ -5,6 +5,9 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     var gDynamic = _gDynamic;
     var engine = _engine;
 
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
     function isStatic(body) {
         return body.isStatic;
     }
@@ -79,13 +82,17 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function smoothPathFromBodies(bodies) {
-        var coords = bodies.map(function (body) {
+        var visibleBodies = bodies.filter(function (body) {
+            return body.position.y < width + 300;
+        });
+
+        var coords = visibleBodies.map(function (body) {
             return [body.position.x, body.position.y];
         });
 
-        var path = d3.line().curve(d3.curveCardinalClosed)(coords);
+        var path = d3.line().curve(d3.curveBundle)(coords);
 
-        return path;
+         return path + " Z";
     }
 
     function renderD3FluidWithGroup(group) {
@@ -108,6 +115,14 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 
     function renderD3Fluid() {
         renderD3FluidWithGroup("red");
+        renderD3FluidWithGroup("green");
+        renderD3FluidWithGroup("blue");
+        renderD3FluidWithGroup("orange");
+        renderD3FluidWithGroup("cyan");
+        renderD3FluidWithGroup("black");
+        renderD3FluidWithGroup("grey");
+        renderD3FluidWithGroup("yellow");
+        renderD3FluidWithGroup("purple");
     }
 
     function renderD3DynamicCircles() {
