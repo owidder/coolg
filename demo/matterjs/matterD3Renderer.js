@@ -34,7 +34,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function isFluidWithGroup(body, group) {
-        return body.isFluid() && body.group == group;
+        return isFluid(body) && body.group == group;
     }
 
     function createPathFromBody(d) {
@@ -85,15 +85,33 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function smoothPathFromBodies(bodies) {
-        //var coords =
+        var coords = bodies.map(function (body) {
+            return [body.position.x, body.position.y];
+        });
+
+        var path = d3.svg.line().interpolate('basis-closed')(coords);
+
+        return path;
     }
 
-    function renderD3Fluid(group) {
+    function renderD3FluidWithGroup(group) {
         var fluidBodies = Matter.Composite.allBodies(engine.world).filter(function (body) {
             return isFluidWithGroup(body, group);
         });
 
         var data = gDynamic.selectAll("path.dynamic." + group)
+            .data([fluidBodies]);
+
+        data.enter()
+            .append("path")
+            .attr("class", createClassNameFromBodyForDynamic);
+
+        gDynamic.selectAll("path.dynamic." + group)
+            .attr("d", smoothPathFromBodies);
+    }
+
+    function renderD3Fluid() {
+        renderD3FluidWithGroup("red");
     }
 
     function renderD3DynamicCircles() {
@@ -141,6 +159,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     function renderD3Dynamic() {
         renderD3DynamicCircles();
         renderD3DynamicNonCircles();
+        renderD3Fluid();
     }
 
     function renderD3DynamicTitles() {
