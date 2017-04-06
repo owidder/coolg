@@ -70,7 +70,7 @@
         stroke: black;
     }
 
-    rect.static {
+    .invisible {
         fill: none;
     }
 
@@ -182,7 +182,7 @@
 
     function drawStatic() {
         gStatic.append("rect")
-            .attr("class", "body static grey")
+            .attr("class", "body static invisible")
             .attr("x", BAR_OFFSET)
             .attr("y", BOTTOM)
             .attr("width", barData.length * (BAR_WIDTH + BAR_GAP))
