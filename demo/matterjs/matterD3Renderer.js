@@ -94,13 +94,13 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 
         var path;
         if(convexHull != null) {
-            path = d3.line().curve(d3.curveCardinal)(convexHull);
+            path = d3.line().curve(d3.curveBasisClosed)(convexHull);
         }
         else {
             path = d3.line().curve(d3.curveBasisClosed)(coords);
         }
 
-         return path + " Z";
+         return path;
     }
 
     function renderD3FluidWithGroup(group) {

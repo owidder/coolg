@@ -70,7 +70,7 @@
         stroke: black;
     }
 
-    rect.static {
+    rect.static.invisible {
         fill: none;
     }
 
@@ -182,7 +182,7 @@
 
     function drawStatic() {
         gStatic.append("rect")
-            .attr("class", "body static grey")
+            .attr("class", "body static grey invisible")
             .attr("x", BAR_OFFSET)
             .attr("y", BOTTOM)
             .attr("width", barData.length * (BAR_WIDTH + BAR_GAP))
@@ -209,6 +209,31 @@
                 d3Renderer.renderD3();
             });
         }
+    }
+
+    function createStaticBarsFromDynamicElements() {
+        var elements = document.querySelectorAll("rect.body");
+        elements.forEach(function (element) {
+            var svgX = parseFloat(element.getAttribute("x"));
+            var svgY = parseFloat(element.getAttribute("y"));
+            var height = parseFloat(element.getAttribute("height"));
+            var width = parseFloat(element.getAttribute("width"));
+            var y = svgY + height / 2;
+            var x = svgX + width / 2;
+
+            var isStatic = hasClass(element, "static");
+            var rectBody = Matter.Bodies.rectangle(x, y, width, height, {
+                isStatic: true, className: element.classList.toString()
+            });
+
+            Matter.World.add(engine.world, [rectBody]);
+
+            if (!isStatic && !hasClass(element, "stay")) {
+                element.remove();
+            }
+        });
+
+        startEngine();
     }
 
     function createWorldFromDynamicElements() {
@@ -450,7 +475,7 @@
     var worldCreated = false;
     function reality() {
         switchToStep3();
-        createWorldFromDynamicElements();
+        createStaticBarsFromDynamicElements();
         if(!worldCreated) {
             worldCreated = true;
         }
