@@ -57,7 +57,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function createClassNameFromBody(d, defaultClassName) {
-        if(d.className != null) {
+        if(d != null && d.className != null) {
             return d.className + " " + defaultClassName;
         }
         else {
@@ -90,7 +90,15 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             return [body.position.x, body.position.y];
         });
 
-        var path = d3.line().curve(d3.curveBundle)(coords);
+        var convexHull = d3.polygonHull(coords);
+
+        var path;
+        if(convexHull != null) {
+            path = d3.line().curve(d3.curveCardinal)(convexHull);
+        }
+        else {
+            path = d3.line().curve(d3.curveBasisClosed)(coords);
+        }
 
          return path + " Z";
     }
@@ -100,16 +108,16 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             return isFluidWithGroup(body, group);
         });
 
-        var data = gDynamic.selectAll("path.fluid." + group)
+        var data = gDynamic.selectAll("path.fluidbody." + group)
             .data([fluidBodies]);
 
         data.enter()
             .append("path")
             .attr("class", function (d) {
-                return createClassNameFromBody(d, "fluid " + group);
+                return createClassNameFromBody(d[0], "fluidbody " + group);
             });
 
-        gDynamic.selectAll("path.fluid." + group)
+        gDynamic.selectAll("path.fluidbody." + group)
             .attr("d", smoothPathFromBodies);
     }
 
@@ -128,7 +136,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     function renderD3DynamicCircles() {
         var dynamicCircles = Matter.Composite.allBodies(engine.world).filter(isDynamicCircle);
 
-        var data = gDynamic.selectAll("circle.dynamic")
+        var data = gDynamic.selectAll("circle.dynamicbody")
             .data(dynamicCircles, function (d) {
                 return d.id;
             });
@@ -136,13 +144,13 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         data.enter()
             .append("circle")
             .attr("class", function (d) {
-                return createClassNameFromBody(d, "dynamic");
+                return createClassNameFromBody(d, "dynamicbody");
             })
             .attr("r", function (d) {
                 return d.circleRadius;
             });
 
-        gDynamic.selectAll("circle.dynamic")
+        gDynamic.selectAll("circle.dynamicbody")
             .attr("cx", function (d) {
                 return d.position.x
             })
@@ -154,7 +162,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     function renderD3DynamicNonCircles() {
         var dynamicNonCircles = Matter.Composite.allBodies(engine.world).filter(isDynamicNonCircle);
 
-        var data = gDynamic.selectAll("path.dynamic")
+        var data = gDynamic.selectAll("path.dynamicbody")
             .data(dynamicNonCircles, function(d) {
                 return d.id;
             });
@@ -162,10 +170,10 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         data.enter()
             .append("path")
             .attr("class", function (d) {
-                return createClassNameFromBody(d, "dymamic");
+                return createClassNameFromBody(d, "dymamicbody");
             });
 
-        gDynamic.selectAll("path.dynamic")
+        gDynamic.selectAll("path.dynamicbody")
             .attr("d", createPathFromBody);
 
         data.exit().remove();

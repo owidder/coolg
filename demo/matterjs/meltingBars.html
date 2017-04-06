@@ -176,7 +176,7 @@
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
     var RADIUS = 5;
-    var STEPS = 20;
+    var STEPS = 3;
 
     var engine = Matter.Engine.create();
 
@@ -227,11 +227,11 @@
             function createCircle(lr, quot) {
                 var circle;
                 if(lr == "left") {
-                    circle = Matter.Bodies.circle(svgX, svgY + (height * quot), RADIUS,
+                    circle = Matter.Bodies.circle(svgX - RADIUS, svgY + (height * quot), RADIUS,
                         {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
                 }
                 else {
-                    circle = Matter.Bodies.circle(svgX + width, svgY + (height * quot), RADIUS,
+                    circle = Matter.Bodies.circle(svgX + width + RADIUS, svgY + (height * quot), RADIUS,
                         {isStatic: isStatic, className: element.classList.toString(), group: data.key, isFluid: true});
                 }
 
@@ -244,7 +244,7 @@
 
                 var bodyList = [];
 
-                for(q = 0; q < 1; q += 1/STEPS) {
+                for(q = 0; q <= 1; q += 1/STEPS) {
                     bodyList.push(createCircle("right", q));
                 }
 
