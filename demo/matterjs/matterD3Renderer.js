@@ -65,22 +65,6 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         }
     }
 
-    function renderD3Static() {
-        var staticBodies = Matter.Composite.allBodies(engine.world).filter(isStatic);
-
-        var data = gStatic.selectAll("path.static")
-            .data(staticBodies);
-
-        data.enter()
-            .append("path")
-            .attr("class", function (d) {
-                return createClassNameFromBody(d, "static")
-            })
-            .attr("d", createPathFromBody);
-
-        data.exit().remove();
-    }
-
     function smoothPathFromBodies(bodies) {
         var visibleBodies = bodies.filter(function (body) {
             return body.position.y < width + 300;
@@ -219,13 +203,8 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     var renderCounter = 0;
 
     this.constructor.prototype.renderD3 = function() {
-        if(gStatic != null) {
-            renderD3Static();
-        }
-        if(gDynamic != null) {
-            renderD3();
-            renderD3DynamicTitles();
-            renderCounter++;
-        }
+        renderD3();
+        renderD3DynamicTitles();
+        renderCounter++;
     }
 }
