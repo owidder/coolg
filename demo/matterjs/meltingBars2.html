@@ -211,6 +211,35 @@
         }
     }
 
+    function heightOfBar(bar) {
+        return bar.bounds.max.y - bar.bounds.min.y;
+    }
+
+    function findHighestBar() {
+        function isBar(body) {
+            return body.isBar;
+        }
+        var bars = Matter.Composite.allBodies(engine.world).filter(isBar);
+        var highestBar;
+        bars.forEach(function(bar) {
+            if(highestBar == null || heightOfBar(bar) > heightOfBar(highestBar)) {
+                highestBar = bar;
+            }
+        });
+
+        return highestBar;
+    }
+
+    function shortenHighestBar() {
+        var highestBar = findHighestBar();
+        var height = highestBar.bounds.max.y - highestBar.bounds.min.y;
+        var factor = 0.9;
+        setTimeout(function () {
+            Matter.Body.scale(highestBar, 1, factor, {x: highestBar.bounds.max.x, y: highestBar.bounds.max.y});
+            Matter.Body.setPosition(highestBar, {x: highestBar.position.x, y: highestBar.position.y + height*(1-factor)/2})
+        }, 1000);
+    }
+
     function createStaticBarsFromDynamicElements() {
         var elements = document.querySelectorAll("rect.body");
         elements.forEach(function (element) {
@@ -223,7 +252,7 @@
 
             var isStatic = hasClass(element, "static");
             var rectBody = Matter.Bodies.rectangle(x, y, width, height, {
-                isStatic: true, className: element.classList.toString()
+                isBar: true, isStatic: true, className: element.classList.toString()
             });
 
             Matter.World.add(engine.world, [rectBody]);
@@ -476,6 +505,7 @@
     function reality() {
         switchToStep3();
         createStaticBarsFromDynamicElements();
+        shortenHighestBar();
         if(!worldCreated) {
             worldCreated = true;
         }
