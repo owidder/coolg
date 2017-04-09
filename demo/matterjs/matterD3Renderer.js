@@ -81,8 +81,10 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             path = d3.line().curve(d3.curveBasisClosed)(convexHull);
         }
         else {
+/*
             console.log("no hull: " + visibleBodies[0].className);
             path = d3.line().curve(d3.curveBasisClosed)(coords);
+*/
         }
 
          return path + " Z";

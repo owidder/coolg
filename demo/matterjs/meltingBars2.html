@@ -162,13 +162,13 @@
 
     var MIN_HEIGHT = 200;
     var BAR_WIDTH = 30;
-    var BAR_GAP = 15;
-    var BAR_OFFSET = width / 3;
+    var BAR_GAP = 50;
+    var BAR_OFFSET = width / 5;
     var START_HEIGHT = 50;
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
     var RADIUS = 2;
-    var STEPS = 5;
+    var STEPS = 10;
 
     var engine = Matter.Engine.create();
 
@@ -210,10 +210,11 @@
         return bar.bounds.max.y - bar.bounds.min.y;
     }
 
+    function isBar(body) {
+        return body.isBar;
+    }
+
     function findHighestBarBody() {
-        function isBar(body) {
-            return body.isBar;
-        }
         var bars = Matter.Composite.allBodies(engine.world).filter(isBar);
         var highestBar;
         bars.forEach(function(bar) {
@@ -223,6 +224,13 @@
         });
 
         return highestBar;
+    }
+
+    function randomBar() {
+        var bars = Matter.Composite.allBodies(engine.world).filter(isBar);
+        var index = Math.floor(Math.random() * bars.length);
+
+        return bars[index];
     }
 
     function heightOfBody(body) {
@@ -235,14 +243,22 @@
         return width;
     }
 
-    function shortenHighestBar() {
-        var highestBarBody = findHighestBarBody();
-        var height = heightOfBody(highestBarBody);
-        var factor = 0.95;
-        Matter.Body.scale(highestBarBody, 1, factor, {x: highestBarBody.bounds.max.x, y: highestBarBody.bounds.max.y});
-        Matter.Body.setPosition(highestBarBody, {x: highestBarBody.position.x, y: highestBarBody.position.y + height*(1-factor)/2});
+    function shortenBar() {
+        var bar = randomBar();
+        var height = heightOfBody(bar);
+        var factor;
+        if(height < 200) {
+            factor = 0.5;
+        }
+        else {
+            factor = 0.9;
+        }
+        if(height > 50) {
+            Matter.Body.scale(bar, 1, factor, {x: bar.bounds.max.x, y: bar.bounds.max.y});
+            Matter.Body.setPosition(bar, {x: bar.position.x, y: bar.position.y + height*(1-factor)/2});
 
-        createCirclesWhereTheBarWas(highestBarBody, height);
+            createCirclesWhereTheBarWas(bar, height);
+        }
     }
 
     function uid() {
@@ -281,7 +297,7 @@
                     group: group,
                     isFluid: true,
                     birth: (new Date()).getTime(),
-                    ttl: 5000
+                    ttl: 2000
                 });
 
             bodyList.push(circle);
@@ -536,7 +552,7 @@
         },
     ];
 
-    drawStatic();
+    //drawStatic();
 
     function switchToStep2() {
         d3.select("button.step1")
@@ -565,7 +581,7 @@
             worldCreated = true;
         }
 
-        setInterval(shortenHighestBar, 500);
+        setInterval(shortenBar, 100);
     }
 
     drawAxes(barData);
