@@ -206,5 +206,19 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         renderD3();
         renderD3DynamicTitles();
         renderCounter++;
+    };
+
+    function gc() {
+        function isDynamic(body) {
+            return !body.isStatic;
+        }
+        var dynamicBodies = Matter.Composite.allBodies(engine.world).filter(isDynamic);
+        dynamicBodies.forEach(function(body) {
+            if(body.position.y > height + 100) {
+                Matter.World.remove(engine.world, body);
+            }
+        })
     }
+
+    setInterval(gc, 1000);
 }

@@ -176,7 +176,7 @@
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
     var RADIUS = 2;
-    var STEPS = 30;
+    var STEPS = 3;
 
     var engine = Matter.Engine.create();
 
@@ -215,7 +215,7 @@
         return bar.bounds.max.y - bar.bounds.min.y;
     }
 
-    function findHighestBar() {
+    function findHighestBarBody() {
         function isBar(body) {
             return body.isBar;
         }
@@ -230,14 +230,60 @@
         return highestBar;
     }
 
+    function heightOfBody(body) {
+        var height = body.bounds.max.y - body.bounds.min.y;
+        return height;
+    }
+
+    function widthOfBody(body) {
+        var width = body.bounds.max.x - body.bounds.min.x;
+        return width;
+    }
+
     function shortenHighestBar() {
-        var highestBar = findHighestBar();
-        var height = highestBar.bounds.max.y - highestBar.bounds.min.y;
-        var factor = 0.9;
-        setTimeout(function () {
-            Matter.Body.scale(highestBar, 1, factor, {x: highestBar.bounds.max.x, y: highestBar.bounds.max.y});
-            Matter.Body.setPosition(highestBar, {x: highestBar.position.x, y: highestBar.position.y + height*(1-factor)/2})
-        }, 1000);
+        var highestBarBody = findHighestBarBody();
+        var height = heightOfBody(highestBarBody);
+        var factor = 0.95;
+        Matter.Body.scale(highestBarBody, 1, factor, {x: highestBarBody.bounds.max.x, y: highestBarBody.bounds.max.y});
+        Matter.Body.setPosition(highestBarBody, {x: highestBarBody.position.x, y: highestBarBody.position.y + height*(1-factor)/2});
+
+        createCirclesWhereTheBarWas(highestBarBody, height);
+    }
+
+    function uid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4();
+    }
+
+    function createCirclesWhereTheBarWas(barBody, oldHeight) {
+        var width = widthOfBody(barBody);
+        var right = barBody.bounds.min.x;
+        var top = barBody.bounds.min.y;
+        var left = right + width;
+        var oldTop = barBody.bounds.max.y - oldHeight;
+        var group = uid();
+        var bodyList = [];
+        var diff = top - oldTop;
+        var stepSize = diff / STEPS;
+        var y;
+
+        function createCircle(x, y) {
+            var circle = Matter.Bodies.circle(x, y, RADIUS,
+                {isStatic: false, className: barBody.className, group: group, isFluid: false});
+
+            bodyList.push(circle);
+        }
+
+        for(y = oldTop; y <= top; y += stepSize) {
+            createCircle(right, y);
+            createCircle(left, y);
+        }
+
+        Matter.World.add(engine.world, bodyList);
     }
 
     function createStaticBarsFromDynamicElements() {
@@ -505,10 +551,11 @@
     function reality() {
         switchToStep3();
         createStaticBarsFromDynamicElements();
-        shortenHighestBar();
         if(!worldCreated) {
             worldCreated = true;
         }
+
+        setInterval(shortenHighestBar, 500);
     }
 
     drawAxes(barData);
