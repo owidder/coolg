@@ -84,14 +84,6 @@
     }
 
 /*
-    path.dynamic {
-        stroke: black;
-        stroke-width: 1px;
-        fill: none;
-    }
-*/
-
-/*
     button:not(.disabled) {
         background-color: #004A7F;
         -webkit-border-radius: 10px;
@@ -176,9 +168,12 @@
     var BOTTOM_OFFSET = 50;
     var BOTTOM = height - BOTTOM_OFFSET;
     var RADIUS = 2;
-    var STEPS = 3;
+    var STEPS = 5;
 
     var engine = Matter.Engine.create();
+
+    engine._custom = {};
+    engine._custom.groups = [];
 
     function drawStatic() {
         gStatic.append("rect")
@@ -259,13 +254,20 @@
         return s4() + s4();
     }
 
+    function getFormattedDate() {
+        var date = new Date();
+        var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+        return str;
+    }
+
     function createCirclesWhereTheBarWas(barBody, oldHeight) {
         var width = widthOfBody(barBody);
         var right = barBody.bounds.min.x;
         var top = barBody.bounds.min.y;
         var left = right + width;
         var oldTop = barBody.bounds.max.y - oldHeight;
-        var group = uid();
+        var group = "group-" + uid();
         var bodyList = [];
         var diff = top - oldTop;
         var stepSize = diff / STEPS;
@@ -273,7 +275,14 @@
 
         function createCircle(x, y) {
             var circle = Matter.Bodies.circle(x, y, RADIUS,
-                {isStatic: false, className: barBody.className, group: group, isFluid: false});
+                {
+                    isStatic: false,
+                    className: barBody.className,
+                    group: group,
+                    isFluid: true,
+                    birth: (new Date()).getTime(),
+                    ttl: 5000
+                });
 
             bodyList.push(circle);
         }
@@ -284,6 +293,7 @@
         }
 
         Matter.World.add(engine.world, bodyList);
+        engine._custom.groups.push(group);
     }
 
     function createStaticBarsFromDynamicElements() {

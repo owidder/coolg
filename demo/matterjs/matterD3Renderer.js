@@ -13,7 +13,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
     }
 
     function isNonFluid(body) {
-        return !body.isFluid;
+        return !body.isFluid || body.isNonFluid;
     }
 
     function isCircle(body) {
@@ -81,10 +81,11 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             path = d3.line().curve(d3.curveBasisClosed)(convexHull);
         }
         else {
+            console.log("no hull: " + visibleBodies[0].className);
             path = d3.line().curve(d3.curveBasisClosed)(coords);
         }
 
-         return path;
+         return path + " Z";
     }
 
     function renderD3FluidWithGroup(group) {
@@ -105,18 +106,15 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             gDynamic.selectAll("path.fluidbody." + group)
                 .attr("d", smoothPathFromBodies);
         }
+        else {
+            gDynamic.selectAll("path.fluidbody." + group).remove();
+        }
     }
 
     function renderD3Fluid() {
-        renderD3FluidWithGroup("red");
-        renderD3FluidWithGroup("green");
-        renderD3FluidWithGroup("blue");
-        renderD3FluidWithGroup("orange");
-        renderD3FluidWithGroup("cyan");
-        renderD3FluidWithGroup("black");
-        renderD3FluidWithGroup("grey");
-        renderD3FluidWithGroup("yellow");
-        renderD3FluidWithGroup("purple");
+        engine._custom.groups.forEach(function (group) {
+            renderD3FluidWithGroup(group);
+        });
     }
 
     function renderD3NonFluidCircles() {
@@ -143,6 +141,8 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             .attr("cy", function (d) {
                 return d.position.y
             });
+
+        data.exit().remove();
     }
 
     function renderD3NonFluidNonCircles() {
@@ -216,6 +216,13 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
         dynamicBodies.forEach(function(body) {
             if(body.position.y > height + 100) {
                 Matter.World.remove(engine.world, body);
+            }
+            if(body.birth != null) {
+                var lifetime = (new Date()).getTime() - body.birth;
+                if(lifetime > body.ttl) {
+                    console.log("lifetime: " + lifetime);
+                    Matter.World.remove(engine.world, body);
+                }
             }
         })
     }
