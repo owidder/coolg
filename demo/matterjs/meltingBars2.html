@@ -92,7 +92,7 @@
     }
 
     text.sun {
-        font-size: 3em;
+        font-size: 7em;
         fill: yellow;
         stroke-width: 1px;
         stroke: grey;
@@ -205,11 +205,11 @@
 
         rg.append("stop")
             .attr("stop-color", "rgb(255, 221, 51)")
-            .attr("offset", 0.6917);
+            .attr("offset", 0.8);
 
         rg.append("stop")
             .attr("stop-color", "rgb(254, 140, 25)")
-            .attr("offset", 0.7083);
+            .attr("offset", 0.81);
 
         rg.append("stop")
             .attr("stop-opacity", 0)
@@ -219,17 +219,17 @@
         gSun.append("rect")
             .attr("x", 0)
             .attr("y", 0)
-            .attr("width", 300)
-            .attr("height", 300)
+            .attr("width", 600)
+            .attr("height", 600)
             .attr("fill", "url(#sungradient)");
 
         gSun.append("text")
             .attr("class", "sun")
-            .attr("x", 80)
-            .attr("y", 160)
+            .attr("x", 180)
+            .attr("y", 300)
             .text("Reality");
 
-        gSun.attr("transform", "translate(500,0)");
+        gSun.attr("transform", "translate(500,-100)");
     }
 
     function createSun() {
