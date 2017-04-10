@@ -91,6 +91,13 @@
         width: 100%;
     }
 
+    text.sun {
+        font-size: 3em;
+        fill: yellow;
+        stroke-width: 1px;
+        stroke: grey;
+    }
+
 /*
     button:not(.disabled) {
         background-color: #004A7F;
@@ -210,11 +217,19 @@
             .attr("offset", 1);
 
         gSun.append("rect")
-            .attr("x", 500)
+            .attr("x", 0)
             .attr("y", 0)
             .attr("width", 300)
             .attr("height", 300)
             .attr("fill", "url(#sungradient)");
+
+        gSun.append("text")
+            .attr("class", "sun")
+            .attr("x", 80)
+            .attr("y", 160)
+            .text("Reality");
+
+        gSun.attr("transform", "translate(500,0)");
     }
 
     function createSun() {
