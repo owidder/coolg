@@ -87,7 +87,7 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
 */
         }
 
-         return path + " Z";
+         return path;
     }
 
     function renderD3FluidWithGroup(group) {

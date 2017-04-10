@@ -46,6 +46,14 @@
         font-size: .75em;
     }
 
+/*
+    path.dynamic {
+        fill: none;
+        stroke: black;
+        stroke-width: 1px;
+    }
+*/
+
     div.panel {
         position: fixed;
         right: 0;
@@ -159,21 +167,75 @@
 
     var gStatic = svg.append("g");
     var gDynamic = svg.append("g");
+    var gSun = svg.append("g")
+        .attr("class", "sun stay");
 
     var MIN_HEIGHT = 200;
-    var BAR_WIDTH = 30;
+    var BAR_WIDTH = 50;
     var BAR_GAP = 50;
-    var BAR_OFFSET = width / 5;
+    var BAR_OFFSET = 150;
     var START_HEIGHT = 50;
-    var BOTTOM_OFFSET = 50;
+    var BOTTOM_OFFSET = 80;
     var BOTTOM = height - BOTTOM_OFFSET;
     var RADIUS = 2;
-    var STEPS = 10;
+    var STEPS = 5;
 
     var engine = Matter.Engine.create();
 
     engine._custom = {};
     engine._custom.groups = [];
+
+    function createSun2() {
+        var rg = gSun.append("radialGradiant")
+            .attr("id", "sungradient")
+            .attr("cx", 0.5)
+            .attr("cy", 0.5)
+            .attr("r", 0.5);
+
+        rg.append("stop")
+            .attr("stop-color", "rgb(255, 255, 0)")
+            .attr("offset", 0);
+
+        rg.append("stop")
+            .attr("stop-color", "rgb(255, 221, 51)")
+            .attr("offset", 0.6917);
+
+        rg.append("stop")
+            .attr("stop-color", "rgb(254, 140, 25)")
+            .attr("offset", 0.7083);
+
+        rg.append("stop")
+            .attr("stop-color", "rgb(255, 255, 255)")
+            .attr("offset", 1);
+
+        gSun.append("rect")
+            .attr("x", 500)
+            .attr("y", 500)
+            .attr("width", 300)
+            .attr("height", 300)
+            .style("fill", "url(#sungradient)");
+    }
+
+    function createSun() {
+        d3.xml("cannon2.svg").mimeType("image/svg+xml").get(function(error, xml) {
+            if (error) throw error;
+            var paths = xml.documentElement.getElementsByTagName("path");
+            gSun.selectAll("path.tank")
+                .data(paths)
+                .enter()
+                .append("path")
+                .attr("class", function (d) {
+                    var attr = d.getAttribute("class");
+                    return "stay tank" + (attr != null ? " " + attr : "");
+                })
+                .attr("d", function (d) {
+                    return d.getAttribute("d");
+                })
+                .attr("transform", "scale(.4, .4)");
+
+            moveTo(gSun, 0, BOTTOM);
+        });
+    }
 
     function drawStatic() {
         gStatic.append("rect")
@@ -244,14 +306,14 @@
     }
 
     function shortenBar() {
-        var bar = randomBar();
+        var bar = findHighestBarBody();
         var height = heightOfBody(bar);
         var factor;
         if(height < 200) {
-            factor = 0.5;
+            factor = 0.7;
         }
         else {
-            factor = 0.9;
+            factor = 0.97;
         }
         if(height > 50) {
             Matter.Body.scale(bar, 1, factor, {x: bar.bounds.max.x, y: bar.bounds.max.y});
@@ -286,7 +348,8 @@
         var group = "group-" + uid();
         var bodyList = [];
         var diff = top - oldTop;
-        var stepSize = diff / STEPS;
+        var steps = Math.random() * 10 + 5;
+        var stepSize = diff / steps;
         var y;
 
         function createCircle(x, y) {
@@ -296,6 +359,7 @@
                     className: barBody.className,
                     group: group,
                     isFluid: true,
+                    //isNonFluid: true,
                     birth: (new Date()).getTime(),
                     ttl: 2000
                 });
@@ -304,9 +368,15 @@
         }
 
         for(y = oldTop; y <= top; y += stepSize) {
-            createCircle(right, y);
-            createCircle(left, y);
+            if(Math.random() < .5) {
+                createCircle(right, y);
+            }
+            else {
+                createCircle(left, y);
+            }
         }
+        createCircle(right, top+10);
+        createCircle(left, top+10);
 
         Matter.World.add(engine.world, bodyList);
         engine._custom.groups.push(group);
@@ -580,6 +650,8 @@
         if(!worldCreated) {
             worldCreated = true;
         }
+
+        createSun2();
 
         setInterval(shortenBar, 100);
     }
