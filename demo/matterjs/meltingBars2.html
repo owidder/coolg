@@ -165,10 +165,10 @@
         .attr("width", width)
         .attr("height", height);
 
-    var gStatic = svg.append("g");
-    var gDynamic = svg.append("g");
     var gSun = svg.append("g")
         .attr("class", "sun stay");
+    var gStatic = svg.append("g");
+    var gDynamic = svg.append("g");
 
     var MIN_HEIGHT = 200;
     var BAR_WIDTH = 50;
@@ -186,7 +186,7 @@
     engine._custom.groups = [];
 
     function createSun2() {
-        var rg = gSun.append("radialGradiant")
+        var rg = gSun.append("radialGradient")
             .attr("id", "sungradient")
             .attr("cx", 0.5)
             .attr("cy", 0.5)
@@ -205,15 +205,16 @@
             .attr("offset", 0.7083);
 
         rg.append("stop")
+            .attr("stop-opacity", 0)
             .attr("stop-color", "rgb(255, 255, 255)")
             .attr("offset", 1);
 
         gSun.append("rect")
             .attr("x", 500)
-            .attr("y", 500)
+            .attr("y", 0)
             .attr("width", 300)
             .attr("height", 300)
-            .style("fill", "url(#sungradient)");
+            .attr("fill", "url(#sungradient)");
     }
 
     function createSun() {
