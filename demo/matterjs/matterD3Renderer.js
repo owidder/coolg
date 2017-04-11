@@ -222,7 +222,6 @@ function MatterD3Renderer(_engine, _gStatic, _gDynamic) {
             if(body.birth != null) {
                 var lifetime = (new Date()).getTime() - body.birth;
                 if(lifetime > body.ttl) {
-                    console.log("lifetime: " + lifetime);
                     Matter.World.remove(engine.world, body);
                 }
             }
