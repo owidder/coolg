@@ -236,7 +236,7 @@
             console.log(color);
             gSun.selectAll("text.sun")
                 .transition()
-                .duration(2000)
+                .duration(1000)
                 .style("fill", color);
 
             setTimeout(function () {
@@ -246,7 +246,7 @@
                 else {
                     blink("orange");
                 }
-            }, 5000);
+            }, 1000);
         }
 
         function positionText() {
@@ -254,12 +254,12 @@
             var bounds = text.getBoundingClientRect();
             gSun.select("text.sun")
                 .transition()
-                .duration(200)
+                .duration(1000)
                 .attr("x", 300 - (bounds.width/2))
                 .attr("y", 300 + (bounds.height/2));
         }
 
-        setTimeout(positionText, 500);
+        setTimeout(positionText);
 
         blink("orange");
     }
