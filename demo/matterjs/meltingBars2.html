@@ -98,6 +98,12 @@
         stroke: grey;
     }
 
+    path.sun {
+        stroke-width: 1px;
+        stroke: grey;
+        fill: none;
+    }
+
 /*
     button:not(.disabled) {
         background-color: #004A7F;
@@ -192,7 +198,45 @@
     engine._custom = {};
     engine._custom.groups = [];
 
-    function createSun() {
+    function moveSun() {
+        var SUNPATH_POINTS = [
+            [-width/2, height],
+            [0, height/5*4],
+            [width/4, height/3],
+            [width/3*2, height/6]
+        ];
+
+        createSun(SUNPATH_POINTS[0][0], SUNPATH_POINTS[0][1]);
+
+        var sunpath = d3.line().curve(d3.curveCardinal)(SUNPATH_POINTS);
+
+        var path = gSun.append("path")
+            .attr("class", "sun")
+            .attr("d", sunpath);
+
+        var sun = d3.select("rect.sun");
+
+        function transition() {
+            sun.transition()
+                .duration(10000)
+                .attrTween("transform", translateAlong(path.node()))
+                .each("end", transition);
+        }
+
+        function translateAlong(path) {
+            var l = path.getTotalLength();
+            return function(d, i, a) {
+                return function(t) {
+                    var p = path.getPointAtLength(t * l);
+                    return "translate(" + p.x + "," + p.y + ")";
+                };
+            };
+        }
+
+        transition();
+    }
+
+    function createSun(x, y) {
         var rg = gSun.append("radialGradient")
             .attr("id", "sungradient")
             .attr("cx", 0.5)
@@ -230,10 +274,9 @@
             .attr("y", 300)
             .text("Reality");
 
-        gSun.attr("transform", "translate(500,-100)");
+        gSun.attr("transform", "translate(" + x + "," + y + ")");
 
         function blink(color) {
-            console.log(color);
             gSun.selectAll("text.sun")
                 .transition()
                 .duration(1000)
@@ -678,12 +721,12 @@
             worldCreated = true;
         }
 
-        createSun();
-
         setInterval(shortenBar, 100);
     }
 
     drawAxes(barData);
+
+    moveSun();
 
 </script>
 </body>
