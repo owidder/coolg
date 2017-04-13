@@ -94,10 +94,13 @@
             .attr("class", "bubble");
 
         svg.selectAll("path.bubble")
-            .attr("d", bubblePath);
+            .transition()
+            .duration(1000)
+            .attr("d", bubblePath)
+            .on("end", drawBubble);
     }
 
-    setInterval(drawBubble, 20);
+    drawBubble();
 
     // Returns an attrTween for translating along the specified path element.
     function translateAlong(path) {
