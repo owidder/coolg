@@ -98,10 +98,8 @@
         stroke: grey;
     }
 
-    path.sun {
-        stroke-width: 1px;
-        stroke: grey;
-        fill: none;
+    path.fluidbody {
+        opacity: .9;
     }
 
 /*
@@ -408,7 +406,7 @@
                     isFluid: true,
                     //isNonFluid: true,
                     birth: (new Date()).getTime(),
-                    ttl: 2000
+                    ttl: 3000
                 });
 
             bodyList.push(circle);
