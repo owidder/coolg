@@ -199,112 +199,89 @@
     engine._custom.groups = [];
 
     function moveSun() {
-        var SUNPATH_POINTS = [
-            [-width/2, height],
-            [0, height/5*4],
-            [width/4, height/3],
-            [width/3*2, height/6]
-        ];
+        var p = new SimplePromise();
+        var sunWidthHeight = Math.min(width, height) * 0.6;
 
-        createSun(SUNPATH_POINTS[0][0], SUNPATH_POINTS[0][1]);
+        function createSun(x, y) {
+            var rg = gSun.append("radialGradient")
+                .attr("id", "sungradient")
+                .attr("cx", 0.5)
+                .attr("cy", 0.5)
+                .attr("r", 0.5);
 
-        var sunpath = d3.line().curve(d3.curveCardinal)(SUNPATH_POINTS);
+            rg.append("stop")
+                .attr("stop-color", "rgb(255, 255, 0)")
+                .attr("offset", 0);
 
-        var path = gSun.append("path")
-            .attr("class", "sun")
-            .attr("d", sunpath);
+            rg.append("stop")
+                .attr("stop-color", "rgb(255, 221, 51)")
+                .attr("offset", 0.8);
 
-        var sun = d3.select("rect.sun");
+            rg.append("stop")
+                .attr("stop-color", "rgb(254, 140, 25)")
+                .attr("offset", 0.81);
 
-        function transition() {
-            sun.transition()
-                .duration(10000)
-                .attrTween("transform", translateAlong(path.node()))
-                .each("end", transition);
+            rg.append("stop")
+                .attr("stop-opacity", 0)
+                .attr("stop-color", "rgb(255, 255, 255)")
+                .attr("offset", 1);
+
+            gSun.append("rect")
+                .attr("class", "sun")
+                .attr("x", 0)
+                .attr("y", 0)
+                .attr("width", sunWidthHeight)
+                .attr("height", sunWidthHeight)
+                .attr("fill", "url(#sungradient)");
+
+            gSun.append("text")
+                .attr("class", "sun")
+                .attr("x", sunWidthHeight/3)
+                .attr("y", sunWidthHeight/2)
+                .text("Reality");
+
+            gSun.attr("transform", "translate(" + x + "," + y + ")");
+
+            function blink(color) {
+                gSun.selectAll("text.sun")
+                    .transition()
+                    .duration(1000)
+                    .style("fill", color);
+
+                setTimeout(function () {
+                    if(color == "orange") {
+                        blink("yellow");
+                    }
+                    else {
+                        blink("orange");
+                    }
+                }, 1000);
+            }
+
+            function positionText() {
+                var text = document.querySelector("text.sun");
+                var bounds = text.getBoundingClientRect();
+                gSun.select("text.sun")
+                    .transition()
+                    .duration(1000)
+                    .attr("x", sunWidthHeight/2 - (bounds.width/2))
+                    .attr("y", sunWidthHeight/2 + (bounds.height/2));
+            }
+
+            setTimeout(positionText);
+
+            blink("orange");
         }
 
-        function translateAlong(path) {
-            var l = path.getTotalLength();
-            return function(d, i, a) {
-                return function(t) {
-                    var p = path.getPointAtLength(t * l);
-                    return "translate(" + p.x + "," + p.y + ")";
-                };
-            };
-        }
+        createSun(-sunWidthHeight, height+sunWidthHeight);
 
-        transition();
-    }
+        gSun.transition().duration(3000)
+            .attr("transform", "translate(" + width/3 + ",-50)")
+            .on("end", function () {
+                p.resolve();
+            });
 
-    function createSun(x, y) {
-        var rg = gSun.append("radialGradient")
-            .attr("id", "sungradient")
-            .attr("cx", 0.5)
-            .attr("cy", 0.5)
-            .attr("r", 0.5);
-
-        rg.append("stop")
-            .attr("stop-color", "rgb(255, 255, 0)")
-            .attr("offset", 0);
-
-        rg.append("stop")
-            .attr("stop-color", "rgb(255, 221, 51)")
-            .attr("offset", 0.8);
-
-        rg.append("stop")
-            .attr("stop-color", "rgb(254, 140, 25)")
-            .attr("offset", 0.81);
-
-        rg.append("stop")
-            .attr("stop-opacity", 0)
-            .attr("stop-color", "rgb(255, 255, 255)")
-            .attr("offset", 1);
-
-        gSun.append("rect")
-            .attr("class", "sun")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", 600)
-            .attr("height", 600)
-            .attr("fill", "url(#sungradient)");
-
-        gSun.append("text")
-            .attr("class", "sun")
-            .attr("x", 180)
-            .attr("y", 300)
-            .text("Reality");
-
-        gSun.attr("transform", "translate(" + x + "," + y + ")");
-
-        function blink(color) {
-            gSun.selectAll("text.sun")
-                .transition()
-                .duration(1000)
-                .style("fill", color);
-
-            setTimeout(function () {
-                if(color == "orange") {
-                    blink("yellow");
-                }
-                else {
-                    blink("orange");
-                }
-            }, 1000);
-        }
-
-        function positionText() {
-            var text = document.querySelector("text.sun");
-            var bounds = text.getBoundingClientRect();
-            gSun.select("text.sun")
-                .transition()
-                .duration(1000)
-                .attr("x", 300 - (bounds.width/2))
-                .attr("y", 300 + (bounds.height/2));
-        }
-
-        setTimeout(positionText);
-
-        blink("orange");
+        return p.promise;
     }
 
     function drawStatic() {
@@ -721,12 +698,12 @@
             worldCreated = true;
         }
 
-        setInterval(shortenBar, 100);
+        moveSun().then(function () {
+            setInterval(shortenBar, 100);
+        });
     }
 
     drawAxes(barData);
-
-    moveSun();
 
 </script>
 </body>
