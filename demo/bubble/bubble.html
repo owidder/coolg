@@ -12,8 +12,15 @@
         stroke-width: 0px;
     }
 
+    path.bubble {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1px;
+    }
+
     circle {
         fill: steelblue;
+        visibility: hidden;
     }
 
 </style>
@@ -50,6 +57,7 @@
         }
 
         var circle = svg.append("circle")
+            .attr("class", "runner")
             .attr("r", 2)
             .attr("transform", "translate(" + points[0] + ")");
 
@@ -58,9 +66,38 @@
         }, Math.random() * 1000);
     }
 
-    _.range(100).forEach(function () {
+    _.range(5).forEach(function () {
         newCircle();
     });
+
+    function bubblePath() {
+        var points = [];
+        document.querySelectorAll("circle.runner").forEach(function(node) {
+            var br = node.getBoundingClientRect();
+            var cx = br.left + br.width/2;
+            var cy = br.top + br.height/2;
+
+            points.push([cx, cy]);
+        });
+
+        var convexHull = d3.polygonHull(points);
+        var path = d3.line().curve(d3.curveCardinalClosed)(convexHull);
+
+        return path;
+    }
+
+    function drawBubble() {
+        svg.selectAll("path.bubble")
+            .data([1])
+            .enter()
+            .append("path")
+            .attr("class", "bubble");
+
+        svg.selectAll("path.bubble")
+            .attr("d", bubblePath);
+    }
+
+    setInterval(drawBubble, 20);
 
     // Returns an attrTween for translating along the specified path element.
     function translateAlong(path) {
