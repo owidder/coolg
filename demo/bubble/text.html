@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="../../bower_components/Materialize/dist/css/materialize.css" media="screen,projection"/>
+
+</head>
+<body>
+<style>
+
+    path.track {
+        fill: none;
+        stroke: #000;
+        stroke-width: 0px;
+    }
+
+</style>
+<script src="../../lib/d3.v4.min.js"></script>
+<script src="../../bower_components/lodash/dist/lodash.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script>
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var points = _.range(100).map(function () {
+        return [width * Math.random(), height * Math.random()];
+    });
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var path = svg.append("path")
+        .attr("class", "track")
+        .attr("id", "track")
+        .data([points])
+        .attr("d", d3.line()
+            .curve(d3.curveCardinalClosed));
+
+    $.ajax({
+        url : "https://cdn.rawgit.com/owidder/coolg/b1/demo/bubble/bubble.html",
+        dataType: "text",
+        success : function (data) {
+            svg.append("text")
+                .append("textPath")
+                .attr("class", "tp")
+                .style("text-anchor","right") //place the text halfway on the arc
+                .attr("startOffset", "-100%")
+                .attr("xlink:href", "#track")
+                .text(data);
+
+            function moveText(proz) {
+                svg.selectAll("textPath.tp")
+                    .transition()
+                    .duration(50)
+                    .attr("startOffset", proz + "%")
+                    .on("end", function () {
+                        if(proz < 100) {
+                            moveText(proz + .001);
+                        }
+                        else {
+                            moveText(0);
+                        }
+                    });
+            }
+
+            moveText(-20);
+        }
+    });
+
+
+</script>
+</body>
+</html>
