@@ -9,4 +9,5 @@ Just some cools things made with D3:
 * _Honest Charts / Part 2_: https://cdn.rawgit.com/owidder/coolg/sb5/demo/matterjs/shatteredBars.html
 * _Honest Charts / Part 3_: https://cdn.rawgit.com/owidder/coolg/fb1/demo/matterjs/meltingBars2.html
 * _Bubble_: https://cdn.rawgit.com/owidder/coolg/b1/demo/bubble/bubble.html
+* _Colored Bubbles_: https://cdn.rawgit.com/owidder/coolg/b2/demo/bubble/bubbles01.html
 
