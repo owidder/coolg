@@ -13,9 +13,8 @@
     }
 
     path.bubble {
-        fill: none;
-        stroke: #000;
-        stroke-width: 1px;
+        stroke-width: 0px;
+        opacity: .3;
     }
 
     circle {
@@ -49,7 +48,7 @@
     function newCircle(clazz) {
         function transition(circle) {
             circle.transition()
-                .duration(200000 + Math.random() * 200000)
+                .duration(400000 + Math.random() * 400000)
                 .attrTween("transform", translateAlong(path.node()))
                 .on("end", function () {
                     transition(circle);
@@ -66,9 +65,11 @@
         }, Math.random() * 1000);
     }
 
-    var clazzes = _.range(10).map(function(i) {
+    var clazzes = _.range(20).map(function(i) {
         return "b" + i;
     });
+
+    var color = d3.scaleOrdinal(d3["schemeCategory20"]);
 
     clazzes.forEach(function (clazz) {
         _.range(3).forEach(function () {
@@ -97,7 +98,8 @@
             .data(clazzes)
             .enter()
             .append("path")
-            .attr("class", "bubble");
+            .attr("class", "bubble")
+            .style("fill", color);
 
         svg.selectAll("path.bubble")
             .attr("d", function (d) {
