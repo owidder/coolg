@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<style>
+
+    path.track {
+        fill: none;
+        stroke: #000;
+        stroke-width: 0px;
+    }
+
+    path.bubble {
+        stroke-width: 0px;
+        opacity: .3;
+    }
+
+    circle {
+        fill: steelblue;
+        visibility: hidden;
+    }
+
+</style>
+<script src="../../lib/d3.v4.min.js"></script>
+<script src="../../bower_components/lodash/dist/lodash.js"></script>
+<script>
+
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    var color = d3.scaleOrdinal(d3["schemeCategory20"]);
+
+    function bubblePath(num) {
+        var points = _.times(num, function () {
+            return [_.random(0, width), _.random(0, height)];
+        });
+
+        var convexHull = d3.polygonHull(points);
+        var path = d3.line().curve(d3.curveCardinalClosed)(convexHull);
+
+        return path;
+    }
+
+    function drawBubbles(id) {
+        svg.selectAll("path.bubble._" + id)
+            .data([id])
+            .enter()
+            .append("path")
+            .attr("class", function (d) {
+                return "bubble " + "_" + id;
+            })
+            .style("fill", color);
+
+        svg.selectAll("path.bubble._" + id)
+            .transition()
+            .duration(_.random(1000, 3000))
+            .attr("d", function (d) {
+                return bubblePath(3);
+            })
+            .on("end", function () {
+                drawBubbles(id);
+            });
+    }
+
+    _.times(100, function(i) {
+        setTimeout(function () {
+            drawBubbles(i);
+        }, 5000*i);
+    });
+
+</script>
+</body>
+</html>
